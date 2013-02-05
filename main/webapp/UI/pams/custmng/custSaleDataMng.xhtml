@@ -1,0 +1,627 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/ui.xhtml">
+
+<ui:define name="head">
+<style type="text/css">
+    .col-95 {
+        width: 95%;
+    }
+
+    .col-5 {
+        width: 5%;
+    }
+
+    .datalist-noborder .ui-widget-content {
+        border: none;
+        color: #999999;
+    }
+
+    .help-row {
+        vertical-align: top;
+    }
+
+    .input-col-s {
+        width: 45px;
+    }
+
+    .input-col-m {
+        width: 65px;
+    }
+
+    .input-col-l {
+        width: 80px;
+    }
+
+    .input-col-xl {
+        width: 140px;
+    }
+
+    .input-col-textarea {
+        width: 610px;
+    }
+
+    .datagrid-help {
+        border: 0;
+        margin: 0;
+        border-collapse: collapse;
+    }
+
+    .datagrid-help td {
+        padding: 1;
+    }
+
+    .input-col-xxl {
+        width: 900px;
+        text-align: center;
+    }
+
+    .help-line {
+        background-image: url("#{request.contextPath}/images/separator_bg.gif");
+        width: 100%;
+        background-repeat: repeat-x;
+        background-position: left center;
+        overflow: hidden;
+    }
+
+    .help-line h2 {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0px 4px;
+        margin: 2px 20px;
+        float: left; /*COLOR: #19355e;*/
+        color: #003399;
+        background-color: #fff;
+    }
+
+</style>
+<script language="JavaScript" type="text/JavaScript">
+    //<![CDATA[
+        function KeyDown() {
+        if (event.keyCode == 13) {
+            if (event.srcElement.id == 'inputform:tellerId') {
+                checktellerid();
+                event.keyCode = 9;
+            } else if (event.srcElement.id == 'inputform:prdId') {
+                checkprdid();
+                event.keyCode = 9;
+            } else if (event.srcElement.id == 'inputform:subprdId') {
+                checksubprdid();
+                event.keyCode = 9;
+            } else {
+                event.keyCode = 9;
+            }
+        }
+    }
+
+    function handleInputComplete(xhr, status, args, id) {
+        if (args) {
+            var isValid = args.isValid;
+            if (!isValid) {
+                document.forms['inputform']['inputform:' + id].focus();
+            } else {
+                if (id == 'prdId') {
+                    onPrdidChange();
+                    var prdid = document.forms['inputform']['inputform:prdId'].value;
+                    if (prdid == "01" || prdid == "02" || prdid == "03"
+                            || prdid == "06" || prdid == "08" || prdid == "09") {
+                        document.forms['inputform']['inputform:subprdId'].focus();
+                    } else {
+                        if (prdid == "05") {
+                            document.forms['inputform']['inputform:num1'].focus();
+                        } else {
+                            document.forms['inputform']['inputform:certtype'].focus();
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    var submitted = false;
+
+    function checkDoubleSubmit(f) {
+        //alert(submitted);
+        if (submitted) {
+            window.alert("请勿重复提交!");
+            return false;
+        } else {
+            submitted = true;
+            return true;
+        }
+    }
+
+    //1.基金 2.保险 3.理财产品 4.存款	5.借记卡 6.信用卡 7.贷款 8.电子银行 9.黄金 10.基金定投 11.其他
+    function onPrdidChange() {
+        var prdid = document.forms['inputform']['inputform:prdId'].value;
+
+        //不显示产品子类
+        document.forms['inputform']['inputform:subprdId'].disabled = true;
+        //不显示证件
+        document.forms['inputform']['inputform:certtype'].disabled = true;
+        document.forms['inputform']['inputform:certno'].disabled = true;
+        //不显示客户姓名
+        document.forms['inputform']['inputform:customerName'].disabled = true;
+        //不显示成交金额
+        document.forms['inputform']['inputform:amt1'].disabled = true;
+        //不显示成交数量
+        document.forms['inputform']['inputform:num1'].disabled = true;
+
+        if (prdid == "01") {
+            // 子类、客户姓名、金额 可输
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        } else if (prdid == "02") {
+            // 子类、客户姓名、金额 可输
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        } else if (prdid == "03") {
+            // 子类、客户姓名、金额 可输
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        } else if (prdid == "04") {
+            //客户姓名、成交金额 可输
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        } else if (prdid == "05") {
+            document.getElementById('inputform:num1Label').innerText = "营销张数:";
+            //显示成交数量
+            document.forms['inputform']['inputform:num1'].disabled = false;
+        } else if (prdid == "06") {
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+            document.getElementById('inputform:num1Label').innerText = "营销张数:";
+            //显示成交数量
+            document.forms['inputform']['inputform:num1'].disabled = false;
+        } else if (prdid == "07") {
+            //客户姓名、成交金额 可输
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        } else if (prdid == "08") {
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+            document.getElementById('inputform:num1Label').innerText = "营销件数:";
+            //显示成交数量
+            document.forms['inputform']['inputform:num1'].disabled = false;
+        } else if (prdid == "09") {
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
+            document.getElementById('inputform:num1Label').innerText = "成交克数:";
+            //显示客户姓名
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            //显示成交数量
+            document.forms['inputform']['inputform:num1'].disabled = false;
+        } else if (prdid == "10") {
+            document.getElementById('inputform:num1Label').innerText = "签约笔数:";
+            //客户姓名、成交数量 可输
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:num1'].disabled = false;
+        } else if (prdid == "11") {
+            //客户姓名、成交金额 可输
+//            document.forms['inputform']['inputform:certtype'].disabled = false;
+//            document.forms['inputform']['inputform:certno'].disabled = false;
+//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:amt1'].disabled = false;
+        }
+    }
+
+    function onFieldFocus() {
+        if (event.srcElement.id == 'inputform:subprdId') {
+            document.getElementById('insuretypeHelp').style.display = "none";
+            document.getElementById('fptypeHelp').style.display = "none";
+            document.getElementById('creditcardtypeHelp').style.display = "none";
+            document.getElementById('ebanktypeHelp').style.display = "none";
+            document.getElementById('goldtypeHelp').style.display = "none";
+            var prdid = document.forms['inputform']['inputform:prdId'].value;
+            if (prdid == "02") {
+                document.getElementById('insuretypeHelp').style.display = "inline";
+            } else if (prdid == "03") {
+                document.getElementById('fptypeHelp').style.display = "inline";
+            } else if (prdid == "06") {
+                document.getElementById('creditcardtypeHelp').style.display = "inline";
+            } else if (prdid == "08") {
+                document.getElementById('ebanktypeHelp').style.display = "inline";
+            } else if (prdid == "09") {
+                document.getElementById('goldtypeHelp').style.display = "inline";
+            }
+        }
+    }
+
+    //]]>
+</script>
+
+
+</ui:define>
+
+<ui:define name="content">
+<div style="margin:5px;">
+    <h:form id="form">
+        <p:tabView id="tabView" style="font-weight:normal;font-style:normal">
+            <p:tab id="tab" title="客户营销数据管理">
+                <p:growl id="msgs" showDetail="false" life="3000"/>
+
+                <div id="header">
+                    <p:panel>
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="2" cellspacing="5">
+                                <h:outputLabel value="客户姓名:"/>
+                                <p:inputText value="#{custBizDataAction.paramBean.custName}"/>
+                                <h:outputLabel value="证件号:"/>
+                                <p:inputText value="#{custBizDataAction.paramBean.certNo}"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{custBizDataAction.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt"
+                                                    fileName="rpt#{custBizDataAction.paramBean.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:contextMenu for="pdt" widgetVar="cMenu">
+                    <p:menuitem value="修改" icon="ui-icon-search" onclick="pdt.showCellEditor();return false;"/>
+                    <p:menuitem value="取消" icon="ui-icon-close" onclick="cMenu.hide()"/>
+                </p:contextMenu>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             value="#{custBizDataAction.detlCustList}" var="record"
+                             rowKey="#{record.guid}"
+                             editable="true" editMode="cell"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="500,100,50,30,15"
+                             emptyMessage="数据记录为空...">
+
+                    <p:ajax event="cellEdit" listener="#{custBizDataAction.onCellEdit}"
+                            update=":form:tabView:msgs "/>
+
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            客户名称
+                        </f:facet>
+                        <h:outputText value="#{record.custName}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            证件类型
+                        </f:facet>
+                        <h:outputText value="#{record.certType}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            证件号
+                        </f:facet>
+                        <h:outputText value="#{record.certNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            联系方式1
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo1}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            联系方式2
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo2}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            联系方式补充
+                        </f:facet>
+                        <p:cellEditor id="contractExt">
+                            <f:facet name="output"><h:outputText value="#{record.contactInfoExt}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="ceInput" value="#{record.contactInfoExt}"
+                                                               style="width:96%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            备注
+                        </f:facet>
+                        <p:cellEditor id="remark">
+                            <f:facet name="output"><h:outputText value="#{record.remark}"/></f:facet>
+                            <f:facet name="input"><p:inputText id="remarkInput" value="#{record.remark}"
+                                                               style="width:96%"/></f:facet>
+                        </p:cellEditor>
+                    </p:column>
+                </p:dataTable>
+            </p:tab>
+        </p:tabView>
+    </h:form>
+</div>
+
+<div>
+<h:form id="inputform">
+    <!--<ui:insert name="focus">empty content</ui:insert>-->
+
+    <div id="top" style="margin:0px 5px;">
+        <p:growl id="growls" showDetail="true"/>
+        <!--<p:panel id="inputpanel" header="#{custSaleDataInputAction.panelTitle}" style="margin-top:5px">-->
+        <p:panel id="inputpanel" style="margin-top:25px">
+            <h:panelGrid columns="3" cellspacing="5"
+                         columnClasses="input-col-m,input-col-xl">
+                <h:outputLabel value="业务日期:" for="txnDate"/>
+                <p:inputText id="txnDate" value="#{custSaleDataInputAction.txnDate}" readonly="true"
+                             required="true" onkeydown="KeyDown()" onfocus="this.select()">
+                </p:inputText>
+                <h:outputLabel/>
+
+                <!--<ui:insert name="tellerId">empty content</ui:insert>-->
+
+                <h:outputLabel value="产品种类:"/>
+                <p:inputText id="prdId" value="#{custSaleDataInputAction.vo.prdid}"
+                             requiredMessage="产品种类必须输入。"
+                             required="true"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                    <p:ajax event="change" update="prdName"
+                            listener="#{custSaleDataInputAction.onPrdidListener}"
+                            process="@this"/>
+                </p:inputText>
+                <h:outputText id="prdName" value="#{custSaleDataInputAction.vo.prdname}" style="color:#999999;"/>
+
+                <h:outputLabel id="subprdIdLabel" value="产品子类:" rendered="#{custSaleDataInputAction.subprdidShow}"/>
+                <p:inputText id="subprdId" autocomplete="false"
+                             value="#{custSaleDataInputAction.vo.subprdid}"
+                             rendered="#{custSaleDataInputAction.subprdidShow}"
+                             requiredMessage="产品子类必须输入。"
+                             onkeydown="KeyDown()"
+                             onfocus="onFieldFocus();this.select()">
+                    <p:ajax event="blur" update="subprdName" listener="#{custSaleDataInputAction.onSubprdidListener}"
+                            process="@this"/>
+                </p:inputText>
+                <h:outputText id="subprdName" value="#{custSaleDataInputAction.vo.subprdname}" style="color:#999999;"/>
+            </h:panelGrid>
+            <p:separator/>
+            <h:panelGrid columns="6" cellspacing="5"
+                         columnClasses="input-col-m,input-col-xl,input-col-m,input-col-xl,input-col-m,input-col-xl">
+
+                <h:outputLabel value="证件类型:"/>
+                <h:panelGroup>
+                    <h:selectOneMenu id="certtype" style="width:153px;font-weight:bold;"
+                                     title="可直接使用键盘输入3位代号，按回车键跳到下一栏位。"
+                                     value="#{custSaleDataInputAction.vo.certtype}"
+                                     readonly="true"
+                                     required="false" onkeydown="KeyDown()">
+                        <f:selectItems value="#{custSaleDataInputAction.certTypeList}"/>
+                    </h:selectOneMenu>
+                </h:panelGroup>
+
+                <h:outputLabel value="证件号码:"/>
+                <p:inputText id="certno" value="#{custSaleDataInputAction.vo.certno}"
+                             requiredMessage="证件号码必须输入。"
+                             required="false"
+                             readonly="true"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                </p:inputText>
+
+                <h:outputLabel id="customerNameLabel" value="客户姓名:"/>
+                <p:inputText id="customerName" autocomplete="false"
+                             required="false"
+                             readonly="true"
+                             value="#{custSaleDataInputAction.vo.customername}"
+                             requiredMessage="客户姓名必须输入。"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                </p:inputText>
+
+                <h:outputLabel id="amt1Label" value="成交金额:"/>
+                <p:inputText id="amt1" autocomplete="false"
+                             value="#{custSaleDataInputAction.vo.salesamt1}"
+                             requiredMessage="成交金额必须输入。"
+                             validatorMessage="请输入正确的金额。"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                    <f:convertNumber for="amt1" maxFractionDigits="2" maxIntegerDigits="13"
+                                     pattern="###,###,###,###,##0.00"/>
+                </p:inputText>
+                <h:outputLabel id="num1Label" value="成交数量:"/>
+                <p:inputText id="num1" autocomplete="false"
+                             value="#{custSaleDataInputAction.vo.salesnum1}"
+                             requiredMessage="成交数量必须输入。"
+                             validatorMessage="请输入正确的成交数量。"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                    <f:validateLongRange for="num1" minimum="0"/>
+                </p:inputText>
+            </h:panelGrid>
+
+            <!--<ui:insert name="interviewFields"></ui:insert>-->
+
+        </p:panel>
+        <p:panel style="margin-top:10px;">
+            <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                <p:commandButton id="saveButton" value="保  存" style="width:150px;"
+                                 action="#{custSaleDataInputAction.onSaveBtnClick}"
+                                 update="growls,inputform" ajax="true">
+                </p:commandButton>
+            </h:panelGrid>
+        </p:panel>
+    </div>
+    <p:remoteCommand name="checkprdid" id="checkprdid" async="false"
+                     actionListener="#{custSaleDataInputAction.onCheckprdid}"
+                     update="growls" process="@this,prdId"
+                     oncomplete="handleInputComplete(xhr, status, args, 'prdId')"/>
+    <p:remoteCommand name="checksubprdid" id="checksubprdid" async="false"
+                     actionListener="#{custSaleDataInputAction.onChecksubprdid}"
+                     update="growls" process="@this,subprdId"
+                     oncomplete="handleInputComplete(xhr, status, args, 'subprdId')"/>
+</h:form>
+
+<div class="help-line" style="margin-top:15px;">
+    <h2>[提示信息]</h2>
+</div>
+<div id="prdtypeHelp" style="margin-left:15px;display:inline;">
+    <p:panel style="margin-top:0px;border:0;margin-top:0px;">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px">
+                产品种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.prdTypeList}"
+                                    columns="12" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+
+<div id="insuretypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                保险种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.insureTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+<div id="fptypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                理财种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.fpTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+<div id="creditcardtypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                信用卡种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.creditcardTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+<div id="ebanktypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                电子银行种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.ebankTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+<div id="goldtypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                黄金种类:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.goldTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
+
+</div>
+
+</ui:define>
+</ui:composition>

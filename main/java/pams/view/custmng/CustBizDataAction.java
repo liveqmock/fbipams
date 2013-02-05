@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 客户信息管理.
+ * 客户信息管理 基本信息修改 业务信息查询.
  * User: zhanrui
  * Date: 13-1-24
  * Time: 上午11:00
