@@ -1,0 +1,137 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .prdsetColumn {
+                width: 100%;
+            }
+        </style>
+    </ui:define>
+    <ui:define name="content">
+        <div style="margin:5px">
+
+            <!--<p:tabView dynamic="true" cache="true">-->
+            <p:tabView style="font-weight:normal;font-style:normal">
+                <p:tab title="产品套餐统计">
+                    <h:form>
+                        <h:panelGrid columns="1"  width="96%">
+                            <p style="color: blue; font-size: 12px">本机构产品套餐销售情况统计:</p>
+                            <p:dataTable id="pdt" style="font-size: 12px"
+                                         value="#{trackMiscAction.prdsetStatisticList}" var="record"
+                                         emptyMessage="数据记录为空...">
+                                <p:column style="width:200px;">
+                                    <f:facet name="header">
+                                        产品套餐
+                                    </f:facet>
+                                    <h:outputText value="#{record.prdsetname}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        提交状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.commitflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        检核状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.checkflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        考核状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.archiveflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        笔数
+                                    </f:facet>
+                                    <h:outputText value="#{record.totalnum}"/>
+                                </p:column>
+                            </p:dataTable>
+                            <p:separator style="margin-top:20px;"/>
+
+                            <p style="color: blue;">本机构产品销售情况统计:</p>
+                            <p:dataTable id="pdt2"
+                                         value="#{trackMiscAction.prdStatisticList}" var="record"
+                                         emptyMessage="数据记录为空...">
+                                <p:column style="width:200px;">
+                                    <f:facet name="header">
+                                        产品
+                                    </f:facet>
+                                    <h:outputText value="#{record.prdname}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        提交状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.commitflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        检核状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.checkflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        考核状态
+                                    </f:facet>
+                                    <h:outputText value="#{record.archiveflag}"/>
+                                </p:column>
+                                <p:column style="text-align:center">
+                                    <f:facet name="header">
+                                        笔数
+                                    </f:facet>
+                                    <h:outputText value="#{record.totalnum}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:panelGrid>
+                    </h:form>
+                </p:tab>
+                <p:tab title="业绩评价统计">
+
+                    <div style="margin-top:5px;margin-left:50px;">
+                        <p:graphicImage value="#{trackMiscAction.piechart}" style="margin-left:10px;"/>
+                    </div>
+                    <p:separator/>
+
+                    <div style="margin-top:5px;">
+                        <p:graphicImage value="#{trackMiscAction.barchart08}" style="margin-left:10px;"/>
+                    </div>
+                    <p:separator/>
+
+                    <div style="margin-top:5px;">
+                        <p:graphicImage value="#{trackMiscAction.barchart05}" style="margin-left:10px;"/>
+                    </div>
+                    <p:separator/>
+
+                    <div style="margin-top:5px;">
+                        <p:graphicImage value="#{trackMiscAction.barchart04}" style="margin-left:10px;"/>
+                    </div>
+                </p:tab>
+
+                <p:tab title="系统更新通知">
+                    <p:panel id="news20110502" header="更新信息（2011年5月2日）">
+                        <p>2011年5月2日系统最新更新：</p>
+
+                        <div style="line-height:30px;">
+                            <ul>
+                                <li>1、新增产品套餐业绩管理子系统。</li>
+                                <li>2、业绩评价子系统中新增客户证件信息的录入功能。</li>
+                                <li>3、系统菜单重新划分为业绩评价及产品套餐两个独立子系统。</li>
+                            </ul>
+                        </div>
+
+                    </p:panel>
+                </p:tab>
+            </p:tabView>
+        </div>
+    </ui:define>
+</ui:composition>

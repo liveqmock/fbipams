@@ -1,0 +1,10 @@
+package sample;
+
+public class SimpleBean {
+    
+    private String message = "Hello World2";
+    
+    public String getMessage() {
+        return message + "X2ÖĞÎÄ22222";
+    }
+}

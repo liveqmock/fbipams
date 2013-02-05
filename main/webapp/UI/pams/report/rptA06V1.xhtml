@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+        <script type="text/javascript">
+            function doPopupEctipWindow(obj) {
+                var pkid = obj.parentNode.parentNode.parentNode.getAttribute("data-rk");
+                var popupwindow = window.open("common/custChnInfo.xhtml?pkid=" + pkid, "", "height=600,width=800,left=200,top=100,toolbar=no,menubar=no,scrollbars=yes,location=no");
+                popupwindow.focus;
+            }
+        </script>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="false" life="1500"/>
+                <div id="header">
+                    <p:panel header="理财产品_渠道销售_客户明细表">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="2" cellspacing="5">
+                                <h:outputLabel value="选择机构:"/>
+                                <h:selectOneMenu id="branchname" style="width:153px;"
+                                                 value="#{rptA06V1Action.branchId}">
+                                    <f:selectItems value="#{rptA06V1Action.branchList}"/>
+                                </h:selectOneMenu>
+
+                                <!--
+                                                                <h:outputLabel value="客户姓名:"/>
+                                                                <p:inputText value="#{rptA06V1Action.custName}"/>
+                                -->
+
+                                <h:outputLabel value="交易起日:"/>
+                                <p:inputText id="startDate" value="#{rptA06V1Action.startDate}" title="交易起始日期"
+                                             required="true" requiredMessage="请输入起始日期"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{rptA06V1Action.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt"
+                                                    fileName="rpt#{rptA06V1Action.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             value="#{rptA06V1Action.detlList}" var="record"
+                             rowKey="#{record.pkid}"
+                             selection="#{rptA06V1Action.selectedRecord}" selectionMode="single"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+
+                    <p:column headerText="交易机构" style="text-align:center" sortBy="#{record.branchName}">
+                        <h:outputText value="#{record.branchName}"/>
+                    </p:column>
+                    <p:column headerText="交易日期" style="text-align:center" sortBy="#{record.txnDate}">
+                        <h:outputText value="#{record.txnDate}"/>
+                    </p:column>
+                    <p:column headerText="交易账号" style="text-align:center">
+                        <h:outputText value="#{record.account}"/>
+                    </p:column>
+                    <p:column headerText="客户名称" style="text-align:center" sortBy="#{record.custName}"
+                              filterBy="#{record.custName}" filterMatchMode="contains">
+                        <h:outputText value="#{record.custName}" />
+                    </p:column>
+<!--
+                    <p:column headerText="证件号码" style="text-align:center">
+                        <h:outputText value="#{record.证件号码}" />
+                    </p:column>
+-->
+                    <p:column headerText="产品编号" style="text-align:center" sortBy="#{record.pdtId}">
+                        <h:outputText value="#{record.pdtId}" />
+                    </p:column>
+                    <p:column headerText="产品名称" style="text-align:center">
+                        <h:outputText value="#{record.pdtName}" />
+                    </p:column>
+                    <p:column headerText="投资起始日" style="text-align:center" sortBy="#{record.invStartDate}">
+                        <h:outputText value="#{record.invStartDate}" />
+                    </p:column>
+                    <p:column headerText="投资终止日" style="text-align:center" sortBy="#{record.invEndDate}">
+                        <h:outputText value="#{record.invEndDate}" />
+                    </p:column>
+                    <p:column headerText="确认金额钞" style="text-align:center" sortBy="#{record.cfmAmt}">
+                        <h:outputText value="#{record.cfmAmt}" style="float:right"/>
+                    </p:column>
+                    <p:column headerText="交易渠道" style="text-align:center" sortBy="#{record.txnChannel}"
+                              filterBy="#{record.txnChannel}" filterMatchMode="contains">
+                        <h:outputText value="#{record.txnChannel}" />
+                    </p:column>
+                    <p:column headerText="处理类型" style="text-align:center" sortBy="#{record.processType}"
+                              filterBy="#{record.processType}" filterMatchMode="contains">
+                        <h:outputText value="#{record.processType}" />
+                    </p:column>
+                    <p:column headerText="联系方式" style="text-align:center"
+                              filterBy="#{record.contactInfo}" filterMatchMode="contains">
+                        <h:outputText value="#{record.contactInfo}" />
+                    </p:column>
+                </p:dataTable>
+                <p:panel style="margin-top: 5px;" >
+                    <h:panelGrid columns="1">
+                        <p:commandButton value="渠道签约情况" actionListener="#{rptA06V1Action.onQryCustChnSign}" id="withIcon"
+                                         update="msgs" icon="ui-icon-disk" />
+                    </h:panelGrid>
+                </p:panel>
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

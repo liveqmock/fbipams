@@ -1,0 +1,206 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:tabView id="tabView" style="font-weight:normal;font-style:normal">
+                    <p:tab id="tab" title="客户历史数据查询">
+                        <p:growl id="msgs" showDetail="false" life="3000"/>
+
+                        <div id="header">
+                            <p:panel>
+                                <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                                    <h:panelGrid columns="2" cellspacing="5">
+                                        <h:outputLabel value="客户姓名:"/>
+                                        <p:inputText value="#{custBizDataAction.paramBean.custName}"/>
+                                        <h:outputLabel value="证件号:"/>
+                                        <p:inputText value="#{custBizDataAction.paramBean.certNo}"/>
+                                    </h:panelGrid>
+                                    <h:panelGrid>
+                                        <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                         action="#{custBizDataAction.onQuery}"
+                                                         update="pdt,msgs">
+                                        </p:commandButton>
+
+                                        <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                         style="width:90px;">
+                                            <p:dataExporter type="csv" target="pdt"
+                                                            fileName="rpt#{custBizDataAction.paramBean.branchId}"
+                                                            encoding="GBK"
+                                                            pageOnly="false"/>
+                                        </p:commandButton>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                            </p:panel>
+                        </div>
+
+                        <p:ajaxStatus style="height:20px;text-align:center">
+                            <f:facet name="start">
+                                <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                            </f:facet>
+                            <f:facet name="complete">
+                                <h:outputText value=""/>
+                            </f:facet>
+                        </p:ajaxStatus>
+
+                        <p:dataTable id="pdt" style="width:100%;"
+                                     value="#{custBizDataAction.detlCustList}" var="record"
+                                     rowKey="#{record.guid}"
+                                     selectionMode="single" selection="#{custBizDataAction.selectedCust}"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                                     currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                                     paginator="true" rows="15"
+                                     paginatorPosition="bottom"
+                                     rowsPerPageTemplate="500,100,50,30,15"
+                                     emptyMessage="数据记录为空...">
+
+                            <p:ajax event="rowSelect" listener="#{custBizDataAction.onCustRowSelect}"
+                                    update=":form:tabView:msgs :form:tabView:pdt :form:tabView:subpdt"  />
+                            <p:ajax event="rowUnselect" listener="#{custBizDataAction.onCustRowUnSelect}" update=":form:tabView:msgs :form:tabView:pdt :form:tabView:subpdt"/>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    客户名称
+                                </f:facet>
+                                <h:outputText value="#{record.custName}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    证件类型
+                                </f:facet>
+                                <h:outputText value="#{record.certType}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    证件号
+                                </f:facet>
+                                <h:outputText value="#{record.certNo}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    联系方式1
+                                </f:facet>
+                                <h:outputText value="#{record.contactInfo1}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    联系方式2
+                                </f:facet>
+                                <h:outputText value="#{record.contactInfo2}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    联系方式补充
+                                </f:facet>
+                                <h:outputText value="#{record.contactInfoExt}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    备注
+                                </f:facet>
+                                <h:outputText value="#{record.remark}"/>
+                            </p:column>
+                        </p:dataTable>
+
+                        <p:panel style="margin-top: 5px;" >
+                            <h:panelGrid columns="1">
+                                <p:commandButton value="渠道签约情况" actionListener="#{custBizDataAction.onQryCustChnSign}" id="withIcon"
+                                                 update="msgs" icon="ui-icon-disk" />
+                            </h:panelGrid>
+                        </p:panel>
+
+                        <p:separator style="margin-top: 30px;margin-bottom: 1px" title="分割线" />
+                        <p:dataTable id="subpdt" style="width:100%;"
+                                     value="#{custBizDataAction.detlBizList}" var="custinfo"
+                                     rowKey="#{custinfo.guid}"
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                                     currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                                     paginator="true" rows="15"
+                                     paginatorPosition="bottom"
+                                     rowsPerPageTemplate="500,100,50,30,15"
+                                     emptyMessage="数据记录为空...">
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    报表类型
+                                </f:facet>
+                                <h:outputText value="#{custBizDataAction.rptNameMap[custinfo.rptType]}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    报表日期
+                                </f:facet>
+                                <h:outputText value="#{custinfo.rptDate}"/>
+                            </p:column>
+                            <p:column style="text-align:center"  sortBy="#{custinfo.aumMonthCurr}">
+                                <f:facet name="header">
+                                    月日均AUM
+                                </f:facet>
+                                <h:outputText value="#{custinfo.aumMonthCurr}" style="float: right">
+                                    <f:convertNumber pattern="##,###,##0.00"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column style="text-align:center"  sortBy="#{custinfo.aumTimepointDep}">
+                                <f:facet name="header">
+                                    存款时点AUM
+                                </f:facet>
+                                <h:outputText value="#{custinfo.aumTimepointDep}" style="float: right">
+                                    <f:convertNumber pattern="##,###,##0.00"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column style="text-align:center"  sortBy="#{custinfo.loanBal}">
+                                <f:facet name="header">
+                                    贷款余额
+                                </f:facet>
+                                <h:outputText value="#{custinfo.loanBal}" style="float: right">
+                                    <f:convertNumber pattern="##,###,##0.00"/>
+                                </h:outputText>
+                            </p:column>
+                            <p:column style="text-align:center"  sortBy="#{custinfo.openactBranchId}" >
+                                <f:facet name="header">
+                                    签约账户开户网点号
+                                </f:facet>
+                                <h:outputText value="#{custinfo.openactBranchId}"/>
+                            </p:column>
+                            <p:column style="text-align:center"  >
+                                <f:facet name="header">
+                                    签约账户开户网点名称
+                                </f:facet>
+                                <h:outputText value="#{custinfo.openactBranchName}"/>
+                            </p:column>
+                            <p:column style="text-align:center"  sortBy="#{custinfo.ctsMarginBal}" >
+                                <f:facet name="header">
+                                    CTS保证金余额
+                                </f:facet>
+                                <h:outputText value="#{custinfo.ctsMarginBal}" style="float: right">
+                                    <f:convertNumber pattern="##,###,##0.00"/>
+                                </h:outputText>
+                            </p:column>
+
+                        </p:dataTable>
+
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+        </div>
+
+    </ui:define>
+</ui:composition>

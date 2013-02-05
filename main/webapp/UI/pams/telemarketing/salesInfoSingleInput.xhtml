@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="template/salesInfoInputTemplate.xhtml">
+
+<ui:define name="focus">
+    <p:focus for="prdId"/>
+</ui:define>
+<ui:define name="tellerId">
+    <h:outputLabel value="柜员号码:" for="tellerId" readonly="true"/>
+    <p:inputText id="tellerId" value="#{salesInputAction.vo.tellerid}"  readonly="true"
+                 required="true" onkeydown="KeyDown()" onfocus="this.select()">
+    </p:inputText>
+    <h:outputLabel value="#{salesInputAction.vo.tellername}" style="color:#999999;"/>
+</ui:define>
+
+</ui:composition>

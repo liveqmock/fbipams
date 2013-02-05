@@ -1,0 +1,178 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="false" life="1500"/>
+
+                <div id="header">
+                    <p:panel header="#{custinfoLazyAction.panelTitle}">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="4" cellspacing="5">
+                                <h:outputLabel value="分支机构:"/>
+                                <h:selectOneMenu id="branchname" style="width:153px;"
+                                                 value="#{custinfoLazyAction.paramBean.branchId}">
+                                    <f:selectItems value="#{custinfoLazyAction.branchList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="报表日期:" for="txnDate"/>
+                                <p:inputText id="txnDate" required="true" requiredMessage="日期不能为空。"
+                                             value="#{custinfoLazyAction.paramBean.rptDate}"
+                                             onclick="WdatePicker({dateFmt:'yyyyMMdd'})"/>
+
+                                <h:outputLabel value="证件类型:"/>
+                                <h:selectOneMenu id="certtype" style="width:153px;"
+                                                 value="#{custinfoLazyAction.paramBean.certType}">
+                                    <f:selectItems value="#{custinfoLazyAction.certTypeList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="证件号码:"/>
+                                <p:inputText id="certno" value="#{custinfoLazyAction.paramBean.certNo}"/>
+
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{custinfoLazyAction.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt" fileName="rpt#{custinfoLazyAction.rptType}_#{custinfoLazyAction.paramBean.rptDate}_#{custinfoLazyAction.paramBean.branchId}" encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             lazy="true" selectionMode="single"
+                             value="#{custinfoLazyAction.lazyDataModel}" var="record"
+                             rowKey="#{record.guid}"
+                             selection="#{custinfoLazyAction.selectedRecord}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+
+                    <p:column style="text-align:center"  sortBy="#{record.branchId}">
+                        <f:facet name="header">
+                            机构号
+                        </f:facet>
+                        <h:outputText value="#{record.branchId}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{!custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            机构名称
+                        </f:facet>
+                        <h:outputText value="#{record.branchName}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            客户名称
+                        </f:facet>
+                        <h:outputText value="#{record.custName}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            证件类型
+                        </f:facet>
+                        <h:outputText value="#{record.certType}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            证件号
+                        </f:facet>
+                        <h:outputText value="#{record.certNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            联系方式1
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo1}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            联系方式2
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo2}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.aumMonthCurr}">
+                        <f:facet name="header">
+                            月日均AUM
+                        </f:facet>
+                        <h:outputText value="#{record.aumMonthCurr}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.aumTimepointDep}">
+                        <f:facet name="header">
+                            存款时点AUM
+                        </f:facet>
+                        <h:outputText value="#{record.aumTimepointDep}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == '0401' ||custinfoLazyAction.rptType == '0402' }"  sortBy="#{record.loanBal}">
+                        <f:facet name="header">
+                            贷款余额
+                        </f:facet>
+                        <h:outputText value="#{record.loanBal}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.openactBranchId}" rendered="#{custinfoLazyAction.rptType == '0501'}">
+                        <f:facet name="header">
+                            签约账户开户网点号
+                        </f:facet>
+                        <h:outputText value="#{record.openactBranchId}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  rendered="#{custinfoLazyAction.rptType == '0501'}">
+                        <f:facet name="header">
+                            签约账户开户网点名称
+                        </f:facet>
+                        <h:outputText value="#{record.openactBranchName}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.ctsMarginBal}" rendered="#{custinfoLazyAction.rptType == '0501'}">
+                        <f:facet name="header">
+                            CTS保证金余额
+                        </f:facet>
+                        <h:outputText value="#{record.ctsMarginBal}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

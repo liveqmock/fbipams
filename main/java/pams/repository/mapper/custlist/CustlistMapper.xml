@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.custlist.CustlistMapper">
+
+    <sql id="QueryCustinfo_Where_Clause">
+      <where>
+          a.delete_flag = '0'
+          and a.branch_id in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+
+          <if test = " rptType != null and rptType != '' ">
+              and a.rpt_type = #{rptType}
+          </if>
+          <if test = " rptDate != null and rptDate != '' ">
+              and a.rpt_date = #{rptDate}
+          </if>
+          <if test = " certType != null and certType != '' ">
+              and a.cert_type = #{certType}
+          </if>
+          <if test = " certNo != null and certNo != '' ">
+              and a.cert_no like '%${certNo}%'
+          </if>
+      </where>
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into sv_cls_custinfo ( <include refid="pams.repository.dao.SvClsCustinfoMapper.Base_Column_List" /> )
+          <foreach collection="list" item="item" index="index" separator= "union all ">
+            select
+            #{item.guid, jdbcType=VARCHAR},
+            #{item.branchName, jdbcType=VARCHAR},
+            #{item.branchId, jdbcType=VARCHAR},
+            #{item.custName, jdbcType=VARCHAR},
+            #{item.certType, jdbcType=VARCHAR},
+            #{item.certNo, jdbcType=VARCHAR},
+            #{item.contactInfo1, jdbcType=VARCHAR},
+            #{item.contactInfo2, jdbcType=VARCHAR},
+            #{item.aumMonthCurr, jdbcType=DECIMAL},
+            #{item.aumMonthLast, jdbcType=DECIMAL},
+            #{item.aumTimepointDep, jdbcType=DECIMAL},
+            #{item.loanBal, jdbcType=DECIMAL},
+            #{item.openactBranchId, jdbcType=VARCHAR},
+            #{item.openactBranchName, jdbcType=VARCHAR},
+            #{item.ctsMarginBal, jdbcType=DECIMAL},
+            #{item.rptDate, jdbcType=VARCHAR},
+            #{item.rptType, jdbcType=VARCHAR},
+            #{item.operId, jdbcType=VARCHAR},
+            #{item.operDate, jdbcType=TIMESTAMP},
+            #{item.impDate, jdbcType=TIMESTAMP},
+            #{item.deleteFlag, jdbcType=VARCHAR}
+            from  dual
+        </foreach>
+    </insert>
+
+    <delete id="deleteRecords" parameterType="java.lang.String" >
+        delete from  sv_cls_custinfo where rpt_date = #{rptdate} and rpt_type = #{rpttype}
+    </delete>
+
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countCustlistRecords" parameterType="pams.repository.model.SvClsCustinfo" resultType="java.lang.Integer">
+          select count(*)
+            from sv_cls_custinfo a
+             <include refid="QueryCustinfo_Where_Clause" />
+    </select>
+
+
+    <select id="selectCustlistRecords" parameterType="pams.repository.model.SvClsCustinfo"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+        select  *
+            from sv_cls_custinfo a
+             <include refid="QueryCustinfo_Where_Clause" />
+        order by a.branch_id
+    </select>
+
+    <select id="selectCustlistRecordsByCertInfo" parameterType="java.lang.String"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+        select  *
+            from sv_cls_custinfo a
+          where 1=1
+            <if test = " certType != null and certType != '' ">
+                and a.cert_type = #{certType}
+            </if>
+            <if test = " certNo != null and certNo != '' ">
+                and a.cert_no = #{certNo}
+            </if>
+        order by a.rpt_date desc, a.rpt_type
+    </select>
+
+    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustinfoVO" resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+        select *
+          from (select t1.*, rownum rnum
+                from (
+                    select  *
+                        from sv_cls_custinfo a
+                      <include refid="QueryCustinfo_Where_Clause" />
+                    order by
+                       <if test = " sortField != null and sortField != '' ">
+                            ${sortField}
+                       </if>
+                       <if test = " sortOrder != null and sortOrder != '' ">
+                            ${sortOrder}
+                       </if>
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
+
+    <resultMap id="CustMngResultMap" type="pams.repository.model.custlist.CustMngVO">
+        <id column="GUID" jdbcType="VARCHAR" property="guid" />
+        <result column="BRANCH_ID" jdbcType="VARCHAR" property="branchId" />
+        <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+        <result column="CERT_TYPE" jdbcType="VARCHAR" property="certType" />
+        <result column="CERT_NO" jdbcType="VARCHAR" property="certNo" />
+        <result column="CONTACT_INFO1" jdbcType="VARCHAR" property="contactInfo1" />
+        <result column="CONTACT_INFO2" jdbcType="VARCHAR" property="contactInfo2" />
+        <result column="RPT_DATE" jdbcType="VARCHAR" property="rptDate" />
+        <result column="RPT_TYPE" jdbcType="VARCHAR" property="rptType" />
+        <result column="OPER_ID" jdbcType="VARCHAR" property="operId" />
+        <result column="OPER_DATE" jdbcType="TIMESTAMP" property="operDate" />
+        <result column="IMP_DATE" jdbcType="TIMESTAMP" property="impDate" />
+        <result column="CUSTMGR_ID" jdbcType="VARCHAR" property="custmgrId" />
+        <result column="CUST_NO_TYPE" jdbcType="VARCHAR" property="custNoType" />
+        <result column="CUST_NO" jdbcType="VARCHAR" property="custNo" />
+        <result column="CONTACT_INFO_EXT" jdbcType="VARCHAR" property="contactInfoExt" />
+        <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+
+        <result column="CUSTMGR_NAME" jdbcType="VARCHAR" property="custmgrName" />
+
+        <result column="AUM_MONTH_CURR" property="aumMonthCurr" jdbcType="DECIMAL" />
+        <result column="AUM_MONTH_LAST" property="aumMonthLast" jdbcType="DECIMAL" />
+        <result column="AUM_TIMEPOINT_DEP" property="aumTimepointDep" jdbcType="DECIMAL" />
+        <result column="LOAN_BAL" property="loanBal" jdbcType="DECIMAL" />
+        <result column="CTS_MARGIN_BAL" property="ctsMarginBal" jdbcType="DECIMAL" />
+    </resultMap>
+
+    <sql id="QueryCustMng_Where_Clause">
+        <where>
+        </where>
+    </sql>
+    <sql id="SelectCustMng_Select_SQL">
+            select a.*,
+                b.aum_month_curr,
+                b.aum_month_last,
+                b.aum_timepoint_dep,
+                b.loan_bal,
+                b.cts_margin_bal,
+                (select opername from ptoper where operid=a.custmgr_id) as custmgr_name
+            from SV_CMS_CUSTBASE a,
+                (select t.branch_id,
+                    t.cert_type,
+                    t.cert_no,
+                    max(t.aum_month_curr) as aum_month_curr,
+                    max(t.aum_month_last) as aum_month_last,
+                    max(t.aum_timepoint_dep) as aum_timepoint_dep,
+                    max(t.loan_bal) as loan_bal,
+                    max(t.cts_margin_bal) as cts_margin_bal
+                from sv_cls_custinfo t
+                where t.rpt_type = #{rptType}
+                    and t.rpt_date = #{rptDate}
+                group by t.branch_id, t.cert_type, t.cert_no) b
+            where a.branch_id = b.branch_id
+                and a.cert_type = b.cert_type
+                and a.cert_no = b.cert_no
+                and a.branch_id = #{branchId}
+                <if test = " hideDispatchedFlag == true">
+                    and a.custmgr_id is null
+                </if>
+                <if test = " custmgrId != null and custmgrId != '' ">
+                    and a.custmgr_id = #{custmgrId}
+                </if>
+                <if test = " custName != null and custName != '' ">
+                    and cust_name in
+                    <foreach item="item" index="index" collection="custNameList"
+                             open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+
+    </sql>
+
+
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countCustMngRecords" parameterType="pams.repository.model.custlist.CustMngVO" resultType="java.lang.Integer">
+        select count(*)
+        from (<include refid="SelectCustMng_Select_SQL" />) a
+           <include refid="QueryCustMng_Where_Clause" />
+    </select>
+
+    <select id="selectCustMngRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustMngParam" resultMap="CustMngResultMap">
+        select *
+            from (select t1.*, rownum rnum
+                from (
+                    select  *
+                     from ( <include refid="SelectCustMng_Select_SQL" />)
+                      <include refid="QueryCustMng_Where_Clause" />
+            order by
+                <if test = " sortField != null and sortField != '' ">
+                    ${sortField}
+                </if>
+                <if test = " sortOrder != null and sortOrder != '' ">
+                    ${sortOrder}
+                </if>
+        ) t1
+        <![CDATA[
+            where rownum <= #{pagesize}) t2
+           where t2.rnum > #{offset}
+       ]]>
+    </select>
+
+    <select id="selectPtopersForRole_CustMgr" parameterType="java.lang.String" resultMap="pams.repository.dao.PtoperMapper.BaseResultMap">
+        select a.operid,a.opername
+              from ptoper a
+             where a.operid in
+                   (select b.operid
+                      from ptoperrole b
+                     where b.roleid = 'BIZ030'
+                       and b.operid in
+                           (select c.operid from ptoper c where c.deptid = #{branchId}))
+              order by a.operid
+    </select>
+
+
+
+    <!--查询客户经理全部信息 -->
+    <sql id="SelectCustBase_Select_SQL">
+        select a.*,
+           (select opername from ptoper where operid=a.custmgr_id) as custmgr_name
+        from SV_CMS_CUSTBASE a
+            where a.branch_id = #{branchId}
+                <if test = " hideDispatchedFlag == true">
+                    and a.custmgr_id is null
+                </if>
+                <if test = " custmgrId != null and custmgrId != '' ">
+                    and a.custmgr_id = #{custmgrId}
+                </if>
+                <if test = " custName != null and custName != '' ">
+                    and cust_name in
+                    <foreach item="item" index="index" collection="custNameList"
+                             open="(" separator="," close=")">
+                        #{item}
+                    </foreach>
+                </if>
+    </sql>
+
+    <select id="countCustBaseRecords" parameterType="pams.repository.model.custlist.CustMngVO" resultType="java.lang.Integer">
+        select count(*)
+        from (<include refid="SelectCustBase_Select_SQL" />) a
+    </select>
+
+    <select id="selectCustBaseRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustMngParam" resultMap="CustMngResultMap">
+        select *
+          from (select t1.*, rownum rnum
+        from (
+            select  *
+             from ( <include refid="SelectCustBase_Select_SQL" />)
+                order by
+                    <if test = " sortField != null and sortField != '' ">
+                        ${sortField}
+                    </if>
+                    <if test = " sortOrder != null and sortOrder != '' ">
+                        ${sortOrder}
+                    </if>
+            ) t1
+        <![CDATA[
+            where rownum <= #{pagesize}) t2
+           where t2.rnum > #{offset}
+       ]]>
+    </select>
+
+</mapper>

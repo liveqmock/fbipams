@@ -1,0 +1,308 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+<ui:define name="head">
+<style type="text/css">
+    .datalist-noborder .ui-widget-content {
+        border: none;
+        color: #999999;
+    }
+
+    .help-row {
+        vertical-align: top;
+    }
+
+    .input-col-s {
+        width: 45px;
+    }
+
+    .input-col-m {
+        width: 65px;
+    }
+
+    .input-col-l {
+        width: 80px;
+    }
+
+    .input-col-xl {
+        width: 140px;
+    }
+
+    .input-col-textarea {
+        width: 610px;
+    }
+
+    .datagrid-help {
+        border: 0;
+        margin: 0;
+        border-collapse: collapse;
+    }
+
+    .datagrid-help td {
+        padding: 1;
+    }
+
+    .input-col-xxl {
+        width: 900px;
+        text-align: center;
+    }
+
+    .help-line {
+        background-image: url("#{request.contextPath}/images/separator_bg.gif");
+        width: 100%;
+        background-repeat: repeat-x;
+        background-position: left center;
+        overflow: hidden;
+    }
+
+    .help-line h2 {
+        font-size: 12px;
+        font-weight: bold;
+        padding: 0px 4px;
+        margin: 2px 20px;
+        float: left; /*COLOR: #19355e;*/
+        color: #003399;
+        background-color: #fff;
+    }
+
+</style>
+<script language="JavaScript" type="text/JavaScript">
+    //<![CDATA[
+        function KeyDown() {
+        if (event.keyCode == 13) {
+            if (event.srcElement.id == 'inputform:tellerid') {
+                checktellerid();
+                event.keyCode = 9;
+            } else {
+                event.keyCode = 9;
+            }
+        }
+    }
+
+    function handleInputComplete(xhr, status, args, id) {
+        if (args) {
+            var isValid = args.isValid;
+            if (!isValid) {
+                document.forms['inputform']['inputform:' + id].focus();
+            } else {
+                if (id == 'txndate') {
+                    document.forms['inputform']['inputform:prdsetid'].focus();
+
+                }
+            }
+        }
+    }
+
+    var submitted = false;
+
+    function checkDoubleSubmit(f) {
+        if (submitted) {
+            window.alert("请勿重复提交!");
+            return false;
+        } else {
+            submitted = true;
+            return true;
+        }
+    }
+
+    function checktxndate() {
+        var reg = new RegExp("^[0-9]{8}$");
+        var val = document.forms['inputform']['inputform:txndate'].value;
+        if (!reg.test(val)) {
+            alert('请输入8位日期。');
+            document.forms['inputform']['inputform:txndate'].focus();
+        }
+    }
+
+    function checkcertno() {
+        var certtype = document.forms['inputform']['inputform:certtype'].value;
+        if (certtype == '100') {
+            var certno = document.forms['inputform']['inputform:certno'].value;
+            isIdCardNo(document.forms['inputform']['inputform:certno']);
+//            isIdCardNo(certno);
+        }
+    }
+
+    function isIdCardNo(numObj) {
+        var num;
+        if (typeof(numObj) == "object") {
+            num = numObj.value;
+        }
+        else if (numObj != undefined) num = numObj;
+        var factorArr = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1);
+        var error;
+        var varArray = new Array();
+        var intValue;
+        var lngProduct = 0;
+        var intCheckDigit;
+        var intStrLen = num.length;
+        var idNumber = num;
+        // initialize
+        if (num != "") {
+            if ((intStrLen != 15) && (intStrLen != 18)) {
+                error = "输入身份证号码长度不对！";
+                alert(error);
+                numObj.focus();
+                numObj.select();
+                return false;
+            }
+            // check and set value
+            for (i = 0; i < intStrLen; i++) {
+                varArray = idNumber.charAt(i);
+                if ((varArray < '0' || varArray > '9') && (i != 17)) {
+                    error = "错误的身份证号码！.";
+                    alert(error);
+                    //numObj.focus();
+                    //numObj.select();
+                    return false;
+                }
+            }
+            if (intStrLen == 18) {
+                //check date
+                var date8 = idNumber.substring(6, 14);
+                date8 = date8.substring(0, 4) + "-" + date8.substring(4, 6) + "-" + date8.substring(6, 8);
+                // calculate the sum of the products
+                for (i = 0; i < 17; i++) {
+                    lngProduct = lngProduct + (idNumber.charAt(i)) * factorArr[i];
+                }
+
+                // calculate the check digit
+                intCheckDigit = 12 - lngProduct % 11;
+                switch (intCheckDigit) {
+
+                    case 10:
+                        intCheckDigit = 'X';
+                        break;
+                    case 11:
+                        intCheckDigit = 0;
+                        break;
+                    case 12:
+                        intCheckDigit = 1;
+                        break;
+                }
+                // check last digit
+
+                if (idNumber.charAt(17).toUpperCase() != intCheckDigit) {
+                    error = "身份证效验位错误!...正确为： " + intCheckDigit + ".";
+                    alert(error);
+                    //numObj.focus();
+                    //numObj.select();
+                    return false;
+                }
+            }
+            else {        //length is 15
+                //check date
+                var date6 = idNumber.substring(6, 12);
+                date6 = "19" + date6.substring(0, 2) + "-" + date6.substring(2, 4) + "-" + date6.substring(4, 6);
+            }
+        }
+
+    }
+
+    //]]>
+</script>
+</ui:define>
+
+<ui:define name="content">
+    <h:form id="inputform">
+        <div id="top" style="margin:0px 10px;">
+            <!--<p:tooltip global="true"/>-->
+
+            <p:focus for="#{psSalesInfoInputAction.batchInputMode=='0'? 'certtype':'tellerid'}"/>
+            <p:growl id="msgs" showDetail="true"/>
+            <p:panel id="inputpanel" header="#{psSalesInfoInputAction.panelTitle}" style="margin-top:5px">
+                <h:panelGrid columns="2" cellspacing="8" columnClasses="input-col-m">
+
+                    <h:outputLabel value="柜员号码:" for="tellerid"/>
+                    <h:panelGroup>
+                        <p:inputText id="tellerid" value="#{psSalesInfoInputAction.vo.tellerid}"
+                                     readonly="#{psSalesInfoInputAction.batchInputMode=='0' ? 'true':'false'}"
+                                     required="true" onkeydown="KeyDown()" onfocus="this.select()">
+                            <p:ajax event="blur" update="tellerName"
+                                    listener="#{psSalesInfoInputAction.onTelleridListener}"
+                                    process="@this"/>
+                        </p:inputText>
+                        <h:outputLabel id="tellerName" value="#{psSalesInfoInputAction.vo.tellername}"
+                                       style="color:#999999;margin-left:3px;"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value="证件类型:"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="certtype" style="width:153px;font-weight:bold;"
+                                         title="可直接使用键盘输入3位代号，按回车键跳到下一栏位。"
+                                         value="#{psSalesInfoInputAction.vo.certtype}"
+                                         required="true" onkeydown="KeyDown()">
+                            <f:selectItems value="#{psSalesInfoInputAction.certTypeList}"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+
+                    <h:outputLabel value="证件号码:"/>
+                    <p:inputText id="certno" value="#{psSalesInfoInputAction.vo.certno}"
+                                 requiredMessage="证件号码必须输入。"
+                                 required="true"
+                                 onkeydown="KeyDown()" onblur="checkcertno();"
+                                 onfocus="this.select()">
+                    </p:inputText>
+
+                    <h:outputLabel value="签约日期:" for="txndate"/>
+                    <h:panelGroup>
+                        <p:inputText id="txndate" value="#{psSalesInfoInputAction.vo.txndate}"
+                                     required="true" onkeydown="KeyDown()" onblur="checktxndate();"
+                                     onfocus="this.select()">
+                            <f:validateLength minimum="8" maximum="8"/>
+                            <f:validateLongRange minimum="20000000" maximum="20301231"/>
+                            <p:ajax update="prdsetid,txndatemsg"
+                                    listener="#{psSalesInfoInputAction.onTxndateListener}"
+                                    process="@this"/>
+                        </p:inputText>
+                        <h:outputText id="txndatemsg" value="#{psSalesInfoInputAction.txndatemsg}"
+                                      style="color:#999999;margin-left:3px;"/>
+                    </h:panelGroup>
+
+                    <h:outputLabel value="产品套餐:"/>
+                    <h:panelGroup>
+                        <h:selectOneMenu id="prdsetid" style="font-weight:bold;"
+                                         value="#{psSalesInfoInputAction.vo.prdsetid}"
+                                         required="true" requiredMessage="产品套餐必须输入。"
+                                         onkeydown="KeyDown()">
+                            <f:selectItems value="#{psSalesInfoInputAction.prdsetList}"/>
+                        </h:selectOneMenu>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+            </p:panel>
+            <p:panel style="margin-top:10px;">
+                <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                    <p:commandButton id="saveButton" value="保  存" style="width:150px;"
+                                     action="#{psSalesInfoInputAction.onSaveBtnClick}"
+                                     update="msgs,inputform" >
+                    </p:commandButton>
+                </h:panelGrid>
+            </p:panel>
+        </div>
+        <p:remoteCommand name="checktellerid" id="checktellerid" async="false"
+                         actionListener="#{psSalesInfoInputAction.onCheckTellerID}"
+                         update="msgs" process="@this,tellerid"
+                         oncomplete="handleInputComplete(xhr, status, args, 'tellerid')"/>
+    </h:form>
+
+    <div class="help-line" style="margin-top:20px;">
+        <h2>[帮助信息]</h2>
+    </div>
+    <div class="ui-widget" style="color:#999999;line-height:20px;">
+        <ul>
+            <li>批量输入时，柜员号码处可以输入本网点的所有柜员.</li>
+            <li>柜员号码处若输入不属于本网点的柜员时，系统会提示相应信息.</li>
+            <li>证件类型为身份证时，证件号码由系统自动校验，校验错误时可强制通过.</li>
+            <li>签约时间须输入8位数字，格式为yyyymmdd.</li>
+            <li>每个产品套餐都有有效时间区间，签约时间输入完成后，系统自动筛选符合条件的产品套餐.</li>
+            <li>选择产品套餐时，可快速输入套餐代号，系统会自动定位到相应套餐.</li>
+        </ul>
+    </div>
+
+</ui:define>
+</ui:composition>

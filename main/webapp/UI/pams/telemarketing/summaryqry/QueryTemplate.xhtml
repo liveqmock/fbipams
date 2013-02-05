@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .input-col-m {
+                width: 60px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xxl {
+                width: 1%;
+                text-align: right;
+            }
+
+            .col-80 {
+            }
+
+            .col-20 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:messages id="msgs" showDetail="false"/>
+                <div id="header">
+                    <p:panel header="#{salesSummaryAction.panelTitle}">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-80,col-20">
+                            <h:panelGrid columns="4" cellspacing="5"
+                                         columnClasses="input-col-m,input-col-l,input-col-m,input-col-l">
+                                <h:outputLabel value="机构名称:"/>
+                                <h:selectOneMenu  id="branchid" style="width:152px;" value="#{salesSummaryAction.branchid}" >
+                                    <f:selectItems value="#{salesSummaryAction.branchList}"/>
+                                </h:selectOneMenu>
+
+                                <h:outputLabel value="产品种类:"/>
+                                <h:selectOneMenu  id="prdid" style="width:152px;" value="#{salesSummaryAction.prdid}" >
+                                    <f:selectItems value="#{salesSummaryAction.prdTypeList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="起始日期:" for="startdate"/>
+                                <p:calendar id="startdate" value="#{salesSummaryAction.startDate}" mode="popup"
+                                            pattern="yyyy-MM-dd"
+                                            locale="zh_CN" showButtonPanel="true" navigator="true"
+                                            required="true" requiredMessage="日期不能为空。"/>
+
+                                <h:outputLabel value="截止日期:" for="enddate"/>
+                                <p:calendar id="enddate" value="#{salesSummaryAction.endDate}" mode="popup"
+                                            pattern="yyyy-MM-dd"
+                                            locale="zh_CN" showButtonPanel="true" navigator="true"
+                                            required="true" requiredMessage="日期不能为空。"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:80px;" value="查询"
+                                                 action="#{salesSummaryAction.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnprt" value="导出" action="#{salesSummaryAction.onPrint}"
+                                                 style="width:80px;"/>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             dynamic="true" selectionMode="single"
+                             value="#{salesSummaryAction.salesVOList}" var="record"
+                             rowKey="#{record.guid}"
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             paginator="true" rows="30" paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,10,5"
+                             emptyMessage="数据记录为空...">
+
+                    <f:facet name="header">
+                        <h:outputText value="记录总数：#{salesSummaryAction.totalcount} 笔"/>
+                    </f:facet>
+
+                    <ui:insert name="datatable_columns"></ui:insert>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

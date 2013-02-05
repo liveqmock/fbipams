@@ -1,0 +1,123 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="false" life="1500"/>
+                <div id="header">
+                    <p:panel header="理财产品_渠道销售_客户明细表">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="2" cellspacing="5">
+                                <h:outputLabel value="选择机构:"/>
+                                <h:selectOneMenu id="branchname" style="width:153px;"
+                                                 value="#{rptA06V1.branchId}">
+                                    <f:selectItems value="#{rptA06V1.branchList}"/>
+                                </h:selectOneMenu>
+
+                                <!--
+                                                                <h:outputLabel value="客户姓名:"/>
+                                                                <p:inputText value="#{rptA06V1.custName}"/>
+                                -->
+
+                                <h:outputLabel value="交易起日:"/>
+                                <p:inputText id="startDate" value="#{rptA06V1.startDate}" title="交易起始日期"
+                                             required="true" requiredMessage="请输入起始日期"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{rptA06V1.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt"
+                                                    fileName="rpt#{rptA06V1.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             value="#{rptA06V1.detlList}" var="record"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+
+<!--
+                    <p:column headerText="交易机构" style="text-align:center">
+                        <h:outputText value="#{record.交易机构}"/>
+                    </p:column>
+-->
+                    <p:column headerText="交易日期" style="text-align:center" sortBy="#{record.交易日期}">
+                        <h:outputText value="#{record.交易日期}"/>
+                    </p:column>
+                    <p:column headerText="交易账号" style="text-align:center">
+                        <h:outputText value="#{record.交易账号}"/>
+                    </p:column>
+                    <p:column headerText="客户名称" style="text-align:center" sortBy="#{record.客户名称}">
+                        <h:outputText value="#{record.客户名称}" />
+                    </p:column>
+<!--
+                    <p:column headerText="证件号码" style="text-align:center">
+                        <h:outputText value="#{record.证件号码}" />
+                    </p:column>
+-->
+                    <p:column headerText="产品编号" style="text-align:center" sortBy="#{record.产品编号}">
+                        <h:outputText value="#{record.产品编号}" />
+                    </p:column>
+                    <p:column headerText="产品名称" style="text-align:center">
+                        <h:outputText value="#{record.产品名称}" />
+                    </p:column>
+                    <p:column headerText="投资起始日" style="text-align:center" sortBy="#{record.投资起始日}">
+                        <h:outputText value="#{record.投资起始日}" />
+                    </p:column>
+                    <p:column headerText="投资终止日" style="text-align:center" sortBy="#{record.投资终止日}">
+                        <h:outputText value="#{record.投资终止日}" />
+                    </p:column>
+                    <p:column headerText="确认金额钞" style="text-align:center" sortBy="#{record.确认金额钞}">
+                        <h:outputText value="#{record.确认金额钞}" style="float:right"/>
+                    </p:column>
+                    <p:column headerText="交易渠道" style="text-align:center" sortBy="#{record.交易渠道}">
+                        <h:outputText value="#{record.交易渠道}" />
+                    </p:column>
+                    <p:column headerText="处理类型" style="text-align:center" sortBy="#{record.处理类型}">
+                        <h:outputText value="#{record.处理类型}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

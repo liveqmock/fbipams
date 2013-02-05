@@ -1,0 +1,61 @@
+<!--网点访谈数据批量录入 -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="template/salesInfoInputTemplate.xhtml">
+
+    <ui:define name="focus">
+        <p:focus for="tellerId"/>
+    </ui:define>
+    <ui:define name="tellerId">
+        <h:outputLabel value="柜员号码:" for="tellerId"/>
+        <p:inputText id="tellerId" value="#{salesInputAction.vo.tellerid}"
+                     required="true" onkeydown="KeyDown()" onfocus="this.select()">
+            <p:ajax event="blur" update="tellerName" listener="#{salesInputAction.onTelleridListener}"
+                    process="@this"/>
+        </p:inputText>
+        <h:outputLabel id="tellerName" value="#{salesInputAction.vo.tellername}" style="color:#999999;"/>
+    </ui:define>
+    <ui:define name="interviewFields">
+        <h:panelGrid columns="6" cellspacing="5"
+                     columnClasses="input-col-m,input-col-xl,input-col-m,input-col-xl,input-col-m,input-col-xl">
+            <h:outputLabel id="txntimeLabel" value="访谈时间:"/>
+            <p:inputText id="txnTime" value="#{salesInputAction.vo.txntime}"
+                         required="true" autocomplete="false"
+                         requiredMessage="访谈时间必须输入。"
+                         validatorMessage="请输入正确的时间值。"
+                         title="输入102030表示10点20分30秒，输入10表示10点，输入1020表示10点20分。"
+                         onkeydown="KeyDown()"
+                         onfocus="this.select()">
+            </p:inputText>
+            <h:outputLabel id="rateLabel" value="预成功率:"/>
+            <p:inputText id="successRate" value="#{salesInputAction.vo.successrate}"
+                         required="true"  autocomplete="false"
+                         requiredMessage="预估成功率必须输入。"
+                         validatorMessage="请输入正确的预估成功率。"
+                         onkeydown="KeyDown()"
+                         onfocus="this.select()">
+                <f:validateLongRange for="successRate" minimum="0" maximum="10"/>
+            </p:inputText>
+            <h:outputLabel value="跟进日期:" for="followupDate"/>
+            <p:inputText id="followupDate"  autocomplete="false"
+                         title="日期格式：20110301 表示2011年3月1日。"
+                         value="#{salesInputAction.vo.followupdate}" readonly="false"
+                         required="false" onkeydown="KeyDown()" onfocus="this.select()">
+            </p:inputText>
+            <h:outputLabel/>
+        </h:panelGrid>
+        <h:panelGrid columns="2" cellspacing="5" columnClasses="input-col-m,input-col-textarea">
+            <h:outputLabel value="访谈重点:" for="interviewContent" readonly="true"/>
+            <p:inputTextarea id="interviewContent"  autocomplete="false"
+                             value="#{salesInputAction.vo.maincontent}"
+                             readonly="false" style="width:610px;" rows="3"
+                             onkeydown="KeyDown()" onfocus="this.select()">
+            </p:inputTextarea>
+        </h:panelGrid>
+    </ui:define>
+
+</ui:composition>

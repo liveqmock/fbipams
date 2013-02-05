@@ -1,0 +1,193 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .datalist-noborder .ui-widget-content {
+                border: none;
+                color: #999999;
+            }
+
+            .help-row {
+                vertical-align: top;
+            }
+
+            .input-col-s {
+                width: 45px;
+            }
+
+            .input-col-m {
+                width: 65px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xl {
+                width: 140px;
+            }
+
+            .input-col-textarea {
+                width: 610px;
+            }
+
+            .datagrid-help {
+                border: 0;
+                margin: 0;
+                border-collapse: collapse;
+            }
+
+            .datagrid-help td {
+                padding: 1;
+            }
+
+            .input-col-xxl {
+                width: 900px;
+                text-align: center;
+            }
+
+            .help-line {
+                background-image: url("../../../../images/separator_bg.gif");
+                width: 100%;
+                background-repeat: repeat-x;
+                background-position: left center;
+                overflow: hidden;
+            }
+
+            .help-line h2 {
+                font-size: 12px;
+                font-weight: bold;
+                padding: 0px 4px;
+                margin: 2px 20px;
+                float: left; /*COLOR: #19355e;*/
+                color: #003399;
+                background-color: #fff;
+            }
+
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="inputform">
+            <div id="top" style="margin:5px;">
+                <p:growl id="msgs" showDetail="false"/>
+                <p:tabView>
+                    <p:tab title="成功案例">
+                        <h:panelGrid columns="1" cellspacing="5"
+                                     columnClasses="input-col-textarea">
+                            <h:outputLabel value="成功案例：事件"/>
+                            <p:inputTextarea id="s_enent" required="true" rows="2" style="width:610px;"
+                                             value="#{meetingInputAction.vo.successEvent1.eveventcontent}"
+                                             requiredMessage="请输入事件内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="成功案例：原因分析"/>
+                            <p:inputTextarea id="s_reason" required="true" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.successEvent1.reason}"
+                                             requiredMessage="请输入原因分析内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="成功案例：正确话术"/>
+                            <p:inputTextarea id="s_verbal" required="true" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.successEvent1.verbal}"
+                                             requiredMessage="请输入正确话术内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="成功案例：网点经理的提升建议"/>
+                            <p:inputTextarea id="s_proposal" required="true" rows="4" style="width:610px;"
+                                             value="#{meetingInputAction.vo.successEvent1.proposal}"
+                                             requiredMessage="请输入提升建议内容...">
+                            </p:inputTextarea>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="拒绝案例一">
+                        <h:panelGrid columns="1" cellspacing="5"
+                                     columnClasses="input-col-textarea">
+                            <h:outputLabel value="拒绝案例一：事件"/>
+                            <p:inputTextarea id="r_enent1" required="true" rows="2" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent1.eveventcontent}"
+                                             requiredMessage="请输入拒绝案例一事件内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例一：原因分析"/>
+                            <p:inputTextarea id="r_reason1" required="true" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent1.reason}"
+                                             requiredMessage="请输入拒绝案例一原因分析内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例一：正确话术"/>
+                            <p:inputTextarea id="r_verbal1" required="true" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent1.verbal}"
+                                             requiredMessage="请输入拒绝案例一正确话术内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例一：网点经理的提升建议"/>
+                            <p:inputTextarea id="r_proposal1" required="true" rows="4" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent1.proposal}"
+                                             requiredMessage="请输入拒绝案例一提升建议内容...">
+                            </p:inputTextarea>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="拒绝案例二">
+                        <h:panelGrid columns="1" cellspacing="5"
+                                     columnClasses="input-col-textarea">
+                            <h:outputLabel value="拒绝案例二：事件"/>
+                            <p:inputTextarea id="r_enent2" required="false" rows="2" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent2.eveventcontent}"
+                                             requiredMessage="请输入拒绝案例二事件内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例二：原因分析"/>
+                            <p:inputTextarea id="r_reason2" required="false" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent2.reason}"
+                                             requiredMessage="请输入拒绝案例二原因分析内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例二：正确话术"/>
+                            <p:inputTextarea id="r_verbal2" required="false" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent2.verbal}"
+                                             requiredMessage="请输入拒绝案例二正确话术内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例二：网点经理的提升建议"/>
+                            <p:inputTextarea id="r_proposal2" required="false" rows="4" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent2.proposal}"
+                                             requiredMessage="请输入拒绝案例二提升建议内容...">
+                            </p:inputTextarea>
+                        </h:panelGrid>
+                    </p:tab>
+                    <p:tab title="拒绝案例三">
+                        <h:panelGrid columns="1" cellspacing="5"
+                                     columnClasses="input-col-textarea">
+                            <h:outputLabel value="拒绝案例三：事件"/>
+                            <p:inputTextarea id="r_enent3" required="false" rows="2" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent3.eveventcontent}"
+                                             requiredMessage="请输入拒绝案例三事件内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例三：原因分析"/>
+                            <p:inputTextarea id="r_reason3" required="false" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent3.reason}"
+                                             requiredMessage="请输入拒绝案例三原因分析内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例三：正确话术"/>
+                            <p:inputTextarea id="r_verbal3" required="false" rows="3" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent3.verbal}"
+                                             requiredMessage="请输入拒绝案例三正确话术内容...">
+                            </p:inputTextarea>
+                            <h:outputLabel value="拒绝案例三：网点经理的提升建议"/>
+                            <p:inputTextarea id="r_proposal3" required="false" rows="4" style="width:610px;"
+                                             value="#{meetingInputAction.vo.refuseEvent3.proposal}"
+                                             requiredMessage="请输入拒绝案例三提升建议内容...">
+                            </p:inputTextarea>
+                        </h:panelGrid>
+                    </p:tab>
+                </p:tabView>
+                <p:panel style="margin-top:10px;">
+                    <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                        <p:commandButton id="saveButton" value="保  存" style="width:150px;"
+                                         action="#{meetingInputAction.onSaveBtnClick}"
+                                         update="msgs,inputform" ajax="false">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+            </div>
+        </h:form>
+
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/templates/ui.xhtml">
+
+
+    <ui:define name="content">
+        <div style="margin:20px;">
+            <h:form id="form">
+                <p:messages id="msgs" showDetail="false" />
+                <div id="header" >
+                    <p:panel header="产品套餐考核处理">
+                        <h:panelGrid columns="2" cellspacing="15" >
+                            <h:panelGrid>
+                                <p:commandButton id="chkbtn" style="width:120px;" value="启动月度考核"
+                                                 action="#{prdsetArchiveAction.onStart}"
+                                                 update="msgs">
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="template/salesInfoQryTemplate.xhtml">
+
+    <ui:define name="pdtcol_txntime">
+        <p:column style="text-align:center" sortBy="#{record.txntime}" >
+            <f:facet name="header">
+                交易时间
+            </f:facet>
+            <h:outputText value="#{record.txntime}" />
+        </p:column>
+        <p:column >
+            <f:facet name="header">
+                访谈重点
+            </f:facet>
+            <h:outputText value="#{record.maincontent}" />
+        </p:column>
+        <p:column style="text-align:center" >
+            <f:facet name="header">
+                跟进日
+            </f:facet>
+            <h:outputText value="#{record.followupdate}" />
+        </p:column>
+
+    </ui:define>
+    <ui:define name="pdtcol_operation">
+        <p:column headerText="操作" style="text-align:center">
+            <h:commandLink immediate="true" value="删除" action="#{salesQueryAction.onDeleteRecord}">
+                <f:setPropertyActionListener value="#{record}" target="#{salesQueryAction.selectedRecord}"/>
+            </h:commandLink>
+        </p:column>
+    </ui:define>
+
+</ui:composition>

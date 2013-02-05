@@ -1,0 +1,157 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .input-col-m {
+                width: 60px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xxl {
+                width: 1%;
+                text-align: right;
+            }
+            .col-80 {
+            }
+
+            .col-20 {
+                width: 5%;
+            }
+
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:messages id="msgs" showDetail="false"/>
+                <div id="header">
+                    <div>
+                        <p:panel header="#{salesQueryAction.panelTitle}">
+                            <h:panelGrid columns="2" cellspacing="5" columnClasses="col-80,col-20">
+                                <h:panelGrid columns="2" cellspacing="5" columnClasses="input-col-m,input-col-l">
+                                    <h:outputLabel value="起始日期:" for="startdate"/>
+                                    <p:calendar id="startdate" value="#{salesQueryAction.startDate}" mode="popup"
+                                                pattern="yyyy-MM-dd"
+                                                locale="zh_CN" showButtonPanel="true" navigator="true"
+                                                required="true" requiredMessage="日期不能为空。"/>
+
+                                    <h:outputLabel value="截止日期:" for="enddate"/>
+                                    <p:calendar id="enddate" value="#{salesQueryAction.endDate}" mode="popup"
+                                                pattern="yyyy-MM-dd"
+                                                locale="zh_CN" showButtonPanel="true" navigator="true"
+                                                required="true" requiredMessage="日期不能为空。"/>
+                                </h:panelGrid>
+                                <h:panelGrid>
+                                    <p:commandButton id="qrybtn" style="width:80px;" value="查询"
+                                                     action="#{salesQueryAction.onQuery}"
+                                                     update="pdt,msgs">
+                                    </p:commandButton>
+                                    <p:commandButton value="重置" type="reset" style="width:80px;"/>
+                                </h:panelGrid>
+                            </h:panelGrid>
+                        </p:panel>
+                    </div>
+                </div>
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             dynamic="true" selectionMode="single"
+                             value="#{salesQueryAction.salesVOList}" var="record"
+                             rowKey="#{record.guid}"
+                             paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             paginator="true" rows="30" paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,10,5"
+                             emptyMessage="数据记录为空...">
+
+                    <f:facet name="header">
+                        <h:outputText value="记录总数：#{salesQueryAction.totalcount} 笔"/>
+                    </f:facet>
+
+                    <p:column style="text-align:center" sortBy="#{record.tellername}">
+                        <f:facet name="header">
+                            柜员
+                        </f:facet>
+                        <h:outputText value="#{record.tellername}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            客户
+                        </f:facet>
+                        <h:outputText value="#{record.customername}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            证件号码
+                        </f:facet>
+                        <h:outputText value="#{record.certno}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.prdname}">
+                        <f:facet name="header">
+                            产品
+                        </f:facet>
+                        <h:outputText value="#{record.prdname}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.subprdname}">
+                        <f:facet name="header">
+                            产品子类
+                        </f:facet>
+                        <h:outputText value="#{record.subprdname}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="金额"/>
+                        </f:facet>
+                        <h:outputText value="#{record.salesamt1}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{salesQueryAction.totalSalesamt1}" style="float: right">
+                                <f:convertNumber pattern="##,###,##0.00"/>
+                            </h:outputText>
+                        </f:facet>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="数量"/>
+                        </f:facet>
+                        <h:outputText value="#{record.salesnum1}" style="float: right"/>
+                        <f:facet name="footer">
+                            <h:outputText value="#{salesQueryAction.totalSalesnum1}" style="float: right"/>
+                        </f:facet>
+                    </p:column>
+
+                    <p:column style="text-align:center" sortBy="#{record.txndate}">
+                        <f:facet name="header">
+                            交易日期
+                        </f:facet>
+                        <h:outputText value="#{record.txndate}"/>
+                    </p:column>
+
+                    <ui:insert name="pdtcol_txntime"></ui:insert>
+                    <ui:insert name="pdtcol_operation"></ui:insert>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

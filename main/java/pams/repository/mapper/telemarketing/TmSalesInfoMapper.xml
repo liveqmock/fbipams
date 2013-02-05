@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.telemarketing.TmSalesInfoMapper">
+
+    <!--计算符合查询条件的记录数 实际业绩数据 -->
+    <select id="countSalesinfoBySearchCondition"
+            resultType="java.lang.Integer">
+              select count(a.guid)
+              from svprdsalinf a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+    </select>
+
+    <!--检索复核查询条件的记录 实际业绩数据 -->
+    <select id="selectSalesinfoBySearchCondition"
+            resultType="pams.repository.model.telemarketing.SalesInfoBean">
+              select b.deptid,
+                   (select deptname from ptdept where deptid = b.deptid) as deptname,
+                   b.opername as tellername,
+                   (select enuitemlabel  from ptenudetail where enutype = 'SVTPRDTYPE' and enuitemvalue = a.prdid) as prdname,
+                   (case a.prdid
+                     when '01' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFUNDTYPE' and enuitemvalue = a.subprdid)
+                     when '02' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
+                     when '03' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                     when '06' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
+                     when '08' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTEBANKTYPE' and enuitemvalue = a.subprdid)
+                     when '09' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTGOLDTYPE' and enuitemvalue = a.subprdid)
+                   end) as subprdname,
+                   a.*
+              from svprdsalinf a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+              order by b.deptid, a.tellerid, a.prdid, a.subprdid, a.txndate
+    </select>
+
+    <!--===============================================-->
+    <!--计算符合查询条件的记录数 计划业绩数据 -->
+    <select id="countSalesplanBySearchCondition"
+            resultType="java.lang.Integer">
+              select count(a.guid)
+              from svprdsalplan a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+    </select>
+
+    <!--检索复核查询条件的记录 计划业绩数据 -->
+    <select id="selectSalesplanBySearchCondition"
+            resultType="pams.repository.model.telemarketing.SalesInfoBean">
+              select b.deptid,
+                   (select deptname from ptdept where deptid = b.deptid) as deptname,
+                   b.opername as tellername,
+                   (select enuitemlabel  from ptenudetail where enutype = 'SVTPRDTYPE' and enuitemvalue = a.prdid) as prdname,
+                   (case a.prdid
+                     when '01' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFUNDTYPE' and enuitemvalue = a.subprdid)
+                     when '02' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
+                     when '03' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                    when '06' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
+                    when '08' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTEBANKTYPE' and enuitemvalue = a.subprdid)
+                    when '09' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTGOLDTYPE' and enuitemvalue = a.subprdid)
+                   end) as subprdname,
+                   a.*
+              from svprdsalplan a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+              order by b.deptid, a.tellerid, a.prdid, a.subprdid, a.txndate
+    </select>
+
+    <!--===============================================-->
+    <!--计算符合查询条件的记录数 访谈数据 -->
+    <select id="countInterviewBySearchCondition"
+            resultType="java.lang.Integer">
+              select count(a.guid)
+              from svintvinf a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+    </select>
+
+    <!--检索复核查询条件的记录 访谈数据 -->
+    <select id="selectInterviewBySearchCondition"
+            resultType="pams.repository.model.telemarketing.SalesInfoBean">
+              select b.deptid,
+                   (select deptname from ptdept where deptid = b.deptid) as deptname,
+                   b.opername as tellername,
+                   (select enuitemlabel  from ptenudetail where enutype = 'SVTPRDTYPE' and enuitemvalue = a.prdid) as prdname,
+                   (case a.prdid
+                     when '01' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFUNDTYPE' and enuitemvalue = a.subprdid)
+                     when '02' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
+                     when '03' then
+                      (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                    when '06' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
+                    when '08' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTEBANKTYPE' and enuitemvalue = a.subprdid)
+                    when '09' then
+                     (select enuitemlabel  from ptenudetail where enutype = 'SVTGOLDTYPE' and enuitemvalue = a.subprdid)
+                   end) as subprdname,
+                   a.*
+              from svintvinf a, ptoper b
+             where a.tellerid = b.operid
+               and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+               and a.txndate between #{startdate} and #{enddate}
+               <if test = " prdid != null and prdid != '' ">
+                    and a.prdid = #{prdid}
+               </if>
+              order by b.deptid, a.tellerid, a.prdid, a.subprdid, a.txndate
+    </select>
+
+    <!--统计图表分析：总量分布 -->
+    <select id="analysisSalesDataForPieChart" resultType="pams.repository.model.telemarketing.SalesStatusBean">
+          select a.prdid,a.salescount,
+               (select enuitemlabel
+                  from ptenudetail
+                 where enutype = 'SVTPRDTYPE'
+                   and enuitemvalue = a.prdid) as prdname
+          from (select count(*) as salescount, prdid
+                  from svprdsalinf t
+                 group by t.prdid) a
+         order by a.salescount desc
+    </select>
+    <!--统计图表分析：数量统计 -->
+    <select id="analysisSalesDataForNumberType" parameterType="java.lang.String"
+            resultType="pams.repository.model.telemarketing.chart.SalesPrdStatusBean">
+        <![CDATA[
+        select *
+          from (select *
+                  from (select (select deptname from ptdept where deptid = b.deptid) as deptname,
+                               sum(a.salesnum1) as totalnum,b.deptid
+                          from svprdsalinf a, ptoper b
+                         where a.tellerid = b.operid
+                           and a.prdid = #{prdid}
+                         group by b.deptid) t
+                 order by totalnum desc)
+         where rownum <= 10
+        ]]>
+    </select>
+    <!--统计图表分析：金额统计（万元） -->
+    <select id="analysisSalesDataForAmtType" parameterType="java.lang.String"
+            resultType="pams.repository.model.telemarketing.chart.SalesPrdStatusBean">
+        <![CDATA[
+        select *
+          from (select *
+                  from (select (select deptname from ptdept where deptid = b.deptid) as deptname,
+                               round(sum(a.salesamt1)/10000,0) as totalnum,b.deptid
+                          from svprdsalinf a, ptoper b
+                         where a.tellerid = b.operid
+                           and a.prdid = #{prdid}
+                         group by b.deptid) t
+                 order by totalnum desc)
+         where rownum <= 10
+        ]]>
+    </select>
+</mapper>

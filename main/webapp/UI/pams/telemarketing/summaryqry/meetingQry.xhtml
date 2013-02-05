@@ -1,0 +1,276 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .input-col-m {
+                width: 60px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xxl {
+                width: 1%;
+                text-align: right;
+            }
+
+            .col-80 {
+            }
+
+            .col-20 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+            <p:messages id="msgs" showDetail="false"/>
+            <div id="header">
+                    <p:panel header="#{meetingSummaryAction.panelTitle}">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-80,col-20">
+                            <h:panelGrid columns="2" cellspacing="5"
+                                         columnClasses="input-col-m,input-col-l,input-col-m,input-col-l">
+                                <h:outputLabel value="机构名称:"/>
+                                <h:selectOneMenu id="branchid"
+                                                 value="#{meetingSummaryAction.branchid}">
+                                    <f:selectItems value="#{meetingSummaryAction.branchList}"/>
+                                </h:selectOneMenu>
+
+                                <h:outputLabel value="起始日期:" for="startdate"/>
+                                <p:calendar id="startdate" value="#{meetingSummaryAction.startDate}" mode="popup"
+                                            pattern="yyyy-MM-dd"
+                                            locale="zh_CN" showButtonPanel="true" navigator="true"
+                                            required="true" requiredMessage="日期不能为空。"/>
+
+                                <h:outputLabel value="截止日期:" for="enddate"/>
+                                <p:calendar id="enddate" value="#{meetingSummaryAction.endDate}" mode="popup"
+                                            pattern="yyyy-MM-dd"
+                                            locale="zh_CN" showButtonPanel="true" navigator="true"
+                                            required="true" requiredMessage="日期不能为空。"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:80px;" value="查询"
+                                                 action="#{meetingSummaryAction.onQuery}"
+                                                 update="tabview,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnprt" value="导出" action="#{meetingSummaryAction.onPrint}"
+                                                 style="width:80px;"/>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:tabView id="tabview" >
+                    <p:tab title="成功案例">
+                        <p:dataTable id="pdt" style="width:100%;"
+                                     dynamic="true" selectionMode="single"
+                                     value="#{meetingSummaryAction.successEventsList}" var="record"
+                                     rowKey="#{record.guid}"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     rowsPerPageTemplate="100,50,30,10,5"
+                                     emptyMessage="数据记录为空...">
+
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    会议日期
+                                </f:facet>
+                                <h:outputText value="#{record.txndate}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    机构
+                                </f:facet>
+                                <h:outputText value="#{record.remark}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    事件内容
+                                </f:facet>
+                                <h:outputText value="#{record.eveventcontent}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    原因分析
+                                </f:facet>
+                                <h:outputText value="#{record.reason}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    正确话术
+                                </f:facet>
+                                <h:outputText value="#{record.verbal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    网点经理提升建议
+                                </f:facet>
+                                <h:outputText value="#{record.proposal}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+                    <p:tab title="拒绝案例一">
+                        <p:dataTable id="pdt1" style="width:100%;"
+                                     dynamic="true" selectionMode="single"
+                                     value="#{meetingSummaryAction.refuseEventsList1}" var="record"
+                                     rowKey="#{record.guid}"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     rowsPerPageTemplate="100,50,30,10,5"
+                                     emptyMessage="数据记录为空...">
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    会议日期
+                                </f:facet>
+                                <h:outputText value="#{record.txndate}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    机构名称
+                                </f:facet>
+                                <h:outputText value="#{record.remark}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    事件内容
+                                </f:facet>
+                                <h:outputText value="#{record.eveventcontent}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    原因分析
+                                </f:facet>
+                                <h:outputText value="#{record.reason}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    正确话术
+                                </f:facet>
+                                <h:outputText value="#{record.verbal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    网点经理提升建议
+                                </f:facet>
+                                <h:outputText value="#{record.proposal}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+                    <p:tab title="拒绝案例二">
+                        <p:dataTable id="pdt2" style="width:100%;"
+                                     dynamic="true" selectionMode="single"
+                                     value="#{meetingSummaryAction.refuseEventsList2}" var="record"
+                                     rowKey="#{record.guid}"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     rowsPerPageTemplate="100,50,30,10,5"
+                                     emptyMessage="数据记录为空...">
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    会议日期
+                                </f:facet>
+                                <h:outputText value="#{record.txndate}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    机构名称
+                                </f:facet>
+                                <h:outputText value="#{record.remark}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    事件内容
+                                </f:facet>
+                                <h:outputText value="#{record.eveventcontent}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    原因分析
+                                </f:facet>
+                                <h:outputText value="#{record.reason}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    正确话术
+                                </f:facet>
+                                <h:outputText value="#{record.verbal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    网点经理提升建议
+                                </f:facet>
+                                <h:outputText value="#{record.proposal}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+                    <p:tab title="拒绝案例三">
+                        <p:dataTable id="pdt3" style="width:100%;"
+                                     dynamic="true" selectionMode="single"
+                                     value="#{meetingSummaryAction.refuseEventsList3}" var="record"
+                                     rowKey="#{record.guid}"
+                                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                     paginator="true" rows="10" paginatorPosition="bottom"
+                                     rowsPerPageTemplate="100,50,30,10,5"
+                                     emptyMessage="数据记录为空...">
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    会议日期
+                                </f:facet>
+                                <h:outputText value="#{record.txndate}"/>
+                            </p:column>
+                            <p:column style="text-align:center">
+                                <f:facet name="header">
+                                    机构名称
+                                </f:facet>
+                                <h:outputText value="#{record.remark}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    事件内容
+                                </f:facet>
+                                <h:outputText value="#{record.eveventcontent}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    原因分析
+                                </f:facet>
+                                <h:outputText value="#{record.reason}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    正确话术
+                                </f:facet>
+                                <h:outputText value="#{record.verbal}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    网点经理提升建议
+                                </f:facet>
+                                <h:outputText value="#{record.proposal}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

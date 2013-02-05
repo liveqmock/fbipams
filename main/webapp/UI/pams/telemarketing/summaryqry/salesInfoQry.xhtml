@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="QueryTemplate.xhtml">
+
+    <ui:define name="datatable_columns">
+        <p:column style="text-align:center">
+            <f:facet name="header">
+                机构
+            </f:facet>
+            <h:outputText value="#{record.deptname}"/>
+        </p:column>
+
+        <p:column style="text-align:center" sortBy="#{record.tellername}">
+            <f:facet name="header">
+                柜员
+            </f:facet>
+            <h:outputText value="#{record.tellername}"/>
+        </p:column>
+
+        <p:column style="text-align:center" sortBy="#{record.customername}">
+            <f:facet name="header">
+                客户
+            </f:facet>
+            <h:outputText value="#{record.customername}"/>
+        </p:column>
+        <p:column style="text-align:center" sortBy="#{record.prdname}">
+            <f:facet name="header">
+                产品
+            </f:facet>
+            <h:outputText value="#{record.prdname}"/>
+        </p:column>
+        <p:column style="text-align:center" sortBy="#{record.subprdname}">
+            <f:facet name="header">
+                产品子类
+            </f:facet>
+            <h:outputText value="#{record.subprdname}"/>
+        </p:column>
+
+        <p:column sortBy="#{record.salesamt1}">
+            <f:facet name="header">
+                <h:outputText value="金额"/>
+            </f:facet>
+            <h:outputText value="#{record.salesamt1}" style="float: right">
+                <f:convertNumber pattern="##,###,##0.00"/>
+            </h:outputText>
+            <f:facet name="footer">
+                <h:outputText value="#{salesSummaryAction.totalSalesamt1}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </f:facet>
+        </p:column>
+
+        <p:column sortBy="#{record.salesnum1}">
+            <f:facet name="header">
+                <h:outputText value="数量"/>
+            </f:facet>
+            <h:outputText value="#{record.salesnum1}" style="float: right"/>
+            <f:facet name="footer">
+                <h:outputText value="#{salesSummaryAction.totalSalesnum1}" style="float: right"/>
+            </f:facet>
+        </p:column>
+        <p:column style="text-align:center" sortBy="#{record.txndate}" headerText="交易日期">
+            <h:outputText value="#{record.txndate}"/>
+        </p:column>
+    </ui:define>
+
+</ui:composition>

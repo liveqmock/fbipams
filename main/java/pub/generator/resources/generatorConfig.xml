@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="/workspace/svn-ccbpams/ref/ojdbc6.jar"/>
+
+    <!--信息-->
+    <context id="AllInfo" targetRuntime="MyBatis3">
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@localhost:1521:orcl"
+                        userId="pams"
+                        password="pams">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="pams.repository.model" targetProject="main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="pams.repository.mapper" targetProject="main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="pams.repository.dao" targetProject="main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--电话营销业务类 -->
+        <!--
+        <table tableName="svprdsalinf">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svprdsalplan">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+
+        <table tableName="svintvinf">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+
+        <table tableName="svmeetinginf">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svmeetingevent">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svprdsalinf_del" />
+        <table tableName="svintvinf_del" />
+        -->
+
+        <!--产品套餐业务类 -->
+        <!--
+        <table tableName="svpssaleinfo">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svpssaleprdinfo">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svpssaleprdckpt">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="svpsprdinfo"/>
+        <table tableName="svpsprdsetmain"/>
+        <table tableName="svpsprdsetdetail"/>
+        <table tableName="svpsprdsetmutex"/>
+        <table tableName="svpsprdsetprice"/>
+        <table tableName="svpsprdinfo"/>
+        <table tableName="svpsprdckptdef"/>
+        <table tableName="svpsarchivectl"/>
+        -->
+
+        <!--客户名单制报表类 -->
+        <!--
+        <table tableName="sv_cls_custinfo">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        -->
+
+        <!--ODSB数据类 -->
+        <!--
+        <table tableName="odsb_largedep_flow" />
+       -->
+        <!--对私客户信息 -->
+        <!--
+        <table tableName="sv_cms_custbase" >
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+       -->
+
+
+        <!--平台类 -->
+        <!--
+        <table tableName="ptdept"/>
+        <table tableName="ptenudetail"/>
+        <table tableName="ptenumain"/>
+        <table tableName="pterror"/>
+        <table tableName="ptlogicact"/>
+        <table tableName="ptmenu"/>
+        <table tableName="ptoper"/>
+        <table tableName="ptoperrole"/>
+        <table tableName="ptrsource"/>
+        <table tableName="sys_lock"/>
+        <table tableName="sys_scheduler"/>
+        <table tableName="sys_scheduler_log"/>
+        <table tableName="cp_sequence"/>
+        <table tableName="ptoplog">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        -->
+
+    </context>
+
+</generatorConfiguration>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.dataetl.DataETLMapper">
+
+    <!--初始化客户基本信息 -->
+    <update id="mergeCustBaseRecords"  parameterType="java.lang.String">
+          merge into sv_cms_custbase a
+            using (select t.branch_id,
+                          max(t.cust_name) as cust_name,
+                          t.cert_type,
+                          t.cert_no,
+                          max(contact_info1) as contact_info1,
+                          max(contact_info2) as contact_info2,
+                          max(rpt_date) as rpt_date,
+                          max(rpt_type) as rpt_type
+                     from sv_cls_custinfo t
+                    group by t.branch_id, t.cert_type, t.cert_no) b
+            on (a.cert_type = b.cert_type and a.cert_no = b.cert_no)
+            when not matched then
+              insert
+                (guid,
+                 branch_id,
+                 cust_name,
+                 cert_type,
+                 cert_no,
+                 contact_info1,
+                 contact_info2,
+                 rpt_date,
+                 rpt_type,
+                 imp_date)
+              values
+                (sys_guid(),
+                 b.branch_id,
+                 b.cust_name,
+                 b.cert_type,
+                 b.cert_no,
+                 b.contact_info1,
+                 b.contact_info2,
+                 b.rpt_date,
+                 b.rpt_type,
+                 sysdate) where b.rpt_date = #{rptDate}
+            when matched then
+              update
+                 set a.contact_info1 = b.contact_info1,
+                     a.contact_info2 = b.contact_info2,
+                     a.rpt_date      = b.rpt_date,
+                     a.rpt_type      = b.rpt_type,
+                     a.imp_date      = sysdate
+               where b.rpt_date = #{rptDate}
+                 and a.rpt_type = b.rpt_type
+    </update>
+
+    <update id="updateNullCertTypeRecords" parameterType="java.lang.String">
+        update sv_cls_custinfo set cert_type = #{certType} where cert_type is null  and rpt_date = #{rptDate}
+    </update>
+
+
+    <!--大额资金流向 -->
+    <delete id="deleteLargeFlowData" parameterType="java.lang.String">
+        <![CDATA[
+          delete from odsb_largedep_flow where tx_dt >= #{startDate}
+        ]]>
+    </delete>
+    <insert id="importLargeFlowRecords" parameterType="java.lang.String">
+        <![CDATA[
+        insert into ODSB_LARGEDEP_FLOW
+            (SELECT A1.TX_DT,
+                   A1.TX_INST_NO,
+                   A2.CM_OPUN_FLNM_CHN TX_INST_NAME,
+                   A1.INST_NO,
+                   A3.CM_OPUN_FLNM_CHN INST_NAME,
+                   A1.CUST_ACCT_NO,
+                   A1.CUST_NO,
+                   A1.CUST_NAME,
+                   A1.SA_OP_BANK_NO,
+                   A1.SA_OP_ACCT_NO,
+                   A1.SA_OP_CUST_NAME,
+                   A1.DR_CR_COD,
+                   A1.CR_TX_AMT,
+                   A1.BUSI_TYPE,
+                   A1.SUMMARY,
+                   A1.TX_TYPE,
+                   A1.XT_OP_TRL
+              FROM (SELECT A.SA_TX_DT AS TX_DT,
+                           A.BUS_INST_NO AS TX_INST_NO,
+                           B.INST_NO,
+                           A.CUST_ACCT_NO,
+                           A.CUST_NO,
+                           B.CUST_NAME,
+                           A.SA_OP_BANK_NO,
+                           A.SA_OP_ACCT_NO_32 SA_OP_ACCT_NO,
+                           A.SA_OP_CUST_NAME,
+                           A.DR_CR_COD,
+                           A.CR_TX_AMT,
+                           '活期' BUSI_TYPE,
+                           A.SA_RMRK_DESC SUMMARY,
+                           A.XT_OP_TRL,
+                           (SELECT G.SOURCE_CD_DESC from BF_CM_STD_CODE G where G.CATEGORY_CD='EVE0100027' AND G.Ods_Standard_Cd=A.TX_TYPE ) TX_TYPE
+                      FROM BF_EVT_DEP_SAP A
+                      LEFT JOIN BF_AGT_DEP_ACCT_SAP B
+                        ON A.ACCT_NO = B.ACCT_NO
+                       AND A.CURR_CD = B.CURR_CD
+                       AND A.CURR_IDEN = B.CURR_IDEN
+                     WHERE A.EC_FLG = '0'
+                       AND A.SA_TX_DT >= #{startDate}
+                       and A.CR_TX_AMT >= 50000
+                    UNION ALL
+                    SELECT C.CR_TX_DT TX_DT,
+                           C.TD_OPUN_COD TX_INST_NO,
+                           D.INST_NO,
+                           C.CUST_ACCT_NO,
+                           C.CUST_NO,
+                           D.CUST_NAME,
+                           '' SA_OP_BANK_NO,
+                           '' SA_OP_ACCT_NO,
+                           '' SA_OP_CUST_NAME,
+                           SUBSTR(C.DR_CR_COD, 2, 1) DR_CR_COD,
+                           C.CR_TX_AMT,
+                           '定期' BUSI_TYPE,
+                           (select PQNR from BF_CM_SUMMARY E where E.DSCRP_COD=C.SUMMARY) DR_CR_COD,
+                           C.TD_OPR_NO XT_OP_TRL,
+                           (SELECT F.SOURCE_CD_DESC from BF_CM_STD_CODE F where F.CATEGORY_CD='EVE0100027' AND F.Ods_Standard_Cd=C.TX_TYPE) TX_TYPE
+                      FROM BF_EVT_DEP_TDP C
+                      LEFT JOIN BF_AGT_DEP_ACCT_TDP D
+                        ON C.ACCT_NO = D.ACCT_NO
+                       AND C.CURR_IDEN = D.CURR_IDEN
+                       AND C.CURR_CD = D.CURR_CD
+                     WHERE C.EC_FLG = '0'
+                       AND C.CR_TX_DT >= #{startDate}
+                       and C.CR_TX_AMT >= 50000
+                       ) A1
+              LEFT JOIN BF_PR_BR_INSTN A2
+                ON A2.OPR_UNIT_CD = A1.TX_INST_NO
+              LEFT JOIN BF_PR_BR_INSTN A3
+                ON A3.OPR_UNIT_CD = A1.INST_NO)
+        ]]>
+    </insert>
+</mapper>

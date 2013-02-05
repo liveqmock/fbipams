@@ -1,0 +1,70 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .input-col-m {
+                width: 60px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xxl {
+                width: 1%;
+                text-align: right;
+            }
+
+            .col-95 {
+                width: 95%;
+            }
+
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:20px;">
+            <h:form id="form">
+                <p:messages id="msgs" showDetail="false" />
+                <div id="header" >
+                    <p:panel header="产品套餐检核处理">
+                        <h:panelGrid columns="2" cellspacing="15" >
+                            <h:panelGrid>
+                                <p:commandButton id="chkbtn" style="width:120px;" value="启动检核"
+                                                 action="#{productCheckAction.onStartCheck}"
+                                                 update="msgs">
+                                </p:commandButton>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="forcechkbtn" style="width:180px;" value="启动强制检核"
+                                                 action="#{productCheckAction.onStartForceCheck}"
+                                                 update="msgs">
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

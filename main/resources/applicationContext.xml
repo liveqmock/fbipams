@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=" http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+             http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+             http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+    <context:property-placeholder location="classpath:credit.properties"/>
+
+    <!-- 配置数据库连接池 -->
+    <bean id="pamsDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${pub.platform.db.ConnectionManager.sDBDriver}"/>
+        <property name="url" value="${pub.platform.db.ConnectionManager.sConnStr}"/>
+        <property name="username" value="${pub.platform.db.ConnectionManager.user}"/>
+        <property name="password" value="${pub.platform.db.ConnectionManager.passwd}"/>
+        <property name="maxActive" value="15"/>
+        <property name="maxIdle" value="5"/>
+
+        <!--
+        <property name="maxWait" value="6000" />
+        <property name="poolPreparedStatements" value="true" />
+        <property name="defaultAutoCommit" value="true" />
+        <property name="initialSize" value="10" />
+        <property name="validationQuery" value="select 1" />
+        <property name="testWhileIdle" value="true" />
+        <property name="timeBetweenEvictionRunsMillis" value="7200000" />
+        -->
+    </bean>
+
+    <!--spring jdbctemplate: pams-->
+    <bean id="pamsJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="pamsDataSource"/>
+    </bean>
+    <bean id="pamsJdbc" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="pamsJdbcTemplate"></constructor-arg>
+    </bean>
+
+
+    <!-- transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="pamsDataSource"/>
+    </bean>
+
+
+    <!-- enable component scanning (beware that this does not enable mapper scanning!) -->
+    <context:component-scan base-package="pams,skyline">
+            <!--<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />-->
+    </context:component-scan>
+
+    <!-- enable autowire -->
+    <context:annotation-config/>
+
+    <!--<tx:jta-transaction-manager />-->
+
+    <!-- enable transaction demarcation with annotations -->
+    <tx:annotation-driven/>
+
+    <!-- define the SqlSessionFactory, notice that configLocation is not needed when you use MapperFactoryBean -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--<property name="typeAliasesPackage" value="ldg.mybatis.model" />-->
+        <!--<property name="configLocation" value="classpath:/mybatis-config.xml" />-->
+        <property name="dataSource" ref="pamsDataSource"/>
+        <property name="mapperLocations" value="classpath*:pams/repository/mapper/**/*.xml"/>
+    </bean>
+
+    <!-- scan for mappers and let them be autowired -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"
+                  value="pams.repository.dao,pams.repository.dao.telemarketing"/>
+    </bean>
+
+
+    <!--quartz-->
+    <!-- 自动删除过期未提交数据 cronTrigger -->
+    <bean id="prdsetAutoDeletor" class="pams.batch.autoclean.PrdsetAutoCleanHandler"/>
+    <bean id="prdsetAutoDeleteJobDetailBean"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="prdsetAutoDeletor"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+    <bean id="autodeleteCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="prdsetAutoDeleteJobDetailBean"/>
+        <!--<property name="cronExpression" value="0/10 * * * * ?" />-->
+        <property name="cronExpression" value="0 10 23 * * ?"/>
+    </bean>
+
+    <!-- 检核 cronTrigger -->
+    <bean id="prdsetCheck" class="pams.batch.productsetcheck.CronMainHandler"/>
+    <bean id="prdsetCheckJobDetailBean"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="prdsetCheck"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+    <bean id="prdsetCheckCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="prdsetCheckJobDetailBean"/>
+        <!--<property name="cronExpression" value="0/20 * * * * ?"/>-->
+        <property name="cronExpression" value="0 15 06,22 * * ?"/>
+    </bean>
+
+    <!-- 设置调度 -->
+    <bean id="myScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <!--<ref bean="prdsetCheckCronTriggerBean"/>-->
+                <!--<ref bean="autodeleteCronTriggerBean"/>-->
+            </list>
+        </property>
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.threadPool.threadCount">1</prop>
+                <prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <!--ODSB DB SERVER CONFIGURE 注意生产环境的地址配置！！！ -->
+    <!--<bean id="odsbDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >-->
+    <bean id="odsbDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${odsb.jdbc.driverClassName}"/>
+        <property name="url" value="${odsb.jdbc.url}"/>
+        <property name="username" value="${odsb.jdbc.username}"/>
+        <property name="password" value="${odsb.jdbc.password}"/>
+        <property name="maxActive" value="10"/>
+        <property name="maxIdle" value="5"/>
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--<property name="dataSource" ref="odsbDataSource"/>-->
+        <property name="dataSource" ref="pamsDataSource"/>
+    </bean>
+    <bean id="simpleJdbcTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <!--<constructor-arg ref="odsbDataSource"/>-->
+        <constructor-arg ref="pamsDataSource"/>
+    </bean>
+    <bean id="odsbDataJdbc" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="jdbcTemplate"></constructor-arg>
+    </bean>
+
+
+    <!--CBSS DB SERVER CONFIGURE  -->
+    <bean id="ccbssDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${ccbss.jdbc.driverClassName}"/>
+        <property name="url" value="${ccbss.jdbc.url}"/>
+        <property name="username" value="${ccbss.jdbc.username}"/>
+        <property name="password" value="${ccbss.jdbc.password}"/>
+        <property name="maxActive" value="5"/>
+        <property name="maxIdle" value="3"/>
+    </bean>
+
+    <bean id="ccbssJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!--<property name="dataSource" ref="ccbssDataSource"/>-->
+        <property name="dataSource" ref="pamsDataSource"/>
+    </bean>
+
+    <bean id="ccbssJdbc" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="ccbssJdbcTemplate"></constructor-arg>
+    </bean>
+</beans>

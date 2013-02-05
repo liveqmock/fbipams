@@ -1,0 +1,23 @@
+<!--网点业绩数据批量录入 -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="template/salesInfoInputTemplate.xhtml">
+
+    <ui:define name="focus">
+        <p:focus for="tellerId"/>
+    </ui:define>
+    <ui:define name="tellerId">
+        <h:outputLabel value="柜员号码:" for="tellerId"/>
+        <p:inputText id="tellerId" value="#{salesInputAction.vo.tellerid}"
+                     required="true" onkeydown="KeyDown()" onfocus="this.select()">
+            <p:ajax event="blur" update="tellerName" listener="#{salesInputAction.onTelleridListener}"
+                    process="@this"/>
+        </p:inputText>
+        <h:outputLabel id="tellerName" value="#{salesInputAction.vo.tellername}" style="color:#999999;"/>
+    </ui:define>
+
+</ui:composition>

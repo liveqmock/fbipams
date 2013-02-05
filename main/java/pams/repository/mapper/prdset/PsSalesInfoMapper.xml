@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.prdset.PsSalesInfoMapper">
+
+    <sql id="Query_Where_Clause">
+      <where>
+            a.recsts = 'N'
+            and a.tellerid = b.operid
+            and b.deptid in (select deptid from ptdept start with deptid = #{branchid}  connect by prior deptid = parentdeptid)
+
+            <if test = " (startdate != null and startdate != '') and (enddate != null and enddate != '') ">
+                 and a.txndate between #{startdate} and #{enddate}
+            </if>
+            <if test = " (archivestart != null and archivestart != '') and (archiveend != null and archiveend != '') ">
+                 and a.archivedate between #{archivestart} and #{archiveend}
+            </if>
+            <if test = " prdsetid != null and prdsetid != '' ">
+                 and a.prdsetid = #{prdsetid}
+            </if>
+            <if test = " commitflag != null and commitflag != '' ">
+                 and a.commitflag = #{commitflag}
+            </if>
+            <if test = " checkflag != null and checkflag != '' ">
+                 and a.checkflag = #{checkflag}
+            </if>
+            <if test = " archiveflag != null and archiveflag != '' ">
+                 and a.archiveflag = #{archiveflag}
+            </if>
+           <if test = " certtype != null and certtype != '' ">
+                and a.certtype = #{certtype}
+           </if>
+           <if test = " certno != null and certno != '' ">
+                and a.certno like '%${certno}%'
+           </if>
+      </where>
+    </sql>
+
+    <!--计算符合查询条件的记录数 产品套餐业绩数据 -->
+    <select id="countPrdsetSalesinfo" parameterType="pams.repository.model.prdset.PsSalesInfoBean" resultType="java.lang.Integer">
+          select count(*)
+            from svpssaleinfo a, ptoper b
+             <include refid="Query_Where_Clause" />
+    </select>
+
+    <!--检索产品套餐明细  -->
+
+    <select id="selectPrdsetSalesinfo" parameterType="pams.repository.model.prdset.PsSalesInfoBean"   resultType="pams.repository.model.prdset.PsSalesInfoBean">
+          select
+               (select deptname from ptdept where deptid = b.deptid) as branchname,
+               b.opername as tellername,
+               (select prdsetname  from svpsprdsetmain where prdsetid =  a.prdsetid) as prdsetname,
+               (select enuitemlabel  from ptenudetail where enutype = 'CERTTYPE' and enuitemvalue = a.certtype) as certtypename,
+               (select enuitemlabel  from ptenudetail where enutype = 'SVPSCOMMITFLAG' and enuitemvalue = a.commitflag) as commitflagname,
+               (select enuitemlabel  from ptenudetail where enutype = 'SVPSCHECKFLAG' and enuitemvalue = a.checkflag) as checkflagname,
+               (select enuitemlabel  from ptenudetail where enutype = 'SVPSARCHIVEFLAG' and enuitemvalue = a.archiveflag) as archiveflagname,
+               a.*
+          from svpssaleinfo a, ptoper b
+          <include refid="Query_Where_Clause" />
+          order by b.deptid, a.tellerid, a.prdsetid,  a.txndate
+    </select>
+
+    <!-- 根据产品套餐ID检索已签约产品明细 -->
+    <select id="selectPrdSalesInfo" resultType="pams.repository.model.prdset.PsSalesPrdInfoBean">
+        select a.*,
+               (select prdname from svpsprdinfo where prdid = a.prdid) as prdname,
+                decode(a.checkflag,'1','通过','0','未通过') as checkflagname
+         from svpssaleprdinfo a
+         where saleinfokey = #{guid}
+         order by a.prdid
+    </select>
+    <!-- 根据产品检核明细 -->
+    <select id="selectPrdChptInfo" resultType="pams.repository.model.prdset.PsSalesPrdInfoBean">
+        select a.*,
+               (select prdname from svpsprdinfo where prdid = a.prdid) as prdname,
+                decode(a.checkflag,'1','通过','0','未通过') as checkflagname
+         from svpssaleprdinfo a
+         where saleinfokey = #{guid}
+         order by a.prdid
+    </select>
+
+
+
+    <!-- 检核：检索所有需检核的产品ID清单 -->
+    <select id="selectAllProductIdFromCurrentPrdset" resultType="java.lang.String">
+       select distinct(prdid) from SVPSPRDSETDETAIL t order by prdid
+    </select>
+
+    <!-- 检索有效的检核指标的处理程序定义 -->
+    <select id="selectCheckPointClassName" parameterType="java.lang.String" resultType="java.lang.String">
+        select ckptprog from svpsprdckptdef where prdid = #{prdid} and validflag = '1'
+    </select>
+
+    <!-- 检索指定产品ID及某检核指标未通过的记录 -->
+    <select id="selectNeedCheckPrdinfoList"
+            parameterType="java.lang.String"
+            resultType="pams.repository.model.prdset.PsSalesPrdInfoBean">
+       select a.*,  b.txndate, b.certtype, b.certno,c.guid as ckptguid, c.checkflag as chptcheckflag
+          from
+            svpssaleprdinfo a,
+            svpssaleinfo b,
+            (select * from svpssaleprdckpt where ckptid = #{ckptid}) c
+         where a.checkflag = '0'
+           and a.prdid = #{prdid}
+           and a.saleinfokey = b.guid
+           and b.commitflag = '1'
+           and b.archiveflag = '0'
+           and b.recsts = 'N'
+           and a.guid = c.saleprdid(+)
+           and (c.ckptid = #{ckptid} or c.ckptid is null)
+           and (c.checkflag = '0' or c.checkflag is null)
+    </select>
+
+    <!-- 检索指定产品ID及某检核指标所有的记录（不包括未提交、已考核、已删除的） -->
+    <select id="selectAllPrdinfoListForForceCheck"
+            parameterType="java.lang.String"
+            resultType="pams.repository.model.prdset.PsSalesPrdInfoBean">
+       select a.*, b.txndate, b.certtype, b.certno,c.guid as ckptguid, c.checkflag as chptcheckflag
+          from
+            svpssaleprdinfo a,
+            svpssaleinfo b,
+            (select * from svpssaleprdckpt where ckptid = #{ckptid}) c
+         where a.prdid = #{prdid}
+           and a.saleinfokey = b.guid
+           and b.commitflag = '1'
+           and b.archiveflag = '0'
+           and b.recsts = 'N'
+           and a.guid = c.saleprdid(+)
+           and (c.ckptid = #{ckptid} or c.ckptid is null)
+    </select>
+
+    <!--根据产品套餐ID查找相关检核结果 -->
+    <select id="selectPrdCkptInfo"
+            parameterType="java.lang.String"
+            resultType="pams.repository.model.prdset.PsPrdCkptInfoBean">
+        select ckpt.*,
+               ckptdef.prdid,
+               (select prdname from svpsprdinfo where prdid = ckptdef.prdid) as prdname,
+               decode(ckpt.checkflag,'1','通过','0','未通过') as checkflagname,
+               ckptdef.ckptprdname
+          from svpssaleprdckpt ckpt, svpsprdckptdef ckptdef
+         where ckpt.saleprdid in
+               (select guid
+                  from svpssaleprdinfo
+                 where saleinfokey = #{prdsetguid})
+           and ckpt.ckptid = ckptdef.guid
+    </select>
+
+
+
+
+    <!-- 根据检核指标的检核结果更新产品表的检核状态为通过 -->
+    <update id="updateProductCheckFlagToSuccess"  parameterType="java.lang.String">
+        update svpssaleprdinfo t
+           set t.checkflag = '1', t.checkdate = #{checkdate}, t.checktime = #{checktime}
+         where t.guid in
+               (select x.guid
+                  from (select a.guid, count(*) as ckptcount
+                          from svpssaleprdinfo a, svpssaleprdckpt b, svpsprdckptdef c
+                         where a.prdid = #{prdid}
+                           and a.checkflag = '0'
+                           and b.saleprdid = a.guid
+                           and b.checkflag = '1'
+                           and b.ckptid = c.guid
+                           and c.validflag = '1'
+                         group by a.guid) x
+                 where x.ckptcount = #{ckptcount})
+    </update>
+
+    <!-- 更新符合条件产品套餐表的检核状态为通过 -->
+    <update id="updateProductSetCheckFlagToSuccess"  parameterType="java.lang.String">
+        update svpssaleinfo t
+           set t.checkflag = '1', t.checkdate = #{checkdate}, t.checktime = #{checktime}
+         where t.guid in
+               (select x.guid
+                  from (select a.guid, count(*) as prdcount
+                          from svpssaleinfo a ,svpssaleprdinfo b
+                         where a.prdsetid = #{prdsetid}
+                           and a.checkflag = '0'
+                           and a.recsts = 'N'
+                           and a.commitflag = '1'
+                           and a.guid = b.saleinfokey
+                           and b.checkflag='1'
+                         group by a.guid) x
+                 where x.prdcount = #{prdcount})
+    </update>
+
+    <!-- 强制重新检核：设置已成功(未考核的)的产品套餐为未通过  -->
+    <update id="updateAllProductSetCheckFlagToFail"  parameterType="java.lang.String">
+        update svpssaleinfo t
+           set t.checkflag = '0',t.checklog= #{checklog}
+         where t.checkflag = '1'
+           and t.commitflag = '1'
+           and t.archiveflag = '0'
+           and t.recsts = 'N'
+    </update>
+    <!-- 强制重新检核：设置已成功(未考核的)的产品为未通过  -->
+    <update id="updateAllProductCheckFlagToFail"  parameterType="java.lang.String">
+        update svpssaleprdinfo t
+           set t.checkflag = '0',t.checklog= #{checklog}
+         where t.guid in (select  b.guid
+                            from svpssaleinfo a, svpssaleprdinfo b
+                           where a.guid = b.saleinfokey
+                             and b.checkflag = '1'
+                             and a.commitflag = '1'
+                             and a.archiveflag = '0'
+                             and a.recsts = 'N')
+    </update>
+    <!-- 强制重新检核：设置已成功(未考核的)的检核指标为未通过  -->
+    <update id="updateAllCheckPointCheckFlagToFail"  parameterType="java.lang.String">
+        update svpssaleprdckpt t
+           set t.checkflag = '0',t.checklog= #{checklog}
+         where t.saleprdid in (select  b.guid
+                            from svpssaleinfo a, svpssaleprdinfo b
+                           where a.guid = b.saleinfokey
+                             and a.commitflag = '1'
+                             and a.archiveflag = '0'
+                             and a.recsts = 'N')
+    </update>
+
+
+    <!--首页统计 -->
+    <!--产品套餐总量数据统计 -->
+    <select id="selectPrdsetStatisticData"
+            parameterType="java.lang.String"
+            resultType="pams.repository.model.prdset.PsPrdsetStatisticBean">
+        select t.*,
+               (select prdsetname from SVPSPRDSETMAIN where prdsetid = t.prdsetid) as prdsetname
+          from (select a.prdsetid,
+                       decode(a.commitflag, '1', '已提交', '未提交') as commitflag,
+                       decode(a.checkflag, '1', '检核通过', '检核未通过') as checkflag,
+                       decode(a.archiveflag, '1', '已考核', '未考核') as archiveflag,
+                       count(*) as totalnum
+                  from SVPSsaleinfo a, ptoper b
+                 where a.recsts = 'N'
+                   and a.tellerid = b.operid
+                   and b.deptid in
+                       (select deptid
+                          from ptdept
+                         start with deptid = #{deptid}
+                        connect by prior deptid = parentdeptid)
+                 group by a.prdsetid, a.commitflag, a.checkflag, a.archiveflag) t
+         order by t.prdsetid, commitflag, checkflag, archiveflag
+    </select>
+
+    <!--产品总量数据统计 -->
+    <select id="selectPrdStatisticData"
+            parameterType="java.lang.String"
+            resultType="pams.repository.model.prdset.PsPrdStatisticBean">
+        select t.*,
+               (select prdname from SVPSPRDINFO where prdid = t.prdid) as prdname
+          from (select b.prdid,
+                       decode(a.commitflag, '1', '已提交', '未提交') as commitflag,
+                       decode(b.checkflag, '1', '检核通过', '检核未通过') as checkflag,
+                       decode(a.archiveflag, '1', '已考核', '未考核') as archiveflag,
+                       count(*) as totalnum
+                  from svpssaleinfo a, svpssaleprdinfo b, ptoper c
+                 where a.guid = b.saleinfokey
+                   and a.recsts = 'N'
+                   and a.tellerid = c.operid
+                   and c.deptid in
+                       (select deptid
+                          from ptdept
+                         start with deptid = #{deptid}
+                        connect by prior deptid = parentdeptid)
+                 group by b.prdid, a.commitflag, b.checkflag, a.archiveflag) t
+         order by t.prdid, commitflag, checkflag, archiveflag
+    </select>
+
+    <!--考核处理 -->
+    <update id="updateAllArchiveFlag"  parameterType="java.lang.String">
+        update svpssaleinfo t
+           set t.archiveflag = '1',
+               t.archivedate = #{archivedate},
+               t.archiveoperid = #{archiveoperid},
+               t.archiveoperdate = sysdate
+         where t.checkflag = '1'
+               and t.archiveflag = '0'
+               and t.recsts = 'N'
+    </update>
+
+</mapper>
