@@ -84,7 +84,9 @@
     //<![CDATA[
         function KeyDown() {
         if (event.keyCode == 13) {
-            if (event.srcElement.id == 'inputform:tellerId') {
+            if (event.srcElement.id == 'inputform:txnDate') {
+                event.keyCode = 9;
+            } else if (event.srcElement.id == 'inputform:tellerId') {
                 checktellerid();
                 event.keyCode = 9;
             } else if (event.srcElement.id == 'inputform:prdId') {
@@ -115,7 +117,8 @@
                         if (prdid == "05") {
                             document.forms['inputform']['inputform:num1'].focus();
                         } else {
-                            document.forms['inputform']['inputform:certtype'].focus();
+                            //document.forms['inputform']['inputform:certtype'].focus();
+                            document.forms['inputform']['inputform:amt1'].focus();
                         }
 
                     }
@@ -265,20 +268,20 @@
                         <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
                             <h:panelGrid columns="2" cellspacing="5">
                                 <h:outputLabel value="客户姓名:"/>
-                                <p:inputText value="#{custBizDataAction.paramBean.custName}"/>
+                                <p:inputText value="#{custSaleDataInputAction.paramBean.custName}"/>
                                 <h:outputLabel value="证件号:"/>
-                                <p:inputText value="#{custBizDataAction.paramBean.certNo}"/>
+                                <p:inputText value="#{custSaleDataInputAction.paramBean.certNo}"/>
                             </h:panelGrid>
                             <h:panelGrid>
                                 <p:commandButton id="qrybtn" style="width:90px;" value="查询"
-                                                 action="#{custBizDataAction.onQuery}"
+                                                 action="#{custSaleDataInputAction.onQuery}"
                                                  update="pdt,msgs">
                                 </p:commandButton>
 
                                 <p:commandButton ajax="false" id="btnExport" value="导出CSV"
                                                  style="width:90px;">
                                     <p:dataExporter type="csv" target="pdt"
-                                                    fileName="rpt#{custBizDataAction.paramBean.branchId}"
+                                                    fileName="rpt#{custSaleDataInputAction.paramBean.branchId}"
                                                     encoding="GBK"
                                                     pageOnly="false"/>
                                 </p:commandButton>
@@ -302,7 +305,8 @@
                 </p:contextMenu>
 
                 <p:dataTable id="pdt" style="width:100%;"
-                             value="#{custBizDataAction.detlCustList}" var="record"
+                             value="#{custSaleDataInputAction.detlCustList}" var="record"
+                             selectionMode="single" selection="#{custSaleDataInputAction.selectedCust}"
                              rowKey="#{record.guid}"
                              editable="true" editMode="cell"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
@@ -312,7 +316,12 @@
                              rowsPerPageTemplate="500,100,50,30,15"
                              emptyMessage="数据记录为空...">
 
-                    <p:ajax event="cellEdit" listener="#{custBizDataAction.onCellEdit}"
+                    <p:ajax event="rowSelect" listener="#{custSaleDataInputAction.onCustRowSelect}"
+                            update=":form:tabView:msgs :inputform:inputpanel"/>
+                    <p:ajax event="rowUnselect" listener="#{custSaleDataInputAction.onCustRowUnSelect}"
+                            update=":form:tabView:msgs "/>
+
+                    <p:ajax event="cellEdit" listener="#{custSaleDataInputAction.onCellEdit}"
                             update=":form:tabView:msgs "/>
 
                     <p:column style="text-align:center">
@@ -372,61 +381,70 @@
 </div>
 
 <div>
+<p:fieldset legend="营销反馈" style="margin-top:10px;" toggleable="true" toggleSpeed="500">
+
 <h:form id="inputform">
-    <!--<ui:insert name="focus">empty content</ui:insert>-->
 
     <div id="top" style="margin:0px 5px;">
         <p:growl id="growls" showDetail="true"/>
-        <!--<p:panel id="inputpanel" header="#{custSaleDataInputAction.panelTitle}" style="margin-top:5px">-->
         <p:panel id="inputpanel" style="margin-top:25px">
-            <h:panelGrid columns="3" cellspacing="5"
-                         columnClasses="input-col-m,input-col-xl">
-                <h:outputLabel value="业务日期:" for="txnDate"/>
-                <p:inputText id="txnDate" value="#{custSaleDataInputAction.txnDate}" readonly="true"
-                             required="true" onkeydown="KeyDown()" onfocus="this.select()">
-                </p:inputText>
-                <h:outputLabel/>
+            <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
 
-                <!--<ui:insert name="tellerId">empty content</ui:insert>-->
+                <h:panelGrid columns="3" cellspacing="5"
+                             columnClasses="input-col-m,input-col-xl">
+                    <h:outputLabel value="业务日期:" for="txnDate"/>
+                    <p:inputText id="txnDate" value="#{custSaleDataInputAction.txnDate}"
+                                 required="true" onkeydown="KeyDown()" onfocus="this.select()">
+                    </p:inputText>
+                    <h:outputLabel/>
 
-                <h:outputLabel value="产品种类:"/>
-                <p:inputText id="prdId" value="#{custSaleDataInputAction.vo.prdid}"
-                             requiredMessage="产品种类必须输入。"
-                             required="true"
-                             onkeydown="KeyDown()"
-                             onfocus="this.select()">
-                    <p:ajax event="change" update="prdName"
-                            listener="#{custSaleDataInputAction.onPrdidListener}"
-                            process="@this"/>
-                </p:inputText>
-                <h:outputText id="prdName" value="#{custSaleDataInputAction.vo.prdname}" style="color:#999999;"/>
+                    <h:outputLabel value="产品种类:"/>
+                    <p:inputText id="prdId" value="#{custSaleDataInputAction.vo.prdid}"
+                                 requiredMessage="产品种类必须输入。"
+                                 required="true"
+                                 onkeydown="KeyDown()"
+                                 onfocus="this.select()">
+                        <p:ajax event="change" update="prdName"
+                                listener="#{custSaleDataInputAction.onPrdidListener}"
+                                process="@this"/>
+                    </p:inputText>
+                    <h:outputText id="prdName" value="#{custSaleDataInputAction.vo.prdname}" style="color:#999999;"/>
 
-                <h:outputLabel id="subprdIdLabel" value="产品子类:" rendered="#{custSaleDataInputAction.subprdidShow}"/>
-                <p:inputText id="subprdId" autocomplete="false"
-                             value="#{custSaleDataInputAction.vo.subprdid}"
-                             rendered="#{custSaleDataInputAction.subprdidShow}"
-                             requiredMessage="产品子类必须输入。"
-                             onkeydown="KeyDown()"
-                             onfocus="onFieldFocus();this.select()">
-                    <p:ajax event="blur" update="subprdName" listener="#{custSaleDataInputAction.onSubprdidListener}"
-                            process="@this"/>
-                </p:inputText>
-                <h:outputText id="subprdName" value="#{custSaleDataInputAction.vo.subprdname}" style="color:#999999;"/>
+                    <h:outputLabel id="subprdIdLabel" value="产品子类:" rendered="#{custSaleDataInputAction.subprdidShow}"/>
+                    <p:inputText id="subprdId" autocomplete="false"
+                                 value="#{custSaleDataInputAction.vo.subprdid}"
+                                 rendered="#{custSaleDataInputAction.subprdidShow}"
+                                 requiredMessage="产品子类必须输入。"
+                                 onkeydown="KeyDown()"
+                                 onfocus="onFieldFocus();this.select()">
+                        <p:ajax event="blur" update="subprdName"
+                                listener="#{custSaleDataInputAction.onSubprdidListener}"
+                                process="@this"/>
+                    </p:inputText>
+                    <h:outputText id="subprdName" value="#{custSaleDataInputAction.vo.subprdname}"
+                                  style="color:#999999;"/>
+                </h:panelGrid>
+                <h:panelGrid>
+                    <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                        <p:commandButton id="saveButton" value="保  存" style="width:90px;"
+                                         action="#{custSaleDataInputAction.onSaveBtnClick}"
+                                         update="growls,inputform" ajax="true">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </h:panelGrid>
             </h:panelGrid>
             <p:separator/>
             <h:panelGrid columns="6" cellspacing="5"
                          columnClasses="input-col-m,input-col-xl,input-col-m,input-col-xl,input-col-m,input-col-xl">
 
                 <h:outputLabel value="证件类型:"/>
-                <h:panelGroup>
-                    <h:selectOneMenu id="certtype" style="width:153px;font-weight:bold;"
-                                     title="可直接使用键盘输入3位代号，按回车键跳到下一栏位。"
-                                     value="#{custSaleDataInputAction.vo.certtype}"
-                                     readonly="true"
-                                     required="false" onkeydown="KeyDown()">
-                        <f:selectItems value="#{custSaleDataInputAction.certTypeList}"/>
-                    </h:selectOneMenu>
-                </h:panelGroup>
+                <p:inputText id="certtype" value="#{custSaleDataInputAction.vo.certtype}"
+                             requiredMessage="证件类型必须输入。"
+                             required="false"
+                             readonly="true"
+                             onkeydown="KeyDown()"
+                             onfocus="this.select()">
+                </p:inputText>
 
                 <h:outputLabel value="证件号码:"/>
                 <p:inputText id="certno" value="#{custSaleDataInputAction.vo.certno}"
@@ -468,17 +486,17 @@
                 </p:inputText>
             </h:panelGrid>
 
-            <!--<ui:insert name="interviewFields"></ui:insert>-->
-
         </p:panel>
-        <p:panel style="margin-top:10px;">
-            <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
-                <p:commandButton id="saveButton" value="保  存" style="width:150px;"
-                                 action="#{custSaleDataInputAction.onSaveBtnClick}"
-                                 update="growls,inputform" ajax="true">
-                </p:commandButton>
-            </h:panelGrid>
-        </p:panel>
+        <!--
+                <p:panel style="margin-top:10px;">
+                    <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                        <p:commandButton id="saveButton" value="保  存" style="width:150px;"
+                                         action="#{custSaleDataInputAction.onSaveBtnClick}"
+                                         update="growls,inputform" ajax="true">
+                        </p:commandButton>
+                    </h:panelGrid>
+                </p:panel>
+        -->
     </div>
     <p:remoteCommand name="checkprdid" id="checkprdid" async="false"
                      actionListener="#{custSaleDataInputAction.onCheckprdid}"
@@ -620,6 +638,66 @@
         </h:panelGrid>
     </p:panel>
 </div>
+</p:fieldset>
+<p:fieldset legend="营销历史" style="margin-top:10px;" toggleable="true" toggleSpeed="500">
+    <h:form id="saleform">
+        <p:dataTable id="salepdt" style="width:100%; margin-top: 20px"
+                     dynamic="true" selectionMode="single"
+                     value="#{custSaleDataInputAction.salesVOList}" var="sales"
+                     rowKey="#{sales.guid}"
+                     emptyMessage="数据记录为空...">
+
+            <p:column style="text-align:center" sortBy="#{sales.tellername}">
+                <f:facet name="header">
+                    柜员
+                </f:facet>
+                <h:outputText value="#{sales.tellername}"/>
+            </p:column>
+            <p:column style="text-align:center" sortBy="#{sales.prdname}">
+                <f:facet name="header">
+                    产品
+                </f:facet>
+                <h:outputText value="#{sales.prdname}"/>
+            </p:column>
+            <p:column style="text-align:center" sortBy="#{sales.subprdname}">
+                <f:facet name="header">
+                    产品子类
+                </f:facet>
+                <h:outputText value="#{sales.subprdname}"/>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="金额"/>
+                </f:facet>
+                <h:outputText value="#{sales.salesamt1}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="数量"/>
+                </f:facet>
+                <h:outputText value="#{sales.salesnum1}" style="float: right"/>
+            </p:column>
+
+            <p:column style="text-align:center" sortBy="#{sales.txndate}">
+                <f:facet name="header">
+                    交易日期
+                </f:facet>
+                <h:outputText value="#{sales.txndate}"/>
+            </p:column>
+
+            <p:column headerText="操作" style="text-align:center">
+                <h:commandLink immediate="true" value="删除" action="#{custSaleDataInputAction.onDeleteRecord}">
+                    <f:setPropertyActionListener value="#{record}" target="#{custSaleDataInputAction.selectedSale}"/>
+                </h:commandLink>
+            </p:column>
+        </p:dataTable>
+
+    </h:form>
+</p:fieldset>
 
 </div>
 

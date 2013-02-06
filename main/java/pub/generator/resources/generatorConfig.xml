@@ -91,6 +91,9 @@
         <table tableName="sv_cms_custbase" >
             <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
         </table>
+        <table tableName="sv_sale_detail" >
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
        -->
 
 

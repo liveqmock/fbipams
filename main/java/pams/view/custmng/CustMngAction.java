@@ -3,6 +3,8 @@ package pams.view.custmng;
 import org.apache.commons.lang.StringUtils;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.primefaces.model.LazyDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,15 +14,17 @@ import pams.repository.model.Ptoper;
 import pams.repository.model.Ptoplog;
 import pams.repository.model.custlist.CustMngParam;
 import pams.repository.model.custlist.CustMngVO;
-import skyline.service.PlatformService;
-import skyline.service.ToolsService;
 import pams.service.custmng.CustMngService;
 import pub.platform.security.OperatorManager;
+import skyline.service.PlatformService;
+import skyline.service.ToolsService;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -213,7 +217,19 @@ public class CustMngAction implements Serializable {
         }
     }
     //===================================================================
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Selected", ((CustMngVO) event.getObject()).getCustName());
 
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Car Unselected", ((CustMngVO) event.getObject()).getCustName());
+
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+    }
+
+    //===================================================================
     public CustMngParam getParamBean() {
         return paramBean;
     }

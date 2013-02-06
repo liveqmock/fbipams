@@ -4,12 +4,15 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.common.SystemService;
 import pams.common.utils.MessageUtil;
 import pams.repository.model.*;
-import pams.repository.model.telemarketing.SalesInfoBean;
+import pams.repository.model.custlist.CustMngParam;
+import pams.service.custmng.CustMngService;
 import pams.service.telemarketing.TmSalesInfoService;
 import pub.platform.security.OperatorManager;
 import skyline.service.PlatformService;
@@ -27,6 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,26 +42,29 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 public class CustSaleDataInputAction implements Serializable {
-
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-    private String operid;
-    private SalesInfoBean vo;
-    //交易日期
+
+    private CustMngParam paramBean;
+
+    private SvCmsCustbase selectedCust;
+    private List<SvCmsCustbase> detlCustList;
+    private List<SvClsCustinfo> detlBizList;
+
+    private List<SelectItem> branchList;
+    private Map<String, String> rptNameMap;
+
+    private String branchId;
+    private String operId;
+
+    //========================
+    private SvSaleDetail vo;
     private String txnDate;
-    //网点批量输入标志
-    private String batchInputMode;
-    //程序调用路径
-    //perf：处理业绩表
-    //plan：处理业绩计划表
-    //interview：处理访谈表
-    private String routerPath;
-
-    private String panelTitle;
-
+    private String custName;
+    private String certType;
+    private String certNo;
+    private String subPrdName;
     private boolean isSubprdidShow = true;
-
     private List<Svprdsalinf> salesList;
-
     private List<Ptoper> ptoperList;
     private List<Ptenudetail> prdTypeList;
     private List<Ptenudetail> insureTypeList;
@@ -66,13 +73,19 @@ public class CustSaleDataInputAction implements Serializable {
     private List<Ptenudetail> creditcardTypeList;
     private List<Ptenudetail> ebankTypeList;
     private List<Ptenudetail> goldTypeList;
-
     private List<SelectItem> certTypeList;
+
+    //=============================
+    private List<SvSaleDetail> salesVOList;
+    private SvSaleDetail selectedSale;
+
     @ManagedProperty(value = "#{toolsService}")
     private ToolsService toolsService;
-
     @ManagedProperty(value = "#{platformService}")
     private PlatformService platformService;
+
+    @ManagedProperty(value = "#{custMngService}")
+    private CustMngService custMngService;
     @ManagedProperty(value = "#{tmSalesInfoService}")
     private TmSalesInfoService salesInfoService;
 
@@ -81,38 +94,24 @@ public class CustSaleDataInputAction implements Serializable {
 
     @PostConstruct
     public void init() {
-        this.vo = new SalesInfoBean();
+        OperatorManager om = SystemService.getOperatorManager();
+        branchId = om.getOperator().getDeptid();
+        operId = om.getOperatorId();
+
+        this.branchList = toolsService.selectBranchList(branchId);
+        this.paramBean = new CustMngParam();
+        initCustList();
+
+        //===========
+        this.vo = new SvSaleDetail();
         this.vo.setSalesamt1(new BigDecimal(0));
         this.vo.setSalesnum1((long) 0);
 
-        this.salesList = new ArrayList();
-
-/*
-        FacesContext context = FacesContext.getCurrentInstance();
-        Map params = context.getExternalContext().getSessionMap();
-
-        String paramTxndate = (String) params.get("txnDate");
-        params.remove("txnDate");
-        if (StringUtils.isEmpty(paramTxndate)) {
-            logger.error("日期参数错误！");
-            MessageUtil.addError("日期参数错误！");
-            return;
-        }
-                this.txnDate = paramTxndate;
-
-*/
         this.txnDate = new DateTime().toString("yyyy-MM-dd");
         this.vo.setTxndate(this.txnDate);
 
-        this.batchInputMode = "perf";
-        this.panelTitle = "个人业绩数据录入";
-
-        OperatorManager om = SystemService.getOperatorManager();
-        this.operid = om.getOperatorId();
-        this.vo.setTellerid(this.operid);
-        this.vo.setTellername(om.getOperatorName());
-
-        this.ptoperList = platformService.selectBranchTellers(this.operid);
+        this.vo.setTellerid(this.operId);
+        this.ptoperList = platformService.selectBranchTellers(this.operId);
         this.prdTypeList = platformService.selectEnuDetail("SVTPRDTYPE");
         this.foundTypeList = platformService.selectEnuDetail("SVTFUNDTYPE");
         this.insureTypeList = platformService.selectEnuDetail("SVTINSURETYPE");
@@ -125,11 +124,53 @@ public class CustSaleDataInputAction implements Serializable {
 
     }
 
-    /**
-     * 新增记录
-     *
-     * @return
-     */
+    private void initCustList() {
+        if (branchList.size() > 1) {
+            MessageUtil.addError("此功能只对基层网点开放.");
+            this.detlCustList = new ArrayList<>();
+        }else{
+            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId);
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("CustSaleDataInput_initList");
+            oplog.setActionName("客户营销记录反馈:初始化客户清单");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+        }
+    }
+
+    public String onQuery() {
+        try {
+            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId, paramBean.getCustName(),paramBean.getCertNo());
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("CustSaleDataInput_onQuery");
+            oplog.setActionName("客户营销记录反馈:客户信息查询");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+        } catch (Exception e) {
+            logger.error("查询数据时出现错误。", e);
+            MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
+        }
+        return null;
+    }
+
+    public void onCustRowSelect(SelectEvent event) {
+        try {
+            this.custName = selectedCust.getCustName();
+            this.certType = selectedCust.getCertType();
+            this.certNo = selectedCust.getCertNo();
+        } catch (Exception e) {
+            logger.error("查询数据时出现错误。", e);
+            MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
+        }
+    }
+    public void onCustRowUnSelect(UnselectEvent event) {
+        logger.debug("unselect" + event.toString());
+    }
+
+
+    //====营销信息录入====================================================
     public String onSaveBtnClick() {
         //输入内容检查
         if (searchTellerName() == null) {
@@ -157,23 +198,8 @@ public class CustSaleDataInputAction implements Serializable {
             }
         } else {
             this.vo.setSubprdid("");
-            this.vo.setSubprdname("");
+            this.subPrdName = "";
         }
-
-        //客户名称必输(除去 05 06 08)
-        /*
-        if (prdid.equals("01") || prdid.equals("02") || prdid.equals("03")
-                ||prdid.equals("04") || prdid.equals("07") || prdid.equals("09")
-                ||prdid.equals("10") || prdid.equals("11"))
-        {
-            if (StringUtils.isEmpty(this.vo.getCustomername())) {
-                MessageUtil.addError("客户名称输入错误");
-                return null;
-            }
-        }else{
-            this.vo.setCustomername("");
-        }
-        */
 
         //成交金额或数量必输(除去 05 06 08 09 10)
         if (prdid.equals("01") || prdid.equals("02") || prdid.equals("03")
@@ -199,13 +225,11 @@ public class CustSaleDataInputAction implements Serializable {
         if (this.vo.getTxntime() == null) {
             this.vo.setTxntime(new SimpleDateFormat("HH:mm:ss").format(date));
         }
-        this.vo.setOperid(this.operid);
+        this.vo.setOperid(this.operId);
         this.vo.setOperdate(date);
         this.vo.setRecversion((long) 0);
 
         Svprdsalinf svprdsalinf;
-        Svprdsalplan svprdsalplan;
-        Svintvinf svintvinf;
         try {
             svprdsalinf = new Svprdsalinf();
             PropertyUtils.copyProperties(svprdsalinf, this.vo);
@@ -220,7 +244,7 @@ public class CustSaleDataInputAction implements Serializable {
 
         //重置VO
         this.vo.setSubprdid("");
-        this.vo.setSubprdname("");
+        this.subPrdName = "";
         this.vo.setSalesamt1(new BigDecimal(0));
         this.vo.setSalesnum1((long) 0);
         return null;
@@ -235,18 +259,7 @@ public class CustSaleDataInputAction implements Serializable {
         if (name == null) {
             name = "未找到对应的产品种类名称。";
         }
-        this.vo.setPrdname(name);
-    }
-
-    /**
-     * 柜员ID输入完后 提示柜员名称
-     */
-    public void onTelleridListener() {
-        String name = searchTellerName();
-        if (name == null) {
-            name = "此柜员不存在。";
-        }
-        this.vo.setTellername(name);
+        this.subPrdName = name;
     }
 
     public void onSubprdidListener() {
@@ -257,20 +270,7 @@ public class CustSaleDataInputAction implements Serializable {
         if (name == null) {
             name = "未找到对应的产品子类名称。";
         }
-        this.vo.setSubprdname(name);
-    }
-
-    /**
-     * For UI remotecommand  检查柜员id输入值
-     *
-     * @param actionEvent
-     */
-    public void onChecktellerid(ActionEvent actionEvent) {
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        if (searchTellerName() == null) {
-            requestContext.addCallbackParam("isValid", false);
-        } else
-            requestContext.addCallbackParam("isValid", true);
+        this.subPrdName = name;
     }
 
     /**
@@ -303,13 +303,6 @@ public class CustSaleDataInputAction implements Serializable {
             requestContext.addCallbackParam("isValid", true);
     }
 
-    //============================================
-
-    /**
-     * 查找柜员名称
-     *
-     * @return
-     */
     public String searchTellerName() {
         for (Ptoper ptoper : this.ptoperList) {
             if (this.vo.getTellerid().equals(ptoper.getOperid())) {
@@ -319,11 +312,6 @@ public class CustSaleDataInputAction implements Serializable {
         return null;
     }
 
-    /**
-     * 查找产品种类ID对应的名称
-     *
-     * @return
-     */
     public String searchPrdName() {
         for (Ptenudetail ptenudetail : this.prdTypeList) {
             if (this.vo.getPrdid().equals(ptenudetail.getEnuitemvalue())) {
@@ -333,12 +321,6 @@ public class CustSaleDataInputAction implements Serializable {
         return null;
     }
 
-
-    /**
-     * 查找子产品ID对应的名称
-     *
-     * @return
-     */
     private String searchSubprdName() {
         if (this.vo.getPrdid().equals("01")) {
             for (Ptenudetail ptenudetail : this.foundTypeList) {
@@ -380,21 +362,41 @@ public class CustSaleDataInputAction implements Serializable {
         return null;
     }
 
+    //===营销历史=================================================
+    public String onQuerySales() {
+        try {
+            //检查查询参数
+            //String start = new SimpleDateFormat("yyyy-MM-dd").format(startDate);
+            //String end = new SimpleDateFormat("yyyy-MM-dd").format(endDate);
+//                selectRecords4Svprdsalinf(start, end);
+
+        } catch (Exception e) {
+            logger.error("查询数据时出现错误。", e);
+            MessageUtil.addWarn("查询数据时出现错误。");
+        }
+        return null;
+    }
+
+    public String onDeleteRecord() {
+
+        try {
+//                salesInfoService.deleteSalesInfoOneRecord(this.selectedSale, this.operId);
+            onQuerySales();
+        } catch (Exception e) {
+            logger.error("数据删除错误！", e);
+            MessageUtil.addError("数据删除错误！");
+        }
+        return null;
+    }
+
+
     //====================================================
 
-    public String getOperid() {
-        return operid;
-    }
-
-    public void setOperid(String operid) {
-        this.operid = operid;
-    }
-
-    public SalesInfoBean getVo() {
+    public SvSaleDetail getVo() {
         return vo;
     }
 
-    public void setVo(SalesInfoBean vo) {
+    public void setVo(SvSaleDetail vo) {
         this.vo = vo;
     }
 
@@ -404,30 +406,6 @@ public class CustSaleDataInputAction implements Serializable {
 
     public void setTxnDate(String txnDate) {
         this.txnDate = txnDate;
-    }
-
-    public String getBatchInputMode() {
-        return batchInputMode;
-    }
-
-    public void setBatchInputMode(String batchInputMode) {
-        this.batchInputMode = batchInputMode;
-    }
-
-    public String getRouterPath() {
-        return routerPath;
-    }
-
-    public void setRouterPath(String routerPath) {
-        this.routerPath = routerPath;
-    }
-
-    public String getPanelTitle() {
-        return panelTitle;
-    }
-
-    public void setPanelTitle(String panelTitle) {
-        this.panelTitle = panelTitle;
     }
 
     public boolean isSubprdidShow() {
@@ -540,6 +518,126 @@ public class CustSaleDataInputAction implements Serializable {
 
     public void setSalesInfoService(TmSalesInfoService salesInfoService) {
         this.salesInfoService = salesInfoService;
+    }
+
+    public CustMngParam getParamBean() {
+        return paramBean;
+    }
+
+    public void setParamBean(CustMngParam paramBean) {
+        this.paramBean = paramBean;
+    }
+
+    public SvCmsCustbase getSelectedCust() {
+        return selectedCust;
+    }
+
+    public void setSelectedCust(SvCmsCustbase selectedCust) {
+        this.selectedCust = selectedCust;
+    }
+
+    public List<SvCmsCustbase> getDetlCustList() {
+        return detlCustList;
+    }
+
+    public void setDetlCustList(List<SvCmsCustbase> detlCustList) {
+        this.detlCustList = detlCustList;
+    }
+
+    public List<SvClsCustinfo> getDetlBizList() {
+        return detlBizList;
+    }
+
+    public void setDetlBizList(List<SvClsCustinfo> detlBizList) {
+        this.detlBizList = detlBizList;
+    }
+
+    public List<SelectItem> getBranchList() {
+        return branchList;
+    }
+
+    public void setBranchList(List<SelectItem> branchList) {
+        this.branchList = branchList;
+    }
+
+    public Map<String, String> getRptNameMap() {
+        return rptNameMap;
+    }
+
+    public void setRptNameMap(Map<String, String> rptNameMap) {
+        this.rptNameMap = rptNameMap;
+    }
+
+    public String getBranchId() {
+        return branchId;
+    }
+
+    public void setBranchId(String branchId) {
+        this.branchId = branchId;
+    }
+
+    public String getOperId() {
+        return operId;
+    }
+
+    public void setOperId(String operId) {
+        this.operId = operId;
+    }
+
+    public CustMngService getCustMngService() {
+        return custMngService;
+    }
+
+    public void setCustMngService(CustMngService custMngService) {
+        this.custMngService = custMngService;
+    }
+
+    public List<SvSaleDetail> getSalesVOList() {
+        return salesVOList;
+    }
+
+    public void setSalesVOList(List<SvSaleDetail> salesVOList) {
+        this.salesVOList = salesVOList;
+    }
+
+    public SvSaleDetail getSelectedSale() {
+        return selectedSale;
+    }
+
+    public void setSelectedSale(SvSaleDetail selectedSale) {
+        this.selectedSale = selectedSale;
+    }
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(String custName) {
+        this.custName = custName;
+    }
+
+    public String getCertType() {
+        return certType;
+    }
+
+    public void setCertType(String certType) {
+        this.certType = certType;
+    }
+
+    public String getCertNo() {
+        return certNo;
+    }
+
+    public void setCertNo(String certNo) {
+        this.certNo = certNo;
+    }
+
+    public String getSubPrdName() {
+        return subPrdName;
+    }
+
+    public void setSubPrdName(String subPrdName) {
+        this.subPrdName = subPrdName;
     }
 }
 
