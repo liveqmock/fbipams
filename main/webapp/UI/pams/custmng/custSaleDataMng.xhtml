@@ -317,7 +317,7 @@
                              emptyMessage="数据记录为空...">
 
                     <p:ajax event="rowSelect" listener="#{custSaleDataInputAction.onCustRowSelect}"
-                            update=":form:tabView:msgs :inputform:inputpanel"/>
+                            update=":form:tabView:msgs :inputform:inputpanel :saleform:salepdt"/>
                     <p:ajax event="rowUnselect" listener="#{custSaleDataInputAction.onCustRowUnSelect}"
                             update=":form:tabView:msgs "/>
 
@@ -408,7 +408,7 @@
                                 listener="#{custSaleDataInputAction.onPrdidListener}"
                                 process="@this"/>
                     </p:inputText>
-                    <h:outputText id="prdName" value="#{custSaleDataInputAction.vo.prdname}" style="color:#999999;"/>
+                    <h:outputText id="prdName" value="#{custSaleDataInputAction.prdName}" style="color:#999999;"/>
 
                     <h:outputLabel id="subprdIdLabel" value="产品子类:" rendered="#{custSaleDataInputAction.subprdidShow}"/>
                     <p:inputText id="subprdId" autocomplete="false"
@@ -421,14 +421,14 @@
                                 listener="#{custSaleDataInputAction.onSubprdidListener}"
                                 process="@this"/>
                     </p:inputText>
-                    <h:outputText id="subprdName" value="#{custSaleDataInputAction.vo.subprdname}"
+                    <h:outputText id="subprdName" value="#{custSaleDataInputAction.subPrdName}"
                                   style="color:#999999;"/>
                 </h:panelGrid>
                 <h:panelGrid>
                     <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
                         <p:commandButton id="saveButton" value="保  存" style="width:90px;"
                                          action="#{custSaleDataInputAction.onSaveBtnClick}"
-                                         update="growls,inputform" ajax="true">
+                                         update="growls,inputform,:saleform:salepdt " ajax="true">
                         </p:commandButton>
                     </h:panelGrid>
                 </h:panelGrid>
@@ -438,7 +438,7 @@
                          columnClasses="input-col-m,input-col-xl,input-col-m,input-col-xl,input-col-m,input-col-xl">
 
                 <h:outputLabel value="证件类型:"/>
-                <p:inputText id="certtype" value="#{custSaleDataInputAction.vo.certtype}"
+                <p:inputText id="certtype" value="#{custSaleDataInputAction.certType}"
                              requiredMessage="证件类型必须输入。"
                              required="false"
                              readonly="true"
@@ -447,7 +447,7 @@
                 </p:inputText>
 
                 <h:outputLabel value="证件号码:"/>
-                <p:inputText id="certno" value="#{custSaleDataInputAction.vo.certno}"
+                <p:inputText id="certno" value="#{custSaleDataInputAction.certNo}"
                              requiredMessage="证件号码必须输入。"
                              required="false"
                              readonly="true"
@@ -459,7 +459,7 @@
                 <p:inputText id="customerName" autocomplete="false"
                              required="false"
                              readonly="true"
-                             value="#{custSaleDataInputAction.vo.customername}"
+                             value="#{custSaleDataInputAction.custName}"
                              requiredMessage="客户姓名必须输入。"
                              onkeydown="KeyDown()"
                              onfocus="this.select()">
@@ -647,23 +647,23 @@
                      rowKey="#{sales.guid}"
                      emptyMessage="数据记录为空...">
 
-            <p:column style="text-align:center" sortBy="#{sales.tellername}">
+            <p:column style="text-align:center" sortBy="#{sales.tellerid}">
                 <f:facet name="header">
                     柜员
                 </f:facet>
-                <h:outputText value="#{sales.tellername}"/>
+                <h:outputText value="#{sales.tellerid}"/>
             </p:column>
-            <p:column style="text-align:center" sortBy="#{sales.prdname}">
+            <p:column style="text-align:center" sortBy="#{sales.prdid}">
                 <f:facet name="header">
                     产品
                 </f:facet>
-                <h:outputText value="#{sales.prdname}"/>
+                <h:outputText value="#{custSaleDataInputAction.prdid}"/>
             </p:column>
-            <p:column style="text-align:center" sortBy="#{sales.subprdname}">
+            <p:column style="text-align:center" sortBy="#{sales.subprdid}">
                 <f:facet name="header">
                     产品子类
                 </f:facet>
-                <h:outputText value="#{sales.subprdname}"/>
+                <h:outputText value="#{sales.subprdid}"/>
             </p:column>
 
             <p:column>
@@ -691,7 +691,7 @@
 
             <p:column headerText="操作" style="text-align:center">
                 <h:commandLink immediate="true" value="删除" action="#{custSaleDataInputAction.onDeleteRecord}">
-                    <f:setPropertyActionListener value="#{record}" target="#{custSaleDataInputAction.selectedSale}"/>
+                    <f:setPropertyActionListener value="#{sales}" target="#{custSaleDataInputAction.selectedSale}"/>
                 </h:commandLink>
             </p:column>
         </p:dataTable>

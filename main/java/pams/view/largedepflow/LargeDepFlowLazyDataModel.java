@@ -44,6 +44,7 @@ public class LargeDepFlowLazyDataModel extends LazyDataModel<OdsbLargedepFlow> {
                 }
             }else{ //Ä¬ÈÏÅÅÐò×Ö¶Î
                 vo.setSortField("INST_NO");
+//                vo.setSortField("1");
             }
             dataList = this.largeDepFlowMapper.selectPagedLargeDepFlowRecords(vo);
         } catch (Exception e) {

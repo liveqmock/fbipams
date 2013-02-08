@@ -3,7 +3,9 @@ package pams.view.custmng;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
+import org.primefaces.component.datatable.DataTable;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.CellEditEvent;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 import org.slf4j.Logger;
@@ -13,7 +15,6 @@ import pams.common.utils.MessageUtil;
 import pams.repository.model.*;
 import pams.repository.model.custlist.CustMngParam;
 import pams.service.custmng.CustMngService;
-import pams.service.telemarketing.TmSalesInfoService;
 import pub.platform.security.OperatorManager;
 import skyline.service.PlatformService;
 import skyline.service.ToolsService;
@@ -62,6 +63,7 @@ public class CustSaleDataInputAction implements Serializable {
     private String custName;
     private String certType;
     private String certNo;
+    private String prdName;
     private String subPrdName;
     private boolean isSubprdidShow = true;
     private List<Svprdsalinf> salesList;
@@ -86,8 +88,6 @@ public class CustSaleDataInputAction implements Serializable {
 
     @ManagedProperty(value = "#{custMngService}")
     private CustMngService custMngService;
-    @ManagedProperty(value = "#{tmSalesInfoService}")
-    private TmSalesInfoService salesInfoService;
 
     public CustSaleDataInputAction() {
     }
@@ -160,6 +160,8 @@ public class CustSaleDataInputAction implements Serializable {
             this.custName = selectedCust.getCustName();
             this.certType = selectedCust.getCertType();
             this.certNo = selectedCust.getCertNo();
+            this.vo.setCustguid(selectedCust.getGuid());
+            salesVOList = custMngService.selectsaleDetails(selectedCust.getGuid());
         } catch (Exception e) {
             logger.error("查询数据时出现错误。", e);
             MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
@@ -167,6 +169,31 @@ public class CustSaleDataInputAction implements Serializable {
     }
     public void onCustRowUnSelect(UnselectEvent event) {
         logger.debug("unselect" + event.toString());
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        org.primefaces.component.api.UIColumn uic = event.getColumn();
+        if (newValue != null && !newValue.equals(oldValue)) {
+            Object source = event.getSource();
+            DataTable dt = (DataTable) source;
+            String guid = (String) dt.getRowKey();
+            String id = uic.getCellEditor().getId();
+            if ("contractExt".equals(id)) {
+                custMngService.updateCustBaseContractExtInfo(guid, (String) newValue);
+            }else if ("remark".equals(id)) {
+                custMngService.updateCustBaseRemark(guid, (String) newValue);
+            }
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("CusSaleDataInput_onCellEdit");
+            oplog.setActionName("客户营销信息管理:修改客户基本信息");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+
+        }
     }
 
 
@@ -229,11 +256,12 @@ public class CustSaleDataInputAction implements Serializable {
         this.vo.setOperdate(date);
         this.vo.setRecversion((long) 0);
 
-        Svprdsalinf svprdsalinf;
+        SvSaleDetail saleDetail;
         try {
-            svprdsalinf = new Svprdsalinf();
-            PropertyUtils.copyProperties(svprdsalinf, this.vo);
-            salesInfoService.insertSalesInfo(svprdsalinf);
+            saleDetail = new SvSaleDetail();
+            PropertyUtils.copyProperties(saleDetail, this.vo);
+            custMngService.insertSaleDetailInfo(saleDetail);
+            salesVOList = custMngService.selectsaleDetails(selectedCust.getGuid());
         } catch (Exception e) {
             MessageUtil.addError("数据转换错误！");
             logger.error("数据转换错误！", e);
@@ -380,8 +408,8 @@ public class CustSaleDataInputAction implements Serializable {
     public String onDeleteRecord() {
 
         try {
-//                salesInfoService.deleteSalesInfoOneRecord(this.selectedSale, this.operId);
-            onQuerySales();
+            custMngService.deleteSaleDetailInfo(this.selectedSale);
+            salesVOList = custMngService.selectsaleDetails(selectedCust.getGuid());
         } catch (Exception e) {
             logger.error("数据删除错误！", e);
             MessageUtil.addError("数据删除错误！");
@@ -512,14 +540,6 @@ public class CustSaleDataInputAction implements Serializable {
         this.platformService = platformService;
     }
 
-    public TmSalesInfoService getSalesInfoService() {
-        return salesInfoService;
-    }
-
-    public void setSalesInfoService(TmSalesInfoService salesInfoService) {
-        this.salesInfoService = salesInfoService;
-    }
-
     public CustMngParam getParamBean() {
         return paramBean;
     }
@@ -638,6 +658,14 @@ public class CustSaleDataInputAction implements Serializable {
 
     public void setSubPrdName(String subPrdName) {
         this.subPrdName = subPrdName;
+    }
+
+    public String getPrdName() {
+        return prdName;
+    }
+
+    public void setPrdName(String prdName) {
+        this.prdName = prdName;
     }
 }
 

@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pams.repository.dao.PtoperMapper;
 import pams.repository.dao.SvCmsCustbaseMapper;
+import pams.repository.dao.SvSaleDetailMapper;
 import pams.repository.dao.custlist.CustlistMapper;
-import pams.repository.model.Ptoper;
-import pams.repository.model.PtoperExample;
-import pams.repository.model.SvCmsCustbase;
-import pams.repository.model.SvCmsCustbaseExample;
+import pams.repository.model.*;
 
 import java.util.List;
 
@@ -26,6 +24,8 @@ public class CustMngService {
 
     @Autowired
     private SvCmsCustbaseMapper cmsCustbaseMapper;
+    @Autowired
+    private SvSaleDetailMapper saleDetailMapper;
     @Autowired
     private CustlistMapper custlistMapper;
     @Autowired
@@ -77,6 +77,20 @@ public class CustMngService {
         SvCmsCustbase base = cmsCustbaseMapper.selectByPrimaryKey(guid);
         base.setRemark(info);
         cmsCustbaseMapper.updateByPrimaryKey(base);
+    }
+
+    //营销业绩录入
+    public int insertSaleDetailInfo(SvSaleDetail record){
+        return saleDetailMapper.insert(record);
+    }
+    public int deleteSaleDetailInfo(SvSaleDetail record){
+        return saleDetailMapper.deleteByPrimaryKey(record.getGuid());
+    }
+
+    public List<SvSaleDetail> selectsaleDetails(String custGuid){
+        SvSaleDetailExample example = new SvSaleDetailExample();
+        example.createCriteria().andCustguidEqualTo(custGuid);
+        return saleDetailMapper.selectByExample(example);
     }
 
     //=====================================================================
