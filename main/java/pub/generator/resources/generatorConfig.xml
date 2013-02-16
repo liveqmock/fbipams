@@ -85,6 +85,7 @@
         <!--ODSB数据类 -->
         <!--
         <table tableName="odsb_largedep_flow" />
+        <table tableName="odsb_st_tconfirm_trad" />
        -->
         <!--对私客户信息 -->
         <!--

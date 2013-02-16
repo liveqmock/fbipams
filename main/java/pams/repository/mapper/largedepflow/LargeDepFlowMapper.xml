@@ -48,7 +48,6 @@
                     select  *
                         from ODSB_LARGEDEP_FLOW a
                         <include refid="QueryCustinfo_Where_Clause" />
-<!--
                     order by
                        <if test = " sortField != null and sortField != '' ">
                             ${sortField}
@@ -56,7 +55,7 @@
                        <if test = " sortOrder != null and sortOrder != '' ">
                             ${sortOrder}
                        </if>
--->
+                       , rowid
         ) t1
         <![CDATA[
         where rownum <= #{pagesize}) t2

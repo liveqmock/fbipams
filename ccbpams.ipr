@@ -55,6 +55,8 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/main/java/pams/view/largedepflow/LargeDepFlowLazyDataModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA07V1LazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/common/custChnInfo.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA01V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA02V1.xhtml" charset="UTF-8" />
@@ -62,6 +64,7 @@
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA04V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA06V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA06V1_1.xhtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA07V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/report" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/test/testui.xhtml" charset="UTF-8" />
   </component>
@@ -282,6 +285,7 @@
         <root url="file://$PROJECT_DIR$/../../lib" />
         <root url="file://$PROJECT_DIR$/../../lib" />
         <root url="file://$PROJECT_DIR$/../../lib" />
+        <root url="jar://D:/javalib/primefaces/primefaces-3.5/primefaces-3.5-sources.jar!/" />
       </SOURCES>
       <jarDirectory url="file://$PROJECT_DIR$/../../lib" recursive="false" />
       <jarDirectory url="file://$PROJECT_DIR$/../../lib" recursive="false" />

@@ -135,4 +135,36 @@
                 ON A3.OPR_UNIT_CD = A1.INST_NO)
         ]]>
     </insert>
+
+    <!--计算符合查询条件的记录数  -->
+    <delete id="deleteData_RptA07V1" parameterType="java.lang.String">
+        <![CDATA[
+          delete from ODSB_ST_TCONFIRM_TRAD where d_cdate >= #{startDate}
+        ]]>
+    </delete>
+    <insert id="importRecords__RptA07V1" parameterType="java.lang.String">
+        <![CDATA[
+        insert into ODSB_ST_TCONFIRM_TRAD
+            (
+            SELECT
+                t3.CUST_NAME  投资人姓名
+                ,t3.CERT_NO  证件号码
+                ,t3.SECUR_CORD  证券卡号
+                ,t3.CAPI_ACCOUNT  资金帐号
+                ,t2.FUND_ACCT_NO  基金帐号
+                ,t1.FUND_CD  基金代码
+                ,t3.CUST_CITY_ACCNT  转账签约帐号
+                ,t1.D_CDATE  确认日期
+                ,t1.D_DATE  交易申请日期
+                ,t1.F_CONFIRMBALANCE  确认金额
+                ,t1.F_CONFIRMSHARES  确认份额
+                ,t3.CARD_DATE  卡建立日期
+                ,t3.CUST_OPEN_DT  开户日期
+                ,t3.CUST_OPEN_NODE  开户网点
+                ,t2.TSBN 证券网点编号
+                FROM BF_EVT_NIN_ST_TCONFIRM_TRAD t1,BF_AGT_NIN_ST_TACCOINFO t2,BF_AGT_NIN_ST_TA_SEC_CARD t3
+                WHERE t1.Fund_Acct_No=t2.Fund_Acct_No AND t2.Secur_Cord=t3.Secur_Cord AND t1.D_CDATE >= #{startDate}
+            )
+        ]]>
+    </insert>
 </mapper>
