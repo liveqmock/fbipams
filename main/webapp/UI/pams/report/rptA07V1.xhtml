@@ -32,11 +32,11 @@
                                     <f:selectItems value="#{rptA07V1Action.branchList}"/>
                                 </h:selectOneMenu>
 
-                                <h:outputLabel value="交易起日:"/>
+                                <h:outputLabel value="起始起日:"/>
                                 <p:inputText id="startDate" value="#{rptA07V1Action.paramBean.startDate}" title="起始日期"
                                              required="true" requiredMessage="请输入起始日期"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
-                                <h:outputLabel value="交易起日:"/>
+                                <h:outputLabel value="截止起日:"/>
                                 <p:inputText id="endDate" value="#{rptA07V1Action.paramBean.endDate}" title="截止日期"
                                              required="true" requiredMessage="请输入截止日期"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
@@ -68,8 +68,9 @@
                 </p:ajaxStatus>
 
                 <p:dataTable id="pdt" style="width:100%;"
+                             lazy="true"
                              value="#{rptA07V1Action.lazyDataModel}" var="record"
-                             rowKey="#{record.pkid}"
+                             rowKey="#{record.guid}"
                              selection="#{rptA07V1Action.selectedRecord}" selectionMode="single"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
                              currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
@@ -77,10 +78,98 @@
                              paginatorPosition="bottom"
                              rowsPerPageTemplate="100,50,30,15,5"
                              emptyMessage="数据记录为空...">
-
-                    <p:column headerText="投资人姓名" style="text-align:center" sortBy="#{record.custName}">
+                    <p:column style="text-align:center"  sortBy="#{record.custName}">
+                        <f:facet name="header">
+                            投资人姓名
+                        </f:facet>
                         <h:outputText value="#{record.custName}"/>
                     </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.custNo}">
+                        <f:facet name="header">
+                            证件号码
+                        </f:facet>
+                        <h:outputText value="#{record.custNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.securCord}">
+                        <f:facet name="header">
+                            证券卡号
+                        </f:facet>
+                        <h:outputText value="#{record.securCord}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.capiAcount}">
+                        <f:facet name="header">
+                            资金帐号
+                        </f:facet>
+                        <h:outputText value="#{record.capiAcount}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center"  sortBy="#{record.fundAcctNo}">
+                        <f:facet name="header">
+                            基金帐号
+                        </f:facet>
+                        <h:outputText value="#{record.fundAcctNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.fundCd}">
+                        <f:facet name="header">
+                            基金代码
+                        </f:facet>
+                        <h:outputText value="#{record.fundCd}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.custCityAccnt}">
+                        <f:facet name="header">
+                            转账签约帐号
+                        </f:facet>
+                        <h:outputText value="#{record.custCityAccnt}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.dCdate}">
+                        <f:facet name="header">
+                            确认日期
+                        </f:facet>
+                        <h:outputText value="#{record.dCdate}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.dDate}">
+                        <f:facet name="header">
+                            交易申请日期
+                        </f:facet>
+                        <h:outputText value="#{record.dDate}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.fConfirmbalance}">
+                        <f:facet name="header">
+                            确认金额
+                        </f:facet>
+                        <h:outputText value="#{record.fConfirmbalance}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.fConfirmshares}">
+                        <f:facet name="header">
+                            确认份额
+                        </f:facet>
+                        <h:outputText value="#{record.fConfirmshares}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.cardDate}">
+                        <f:facet name="header">
+                            卡建立日期
+                        </f:facet>
+                        <h:outputText value="#{record.cardDate}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.custOpenDt}">
+                        <f:facet name="header">
+                            开户日期
+                        </f:facet>
+                        <h:outputText value="#{record.custOpenDt}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.custOpenNode}">
+                        <f:facet name="header">
+                            开户网点
+                        </f:facet>
+                        <h:outputText value="#{record.custOpenNode}"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.tsbn}">
+                        <f:facet name="header">
+                            证券网点编号
+                        </f:facet>
+                        <h:outputText value="#{record.tsbn}"/>
+                    </p:column>
+
                 </p:dataTable>
                 <p:panel style="margin-top: 5px;" >
                     <h:panelGrid columns="1">

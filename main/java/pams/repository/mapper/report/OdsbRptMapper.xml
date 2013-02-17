@@ -7,16 +7,16 @@
       <where>
           a.CUST_OPEN_NODE in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
           <if test = " startDate != null and startDate != '' ">
-                <![CDATA[ and a.TX_DT >= #{startDate} ]]>
+                <![CDATA[ and a.D_CDATE >= #{startDate} ]]>
           </if>
           <if test = " endDate != null and endDate != '' ">
-                <![CDATA[ and a.TX_DT <= #{endDate} ]]>
+                <![CDATA[ and a.D_CDATE <= #{endDate} ]]>
           </if>
           <if test = " startAmt != null and startAmt != 0 ">
-              <![CDATA[ and a.CR_TX_AMT >= #{startAmt} ]]>
+              <![CDATA[ and a.F_CONFIRMBALANCE >= #{startAmt} ]]>
           </if>
           <if test = " endAmt != null and endAmt != 0 ">
-              <![CDATA[ and a.CR_TX_AMT <= #{endAmt}  ]]>
+              <![CDATA[ and a.F_CONFIRMBALANCE <= #{endAmt}  ]]>
           </if>
           <if test = " custName != null and custName != '' ">
                and a.CUST_NAME like '%${custName}%'
