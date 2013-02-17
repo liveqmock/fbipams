@@ -136,13 +136,13 @@
         ]]>
     </insert>
 
-    <!--计算符合查询条件的记录数  -->
+    <!--基金成交客户明细  -->
     <delete id="deleteData_RptA07V1" parameterType="java.lang.String">
         <![CDATA[
           delete from ODSB_ST_TCONFIRM_TRAD where d_cdate >= #{startDate}
         ]]>
     </delete>
-    <insert id="importRecords__RptA07V1" parameterType="java.lang.String">
+    <insert id="importRecords_RptA07V1" parameterType="java.lang.String">
         <![CDATA[
         insert into ODSB_ST_TCONFIRM_TRAD
             (
@@ -162,7 +162,8 @@
                 ,t3.CUST_OPEN_DT  开户日期
                 ,t3.CUST_OPEN_NODE  开户网点
                 ,t2.TSBN 证券网点编号
-                FROM BF_EVT_NIN_ST_TCONFIRM_TRAD t1,BF_AGT_NIN_ST_TACCOINFO t2,BF_AGT_NIN_ST_TA_SEC_CARD t3
+                ,sys_guid() guid
+                FROM BF_EVT_NIN_ST_TCONFIRM_TRAD@odsbptdb t1,BF_AGT_NIN_ST_TACCOINFO@odsbptdb t2,BF_AGT_NIN_ST_TA_SEC_CARD@odsbptdb t3
                 WHERE t1.Fund_Acct_No=t2.Fund_Acct_No AND t2.Secur_Cord=t3.Secur_Cord AND t1.D_CDATE >= #{startDate}
             )
         ]]>

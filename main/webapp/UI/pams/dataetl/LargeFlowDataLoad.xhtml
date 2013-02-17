@@ -14,7 +14,7 @@
             <h:form id="form">
                 <div style="margin-top: 20px;">
                     <p:tabView dynamic="true" cache="false" style="font-weight:normal;font-style:normal">
-                        <p:tab title="大额资金转移数据倒入">
+                        <p:tab title="大额资金转移数据导入">
                             <p:messages id="msgs" showDetail="true"/>
                             <h:panelGrid columns="2" cellspacing="10">
                                 <h:outputLabel value="起始数据日期:" style="font-weight: bold;" for="startdate"/>
@@ -33,7 +33,7 @@
                             <p:separator/>
                             <h:panelGrid columns="1" columnClasses="exportbutton">
                                 <h:panelGroup>
-                                    <p:commandButton value="数据倒入处理" image="ui-icon-disk" ajax="true" update="msgs"
+                                    <p:commandButton value="数据导入处理" image="ui-icon-disk" ajax="true" update="msgs"
                                                      actionListener="#{dataETLAction.onProcessLargeFlowData()}"/>
                                 </h:panelGroup>
                             </h:panelGrid>

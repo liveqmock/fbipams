@@ -19,4 +19,8 @@ public interface DataETLMapper {
     //大额资金流向
     int deleteLargeFlowData(String startDate);
     int importLargeFlowRecords(String startDate);
+
+    //基金成交客户明细
+    int deleteData_RptA07V1(String startDate);
+    int importRecords_RptA07V1(String startDate);
 }

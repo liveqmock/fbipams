@@ -53,5 +53,15 @@ public class DataETLService {
         dataETLMapper.deleteLargeFlowData(startDate);
         dataETLMapper.importLargeFlowRecords(startDate);
     }
+
+    public void importData_RptA07V1(String startDate){
+        try {
+            new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+        } catch (ParseException e) {
+            throw new RuntimeException("日期格式错误!", e);
+        }
+        dataETLMapper.deleteData_RptA07V1(startDate);
+        dataETLMapper.importRecords_RptA07V1(startDate);
+    }
     //=====================================================================
 }
