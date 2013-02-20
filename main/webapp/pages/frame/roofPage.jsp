@@ -49,60 +49,45 @@
 <head>
     <META http-equiv="Content-Type" content="text/html; charset=gb2312">
     <LINK href="<%=contextPath%>/css/ccb.css" type="text/css" rel="stylesheet">
+    <LINK href="<%=contextPath%>/css/diytabbar.css" type="text/css" rel="stylesheet">
     <script type="text/javascript">
-
         function Relogin() {
             parent.window.reload = "true";
-            parent.window.location.replace("/ccbpams/pages/security/logout.jsp");
-            //parent.window.location.replace("<%=contextPath%>/index.login");
+            parent.window.location.replace("<%=contextPath%>/pages/security/logout.jsp");
         }
         function changepwd() {
             var sfeature = "dialogwidth:400px; dialogheight:200px;center:yes;help:no;resizable:no;scroll:no;status:no";
             window.showModalDialog("<%=contextPath%>/UI/system/deptUser/Passwordedit.jsp", "test", sfeature);
         }
-        function goFirst() {
-            parent.window.workFrame.location.replace("<%=contextPath%>/pages/frame/trackMisc.xhtml");
+        var dividary = new Array('bizlayout', 'syslayout', 'helplayout', 'verlayout');
+        function tabbarclk(obj) {
+            var active = obj.getAttribute("active");
+            if (active == 'false') {
+                setclass(obj.getAttribute("id"));
+                obj.setAttribute("active", "true");
+                obj.setAttribute("className", "tabs-item-active");
+                //切换父窗口tree
+                parent.document.getElementById("accordItemid").value = obj.getAttribute("id");
+                parent.document.getElementById("btnExchangeAccd").click();
+            }
+        }
+        function setclass(activeid) {
+            for (var i = 0; i < dividary.length; i++) {
+                if (dividary[i] != activeid) {
+                    document.getElementById(dividary[i]).setAttribute("className", "tabs-item");
+                    document.getElementById(dividary[i]).setAttribute("active", "false");
+                }
+            }
         }
     </script>
 
     <style type="text/css">
-        body {
+        html, body {
             background-color: #FFF;
-        }
-
-        div#nifty1 {
-            margin: 0 1px; /*background: #9BD1FA;*/
-        /*background: #7A8FA8;*/
-        /*background: #0F67A1;*/
-        /*background: #B54936;*/
-        /*background: #FF6600;*/
-        /*background: #999999;*/
-            background: #7387A0;
-        }
-
-        div#nifty2 {
-            margin: 0 1px;
-            background: #7387A0;
-        }
-
-        div#nifty3 {
-            margin: 0 1px;
-            background: #7387A0;
-        }
-
-        div#nifty4 {
-            margin: 0 1px;
-            background: #7387A0;
-        }
-
-        div#nifty5 {
-            margin: 0 1px;
-            background: #7387A0;
-        }
-
-        b.rtop, b.rbottom {
-            display: block;
-            background: #FFF
+            color: #7387A0;
+            margin: 0px;
+            padding: 0px;
+            overflow: auto;
         }
 
         b.rtop b, b.rbottom b {
@@ -111,75 +96,55 @@
             overflow: hidden;
             background: #7387A0
         }
-
-        b.r1 {
-            margin: 0 5px
-        }
-
-        b.r2 {
-            margin: 0 3px
-        }
-
-        b.r3 {
-            margin: 0 2px
-        }
-
-        b.rtop b.r4, b.rbottom b.r4 {
-            margin: 0 1px;
-            height: 2px
-        }
     </style>
-
-
 </head>
-<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" onunload="Relogin()" >
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" onunload="Relogin()">
 <input id="hhidOperatorID" type="hidden" value="<%=operid%>">
-<table width="100%" cellpadding="0" cellspacing="0">
-    <tr width="100%" height="50px" style="margin-bottom: 0px;margin-top:0px;margin:0px;padding:0px">
-        <td width="50%" style="height:50" colspan="4">
+<table width="100%" cellpadding="0" cellspacing="0" style="margin:0px;padding:0px;">
+    <tr width="100%" height="25px">
+        <td width="10%" rowspan="2">
             &nbsp;&nbsp;
-            <img  src="../../images/ccb.jpg"  height="50px" >
-            <img src="../../images/pamstitle.jpg" height="50px">
+            <img src="../../images/hfccrm.gif" height="45px">
         </td>
-        <td width="50%" style="height:50;text-align:right" colspan="1">
-            <font color="#5F6A78"> <span>您好,<%=username%>! </span> </font>
-            <font color="#5F6A78"> <span onclick="changepwd()"
-                                         onMouseOver="this.style.cursor='hand'">|&nbsp;&nbsp;修改密码</span> </font>
-            <font color="#5F6A78"> <span onclick="goFirst() "
-                                         onMouseOver="this.style.cursor='hand'">|&nbsp;&nbsp;回首页</span> </font>
-            <font color="#5F6A78"> <span onclick="Relogin()"
-                                         onMouseOver="this.style.cursor='hand'">|  退出 &nbsp;&nbsp;</span> </font>
+        <td width="30%">
+            <img src="../../images/systitle.jpg" height="25px">
+        </td>
+        <td style="height:25px;text-align:right">
+            <span>您好,<%=username%>! </span>
+            <span onclick="changepwd()"
+                  onMouseOver="this.style.cursor='hand'">|&nbsp;&nbsp;修改密码</span>
+             <span onclick="Relogin()"
+                   onMouseOver="this.style.cursor='hand'">|  退出 &nbsp;&nbsp;</span>
         </td>
     </tr>
-
-
-    <tr>
-        <td colspan="5">
-            <div id="nifty1">
-                <b class="rtop">
-                    <b class="r1"></b>
-                    <b class="r2"></b>
-                    <b class="r3"></b>
-                    <b class="r4"></b>
-                </b>
-
-                <div style="height:15px;text-align:right">
-                    <font color="#ECEFF2">
-                        <%--<font color="#FFFFFF">--%>
-                        <%=" " + deptname + " | " + operid + " | <" + rolesall + ">" %>   &nbsp;&nbsp;&nbsp;
-                    </font>
-                </div>
-                <b class="rbottom">
-                    <b class="r4"></b>
-                    <b class="r3"></b>
-                    <b class="r2"></b>
-                    <b class="r1"></b>
-                </b>
+    <tr height="25px">
+        <td colspan="2" width="100%" style="height: 100%;">
+            <div onclick="tabbarclk(this);" active="true" id="bizlayout" class="tabs-item-active"
+                 style="float:left;width:80px;">
+                <span style="width:100%;">业务管理</span>
             </div>
+            <div style="float:left;width:2px;"></div>
+            <div onclick="tabbarclk(this);" active="false" id="syslayout" class="tabs-item"
+                 style="float:left;width:80px;">
+                <span style="width:100%;">系统管理</span>
+            </div>
+            <div style="float:left;width:2px;"></div>
+            <div onclick="tabbarclk(this);" active="false" id="helplayout" class="tabs-item"
+                 style="float:left;width:80px;">
+                <span style="width:100%;">系统帮助</span>
+            </div>
+            <div style="float:left;width:2px;"></div>
+            <div onclick="tabbarclk(this);" active="false" id="verlayout" class="tabs-item"
+                 style="float:left;width:80px;">
+                <span style="width:100%;">版本控制</span>
+            </div>
+            <%--<%=" " + deptname + " | " + operid + " | <" + rolesall + ">" %>--%>
         </td>
+    </tr>
+    <tr>
+        <td width="100%" style="height:4px;background-color: #3169AD;" colspan="3"></td>
     </tr>
 </table>
-
 
 </body>
 </html>

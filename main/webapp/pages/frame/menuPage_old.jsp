@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=GBK" %>
+<%--<%@ include file="/global.jsp"%>--%>
 <%@ include file="/pages/security/online.jsp" %>
 <%@ page import="pub.platform.security.OperatorManager" %>
 <%@ page import="pub.platform.form.config.SystemAttributeNames" %>
@@ -15,13 +16,19 @@
 
 <html xmlns:hGui>
 <head>
+    <link href="<%=contextPath%>/css/ccb.css" type="text/css" rel="stylesheet">
+    <script language="javascript" src="<%=contextPath%>/js/xmlHttp.js"></script>
+    <script language="javascript" src="<%=contextPath%>/js/basic.js"></script>
+    <script language="javascript" src="<%=contextPath%>/js/menuPage.js"></script>
+    <script language="javascript" src="<%=contextPath%>/js/tree.js"></script>
+    <script language="javascript" src="<%=contextPath%>/js/dbutil.js"></script>
+
     <LINK href="<%=contextPath%>/dhtmlx/codebase/dhtmlxlayout.css" type="text/css" rel="stylesheet">
     <LINK href="<%=contextPath%>/dhtmlx/codebase/skins/dhtmlxlayout_dhx_skyblue.css" type="text/css" rel="stylesheet">
     <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxcommon.js"></script>
     <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxlayout.js"></script>
 
-    <LINK href="<%=contextPath%>/dhtmlx/codebase/skins/dhtmlxaccordion_dhx_skyblue.css" type="text/css"
-          rel="stylesheet">
+    <LINK href="<%=contextPath%>/dhtmlx/codebase/skins/dhtmlxaccordion_dhx_skyblue.css" type="text/css" rel="stylesheet">
     <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxaccordion.js"></script>
     <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxcontainer.js"></script>
 
@@ -30,7 +37,7 @@
     <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/ext/dhtmlxtree_json.js"></script>
 
     <script language="javascript">
-        <%
+       <%
              String jsonDefaultMenu = null;
              String jsonSystemMenu = null;
              OperatorManager om = (OperatorManager)session.getAttribute(SystemAttributeNames.USER_INFO_NAME);
@@ -49,7 +56,7 @@
 
         var dhxAccord;
         function doOnLoad() {
-            document.all("accordObj").style.height = document.body.clientHeight - 0;
+            document.all("accordObj").style.height = document.body.clientHeight - 2;
             dhxAccord = new dhtmlXAccordion("accordObj");
             dhxAccord.setSkin("dhx_skyblue");
             dhxAccord.setIconsPath("<%=contextPath%>/dhtmlx/codebase/icons/");
@@ -78,14 +85,7 @@
                 if (action == "#") {
                     biztree.openItem(id);
                 } else {
-                    /*var text = biztree.getSelectedItemText();
-                     parent.document.getElementById("divid").value = id;
-                    <%--parent.document.getElementById("url").value = "<%=contextPath%>" + action;--%>
-                     parent.document.getElementById("tabname").value = text;
-                     parent.document.getElementById("btnAddTabbar").click();*/
-                    <%--parent.document.getElementsByTagName("iframe")[2].src = "<%=contextPath%>" + action;--%>
-                    <%--parent.document.getElementById("contentframe").src="<%=contextPath%>" + action;--%>
-                    <%--parent.window.workFrame.location.replace("<%=contextPath%>" + action);--%>
+                    parent.window.workFrame.location.replace("<%=contextPath%>" + action);
                 }
                 return true;
             });
@@ -100,14 +100,7 @@
                 if (action == "#") {
                     managetree.openItem(id);
                 } else {
-                    /*var text = managetree.getSelectedItemText();
-                     parent.document.getElementById("divid").value = id;
-                    <%--parent.document.getElementById("url").value = "<%=contextPath%>" + action;--%>
-                     parent.document.getElementById("tabname").value = text;
-                     parent.document.getElementById("btnAddTabbar").click();*/
-                    <%--parent.document.getElementsByTagName("iframe")[2].src = "<%=contextPath%>" + action;--%>
-                    <%--parent.document.getElementById("contentframe").src="<%=contextPath%>" + action;--%>
-                    <%--parent.window.workFrame.location.replace("<%=contextPath%>" + action);--%>
+                    parent.window.workFrame.location.replace("<%=contextPath%>" + action);
                 }
                 return true;
             });
@@ -115,36 +108,17 @@
 
         function doOnResize() {
             var parentObj = document.getElementById("accordObj");
-            parentObj.style.height = document.body.clientHeight - 0;
+            parentObj.style.height = document.body.clientHeight - 2;
             dhxAccord.setSizes();
         }
     </script>
-    <style type="text/css">
-        body {
-            background-color: #EBEBEB;
-            margin: 0px;
-            padding: 0px;
-            overflow: auto;
-        }
-        div#Header {
-            height: 30px;
-            /*width: 100%;*/
-            background-color: #EBEBEB;
-            /*background: url(../../images/roofHeader.jpg) repeat-x scroll left bottom;*/
-        }
-        div#accordObj {
-            /*width:194px;
-             height:500px;*/
-            width: 100%;
-            height: 100%;
 
-        }
-    </style>
 </head>
 
 
 <body onload="doOnLoad();" onResize="doOnResize();">
-<div id="accordObj"></div>
+
+<div id="accordObj" style="width: 194px; height: 500px; margin-left:6px;"></div>
 
 </body>
 </html>
