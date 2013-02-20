@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="报表：基金成交历史">
+    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/imgs/dhx_skyblue/bg_bottom.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/imgs/dhx_skyblue/bg_left.png" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/imgs/dhx_skyblue/bg_right.png" />
@@ -82,17 +82,6 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage_old.jsp" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/menuPage_old.jsp" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/roofPage_old.jsp" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\en.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-cn.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-tw.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\readme.txt" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\WdatePicker.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\datePicker.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\default\datepicker.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\default\img.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\bg.jpg" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\datepicker.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\img.gif" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/pages/frame/menuPage.jsp" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/menuPage.jsp" />
@@ -100,7 +89,7 @@
     </list>
     <ignored path="ccbpams.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361346864821" ignored="false" />
+    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361352183625" ignored="false" />
     <file path="/prdsetArchive.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355722123817" ignored="false" />
     <file path="/DataImporter.groovy" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355726409235" ignored="false" />
     <file path="/ImportAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1356054659829" ignored="false" />
@@ -588,7 +577,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="My97DatePicker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -606,37 +595,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
+              <option name="myItemId" value="My97DatePicker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="diytabbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ccbpams" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtmlx" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dhtmlxTabbar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codebase" />
+              <option name="myItemId" value="开发包" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -654,11 +617,137 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dhtmlx" />
+              <option name="myItemId" value="My97DatePicker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="codebase" />
+              <option name="myItemId" value="开发包" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My97DatePicker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="开发包" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My97DatePicker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My97DatePicker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="whyGreen" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My97DatePicker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My97DatePicker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1314,7 +1403,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="报表：基金成交历史" />
+    <option name="LAST_COMMIT_MESSAGE" value="页面布局" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1341,6 +1430,7 @@
     <MESSAGE value="客户营销管理 新增营销信息明细表" />
     <MESSAGE value="oracle物理分页" />
     <MESSAGE value="报表：基金成交历史" />
+    <MESSAGE value="页面布局" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
