@@ -78,6 +78,9 @@
     }
 
     .divlayout {
+        position: relative;
+        top: 0px;
+        left: 0px;
         width: 100%;
         height: 100%;
         margin: 0px;
@@ -279,7 +282,7 @@
             <img src="../../images/ccb.jpg" height="50px">
             <%--<img src="../../images/pams.jpg" height="50px" width="50px">--%>
         </td>
-        <td  colspan="2">
+        <td colspan="2">
             <img src="../../images/pamstitle1.jpg" height="28px">
         </td>
         <td style="height:25px;text-align:right" class="headfont">
@@ -292,8 +295,8 @@
         </td>
     </tr>
     <tr width="100%" height="25px">
-        <td width="4%"></td>
-        <td colspan="2"  style="height:25px;">
+        <td width="3%"></td>
+        <td colspan="2" style="height:25px;">
             <div onclick="tabbarclk(this);" active="true" id="biz" class="tabs-item-active"
                  style="float:left;width:80px;">
                 <span style="width:100%;">业务操作</span>
@@ -319,13 +322,15 @@
         <td width="100%" style="height:4px;background-color: #3169AD;" colspan="4"></td>
     </tr>
     <tr width="100%">
-        <td width="100%" colspan="4">
+        <td width="100%" colspan="4" >
             <div class="divlayout" id="bizlayout"></div>
             <div class="divlayout" id="syslayout"></div>
             <div class="divlayout" id="helplayout">
                 </br>系统帮助信息...
             </div>
-            <div class="divlayout" id="verlayout"></br>版本更新历史...</div>
+            <div class="divlayout" id="verlayout">
+                </br>版本更新历史...
+            </div>
         </td>
     </tr>
 </table>
