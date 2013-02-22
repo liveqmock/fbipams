@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/repository/model/OdsbChnTrad.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/repository/model/OdsbChnTradExample.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/repository/dao/OdsbChnTradMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/OdsbChnTradMapper.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" />
+    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="页面布局 chrome支持（未完成）">
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\en.js" afterPath="" />
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-cn.js" afterPath="" />
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-tw.js" afterPath="" />
@@ -20,19 +13,11 @@
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\bg.jpg" afterPath="" />
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\datepicker.css" afterPath="" />
       <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\img.gif" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" afterPath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/dao/dataetl/DataETLMapper.java" afterPath="$PROJECT_DIR$/main/java/pams/repository/dao/dataetl/DataETLMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java" afterPath="$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/dao/report/OdsbRptMapper.java" afterPath="$PROJECT_DIR$/main/java/pams/repository/dao/report/OdsbRptMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pub/generator/resources/generatorConfig.xml" afterPath="$PROJECT_DIR$/main/java/pub/generator/resources/generatorConfig.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" />
     </list>
     <ignored path="ccbpams.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361523713397" ignored="false" />
+    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361528336307" ignored="false" />
     <file path="/prdsetArchive.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355722123817" ignored="false" />
     <file path="/DataImporter.groovy" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355726409235" ignored="false" />
     <file path="/ImportAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1356054659829" ignored="false" />
@@ -339,7 +324,7 @@
       <file leaf-file-name="OdsbRptMapper.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="91" selection-start="4287" selection-end="4287" vertical-scroll-proportion="0.6319703">
+            <state line="100" column="91" selection-start="4287" selection-end="4287" vertical-scroll-proportion="1.559633">
               <folding />
             </state>
           </provider>
@@ -1477,12 +1462,16 @@
       <created>1361456564306</created>
       <updated>1361456564306</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="页面布局 chrome支持（未完成）">
+      <created>1361528231655</created>
+      <updated>1361528231655</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.49349594" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1703,7 +1692,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="91" selection-start="4287" selection-end="4287" vertical-scroll-proportion="0.6319703">
+        <state line="100" column="91" selection-start="4287" selection-end="4287" vertical-scroll-proportion="1.559633">
           <folding />
         </state>
       </provider>

@@ -57,6 +57,7 @@
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/main/java/pams/view/largedepflow/LargeDepFlowLazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA07V1LazyDataModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/common/custChnInfo.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA01V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA02V1.xhtml" charset="UTF-8" />
