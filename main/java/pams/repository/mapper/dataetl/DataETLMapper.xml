@@ -168,4 +168,83 @@
             )
         ]]>
     </insert>
+
+    <!--渠道交易明细  -->
+    <delete id="deleteData_RptA08V1" parameterType="java.lang.String">
+        <![CDATA[
+          delete from ODSB_CHN_TRAD
+        ]]>
+    </delete>
+    <insert id="importRecords_RptA08V1" parameterType="java.lang.String">
+        <![CDATA[
+        insert into ODSB_CHN_TRAD
+            (
+            select sys_guid() guid,
+                   t2.SIGN_INSTN as 开通签约服务机构,
+                   t1.CUST_NAME as 姓名,
+                   t1.CERT_TYPE as 证件类型,
+                   t1.CERT_NO as 证件号码,
+                   t2.SIGN_DT as 开通签约服务日期,
+                   t1.VC_MOBILENO as 手机号码,
+                   t2.ENTRY_TMS as 登录次数,
+                   t3.total as 交易笔数,
+                   case
+                     when t2.AUTH_TYPE = 'A' then
+                      '动态口令卡'
+                     when t2.AUTH_TYPE = 'B' then
+                      '短信动态口令'
+                     when t2.AUTH_TYPE = 'N' then
+                      'UKEY+短信动态口令'
+                     when t2.AUTH_TYPE = 'C' then
+                      '证书方式'
+                     when t2.AUTH_TYPE = 'E' then
+                      '动态口令卡'
+                     when t2.AUTH_TYPE = 'U' then
+                      'Ukey'
+                     when t2.AUTH_TYPE = 'F' then
+                      'Ukey＋动态口令卡'
+                     when t2.AUTH_TYPE = 'L' then
+                      '动态令牌'
+                     when t2.AUTH_TYPE = 'H' then
+                      'Ukey＋动态令牌'
+                     when t2.AUTH_TYPE = 'T' then
+                      '广东行CCI的CTS客户'
+                     when t2.AUTH_TYPE = 'S' then
+                      'UKEY＋二次短信确认'
+                     when t2.AUTH_TYPE = 'R' then
+                      '刮刮卡+短信动态口令'
+                     when t2.AUTH_TYPE = 'O' then
+                      '高端版二代网银盾'
+                     when t2.AUTH_TYPE = 'D' then
+                      '二代网银盾'
+                   end as 客户签约类型,
+                   t3.CHN_NO,
+                   t1.ECTIP_CUST_NO,
+                   t1.DCC_CUSTNO
+              from BF_PR_IND_INFO_ECTIP t1,
+                   BF_AGT_CHN_CHNP_CUST t2,
+                   (select ECTIP_CUST_NO, CHN_NO, count(*) as total
+                      from BF_EVT_CHN_CHN_TRAD
+                     where FLAT_TRAD_DT >= #{startDate}
+                       and CHN_NO in ('01','02')
+                       and AMT1 > '0'
+                       and ECTIP_CUST_NO in
+                           (select ECTIP_CUST_NO
+                              from BF_AGT_CHN_CHNP_CUST
+                             where SIGN_DT >= #{startDate})
+                     group by ECTIP_CUST_NO, CHN_NO) t3
+             where t1.ECTIP_CUST_NO = t2.ECTIP_CUST_NO
+               and t1.ECTIP_CUST_NO = t3.ECTIP_CUST_NO
+               and t2.SIGN_DT >= #{startDate}
+             group by t2.SIGN_INSTN,
+                      t1.CUST_NAME,
+                      t1.CERT_NO,
+                      t2.SIGN_DT,
+                      t1.VC_MOBILENO,
+                      t2.ENTRY_TMS,
+                      t3.total,
+                      t2.AUTH_TYPE
+           )
+        ]]>
+    </insert>
 </mapper>

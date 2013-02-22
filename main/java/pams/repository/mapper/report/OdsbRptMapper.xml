@@ -55,4 +55,52 @@
        where t2.rnum > #{offset}
        ]]>
     </select>
+
+    <!--RptA08V1 渠道交易情况明细 -->
+    <sql id="RptA08V1_Where_Clause">
+      <where>
+          a.SIGN_INSTN in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+          <if test = " startDate != null and startDate != '' ">
+                <![CDATA[ and a.SIGN_DT >= #{startDate} ]]>
+          </if>
+          <if test = " endDate != null and endDate != '' ">
+                <![CDATA[ and a.SIGN_DT <= #{endDate} ]]>
+          </if>
+          <if test = " custName != null and custName != '' ">
+               and a.CUST_NAME like '%${custName}%'
+          </if>
+          <if test = " certNo != null and certNo != '' ">
+               and a.CUST_NO like '%${certNo}%'
+          </if>
+      </where>
+    </sql>
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countRptA08V1Records" parameterType="pams.repository.model.report.BasePagedQryParamBean" resultType="java.lang.Integer">
+          select count(*)
+            from ODSB_CHN_TRAD a
+             <include refid="RptA08V1_Where_Clause" />
+    </select>
+
+    <select id="selectRptA08V1Records"  parameterType="pams.repository.model.report.BasePagedQryParamBean" resultMap="pams.repository.dao.OdsbStTconfirmTradMapper.BaseResultMap">
+        select *
+          from (select t1.*, rownum rnum
+                from (
+                    select  *
+                        from ODSB_CHN_TRAD a
+                        <include refid="RptA08V1_Where_Clause" />
+                    order by
+                       <if test = " sortField != null and sortField != '' ">
+                            ${sortField}
+                       </if>
+                       <if test = " sortOrder != null and sortOrder != '' ">
+                            ${sortOrder}
+                       </if>
+                       , rowid
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
 </mapper>

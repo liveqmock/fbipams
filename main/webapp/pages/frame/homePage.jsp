@@ -295,7 +295,7 @@
         </td>
     </tr>
     <tr width="100%" height="25px">
-        <td width="3%"></td>
+        <td width="2%"></td>
         <td colspan="2" style="height:25px;">
             <div onclick="tabbarclk(this);" active="true" id="biz" class="tabs-item-active"
                  style="float:left;width:80px;">

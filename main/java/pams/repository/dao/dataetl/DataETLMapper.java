@@ -23,4 +23,8 @@ public interface DataETLMapper {
     //基金成交客户明细
     int deleteData_RptA07V1(String startDate);
     int importRecords_RptA07V1(String startDate);
+
+    //渠道交易明细
+    int deleteData_RptA08V1(String startDate);
+    int importRecords_RptA08V1(String startDate);
 }
