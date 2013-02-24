@@ -30,6 +30,7 @@ public class DataETLAction implements Serializable {
 
     private String startdate;
     private String largeStartdate;
+    private String currYearStartdate;
 
     private List<String> selectedOptions = new ArrayList<>();
     private Map<String, String> options;
@@ -46,7 +47,7 @@ public class DataETLAction implements Serializable {
         DateTime dt = new DateTime();
         this.startdate = dt.minusMonths(1).dayOfMonth().withMaximumValue().toString("yyyyMMdd");
         this.largeStartdate = dt.minusDays(7).toString("yyyy-MM-dd");
-
+        this.currYearStartdate = dt.monthOfYear().withMinimumValue().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd");
     }
 
     public String onProcessCustBase() {
@@ -83,7 +84,7 @@ public class DataETLAction implements Serializable {
     }
     public String onProcessRptA08V1Data() {
         try {
-            dataETLService.importData_RptA08V1(largeStartdate);
+            dataETLService.importData_RptA08V1(currYearStartdate);
             MessageUtil.addInfo("数据处理完成...");
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
@@ -157,5 +158,13 @@ public class DataETLAction implements Serializable {
 
     public void setLargeStartdate(String largeStartdate) {
         this.largeStartdate = largeStartdate;
+    }
+
+    public String getCurrYearStartdate() {
+        return currYearStartdate;
+    }
+
+    public void setCurrYearStartdate(String currYearStartdate) {
+        this.currYearStartdate = currYearStartdate;
     }
 }

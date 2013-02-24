@@ -178,9 +178,9 @@
     <insert id="importRecords_RptA08V1" parameterType="java.lang.String">
         <![CDATA[
         insert into ODSB_CHN_TRAD
-            (
-            select sys_guid() guid,
-                   t2.SIGN_INSTN as 开通签约服务机构,
+         (
+           select sys_guid() guid, t.* from
+             (select t2.SIGN_INSTN as 开通签约服务机构,
                    t1.CUST_NAME as 姓名,
                    t1.CERT_TYPE as 证件类型,
                    t1.CERT_NO as 证件号码,
@@ -188,35 +188,37 @@
                    t1.VC_MOBILENO as 手机号码,
                    t2.ENTRY_TMS as 登录次数,
                    t3.total as 交易笔数,
-                   case
-                     when t2.AUTH_TYPE = 'A' then
+                   case  t2.AUTH_TYPE
+                     when  'A' then
                       '动态口令卡'
-                     when t2.AUTH_TYPE = 'B' then
+                     when  'B' then
                       '短信动态口令'
-                     when t2.AUTH_TYPE = 'N' then
+                     when  'N' then
                       'UKEY+短信动态口令'
-                     when t2.AUTH_TYPE = 'C' then
+                     when  'C' then
                       '证书方式'
-                     when t2.AUTH_TYPE = 'E' then
+                     when 'E' then
                       '动态口令卡'
-                     when t2.AUTH_TYPE = 'U' then
+                     when  'U' then
                       'Ukey'
-                     when t2.AUTH_TYPE = 'F' then
+                     when 'F' then
                       'Ukey＋动态口令卡'
-                     when t2.AUTH_TYPE = 'L' then
+                     when  'L' then
                       '动态令牌'
-                     when t2.AUTH_TYPE = 'H' then
+                     when  'H' then
                       'Ukey＋动态令牌'
-                     when t2.AUTH_TYPE = 'T' then
+                     when  'T' then
                       '广东行CCI的CTS客户'
-                     when t2.AUTH_TYPE = 'S' then
+                     when  'S' then
                       'UKEY＋二次短信确认'
-                     when t2.AUTH_TYPE = 'R' then
+                     when  'R' then
                       '刮刮卡+短信动态口令'
-                     when t2.AUTH_TYPE = 'O' then
+                     when  'O' then
                       '高端版二代网银盾'
-                     when t2.AUTH_TYPE = 'D' then
+                     when  'D' then
                       '二代网银盾'
+                     else
+                      '其它'
                    end as 客户签约类型,
                    t3.CHN_NO,
                    t1.ECTIP_CUST_NO,
@@ -243,8 +245,13 @@
                       t1.VC_MOBILENO,
                       t2.ENTRY_TMS,
                       t3.total,
-                      t2.AUTH_TYPE
-           )
+                      t2.AUTH_TYPE,
+                      t1.CERT_TYPE,
+                      t3.CHN_NO,
+                      t1.ECTIP_CUST_NO,
+                      t1.DCC_CUSTNO
+           )t
+        )
         ]]>
     </insert>
 </mapper>

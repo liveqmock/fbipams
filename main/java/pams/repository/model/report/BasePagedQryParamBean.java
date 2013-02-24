@@ -15,6 +15,7 @@ public class BasePagedQryParamBean {
     private String endDate;
     private BigDecimal startAmt;
     private BigDecimal endAmt;
+    private String chnNo;
 
     private int offset;
     private int pagesize;
@@ -107,5 +108,13 @@ public class BasePagedQryParamBean {
 
     public void setCertNo(String certNo) {
         this.certNo = certNo;
+    }
+
+    public String getChnNo() {
+        return chnNo;
+    }
+
+    public void setChnNo(String chnNo) {
+        this.chnNo = chnNo;
     }
 }

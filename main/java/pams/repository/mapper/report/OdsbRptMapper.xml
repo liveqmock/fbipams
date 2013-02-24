@@ -70,7 +70,10 @@
                and a.CUST_NAME like '%${custName}%'
           </if>
           <if test = " certNo != null and certNo != '' ">
-               and a.CUST_NO like '%${certNo}%'
+               and a.CERT_NO like '%${certNo}%'
+          </if>
+          <if test = " chnNo != null and chnNo != '' ">
+               and a.CHN_NO = #{chnNo}
           </if>
       </where>
     </sql>
@@ -82,7 +85,7 @@
              <include refid="RptA08V1_Where_Clause" />
     </select>
 
-    <select id="selectRptA08V1Records"  parameterType="pams.repository.model.report.BasePagedQryParamBean" resultMap="pams.repository.dao.OdsbStTconfirmTradMapper.BaseResultMap">
+    <select id="selectRptA08V1Records"  parameterType="pams.repository.model.report.BasePagedQryParamBean" resultMap="pams.repository.dao.OdsbChnTradMapper.BaseResultMap">
         select *
           from (select t1.*, rownum rnum
                 from (

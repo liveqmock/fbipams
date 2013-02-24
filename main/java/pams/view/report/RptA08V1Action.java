@@ -1,5 +1,6 @@
 package pams.view.report;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.LazyDataModel;
@@ -19,7 +20,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class RptA08V1Action implements Serializable {
     private OdsbChnTrad selectedRecord;
 
     private String custBasePopWinUrl;
+    private String title;
 
     private LazyDataModel<OdsbChnTrad> lazyDataModel;
     private List<SelectItem> branchList;
@@ -60,6 +64,27 @@ public class RptA08V1Action implements Serializable {
 
         this.paramBean.setStartDate(new DateTime().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd"));
         this.paramBean.setEndDate(new DateTime().toString("yyyy-MM-dd"));
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+
+        String chnNo = request.getParameter("chnno");
+        if (StringUtils.isEmpty(chnNo)) {
+            logger.error("参数错误！");
+            MessageUtil.addError("参数错误！");
+            return;
+        } else {
+            switch (chnNo){
+                case "01":
+                    this.title = "网上银行客户交易情况统计表";
+                    break;
+                case "02":
+                    this.title = "手机银行客户交易情况统计表";
+                    break;
+                default:
+            }
+        }
+        this.paramBean.setChnNo(chnNo);
     }
 
     public String onQuery() {
@@ -156,5 +181,13 @@ public class RptA08V1Action implements Serializable {
 
     public void setOdsbRptService(OdsbRptService odsbRptService) {
         this.odsbRptService = odsbRptService;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

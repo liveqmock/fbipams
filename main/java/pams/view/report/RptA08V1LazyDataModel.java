@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.repository.dao.report.OdsbRptMapper;
 import pams.repository.model.OdsbChnTrad;
-import pams.repository.model.OdsbStTconfirmTrad;
 import pams.repository.model.report.BasePagedQryParamBean;
 
 import java.util.List;
