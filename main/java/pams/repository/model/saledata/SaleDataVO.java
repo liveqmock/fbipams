@@ -8,7 +8,7 @@ import java.io.Serializable;
  * User: zhanrui
  * Date: 13-2-8
  */
-public class SaleDetailVo extends SvSaleDetail implements Serializable {
+public class SaleDataVO extends SvSaleDetail implements Serializable {
     //≤ø√≈
     String deptid;
     String deptname;
@@ -16,6 +16,9 @@ public class SaleDetailVo extends SvSaleDetail implements Serializable {
     String tellername;
     String prdname;
     String subprdname;
+
+    String custname;
+    long rnum;
 
     public String getPrdname() {
         return prdname;
@@ -55,5 +58,21 @@ public class SaleDetailVo extends SvSaleDetail implements Serializable {
 
     public void setDeptname(String deptname) {
         this.deptname = deptname;
+    }
+
+    public String getCustname() {
+        return custname;
+    }
+
+    public void setCustname(String custname) {
+        this.custname = custname;
+    }
+
+    public long getRnum() {
+        return rnum;
+    }
+
+    public void setRnum(long rnum) {
+        this.rnum = rnum;
     }
 }

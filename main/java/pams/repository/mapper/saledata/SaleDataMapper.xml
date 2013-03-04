@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.saledata.SaleDataMapper">
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countSaleDataRecords" parameterType="pams.repository.model.saledata.SaleDataQryParamBean" resultType="java.lang.Integer">
+        select count(*)
+          from sv_sale_detail a, ptoper b
+        where a.tellerid = b.operid
+            and b.deptid in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+            and a.txndate between #{startDate} and #{endDate}
+            <if test = " prdId != null and prdId != '' ">
+                and a.prdid = #{prdId}
+            </if>
+    </select>
+
+    <select id="selectSaleDataRecords"  parameterType="pams.repository.model.saledata.SaleDataQryParamBean" resultType="pams.repository.model.saledata.SaleDataVO">
+        select *
+          from (select t1.*, rownum rnum
+                from (
+                    select
+                           b.deptid,
+                           (select deptname from ptdept where deptid = b.deptid) as deptname,
+                            b.opername as tellername,
+                            (select enuitemlabel  from ptenudetail where enutype = 'SVTPRDTYPE' and enuitemvalue = a.prdid) as prdname,
+                            (case a.prdid
+                                when '01' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTFUNDTYPE' and enuitemvalue = a.subprdid)
+                                when '02' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
+                                when '03' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                                when '06' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
+                                when '08' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTEBANKTYPE' and enuitemvalue = a.subprdid)
+                                when '09' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTGOLDTYPE' and enuitemvalue = a.subprdid)
+                                end) as subprdname,
+                            a.*,c.cust_name as custname
+                      from sv_sale_detail a, ptoper b, sv_cms_custbase c
+                      where a.tellerid = b.operid
+                            and b.deptid in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+                            and a.txndate between #{startDate} and #{endDate}
+                            and a.custguid = c.guid(+)
+                            <if test = " prdId != null and prdId != '' ">
+                                and a.prdid = #{prdId}
+                            </if>
+                            <if test = " tellerId != null and tellerId != '' ">
+                                and a.tellerid = #{tellerId}
+                            </if>
+                      order by b.deptid, a.tellerid, a.prdid, a.subprdid, a.txndate
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
+</mapper>

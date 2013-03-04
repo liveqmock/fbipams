@@ -32,11 +32,11 @@
                                     <f:selectItems value="#{rptA07V1Action.branchList}"/>
                                 </h:selectOneMenu>
 
-                                <h:outputLabel value="起始起日:"/>
+                                <h:outputLabel value="起始日期:"/>
                                 <p:inputText id="startDate" value="#{rptA07V1Action.paramBean.startDate}" title="起始日期"
                                              required="true" requiredMessage="请输入起始日期"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
-                                <h:outputLabel value="截止起日:"/>
+                                <h:outputLabel value="截止日期:"/>
                                 <p:inputText id="endDate" value="#{rptA07V1Action.paramBean.endDate}" title="截止日期"
                                              required="true" requiredMessage="请输入截止日期"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
