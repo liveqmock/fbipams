@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/model/report/BasePagedQryParamBean.java" afterPath="$PROJECT_DIR$/main/java/pams/repository/model/report/BasePagedQryParamBean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" afterPath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java" afterPath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" afterPath="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" />
+    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="新增报表：渠道交易明细">
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\en.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\lang\zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\readme.txt" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\WdatePicker.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\datePicker.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\default\datepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\default\img.gif" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\bg.jpg" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\datepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\My97DatePicker\开发包\skin\whyGreen\img.gif" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.ipr" afterPath="$PROJECT_DIR$/ccbpams.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/resources/credit.properties" afterPath="$PROJECT_DIR$/main/resources/credit.properties" />
     </list>
     <ignored path="ccbpams.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361669083622" ignored="false" />
+    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362391454299" ignored="false" />
     <file path="/prdsetArchive.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355722123817" ignored="false" />
     <file path="/DataImporter.groovy" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355726409235" ignored="false" />
     <file path="/ImportAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1356054659829" ignored="false" />
@@ -31,7 +33,7 @@
     <file path="/CustlistMapper.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1359442003747" ignored="false" />
     <file path="/CustlistMapper.xml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1359442312447" ignored="false" />
     <file path="/a.dummy" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1360055706737" ignored="false" />
-    <file path="/fragment.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361527506199" ignored="false" />
+    <file path="/fragment.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362380482750" ignored="false" />
     <file path="/Rpt0101Format.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355984347092" ignored="false" />
     <file path="/Rpt0104Format.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355984370340" ignored="false" />
     <file path="/importData.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1359191031291" ignored="false" />
@@ -147,15 +149,30 @@
     <file path="/OdsbRptMapper.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361527913223" ignored="false" />
     <file path="/OdsbRptMapper.xml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361536808442" ignored="false" />
     <file path="/OdsbRptService.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361000386415" ignored="false" />
-    <file path="/rptA07V1.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361071841775" ignored="false" />
+    <file path="/rptA07V1.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362381598978" ignored="false" />
     <file path="/RptA07V1DataLoad.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361072840568" ignored="false" />
     <file path="$PROJECT_DIR$/../../../svn-haierrms/source-2.0/haierrms2/src/credit.properties" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361430151377" ignored="false" />
     <file path="$PROJECT_DIR$/../../../svn-haierrms/source-2.0/haierrms2/webRoot/UI/haier/rms/fundmonitor/sbsActInfoAdd.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361431250760" ignored="false" />
     <file path="/sbsActInfoAdd.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361431220991" ignored="false" />
     <file path="/RptA08V1DataLoad.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361533286081" ignored="false" />
     <file path="/RptA08V1LazyDataModel.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361534478392" ignored="false" />
-    <file path="/rptA08V1.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361535292287" ignored="false" />
+    <file path="/rptA08V1.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362381581786" ignored="false" />
     <file path="/RptA08V1Action.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1361535042686" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../svn-fbiepss/src/fbiepss/main/webapp/UI/epss/contract/initTkCttMng.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362019075102" ignored="false" />
+    <file path="$PROJECT_DIR$/../../../svn-fbiepss/src/fbiepss/main/webapp/UI/epss/item/itemDetail.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362021220043" ignored="false" />
+    <file path="/itemDetail.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362021085098" ignored="false" />
+    <file path="/CustSaleDataMngAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362366608081" ignored="false" />
+    <file path="/CustSaleDataModel.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362367274395" ignored="false" />
+    <file path="/SaleDataQryModel.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362390707957" ignored="false" />
+    <file path="/SaleDataMapper.xml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362388689207" ignored="false" />
+    <file path="/SaleDataMapper.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362377949810" ignored="false" />
+    <file path="/SaleDataQryParamBean.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362388634273" ignored="false" />
+    <file path="/SaleDataAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362391133738" ignored="false" />
+    <file path="/SaleDataService.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362380629100" ignored="false" />
+    <file path="/saleDataQry.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362387973191" ignored="false" />
+    <file path="/SaleDataVO.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362387130745" ignored="false" />
+    <file path="/saleDataTellerQry.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362390950616" ignored="false" />
+    <file path="/saleDataDeptQry.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1362388298138" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,73 +252,57 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="rptA08V1.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml">
+      <file leaf-file-name="saleDataDeptQry.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataDeptQry.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="43" selection-start="861" selection-end="861" vertical-scroll-proportion="-12.714286">
+            <state line="45" column="0" selection-start="1278" selection-end="1614" vertical-scroll-proportion="-10.357142">
               <folding>
-                <marker date="1361535320328" expanded="true" signature="1181:1193" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="1891:1902" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="2265:2276" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="2821:2850" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="3208:3219" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="4033:4050" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="4338:4355" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="4639:4656" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="4909:4926" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="5181:5198" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="5457:5474" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="5757:5774" placeholder="{...}" />
-                <marker date="1361535320328" expanded="true" signature="6055:6072" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="1412:1424" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="1746:1758" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="2820:2831" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="3208:3219" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="3764:3793" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="4151:4162" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="4903:4920" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="5174:5191" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="5448:5465" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="5719:5736" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="5989:6006" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="6471:6483" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="6873:6885" placeholder="{...}" />
+                <marker date="1362388592950" expanded="true" signature="6958:6975" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RptA08V1Action.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java">
+      <file leaf-file-name="saleDataTellerQry.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataTellerQry.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="13" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
+            <state line="41" column="36" selection-start="1314" selection-end="1314" vertical-scroll-proportion="-8.642858">
               <folding>
-                <element signature="imports" expanded="true" />
+                <marker date="1362391140796" expanded="true" signature="1409:1421" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="2483:2494" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="2873:2884" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="3429:3458" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="3816:3827" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="4568:4585" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="4839:4856" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="5113:5130" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="5384:5401" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="5654:5671" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="6136:6148" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="6538:6550" placeholder="{...}" />
+                <marker date="1362391140796" expanded="true" signature="6623:6640" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasePagedQryParamBean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/report/BasePagedQryParamBean.java">
+      <file leaf-file-name="SaleDataAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="112" column="30" selection-start="2215" selection-end="2215" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RptA08V1LazyDataModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="4" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OdsbRptMapper.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="25" selection-start="3144" selection-end="3144" vertical-scroll-proportion="1.1566265">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataETLMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="214" column="45" selection-start="8653" selection-end="8653" vertical-scroll-proportion="0.0">
+            <state line="96" column="105" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -310,34 +311,52 @@
       <file leaf-file-name="credit.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="72" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InterviewInfoBranchExport.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/telemarketing/InterviewInfoBranchExport.java">
+      <file leaf-file-name="log4j.properties" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="13" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
+            <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SalesSummaryAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/telemarketing/summaryqry/SalesSummaryAction.java">
+      <file leaf-file-name="SaleDataService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/service/saledata/SaleDataService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="214" column="0" selection-start="5160" selection-end="5544" vertical-scroll-proportion="0.0">
+            <state line="30" column="0" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RptA06V1.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA06V1.java">
+      <file leaf-file-name="SaleDataQryModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataQryModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="13" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
+            <state line="27" column="10" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaleDataMapper.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/saledata/SaleDataMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="49" column="59" selection-start="3327" selection-end="3327" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaleDataQryParamBean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDataQryParamBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="121" column="33" selection-start="2384" selection-end="2384" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -361,22 +380,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/webapp/pages/frame/menuPage.jsp" />
-        <option value="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" />
-        <option value="$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/dao/dataetl/DataETLMapper.java" />
-        <option value="$PROJECT_DIR$/main/java/pub/generator/resources/generatorConfig.xml" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/dao/OdsbChnTradMapper.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/dao/report/OdsbRptMapper.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" />
-        <option value="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml" />
-        <option value="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/model/report/BasePagedQryParamBean.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/view/custmng/CustSaleDataMngAction.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/view/custmng/CustSaleDataModel.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDetailVo.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/repository/dao/saledata/SaleDataMapper.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/service/saledata/SaleDataService.java" />
         <option value="$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" />
-        <option value="$PROJECT_DIR$/main/resources/credit.properties" />
-        <option value="$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/report/rptA07V1.xhtml" />
+        <option value="$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDataVO.java" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataQry.xhtml" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataDeptQry.xhtml" />
+        <option value="$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDataQryParamBean.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/repository/mapper/saledata/SaleDataMapper.xml" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataTellerQry.xhtml" />
+        <option value="$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataQryModel.java" />
+        <option value="$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataAction.java" />
+        <option value="$PROJECT_DIR$/main/resources/log4j.properties" />
       </list>
     </option>
   </component>
@@ -400,7 +419,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -448,6 +467,17 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -455,6 +485,104 @@
               <option name="myItemId" value="ccbpams" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.5.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.5.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="org" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="primefaces-3.5.jar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -564,6 +692,88 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="telemarketing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="telemarketing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="summaryqry" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="report" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -590,7 +800,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dataetl" />
+              <option name="myItemId" value="largedepflow" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -617,46 +827,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="custmng" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ccbpams" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ccbpams" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="webapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -854,7 +1024,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="largedepflow" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -901,6 +1123,166 @@
               <option name="myItemId" value="pams" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custmng" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="telemarketing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="report" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="largedepflow" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custmng" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -925,6 +1307,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -980,7 +1392,97 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="telemarketing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1126,19 +1628,116 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="telemarketing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saledata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="report" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane">
-        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="ccbpams" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1156,7 +1755,7 @@
     <property name="recentsLimit" value="5" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="options.lastSelected" value="http.proxy" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main/java/pams/repository/mapper/report" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main/java/pams/repository/mapper/saledata" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="GoToClass.includeJavaFiles" value="false" />
@@ -1173,18 +1772,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="pams.view.report" />
-      <recent name="pams.service.report" />
-      <recent name="pams.repository.model.report" />
+      <recent name="pams.service.saledata" />
       <recent name="pams.repository.model.saledata" />
+      <recent name="pams.repository.dao.saledata" />
+      <recent name="pams.view.saledata" />
       <recent name="pams.view.custmng" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\saledata" />
+      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\java\pams\repository\mapper\saledata" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\report" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\dataetl" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx" />
-      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\images" />
-      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\css" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.33">
@@ -1569,11 +2168,19 @@
       <created>1361528231655</created>
       <updated>1361528231655</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="新增报表：渠道交易明细">
+      <created>1361669127848</created>
+      <updated>1361669127848</updated>
+    </task>
+    <task id="LOCAL-00031" summary="新增营销历史记录查询">
+      <created>1362391461993</created>
+      <updated>1362391461993</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.49349594" order="9" side_tool="false" content_ui="tabs" />
@@ -1581,21 +2188,21 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5280528" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.5045593" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.49012157" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27279636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.339934" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339934" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.297561" sideWeight="0.44200626" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969605" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32673267" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23860182" sideWeight="0.660066" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23856707" sideWeight="0.6666667" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6118644" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.53960395" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1646,7 +2253,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增报表：渠道交易明细" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增营销历史记录查询" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1676,6 +2283,7 @@
     <MESSAGE value="页面布局" />
     <MESSAGE value="页面布局 chrome支持（未完成）" />
     <MESSAGE value="新增报表：渠道交易明细" />
+    <MESSAGE value="新增营销历史记录查询" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1685,162 +2293,179 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA07V1.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="14.142858">
-          <folding>
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361071964320" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="85" selection-start="1175" selection-end="1175" vertical-scroll-proportion="-11.785714">
-          <folding>
-            <marker date="1361533285812" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361533285812" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361533285812" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA07V1DataLoad.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1361072850734" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361072850734" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1361072850734" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/report/OdsbRptMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="669" selection-end="669" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="162" column="42" selection-start="4820" selection-end="4820" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-10.286245">
+        <state line="107" column="42" selection-start="4527" selection-end="4527" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA06V1.java">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/saledata/SaleDataMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="13" selection-start="853" selection-end="853" vertical-scroll-proportion="0.0">
+        <state line="17" column="21" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/telemarketing/InterviewInfoBranchExport.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="13" selection-start="1056" selection-end="1056" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/telemarketing/summaryqry/SalesSummaryAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="0" selection-start="5160" selection-end="5544" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/report/BasePagedQryParamBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="112" column="30" selection-start="2215" selection-end="2215" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="4" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="43" selection-start="861" selection-end="861" vertical-scroll-proportion="-12.714286">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="54.214287">
           <folding>
-            <marker date="1361535320328" expanded="true" signature="1181:1193" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="1891:1902" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="2265:2276" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="2821:2850" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="3208:3219" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="4033:4050" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="4338:4355" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="4639:4656" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="4909:4926" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="5181:5198" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="5457:5474" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="5757:5774" placeholder="{...}" />
-            <marker date="1361535320328" expanded="true" signature="6055:6072" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1362381692011" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/largedepflow/LargeDepFlowAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.0">
+        <state line="72" column="55" selection-start="2479" selection-end="2604" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/largedepflow/largeDepFlowQry.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="69" selection-start="2603" selection-end="2622" vertical-scroll-proportion="0.21568628">
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1359459371899" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDataVO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="214" column="45" selection-start="8653" selection-end="8653" vertical-scroll-proportion="0.0">
+        <state line="10" column="13" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/saledata/SaleDataQryParamBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="33" selection-start="2384" selection-end="2384" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/saledata/SaleDataMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="59" selection-start="3327" selection-end="3327" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/saledata/SaleDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="0" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/javalib/primefaces/primefaces-3.5/primefaces-3.5-sources.jar!/org/primefaces/model/LazyDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="0" selection-start="1061" selection-end="1061" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataDeptQry.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="0" selection-start="1278" selection-end="1614" vertical-scroll-proportion="-10.357142">
+          <folding>
+            <marker date="1362388592950" expanded="true" signature="1412:1424" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="1746:1758" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="2820:2831" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="3208:3219" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="3764:3793" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="4151:4162" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="4903:4920" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="5174:5191" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="5448:5465" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="5719:5736" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="5989:6006" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="6471:6483" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="6873:6885" placeholder="{...}" />
+            <marker date="1362388592950" expanded="true" signature="6958:6975" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/saledata/saleDataTellerQry.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="36" selection-start="1314" selection-end="1314" vertical-scroll-proportion="-8.642858">
+          <folding>
+            <marker date="1362391140796" expanded="true" signature="1409:1421" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="2483:2494" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="2873:2884" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="3429:3458" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="3816:3827" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="4568:4585" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="4839:4856" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="5113:5130" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="5384:5401" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="5654:5671" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="6136:6148" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="6538:6550" placeholder="{...}" />
+            <marker date="1362391140796" expanded="true" signature="6623:6640" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataQryModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="10" selection-start="867" selection-end="867" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/saledata/SaleDataAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="96" column="105" selection-start="3105" selection-end="3105" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="72" selection-start="428" selection-end="428" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/report/OdsbRptMapper.xml">
+    <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="25" selection-start="3144" selection-end="3144" vertical-scroll-proportion="1.1566265">
+        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

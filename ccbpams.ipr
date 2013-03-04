@@ -67,7 +67,6 @@
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA06V1_1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA07V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA09V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/report" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/test/testui.xhtml" charset="UTF-8" />
   </component>
