@@ -93,6 +93,19 @@
         font-family: SimSun;
         color: #7387A0;
     }
+
+    .skin-top-right {
+        /*top: 0;*/
+        /*right: 0;*/
+        /*z-index: 7;*/
+        /*height: 90px;*/
+        /*position: absolute;*/
+        /*width: 100%;*/
+        background-position: top right;
+        background-repeat: no-repeat;
+        background-image: url(../../images/top_right.jpg)
+    }
+
 </style>
 <script type="text/javascript">
     var defaultMenuStr = '<%=jsonDefaultMenu%>';
@@ -143,9 +156,17 @@
         bizdhxAccord.setSkin("dhx_skyblue");
         bizdhxAccord.setIconsPath("<%=contextPath%>/dhtmlx/codebase/icons/");
         bizdhxAccord.addItem("a1", "业务功能");
+        bizdhxAccord.addItem("a2", "常用功能");
+        bizdhxAccord.addItem("a3", "待办事项");
+        bizdhxAccord.addItem("a4", "实时消息");
+
         bizdhxAccord.openItem("a1");
         bizdhxAccord._enableOpenEffect = true;
         bizdhxAccord.cells("a1").setIcon("accord_biz.png");
+        bizdhxAccord.cells("a2").setIcon("accord_manage.png");
+        bizdhxAccord.cells("a3").setIcon("editor.gif");
+        bizdhxAccord.cells("a4").setIcon("accord_support.png");
+
         var biztree = bizdhxAccord.cells("a1").attachTree();
         var treeDefaultJson = eval('(' + defaultMenuStr + ')');
         biztree.setSkin('dhx_skyblue');
@@ -275,65 +296,71 @@
 <body onload="doOnLoad()" onResize="doOnResize();">
 <%--关闭tab时返回上一个浏览的tab--%>
 <input type="hidden" id="lasttabdivid">
-<table width="100%" cellpadding="0" cellspacing="0" style="margin:0px;padding:0px;height:100%;">
-    <tr width="100%" height="35px">
-        <td width="5%" rowspan="2">
-            &nbsp;
-            <img src="../../images/ccb.jpg" height="50px">
-            <%--<img src="../../images/pams.jpg" height="50px" width="50px">--%>
-        </td>
-        <td colspan="2">
-            <img src="../../images/pamstitle1.jpg" height="28px">
-        </td>
-        <td style="height:25px;text-align:right" class="headfont">
-            <span>您好,<%=username%>! </span>
-            <span><%= " | <" + rolesall + "> |" %></span>
+
+<div class="skin-top-right">
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin:0px;padding:0px;height:100%;">
+        <tr width="100%" height="35px">
+            <td width="5%" rowspan="2">
+                &nbsp;
+                <img src="../../images/ccb.jpg" height="60px" >
+                <%--<img src="../../images/pams.jpg" height="50px" width="50px">--%>
+            </td>
+            <td colspan="2">
+                <img src="../../images/pamstitle1.jpg" height="28px">
+            </td>
+            <td style="height:25px;text-align:right" class="headfont">
+                <span>您好,<%=username%>! </span>
+                <span><%= " | <" + rolesall + "> |" %></span>
             <span onclick="changepwd()"
                   onMouseOver="this.style.cursor='hand'">修改密码</span>
              <span onclick="Relogin()"
                    onMouseOver="this.style.cursor='hand'">| 退出&nbsp;&nbsp;</span>
-        </td>
-    </tr>
-    <tr width="100%" height="25px">
-        <td width="2%"></td>
-        <td colspan="2" style="height:25px;">
-            <div onclick="tabbarclk(this);" active="true" id="biz" class="tabs-item-active"
-                 style="float:left;width:80px;">
-                <span style="width:100%;">业务操作</span>
-            </div>
-            <div style="float:left;width:2px;"></div>
-            <div onclick="tabbarclk(this);" active="false" id="sys" class="tabs-item" style="float:left;width:80px;">
-                <span style="width:100%;">系统管理</span>
-            </div>
-            <div style="float:left;width:2px;"></div>
-            <div onclick="tabbarclk(this);" active="false" id="help" class="tabs-item" style="float:left;width:80px;">
-                <span style="width:100%;">操作帮助</span>
-            </div>
-            <div style="float:left;width:2px;"></div>
-            <div onclick="tabbarclk(this);" active="false" id="ver" class="tabs-item" style="float:left;width:80px;">
-                <span style="width:100%;">版本历史</span>
-            </div>
-            <div align="right" class="headfont">
-                <%--<%=" " + deptname + " | " + operid + " | <" + rolesall + ">" %>--%>
-            </div>
-        </td>
-    </tr>
-    <tr width="100%" height="4px">
-        <td width="100%" style="height:4px;background-color: #3169AD;" colspan="4"></td>
-    </tr>
-    <tr width="100%">
-        <td width="100%" colspan="4" >
-            <div class="divlayout" id="bizlayout"></div>
-            <div class="divlayout" id="syslayout"></div>
-            <div class="divlayout" id="helplayout">
-                </br>系统帮助信息...
-            </div>
-            <div class="divlayout" id="verlayout">
-                </br>版本更新历史...
-            </div>
-        </td>
-    </tr>
-</table>
+            </td>
+        </tr>
+        <tr width="100%" height="25px">
+            <td width="1%"></td>
+            <td colspan="2" style="height:25px;">
+                <div onclick="tabbarclk(this);" active="true" id="biz" class="tabs-item-active"
+                     style="float:left;width:80px;">
+                    <span style="width:100%;">业务操作</span>
+                </div>
+                <div style="float:left;width:2px;"></div>
+                <div onclick="tabbarclk(this);" active="false" id="sys" class="tabs-item"
+                     style="float:left;width:80px;">
+                    <span style="width:100%;">系统管理</span>
+                </div>
+                <div style="float:left;width:2px;"></div>
+                <div onclick="tabbarclk(this);" active="false" id="help" class="tabs-item"
+                     style="float:left;width:80px;">
+                    <span style="width:100%;">操作帮助</span>
+                </div>
+                <div style="float:left;width:2px;"></div>
+                <div onclick="tabbarclk(this);" active="false" id="ver" class="tabs-item"
+                     style="float:left;width:80px;">
+                    <span style="width:100%;">版本历史</span>
+                </div>
+                <div align="right" class="headfont">
+                    <%--<%=" " + deptname + " | " + operid + " | <" + rolesall + ">" %>--%>
+                </div>
+            </td>
+        </tr>
+        <tr width="100%" height="4px">
+            <td width="100%" style="height:4px;background-color: #3169AD;" colspan="4"></td>
+        </tr>
+        <tr width="100%">
+            <td width="100%" colspan="4">
+                <div class="divlayout" id="bizlayout"></div>
+                <div class="divlayout" id="syslayout"></div>
+                <div class="divlayout" id="helplayout">
+                    </br>系统帮助信息...
+                </div>
+                <div class="divlayout" id="verlayout">
+                    </br>版本更新历史...
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 
 </html>

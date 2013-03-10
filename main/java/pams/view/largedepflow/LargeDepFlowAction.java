@@ -36,6 +36,7 @@ public class LargeDepFlowAction implements Serializable {
     private LargeDepFlowVO paramBean;
     private OdsbLargedepFlow selectedRecord;
 
+    private boolean isBizBranch; //是否业务网点
 
     private LazyDataModel<OdsbLargedepFlow> lazyDataModel;
     private List<SelectItem> branchList;
@@ -54,6 +55,10 @@ public class LargeDepFlowAction implements Serializable {
         String branchid = om.getOperator().getDeptid();
 
         this.branchList = toolsService.selectBranchList(branchid);
+        if (branchList.size() == 1) {
+            isBizBranch = true;
+        }
+
         this.paramBean = new LargeDepFlowVO();
 
         this.paramBean.setStartDate(new DateTime().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd"));
@@ -134,5 +139,13 @@ public class LargeDepFlowAction implements Serializable {
 
     public void setLargeDepFlowService(LargeDepFlowService largeDepFlowService) {
         this.largeDepFlowService = largeDepFlowService;
+    }
+
+    public boolean isBizBranch() {
+        return isBizBranch;
+    }
+
+    public void setBizBranch(boolean bizBranch) {
+        isBizBranch = bizBranch;
     }
 }

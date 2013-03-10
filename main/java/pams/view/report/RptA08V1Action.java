@@ -27,7 +27,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 基金成交客户明细 .
+ * 客户交易情况统计 .
  * User: zhanrui
  * Date: 13-2-16
  * Time: 上午10:29
@@ -39,6 +39,7 @@ public class RptA08V1Action implements Serializable {
 
     private BasePagedQryParamBean paramBean;
     private OdsbChnTrad selectedRecord;
+    private boolean isBizBranch; //是否业务网点
 
     private String custBasePopWinUrl;
     private String title;
@@ -60,6 +61,9 @@ public class RptA08V1Action implements Serializable {
         String branchid = om.getOperator().getDeptid();
 
         this.branchList = toolsService.selectBranchList(branchid);
+        if (branchList.size() == 1) {
+            isBizBranch = true;
+        }
         this.paramBean = new BasePagedQryParamBean();
 
         this.paramBean.setStartDate(new DateTime().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd"));
@@ -189,5 +193,13 @@ public class RptA08V1Action implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public boolean isBizBranch() {
+        return isBizBranch;
+    }
+
+    public void setBizBranch(boolean bizBranch) {
+        isBizBranch = bizBranch;
     }
 }

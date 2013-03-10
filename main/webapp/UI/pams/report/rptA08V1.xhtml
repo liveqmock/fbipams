@@ -5,6 +5,7 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
                 template="/templates/ui.xhtml">
 
     <ui:define name="head">
@@ -88,13 +89,19 @@
                         </f:facet>
                         <h:outputText value="#{record.signInstn}"/>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.custName}">
+                    <p:column style="text-align:center"  sortBy="#{record.custName}" rendered="#{!rptA08V1Action.bizBranch}">
+                        <f:facet name="header">
+                            客户姓名
+                        </f:facet>
+                        <h:outputText value="#{fn:substring(record.custName,0,1)}某"/>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.custName}" rendered="#{rptA08V1Action.bizBranch}">
                         <f:facet name="header">
                             客户姓名
                         </f:facet>
                         <h:outputText value="#{record.custName}"/>
                     </p:column>
-                    <p:column style="text-align:center">
+                    <p:column style="text-align:center" rendered="#{rptA08V1Action.bizBranch}">
                         <f:facet name="header">
                             证件号码
                         </f:facet>
