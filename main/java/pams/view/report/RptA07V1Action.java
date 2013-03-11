@@ -41,6 +41,7 @@ public class RptA07V1Action implements Serializable {
 
     private LazyDataModel<OdsbStTconfirmTrad> lazyDataModel;
     private List<SelectItem> branchList;
+    private boolean isBizBranch; //是否业务网点
 
     @ManagedProperty(value = "#{toolsService}")
     private ToolsService toolsService;
@@ -56,6 +57,9 @@ public class RptA07V1Action implements Serializable {
         String branchid = om.getOperator().getDeptid();
 
         this.branchList = toolsService.selectBranchList(branchid);
+        if (branchList.size() == 1) {
+            isBizBranch = true;
+        }
         this.paramBean = new BasePagedQryParamBean();
 
         this.paramBean.setStartDate(new DateTime().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd"));
@@ -156,5 +160,13 @@ public class RptA07V1Action implements Serializable {
 
     public void setOdsbRptService(OdsbRptService odsbRptService) {
         this.odsbRptService = odsbRptService;
+    }
+
+    public boolean isBizBranch() {
+        return isBizBranch;
+    }
+
+    public void setBizBranch(boolean bizBranch) {
+        isBizBranch = bizBranch;
     }
 }

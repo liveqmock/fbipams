@@ -33,6 +33,7 @@ public class RptA03V1 implements Serializable {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private List<SelectItem> branchList;
+    private boolean isBizBranch; //是否业务网点
 
     private String branchId;
     private String operId;
@@ -56,6 +57,9 @@ public class RptA03V1 implements Serializable {
         operId = om.getOperatorId();
 
         this.branchList = toolsService.selectBranchList(branchId);
+        if (branchList.size() == 1) {
+            isBizBranch = true;
+        }
         this.startDate = new DateTime().dayOfMonth().withMinimumValue().toString("yyyyMMdd");
         this.endDate = new DateTime().toString("yyyyMMdd");
     }
@@ -194,5 +198,13 @@ public class RptA03V1 implements Serializable {
 
     public void setStartAmt(BigDecimal startAmt) {
         this.startAmt = startAmt;
+    }
+
+    public boolean isBizBranch() {
+        return isBizBranch;
+    }
+
+    public void setBizBranch(boolean bizBranch) {
+        isBizBranch = bizBranch;
     }
 }
