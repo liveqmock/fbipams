@@ -26,7 +26,7 @@
                 <p:growl id="msgs" showDetail="false" life="1500"/>
 
                 <div id="header">
-                    <p:panel header="大额存款资金流向查询">
+                    <p:panel header="#{largeDepFlowAction.title}">
                         <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
                             <h:panelGrid columns="4" cellspacing="5">
                                 <h:outputLabel value="分支机构:"/>
@@ -152,17 +152,23 @@
                         </f:facet>
                         <h:outputText value="#{record.saOpAcctNo}"/>
                     </p:column>
-                    <p:column style="text-align:right" >
+                    <p:column style="text-align:right" sortBy="#{record.crTxAmt}">
                         <f:facet name="header">
                             交易金额
                         </f:facet>
                         <h:outputText value="#{record.crTxAmt}" style="float:right"/>
                     </p:column>
-                    <p:column style="text-align:center" >
+                    <p:column style="text-align:center" sortBy="#{record.drCrCod}">
                         <f:facet name="header">
                             借贷别
                         </f:facet>
                         <h:outputText value="#{record.drCrCod=='1'? '借' : '贷'}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.currName}">
+                        <f:facet name="header">
+                            币种
+                        </f:facet>
+                        <h:outputText value="#{record.currName}"/>
                     </p:column>
                     <p:column style="text-align:center" >
                         <f:facet name="header">

@@ -18,7 +18,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class LargeDepFlowAction implements Serializable {
     private OdsbLargedepFlow selectedRecord;
 
     private boolean isBizBranch; //是否业务网点
+    private String currCd;   //币种  CNY：人民币   XXX：外币
+    private String title = "...";
 
     private LazyDataModel<OdsbLargedepFlow> lazyDataModel;
     private List<SelectItem> branchList;
@@ -53,6 +57,20 @@ public class LargeDepFlowAction implements Serializable {
         OperatorManager om = SystemService.getOperatorManager();
         String operid = om.getOperatorId();
         String branchid = om.getOperator().getDeptid();
+
+        HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+
+        this.currCd = request.getParameter("curr");
+        if (currCd == null) {
+            MessageUtil.addError("模式参数错误");
+        }
+
+        if ("CNY".equals(currCd)) {
+            this.title = "人民币大额存款资金流向查询(交易金额>=50000)";
+        }
+        if ("XXX".equals(currCd)) {
+            this.title = "外币存款资金流向查询(交易金额>=100)";
+        }
 
         this.branchList = toolsService.selectBranchList(branchid);
         if (branchList.size() == 1) {
@@ -75,6 +93,7 @@ public class LargeDepFlowAction implements Serializable {
             oplog.setOpDataEnddate(this.paramBean.getEndDate());
             platformService.insertNewOperationLog(oplog);
 
+            this.paramBean.setCurrCd(this.currCd);
             this.lazyDataModel = new LargeDepFlowLazyDataModel(largeDepFlowService.getLargeDepFlowMapper(), this.paramBean);
         } catch (Exception e) {
             logger.error("查询数据时出现错误。", e);
@@ -147,5 +166,21 @@ public class LargeDepFlowAction implements Serializable {
 
     public void setBizBranch(boolean bizBranch) {
         isBizBranch = bizBranch;
+    }
+
+    public String getCurrCd() {
+        return currCd;
+    }
+
+    public void setCurrCd(String currCd) {
+        this.currCd = currCd;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

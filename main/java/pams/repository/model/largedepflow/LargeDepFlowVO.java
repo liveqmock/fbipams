@@ -13,6 +13,7 @@ public class LargeDepFlowVO {
     private String certNo;
     private String startDate;
     private String endDate;
+    private String currCd;
     private BigDecimal startAmt;
     private BigDecimal endAmt;
 
@@ -107,5 +108,13 @@ public class LargeDepFlowVO {
 
     public void setCertNo(String certNo) {
         this.certNo = certNo;
+    }
+
+    public String getCurrCd() {
+        return currCd;
+    }
+
+    public void setCurrCd(String currCd) {
+        this.currCd = currCd;
     }
 }

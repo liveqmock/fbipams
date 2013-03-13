@@ -80,7 +80,9 @@
                    A1.BUSI_TYPE,
                    A1.SUMMARY,
                    A1.TX_TYPE,
-                   A1.XT_OP_TRL
+                   A1.XT_OP_TRL,
+                   A1.CURR_CD,
+                   (select SOURCE_CD_DESC from BF_CM_STD_CODE t where t.category_cd = 'ACC1300012'  and ods_standard_cd = A1.CURR_CD and system_id = '09') as CURR_NAME
               FROM (SELECT A.SA_TX_DT AS TX_DT,
                            A.BUS_INST_NO AS TX_INST_NO,
                            B.INST_NO,
@@ -92,6 +94,7 @@
                            A.SA_OP_CUST_NAME,
                            A.DR_CR_COD,
                            A.CR_TX_AMT,
+                           A.CURR_CD,
                            '活期' BUSI_TYPE,
                            A.SA_RMRK_DESC SUMMARY,
                            A.XT_OP_TRL,
@@ -103,7 +106,7 @@
                        AND A.CURR_IDEN = B.CURR_IDEN
                      WHERE A.EC_FLG = '0'
                        AND A.SA_TX_DT >= #{startDate}
-                       and A.CR_TX_AMT >= 50000
+                       and A.CR_TX_AMT >= (CASE WHEN A.CURR_CD = '156' THEN 50000 ELSE 100 END)
                     UNION ALL
                     SELECT C.CR_TX_DT TX_DT,
                            C.TD_OPUN_COD TX_INST_NO,
@@ -116,6 +119,7 @@
                            '' SA_OP_CUST_NAME,
                            SUBSTR(C.DR_CR_COD, 2, 1) DR_CR_COD,
                            C.CR_TX_AMT,
+                           C.CURR_CD,
                            '定期' BUSI_TYPE,
                            (select PQNR from BF_CM_SUMMARY E where E.DSCRP_COD=C.SUMMARY) DR_CR_COD,
                            C.TD_OPR_NO XT_OP_TRL,
@@ -127,7 +131,7 @@
                        AND C.CURR_CD = D.CURR_CD
                      WHERE C.EC_FLG = '0'
                        AND C.CR_TX_DT >= #{startDate}
-                       and C.CR_TX_AMT >= 50000
+                       and C.CR_TX_AMT >= (CASE WHEN C.CURR_CD = '156' THEN 50000 ELSE 100 END)
                        ) A1
               LEFT JOIN BF_PR_BR_INSTN A2
                 ON A2.OPR_UNIT_CD = A1.TX_INST_NO

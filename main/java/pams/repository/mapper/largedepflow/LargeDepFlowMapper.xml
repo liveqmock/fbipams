@@ -23,6 +23,12 @@
           <if test = " certNo != null and certNo != '' ">
                and a.CUST_NO like '%${certNo}%'
           </if>
+          <if test = " currCd != null and currCd != '' and currCd == 'CNY' ">
+               and a.CURR_CD = '156'
+          </if>
+          <if test = " currCd != null and currCd != '' and currCd == 'XXX' ">
+               and a.CURR_CD != '156'
+          </if>
       </where>
     </sql>
 
