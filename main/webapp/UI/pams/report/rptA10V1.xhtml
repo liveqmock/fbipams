@@ -1,0 +1,128 @@
+<!-- 住房公积金明细查询 -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="false" life="1500"/>
+                <div id="header">
+                    <p:panel header="住房公积金明细查询">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="4" cellspacing="5">
+                                <h:outputLabel value="选择机构:"/>
+                                <h:selectOneMenu id="branchname" style="width:153px;"
+                                                 value="#{rptA10V1Action.paramBean.branchId}">
+                                    <f:selectItems value="#{rptA10V1Action.branchList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="客户姓名:"/>
+                                <p:inputText value="#{rptA10V1Action.paramBean.custName}"/>
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{rptA10V1Action.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt"
+                                                    fileName="rpt#{rptA10V1Action.paramBean.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             lazy="true"
+                             value="#{rptA10V1Action.lazyDataModel}" var="record"
+                             rowKey="#{record.guid}"
+                             selection="#{rptA10V1Action.selectedRecord}" selectionMode="single"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            机构编号
+                        </f:facet>
+                        <h:outputText value="#{record.instNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            机构名称
+                        </f:facet>
+                        <h:outputText value="#{record.instName}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            客户姓名
+                        </f:facet>
+                        <h:outputText value="#{record.custName}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            卡号
+                        </f:facet>
+                        <h:outputText value="#{record.crdNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            发放金额
+                        </f:facet>
+                        <h:outputText value="#{record.amt}" style="float:right"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            签约单位编号
+                        </f:facet>
+                        <h:outputText value="#{record.instnNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            签约单位名称
+                        </f:facet>
+                        <h:outputText value="#{record.instnNo}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            联系方式
+                        </f:facet>
+                        <h:outputText value="#{record.noBody1}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

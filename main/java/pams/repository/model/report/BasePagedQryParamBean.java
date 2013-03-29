@@ -9,13 +9,19 @@ import java.math.BigDecimal;
  */
 public class BasePagedQryParamBean {
     private String branchId;
+    private String branchName;
     private String custName;
+    private String corpName;
     private String certNo;
     private String startDate;
     private String endDate;
     private BigDecimal startAmt;
     private BigDecimal endAmt;
     private String chnNo;
+    private String remark1;
+    private String remark2;
+    private String reserved1;
+    private String reserved2;
 
     private int offset;
     private int pagesize;
@@ -116,5 +122,53 @@ public class BasePagedQryParamBean {
 
     public void setChnNo(String chnNo) {
         this.chnNo = chnNo;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
+
+    public String getCorpName() {
+        return corpName;
+    }
+
+    public void setCorpName(String corpName) {
+        this.corpName = corpName;
+    }
+
+    public String getRemark1() {
+        return remark1;
+    }
+
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1;
+    }
+
+    public String getRemark2() {
+        return remark2;
+    }
+
+    public void setRemark2(String remark2) {
+        this.remark2 = remark2;
+    }
+
+    public String getReserved1() {
+        return reserved1;
+    }
+
+    public void setReserved1(String reserved1) {
+        this.reserved1 = reserved1;
+    }
+
+    public String getReserved2() {
+        return reserved2;
+    }
+
+    public void setReserved2(String reserved2) {
+        this.reserved2 = reserved2;
     }
 }
