@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/ImportService.java" afterPath="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/ImportService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.ipr" afterPath="$PROJECT_DIR$/ccbpams.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/pams/report/rptA09V1.xhtml" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/report/rptA09V1.xhtml" />
     </list>
     <list id="fc351307-c18c-4ee6-8fc3-13261485611a" name="New changelist" comment="" />
     <ignored path="ccbpams.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1365578871535" ignored="false" />
+    <file path="/Dummy.txt" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1365578901664" ignored="false" />
     <file path="/prdsetArchive.xhtml" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355722123817" ignored="false" />
     <file path="/DataImporter.groovy" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1355726409235" ignored="false" />
     <file path="/ImportAction.java" changelist="965295ec-3614-4bd2-8cba-55fe1abe5cce" time="1356054659829" ignored="false" />
@@ -343,7 +340,7 @@
       <file leaf-file-name="credit.properties" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="64" selection-start="420" selection-end="420" vertical-scroll-proportion="0.3188406">
+            <state line="5" column="64" selection-start="420" selection-end="420" vertical-scroll-proportion="0.19963703">
               <folding />
             </state>
           </provider>
@@ -1440,7 +1437,11 @@
       <created>1364520632817</created>
       <updated>1364520632817</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="列表显示修改&#10;">
+      <created>1365578912404</created>
+      <updated>1365578912404</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1460,7 +1461,7 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.49012157" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27279636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.339934" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.339934" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.297561" sideWeight="0.44200626" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1699,7 +1700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="64" selection-start="420" selection-end="420" vertical-scroll-proportion="0.3188406">
+        <state line="5" column="64" selection-start="420" selection-end="420" vertical-scroll-proportion="0.19963703">
           <folding />
         </state>
       </provider>
