@@ -72,8 +72,10 @@ public class ImportService {
             custlistMapper.insertBatch(beans);
             msgList.add("导入成功：报表数据文件：" + file);
         } catch (FileNotFoundException e) {
+            logger.info("导入失败：报表数据文件：" + file + " 不存在。", e);
             msgList.add("导入失败：报表数据文件：" + file + " 不存在。");
         } catch (Exception e) {
+            logger.info("导入失败：报表数据文件：" + file + " 读取失败。", e);
             msgList.add("导入失败：报表数据文件：" + file + " 读取失败。" + e.getMessage());
             //throw new RuntimeException(e);
         } finally {

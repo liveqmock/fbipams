@@ -58,6 +58,8 @@
     <file url="file://$PROJECT_DIR$/main/java/pams/view/largedepflow/LargeDepFlowLazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA07V1LazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA09V1LazyDataModel.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/main/java/pams/view/report/RptA10V1LazyDataModel.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/common/custChnInfo.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA01V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA02V1.xhtml" charset="UTF-8" />
@@ -67,6 +69,8 @@
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA06V1_1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA07V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA09V1.xhtml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA10V1.xhtml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/report" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/main/webapp/UI/test/testui.xhtml" charset="UTF-8" />
   </component>
@@ -245,7 +249,7 @@
     <resource url="http://primefaces.org/ui" location="$PROJECT_DIR$/main/webapp/WEB-INF/primefaces-p.taglib.xml" />
     <default-html-doctype>http://www.w3.org/1999/xhtml</default-html-doctype>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" assert-keyword="true" jdk-15="true" project-jdk-name="1.7.0_06_586" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" assert-keyword="true" jdk-15="true" project-jdk-name="1.7_i586" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/../../out" />
   </component>
   <component name="SvnBranchConfigurationManager">
