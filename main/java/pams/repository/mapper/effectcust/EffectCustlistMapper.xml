@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.effectcust.EffectCustlistMapper">
+
+    <sql id="QueryCustinfo_Where_Clause">
+      <where>
+          a.delete_flag = '0'
+          and a.branch_id in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+
+          <if test = " rptType != null and rptType != '' ">
+              and a.rpt_type = #{rptType}
+          </if>
+      </where>
+    </sql>
+
+    <insert id="insertBatch" parameterType="java.util.List">
+        insert into sv_ecl_custinfo ( <include refid="pams.repository.dao.SvEclCustinfoMapper.Base_Column_List" /> )
+          <foreach collection="list" item="item" index="index" separator= "union all ">
+            select
+            #{item.guid, jdbcType=VARCHAR},
+            #{item.bankId, jdbcType=VARCHAR},
+            #{item.branchId, jdbcType=VARCHAR},
+            #{item.custId, jdbcType=VARCHAR},
+            #{item.custName, jdbcType=VARCHAR},
+            #{item.custAge, jdbcType=INTEGER},
+            #{item.contactInfo1, jdbcType=VARCHAR},
+            #{item.contactInfo2, jdbcType=VARCHAR},
+            #{item.contactInfo3, jdbcType=VARCHAR},
+
+            #{item.occupation, jdbcType=VARCHAR},
+            #{item.jobtitle, jdbcType=VARCHAR},
+            #{item.stsRiskRating, jdbcType=VARCHAR},
+            #{item.stsOcrmAttention, jdbcType=VARCHAR},
+            #{item.stsNetbankSign, jdbcType=VARCHAR},
+            #{item.stsMtbankSign, jdbcType=VARCHAR},
+            #{item.stsTelbankSign, jdbcType=VARCHAR},
+
+            #{item.aum, jdbcType=DECIMAL},
+            #{item.balDep, jdbcType=DECIMAL},
+            #{item.balFin, jdbcType=DECIMAL},
+            #{item.balFund, jdbcType=DECIMAL},
+            #{item.balInsure, jdbcType=DECIMAL},
+            #{item.balCts, jdbcType=DECIMAL},
+            #{item.balMetal, jdbcType=DECIMAL},
+
+            #{item.certType, jdbcType=VARCHAR},
+            #{item.certNo, jdbcType=VARCHAR},
+            #{item.rptDate, jdbcType=VARCHAR},
+            #{item.rptType, jdbcType=VARCHAR},
+            #{item.operId, jdbcType=VARCHAR},
+            #{item.operDate, jdbcType=TIMESTAMP},
+            #{item.impDate, jdbcType=TIMESTAMP},
+            #{item.deleteFlag, jdbcType=VARCHAR}
+            from  dual
+        </foreach>
+    </insert>
+
+    <delete id="deleteRecords" parameterType="java.lang.String" >
+        delete from  sv_ecl_custinfo where  rpt_type = #{rpttype}
+    </delete>
+
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countCustlistRecords" parameterType="pams.repository.model.SvEclCustinfo" resultType="java.lang.Integer">
+          select count(*)
+            from sv_ecl_custinfo a
+             <include refid="QueryCustinfo_Where_Clause" />
+    </select>
+
+
+    <select id="selectCustlistRecords" parameterType="pams.repository.model.SvEclCustinfo"  resultMap="pams.repository.dao.SvEclCustinfoMapper.BaseResultMap">
+        select  *
+            from sv_ecl_custinfo a
+             <include refid="QueryCustinfo_Where_Clause" />
+        order by a.branch_id
+    </select>
+
+    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.effectcust.EffectCustinfoVO" resultMap="pams.repository.dao.SvEclCustinfoMapper.BaseResultMap">
+        select *
+          from (select t1.*, rownum rnum
+                from (
+                    select  *
+                        from sv_ecl_custinfo a
+                      <include refid="QueryCustinfo_Where_Clause" />
+                    order by
+                       <if test = " sortField != null and sortField != '' ">
+                            ${sortField}
+                       </if>
+                       <if test = " sortOrder != null and sortOrder != '' ">
+                            ${sortOrder}
+                       </if>
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
+
+</mapper>

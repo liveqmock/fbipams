@@ -209,6 +209,7 @@ public class RptA06V1Action implements Serializable {
                 "   AND A.CUST_TA_ID = C.CUST_TA_ID(+) " +
                 "   AND C.CERT_NO = D.cert_no(+) " +
                 "   order by txnDate) t";
+        logger.info("RPTA06V1 SQL:" + sql);
         return sql;
     }
 

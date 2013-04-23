@@ -2,7 +2,7 @@ package pams.service.custlist.importdata.format;
 
 import org.springframework.stereotype.Component;
 import pams.repository.model.SvClsCustinfo;
-import pams.service.custlist.importdata.DefaultFormat;
+import pams.service.common.dataimport.DefaultFormat;
 
 /**
  * 表四：优质重点产品客户数据表。

@@ -2,7 +2,7 @@ package pams.service.custlist.importdata.format;
 
 import org.springframework.stereotype.Component;
 import pams.repository.model.SvClsCustinfo;
-import pams.service.custlist.importdata.DefaultFormat;
+import pams.service.common.dataimport.DefaultFormat;
 
 /**
  * 表三：持有理财卡但AUM不达标客户数据表。

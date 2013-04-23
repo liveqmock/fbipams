@@ -1,0 +1,232 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .col-95 {
+                width: 95%;
+            }
+
+            .col-5 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:growl id="msgs" showDetail="false" life="1500"/>
+
+                <div id="header">
+                    <p:panel header="#{effectCustinfoAction.panelTitle}">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+                            <h:panelGrid columns="4" cellspacing="5">
+                                <h:outputLabel value="分支机构:"/>
+                                <h:selectOneMenu id="branchname" style="width:153px;"
+                                                 value="#{effectCustinfoAction.paramBean.branchId}">
+                                    <f:selectItems value="#{effectCustinfoAction.branchList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="客户姓名:"/>
+                                <p:inputText id="certno" value="#{effectCustinfoAction.paramBean.custName}"/>
+
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                                 action="#{effectCustinfoAction.onQuery}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt" fileName="rpt#{effectCustinfoAction.rptType}_#{effectCustinfoAction.paramBean.branchId}" encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             lazy="true" selectionMode="single"
+                             value="#{effectCustinfoAction.lazyDataModel}" var="record"
+                             rowKey="#{record.guid}"
+                             selection="#{effectCustinfoAction.selectedRecord}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15"
+                             paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+
+                    <p:column style="text-align:center"  sortBy="#{record.branchId}">
+                        <f:facet name="header">
+                            机构号
+                        </f:facet>
+                        <h:outputText value="#{record.branchId}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{!effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            客户姓名
+                        </f:facet>
+                        <h:outputText value="#{fn:substring(record.custName,0,1)}某"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            客户名称
+                        </f:facet>
+                        <h:outputText value="#{record.custName}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            客户号
+                        </f:facet>
+                        <h:outputText value="#{record.custId}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            客户年龄
+                        </f:facet>
+                        <h:outputText value="#{record.custAge}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            联系方式1
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo1}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            联系方式2
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo2}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            联系方式3
+                        </f:facet>
+                        <h:outputText value="#{record.contactInfo3}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            职业
+                        </f:facet>
+                        <h:outputText value="#{record.occupation}"/>
+                    </p:column>
+                    <p:column style="text-align:center" rendered="#{effectCustinfoAction.bizBranch}">
+                        <f:facet name="header">
+                            职务
+                        </f:facet>
+                        <h:outputText value="#{record.jobtitle}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" sortBy="#{record.stsRiskRating}">
+                        <f:facet name="header">
+                            风险
+                        </f:facet>
+                        <h:outputText value="#{record.stsRiskRating}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.stsOcrmAttention}">
+                        <f:facet name="header">
+                            关注
+                        </f:facet>
+                        <h:outputText value="#{record.stsOcrmAttention}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.stsNetbankSign}">
+                        <f:facet name="header">
+                            网银
+                        </f:facet>
+                        <h:outputText value="#{record.stsNetbankSign}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.stsMtbankSign}">
+                        <f:facet name="header">
+                            手机银行
+                        </f:facet>
+                        <h:outputText value="#{record.stsMtbankSign}"/>
+                    </p:column>
+                    <p:column style="text-align:center" sortBy="#{record.stsTelbankSign}">
+                        <f:facet name="header">
+                            电话银行
+                        </f:facet>
+                        <h:outputText value="#{record.stsTelbankSign}"/>
+                    </p:column>
+
+
+                    <p:column style="text-align:center"  sortBy="#{record.aum}">
+                        <f:facet name="header">
+                            AUM
+                        </f:facet>
+                        <h:outputText value="#{record.aum}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balDep}">
+                        <f:facet name="header">
+                            存款余额
+                        </f:facet>
+                        <h:outputText value="#{record.balDep}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balFin}">
+                        <f:facet name="header">
+                            理财余额
+                        </f:facet>
+                        <h:outputText value="#{record.balFin}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balFund}">
+                        <f:facet name="header">
+                            基金余额
+                        </f:facet>
+                        <h:outputText value="#{record.balFund}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balInsure}">
+                        <f:facet name="header">
+                            保险余额
+                        </f:facet>
+                        <h:outputText value="#{record.balInsure}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balCts}">
+                        <f:facet name="header">
+                            CTS余额
+                        </f:facet>
+                        <h:outputText value="#{record.balCts}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+                    <p:column style="text-align:center"  sortBy="#{record.balMetal}">
+                        <f:facet name="header">
+                            贵金属余额
+                        </f:facet>
+                        <h:outputText value="#{record.balMetal}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
