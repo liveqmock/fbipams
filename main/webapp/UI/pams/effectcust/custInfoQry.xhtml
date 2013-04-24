@@ -34,8 +34,10 @@
                                                  value="#{effectCustinfoAction.paramBean.branchId}">
                                     <f:selectItems value="#{effectCustinfoAction.branchList}"/>
                                 </h:selectOneMenu>
+<!--
                                 <h:outputLabel value="客户姓名:"/>
                                 <p:inputText id="certno" value="#{effectCustinfoAction.paramBean.custName}"/>
+-->
 
                             </h:panelGrid>
                             <h:panelGrid>
@@ -136,31 +138,31 @@
                         <h:outputText value="#{record.jobtitle}"/>
                     </p:column>
 
-                    <p:column style="text-align:center" sortBy="#{record.stsRiskRating}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             风险
                         </f:facet>
                         <h:outputText value="#{record.stsRiskRating}"/>
                     </p:column>
-                    <p:column style="text-align:center" sortBy="#{record.stsOcrmAttention}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             关注
                         </f:facet>
                         <h:outputText value="#{record.stsOcrmAttention}"/>
                     </p:column>
-                    <p:column style="text-align:center" sortBy="#{record.stsNetbankSign}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             网银
                         </f:facet>
                         <h:outputText value="#{record.stsNetbankSign}"/>
                     </p:column>
-                    <p:column style="text-align:center" sortBy="#{record.stsMtbankSign}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             手机银行
                         </f:facet>
                         <h:outputText value="#{record.stsMtbankSign}"/>
                     </p:column>
-                    <p:column style="text-align:center" sortBy="#{record.stsTelbankSign}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             电话银行
                         </f:facet>
@@ -176,7 +178,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balDep}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             存款余额
                         </f:facet>
@@ -184,7 +186,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balFin}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             理财余额
                         </f:facet>
@@ -192,7 +194,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balFund}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             基金余额
                         </f:facet>
@@ -200,7 +202,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balInsure}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             保险余额
                         </f:facet>
@@ -208,7 +210,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balCts}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             CTS余额
                         </f:facet>
@@ -216,7 +218,7 @@
                             <f:convertNumber pattern="##,###,##0.00"/>
                         </h:outputText>
                     </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.balMetal}">
+                    <p:column style="text-align:center" >
                         <f:facet name="header">
                             贵金属余额
                         </f:facet>

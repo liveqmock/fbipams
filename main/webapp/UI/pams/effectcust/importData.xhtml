@@ -19,7 +19,7 @@
                             <h:panelGrid columns="2" cellspacing="10">
                                 <h:outputLabel value="报表日期:" style="font-weight: bold;" for="startdate"/>
                                 <p:inputText id="startdate" required="true" requiredMessage="日期不能为空."
-                                             value="#{importAction.startdate}"
+                                             value="#{eclImportAction.startdate}"
                                              onclick="WdatePicker({dateFmt:'yyyyMMdd'})"/>
                             </h:panelGrid>
                             <p:ajaxStatus style="height:20px;text-align:center">
@@ -33,9 +33,9 @@
                             <p:separator/>
                             <h:panelGrid columns="2" style="margin-bottom:5px" cellpadding="10">
                                 <h:outputText style="font-weight: bold;" value="处理选项: "/>
-                                <p:selectManyCheckbox value="#{importAction.selectedOptions}"
+                                <p:selectManyCheckbox value="#{eclImportAction.selectedOptions}"
                                                       layout="pageDirection">
-                                    <f:selectItems value="#{importAction.options}"/>
+                                    <f:selectItems value="#{eclImportAction.options}"/>
                                 </p:selectManyCheckbox>
                             </h:panelGrid>
 
@@ -43,7 +43,7 @@
                             <h:panelGrid columns="1" columnClasses="exportbutton">
                                 <h:panelGroup>
                                     <p:commandButton value="报表数据导入" image="ui-icon-disk" ajax="true" update="msgs"
-                                                     actionListener="#{importAction.onETLRptData}"/>
+                                                     actionListener="#{eclImportAction.onETLRptData}"/>
                                 </h:panelGroup>
                             </h:panelGrid>
                         </p:tab>

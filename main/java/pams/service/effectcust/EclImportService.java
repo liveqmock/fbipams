@@ -38,7 +38,7 @@ public class EclImportService {
     @Autowired
     private EffectCustlistMapper custlistMapper;
 
-    private  static int transaction_commit_num = PropertyManager.getIntProperty("import_data_transaction_num");
+    private static int transaction_commit_num = PropertyManager.getIntProperty("import_data_transaction_num");
 
     public void importDataFromTxt(String rptDate, String file, String rptType, List<String> msgList) {
         String filename = getTxtPath(rptDate) + file;
@@ -46,10 +46,12 @@ public class EclImportService {
         //删除旧数据
         custlistMapper.deleteRecords(rptType);
 
-        ServletContext servletContext = (ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext();
+        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
         WebApplicationContext applicationContext = WebApplicationContextUtils.getWebApplicationContext(servletContext);
 
-        Format format = (Format)applicationContext.getBean("rpt"+rptType+"Format");
+        //Format format = (Format)applicationContext.getBean("rpt"+rptType+"Format");
+        //zr 所有报表的格式相同，所以选用统一的格式定义 1001
+        Format format = (Format) applicationContext.getBean("rpt" + "1001" + "Format");
         BufferedReader br = null;
         try {
             br = new BufferedReader(new FileReader(filename));
@@ -58,13 +60,20 @@ public class EclImportService {
             int count = 0;
             while ((line = br.readLine()) != null) {
                 SvEclCustinfo bean = (SvEclCustinfo) format.parse(line);
+                if (bean == null) {
+                    logger.debug("导入错误：字段个数不符合定义。 原始数据：" + line);
+                    msgList.add("报表数据文件：" + file + " 导入过程中出现错误：字段个数不符合定义。 原始数据：" + line);
+                    continue;
+                }
                 fillBeanBaseInfo(bean, rptDate, rptType);
                 beans.add(bean);
                 count++;
                 if (count == transaction_commit_num) {
-                    logger.info("============begin import " +transaction_commit_num + " lines....");
+                    long start = System.currentTimeMillis();
+                    //logger.info("===begin import " + transaction_commit_num + " lines....");
                     custlistMapper.insertBatch(beans);
-                    logger.info("============end import " +transaction_commit_num + " lines....");
+                    long end = System.currentTimeMillis();
+                    logger.info("===import " + transaction_commit_num + " lines.... Time:" + (end-start) + " RPT:" + rptType);
                     beans = new ArrayList<>();
                     count = 0;
                 }
@@ -89,7 +98,7 @@ public class EclImportService {
         }
     }
 
-    private void fillBeanBaseInfo(SvEclCustinfo bean, String startdate, String rptType){
+    private void fillBeanBaseInfo(SvEclCustinfo bean, String startdate, String rptType) {
         bean.setGuid(UUID.randomUUID().toString());
         bean.setRptDate(startdate);
         bean.setRptType(rptType);
@@ -100,6 +109,6 @@ public class EclImportService {
     }
 
     private String getTxtPath(String rptdate) {
-        return PropertyManager.getProperty("cims") + PropertyManager.getProperty("import_custlist_data_dir")+ rptdate + "/ACRM/";
+        return PropertyManager.getProperty("cims") + PropertyManager.getProperty("import_effectcust_data_dir");
     }
 }

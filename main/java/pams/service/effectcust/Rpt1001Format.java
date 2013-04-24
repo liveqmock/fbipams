@@ -1,7 +1,7 @@
 package pams.service.effectcust;
 
 import org.springframework.stereotype.Component;
-import pams.repository.model.SvClsCustinfo;
+import pams.repository.model.SvEclCustinfo;
 import pams.service.common.dataimport.DefaultFormat;
 
 /**
@@ -42,7 +42,7 @@ public class Rpt1001Format extends DefaultFormat {
             "String",
             "String",
             "String",
-            "Integer",
+            "Short",
             "String",
             "String",
             "String",
@@ -62,9 +62,12 @@ public class Rpt1001Format extends DefaultFormat {
             "BigDecimal"};
 
     @Override
-    public SvClsCustinfo parse(String line) throws Exception {
+    public SvEclCustinfo parse(String line) throws Exception {
         String[] fields = line.split("\\|");
-        SvClsCustinfo bean = new SvClsCustinfo();
+        SvEclCustinfo bean = new SvEclCustinfo();
+        if (fields.length != fieldNames.length) {
+            return null;
+        }
         if (fields != null) {
             assembleBean(bean, fields, fieldNames, fieldTypes);
         }

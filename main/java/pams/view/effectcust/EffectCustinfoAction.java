@@ -82,7 +82,7 @@ public class EffectCustinfoAction implements Serializable {
             return;
         }
         this.panelTitle = getRptName(rptType);
-        rptNameMap = effectCustlistService.selectPtEnuDeatilItemsExpandMap("CUST_LIST_RPT_TYPE");
+        rptNameMap = effectCustlistService.selectPtEnuDeatilItemsExpandMap("EFFECT_CUST_RPT_TYPE");
 
         this.branchList = toolsService.selectBranchList(this.branchid);
         if (branchList.size() == 1) {
@@ -99,8 +99,8 @@ public class EffectCustinfoAction implements Serializable {
     public String onQuery() {
         try {
             Ptoplog oplog = new Ptoplog();
-            oplog.setActionId("CustInfoLazy_onQuery");
-            oplog.setActionName("客户名单制报表查询:" + this.panelTitle);
+            oplog.setActionId("EffectCustInfo_onQuery");
+            oplog.setActionName("有效客户拓展提升报表查询:" + this.panelTitle);
             oplog.setOpDataBranchid(this.paramBean.getBranchId());
             oplog.setOpDataStartdate(this.paramBean.getRptDate());
             platformService.insertNewOperationLog(oplog);
@@ -114,7 +114,7 @@ public class EffectCustinfoAction implements Serializable {
     }
 
     private String getRptName(String rptType) {
-        return (String)effectCustlistService.selectPtEnuDeatilItemsLabelMap("CUST_LIST_RPT_TYPE").get(rptType);
+        return (String)effectCustlistService.selectPtEnuDeatilItemsLabelMap("EFFECT_CUST_RPT_TYPE").get(rptType);
     }
 
     //==================
@@ -217,14 +217,6 @@ public class EffectCustinfoAction implements Serializable {
         this.platformService = platformService;
     }
 
-    public EffectCustlistService getCustlistService() {
-        return effectCustlistService;
-    }
-
-    public void setCustlistService(EffectCustlistService custlistService) {
-        this.effectCustlistService = custlistService;
-    }
-
     public String getRptType() {
         return rptType;
     }
@@ -247,5 +239,13 @@ public class EffectCustinfoAction implements Serializable {
 
     public void setBizBranch(boolean bizBranch) {
         isBizBranch = bizBranch;
+    }
+
+    public EffectCustlistService getEffectCustlistService() {
+        return effectCustlistService;
+    }
+
+    public void setEffectCustlistService(EffectCustlistService effectCustlistService) {
+        this.effectCustlistService = effectCustlistService;
     }
 }

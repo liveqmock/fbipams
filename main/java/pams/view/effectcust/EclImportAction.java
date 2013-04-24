@@ -1,5 +1,6 @@
 package pams.view.effectcust;
 
+import org.apache.commons.lang.StringUtils;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,12 +50,18 @@ public class EclImportAction implements Serializable {
         options.put("4、优质重点产品客户数据表", "4");
         options.put("5、CTS客户数据表", "5");
         options.put("6、资产流失最大VIP客户数据表", "6");
+        options.put("7、资产流失最大VIP客户数据表", "7");
+        options.put("8、资产流失最大VIP客户数据表", "8");
+        options.put("9、资产流失最大VIP客户数据表", "9");
         selectedOptions.add("1");
         selectedOptions.add("2");
         selectedOptions.add("3");
         selectedOptions.add("4");
         selectedOptions.add("5");
         selectedOptions.add("6");
+        selectedOptions.add("7");
+        selectedOptions.add("8");
+        selectedOptions.add("9");
     }
     @PostConstruct
     public void postConstruct() {
@@ -63,56 +70,30 @@ public class EclImportAction implements Serializable {
 
     }
     public String onETLRptData() {
+        List<String> msgList = new ArrayList<>();
         try {
             if (selectedOptions.isEmpty()) {
                 MessageUtil.addInfo("请选择导入的报表...");
                 return null;
             }
 
-            List<String> msgList = new ArrayList<>();
             for (String option : selectedOptions) {
-                switch (Integer.parseInt(option)) {
-                    case 1:
-                        String filename = "CUST_INFO_AUM1_4_5_371_" + startdate + ".dat";
-                        String rptType = "0101";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM1_15_20_371_" + startdate + ".dat";
-                        rptType = "0102";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM1_40_50_371_" + startdate + ".dat";
-                        rptType = "0103";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-                        filename = "CUST_INFO_AUM2_4_5_371_" + startdate + ".dat";
-                        rptType = "0104";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM2_15_20_371_" + startdate + ".dat";
-                        rptType = "0105";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM2_40_50_371_" + startdate + ".dat";
-                        rptType = "0106";
-                        eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 5:
-                        break;
-                    case 6:
-                        break;
-                    default:
-                }
+                String fileSn = StringUtils.leftPad("" + (Integer.parseInt(option) - 1), 2, '0');
+                String rptSn = StringUtils.leftPad(option, 2, '0');
+                String filename = "LIST_" + fileSn + "_371000000.dat";
+                String rptType = "10" + rptSn;
+                eclImportService.importDataFromTxt(startdate, filename, rptType, msgList);
             }
+
             MessageUtil.addInfo("数据处理结果如下：");
             for (String s : msgList) {
                 MessageUtil.addInfo(s);
             }
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
+            for (String s : msgList) {
+                MessageUtil.addError(s);
+            }
             MessageUtil.addError("数据处理错误。" + ex.getMessage());
         }
         return null;
@@ -168,11 +149,11 @@ public class EclImportAction implements Serializable {
         this.platformService = platformService;
     }
 
-    public EclImportService getImportService() {
+    public EclImportService getEclImportService() {
         return eclImportService;
     }
 
-    public void setImportService(EclImportService importService) {
-        this.eclImportService = importService;
+    public void setEclImportService(EclImportService eclImportService) {
+        this.eclImportService = eclImportService;
     }
 }

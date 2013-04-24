@@ -64,13 +64,13 @@ public class ImportAction implements Serializable {
 
     }
     public String onETLRptData() {
+        List<String> msgList = new ArrayList<>();
         try {
             if (selectedOptions.isEmpty()) {
                 MessageUtil.addInfo("请选择导入的报表...");
                 return null;
             }
 
-            List<String> msgList = new ArrayList<>();
             for (String option : selectedOptions) {
                 switch (Integer.parseInt(option)) {
                     case 1:
@@ -135,6 +135,9 @@ public class ImportAction implements Serializable {
             }
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
+            for (String s : msgList) {
+                MessageUtil.addError(s);
+            }
             MessageUtil.addError("数据处理错误。" + ex.getMessage());
         }
         return null;

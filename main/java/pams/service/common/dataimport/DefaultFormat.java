@@ -1,5 +1,7 @@
 package pams.service.common.dataimport;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
@@ -17,20 +19,34 @@ public abstract class DefaultFormat implements Format {
         for (int i = 0; i < fieldNames.length; i++) {
             String methodName = "set" + fieldNames[i];
             Method method = null;
+            String field = fields[i];
             switch (fieldTypes[i]) {
                 case "None":
                     continue; //此字段不处理
                 case "String":
                     method = clazz.getMethod(methodName, String.class);
-                    method.invoke(object, fields[i]);
+                    method.invoke(object, field);
+                    break;
+                case "Short":
+                    method = clazz.getMethod(methodName, Short.class);
+                    if (StringUtils.isEmpty(field) || "无".equals(field)) {
+                        field = "0";
+                    }
+                    method.invoke(object, Short.parseShort(field));
                     break;
                 case "Integer":
                     method = clazz.getMethod(methodName, Integer.class);
-                    method.invoke(object, Integer.parseInt(fields[i]));
+                    if (StringUtils.isEmpty(field) || "无".equals(field)) {
+                        field = "0";
+                    }
+                    method.invoke(object, Integer.parseInt(field));
                     break;
                 case "BigDecimal":
                     method = clazz.getMethod(methodName, BigDecimal.class);
-                    method.invoke(object, new BigDecimal(fields[i]));
+                    if (StringUtils.isEmpty(field) || "无".equals(field)) {
+                        field = "0";
+                    }
+                    method.invoke(object, new BigDecimal(field));
                     break;
                 default:
                     throw new RuntimeException("错误的数据类型.");
