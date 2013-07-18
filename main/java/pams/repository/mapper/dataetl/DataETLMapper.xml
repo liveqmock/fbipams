@@ -6,23 +6,23 @@
     <update id="mergeCustBaseRecords"  parameterType="java.lang.String">
           merge into sv_cms_custbase a
             using (select t.branch_id,
-                          max(t.cust_name) as cust_name,
-                          t.cert_type,
-                          t.cert_no,
+                          max(t.cust_name)||'('||max(t.cust_gender)||')' as cust_name,
+                          --t.cert_type,
+                          t.cust_no,
                           max(contact_info1) as contact_info1,
                           max(contact_info2) as contact_info2,
                           max(rpt_date) as rpt_date,
                           max(rpt_type) as rpt_type
                      from sv_cls_custinfo t
-                    group by t.branch_id, t.cert_type, t.cert_no) b
-            on (a.cert_type = b.cert_type and a.cert_no = b.cert_no)
+                    group by t.branch_id, t.cust_no) b
+            on (a.cust_no = b.cust_no)
             when not matched then
               insert
                 (guid,
                  branch_id,
                  cust_name,
-                 cert_type,
-                 cert_no,
+                 --cert_type,
+                 cust_no,
                  contact_info1,
                  contact_info2,
                  rpt_date,
@@ -32,8 +32,8 @@
                 (sys_guid(),
                  b.branch_id,
                  b.cust_name,
-                 b.cert_type,
-                 b.cert_no,
+                 --b.cert_type,
+                 b.cust_no,
                  b.contact_info1,
                  b.contact_info2,
                  b.rpt_date,
@@ -45,9 +45,21 @@
                      a.contact_info2 = b.contact_info2,
                      a.rpt_date      = b.rpt_date,
                      a.rpt_type      = b.rpt_type,
+                     a.cust_name     = b.cust_name,
+                     a.branch_id     = b.branch_id,
                      a.imp_date      = sysdate
-               where b.rpt_date = #{rptDate}
+               where b.rpt_date =  #{rptDate}
                  and a.rpt_type = b.rpt_type
+    </update>
+
+    <!--初始化客户基本信息 补充身份证号-->
+    <update id="updateCustBaseRecords4CertInfo">
+        update sv_cms_custbase a
+           set (a.cert_type, a.cert_no) =
+               (select cert_type, cert_no
+                  from bf_pr_ind_info@odsbptdb
+                 where p_cust_no = a.cust_no)
+         where a.cert_no is null
     </update>
 
     <update id="updateNullCertTypeRecords" parameterType="java.lang.String">

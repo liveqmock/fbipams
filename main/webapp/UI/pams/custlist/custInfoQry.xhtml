@@ -110,6 +110,12 @@
                         </f:facet>
                         <h:outputText value="#{record.custName}"/>
                     </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            性别
+                        </f:facet>
+                        <h:outputText value="#{record.custGender}"/>
+                    </p:column>
                     <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
                         <f:facet name="header">
                             证件类型

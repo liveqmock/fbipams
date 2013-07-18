@@ -42,6 +42,7 @@ public class PtoplogAction implements Serializable {
     private String endDate;
 
     private List<Ptoplog> detlList;
+    private List<Ptoplog> filteredDetlList;
 
     @ManagedProperty(value = "#{toolsService}")
     private ToolsService toolsService;
@@ -162,5 +163,13 @@ public class PtoplogAction implements Serializable {
 
     public void setPamsJdbc(NamedParameterJdbcTemplate pamsJdbc) {
         this.pamsJdbc = pamsJdbc;
+    }
+
+    public List<Ptoplog> getFilteredDetlList() {
+        return filteredDetlList;
+    }
+
+    public void setFilteredDetlList(List<Ptoplog> filteredDetlList) {
+        this.filteredDetlList = filteredDetlList;
     }
 }

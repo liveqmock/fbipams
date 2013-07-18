@@ -93,7 +93,7 @@ public class CustBizDataAction implements Serializable {
     }
     public String onQuery() {
         try {
-            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId, paramBean.getCustName(),paramBean.getCertNo());
+            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId, paramBean.getCustName(),paramBean.getCustNo());
 
             Ptoplog oplog = new Ptoplog();
             oplog.setActionId("CustBizData_onQuery");

@@ -62,15 +62,17 @@ public class ImportService {
                 fillBeanBaseInfo(bean, rptDate, rptType);
                 beans.add(bean);
                 count++;
-                if (count == transaction_commit_num) {
-                    logger.info("============begin import " +transaction_commit_num + " lines....");
+                if (count % transaction_commit_num == 0) {
+                    logger.info("============begin import rpt" + rptType + ", commit num= " +transaction_commit_num + ", current line=" + count);
                     custlistMapper.insertBatch(beans);
                     logger.info("============end import " +transaction_commit_num + " lines....");
                     beans = new ArrayList<>();
-                    count = 0;
+                    //count = 0;
                 }
             }
-            custlistMapper.insertBatch(beans);
+            if (!beans.isEmpty()) {
+                custlistMapper.insertBatch(beans);
+            }
             msgList.add("导入成功：报表数据文件：" + file);
         } catch (FileNotFoundException e) {
             logger.info("导入失败：报表数据文件：" + file + " 不存在。", e);

@@ -46,8 +46,13 @@
             #{item.operId, jdbcType=VARCHAR},
             #{item.operDate, jdbcType=TIMESTAMP},
             #{item.impDate, jdbcType=TIMESTAMP},
-            #{item.deleteFlag, jdbcType=VARCHAR}
-            from  dual
+            #{item.deleteFlag, jdbcType=VARCHAR},
+            #{item.bankName, jdbcType=VARCHAR},
+            #{item.bankId, jdbcType=VARCHAR},
+            #{item.custNoType, jdbcType=VARCHAR},
+            #{item.custNo, jdbcType=VARCHAR},
+            #{item.custGender, jdbcType=VARCHAR}
+              from  dual
         </foreach>
     </insert>
 

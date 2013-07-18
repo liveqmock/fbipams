@@ -14,8 +14,8 @@ import pams.service.common.dataimport.DefaultFormat;
  */
 @Component
 public class Rpt0104Format extends DefaultFormat {
-    private String[] fieldNames = {"BranchId", "BranchName", "CustName", "CertType", "CertNo", "ContactInfo1", "ContactInfo2", "AumMonthCurr", "AumTimepointDep"};
-    private String[] fieldTypes = {"String", "String", "String", "String", "String", "String", "String", "BigDecimal", "BigDecimal"};
+    private String[] fieldNames = {"CustNo", "OpenactBranchId", "OpenactBranchName","BranchId", "BranchName", "CustName", "CustGender", "ContactInfo1", "ContactInfo2", "AumMonthCurr", "AumTimepointDep", "AumMonthLast"};
+    private String[] fieldTypes = {"String", "String", "String", "String", "String", "String", "String", "String", "String", "BigDecimal", "BigDecimal", "BigDecimal"};
 
     @Override
     public SvClsCustinfo parse(String line) throws Exception {

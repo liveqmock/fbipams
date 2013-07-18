@@ -14,7 +14,7 @@ import pams.service.common.dataimport.DefaultFormat;
  */
 @Component
 public class Rpt0401Format extends DefaultFormat {
-    private String[] fieldNames = {"BranchId", "BranchName", "CustName", "CertType", "CertNo", "ContactInfo1", "ContactInfo2", "AumMonthCurr", "AumTimepointDep", "LoanBal"};
+    private String[] fieldNames = {"CustNo", "BranchId", "BranchName", "CustName", "CustGender", "ContactInfo1", "ContactInfo2", "AumMonthCurr", "AumTimepointDep", "LoanBal"};
     private String[] fieldTypes = {"String", "String", "String", "String", "String", "String", "String", "BigDecimal", "BigDecimal", "BigDecimal"};
 
     @Override

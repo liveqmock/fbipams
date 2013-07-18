@@ -57,11 +57,11 @@ public class CustMngService {
         return cmsCustbaseMapper.selectByExample(example);
     }
 
-    public List<SvCmsCustbase> selectCustBaseByCustMgr(String branchId, String custmgrId, String custName, String certNo) {
+    public List<SvCmsCustbase> selectCustBaseByCustMgr(String branchId, String custmgrId, String custName, String custNo) {
         SvCmsCustbaseExample example = new SvCmsCustbaseExample();
         example.createCriteria().andBranchIdEqualTo(branchId).andCustmgrIdEqualTo(custmgrId)
                 .andCustNameLike("%" + custName + "%")
-                .andCertNoLike("%" + certNo + "%");
+                .andCustNoLike("%" + custNo + "%");
         return cmsCustbaseMapper.selectByExample(example);
     }
 

@@ -13,6 +13,7 @@ public interface DataETLMapper {
 
     //客户基本信息维护
     int mergeCustBaseRecords(@Param("rptDate") String rptDate);
+    int updateCustBaseRecords4CertInfo();
     int updateNullCertTypeRecords(@Param("rptDate") String rptDate, @Param("certType") String certType);
 
 

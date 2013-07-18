@@ -35,7 +35,9 @@ public class DataETLService {
 
         //merge前对证件号为空的进行处理
         updateNullCertTypeRecords(rptDate, "居民身份证");
-        return dataETLMapper.mergeCustBaseRecords(rptDate);
+        int cnt =  dataETLMapper.mergeCustBaseRecords(rptDate);
+        dataETLMapper.updateCustBaseRecords4CertInfo();
+        return cnt;
     }
 
     private int updateNullCertTypeRecords(String rptDate, String certType){

@@ -53,7 +53,8 @@
 <html>
 <head>
 <title>精准营销数据仓库系统</title>
-<meta content="mshtml 6.00.2800.1106" name="generator">
+<meta http-equiv="X-UA-Compatible" content="IE=5" />
+<%--<meta content="mshtml 6.00.2800.1106" name="generator">--%>
 <LINK href="<%=contextPath%>/css/diytabbar.css" type="text/css" rel="stylesheet">
 <LINK href="<%=contextPath%>/dhtmlx/codebase/dhtmlxlayout.css" type="text/css" rel="stylesheet">
 <LINK href="<%=contextPath%>/dhtmlx/codebase/skins/dhtmlxlayout_dhx_skyblue.css" type="text/css" rel="stylesheet">
