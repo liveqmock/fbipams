@@ -4,29 +4,31 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Manages sequences of unique ID's that get stored in the database. Database
  * support for sequences varies widely; some don't support them at all. So,
  * we handle unique ID generation with a combination VM/database solution.<p>
- *
+ * <p/>
  * A special table in the database doles out blocks of unique ID's to each
  * virtual machine that interacts with Jive. This has the following consequences:
  * <ul>
- *  <li>There is no need to go to the database every time we want a new unique
- *      id.
- *  <li>Multiple app servers can interact with the same db without consequences
- *      in terms of id's.
- *  <li>The order of unique id's may not correspond to creation date
- *      (as they once did).
+ * <li>There is no need to go to the database every time we want a new unique
+ * id.
+ * <li>Multiple app servers can interact with the same db without consequences
+ * in terms of id's.
+ * <li>The order of unique id's may not correspond to creation date
+ * (as they once did).
  * </ul>
  */
 public class Sequence {
-	
+
     private static final String LOAD_ID =
-        "SELECT * FROM cp_sequence WHERE seqName=?";
+            "SELECT * FROM cp_sequence WHERE seqName=?";
     private static final String UPDATE_ID =
-        "UPDATE cp_sequence SET curValue=? WHERE seqName=? AND curValue=?";
+            "UPDATE cp_sequence SET curValue=? WHERE seqName=? AND curValue=?";
 
     /**
      * The number of ID's to checkout at a time. 15 should provide a good
@@ -41,11 +43,13 @@ public class Sequence {
     private long _maxValue;
 
     private long _tempMaxValue;
-    
+
     private int _stepValue;
-    
+
     private String _cycle;
     private int _cache;
+
+    private String _updateYear; //更新年份
 
     /**
      * Creates a new DbSequenceManager.
@@ -61,24 +65,96 @@ public class Sequence {
      * functionality of an auto-increment database field.
      */
     public synchronized long nextUniqueID() {
-        if (! (_curValue < _tempMaxValue)) {
+
+        if (_updateYear == null) {
+            return getNextID();
+        } else {
+            String currYear = new SimpleDateFormat("yyyy").format(new Date());
+            if (currYear.equals(_updateYear)) {
+                return getNextID();
+            } else {
+                //init
+                initSeqIDWhenNewYear(5, currYear);
+                long id = _curValue;
+                _curValue += _stepValue;
+
+                return id;
+            }
+        }
+    }
+
+    private long getNextID() {
+        if (!(_curValue < _tempMaxValue)) {
             // Get next block -- make 5 attempts at maximum.
             getNextBlock(5);
         }
         long id = _curValue;
-        _curValue+=_stepValue;
-        
+        _curValue += _stepValue;
+
         return id;
+    }
+
+    private void initSeqIDWhenNewYear(int count, String newYear) {
+        if (count == 0) {
+            System.err.println("Failed at last attempt to obtain an ID, aborting...");
+            return;
+        }
+
+        boolean success = false;
+        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        long currentID = 1l;
+        try {
+            long newID = currentID + _cache;
+
+            con = ConnectionManager.getInstance().getConnection().getConnection();
+            pstmt = con.prepareStatement("UPDATE cp_sequence SET curValue=?, year=? WHERE seqName=?");
+            pstmt.setLong(1, newID);
+            pstmt.setString(2, newYear);
+            pstmt.setString(3, _seqName);
+
+            success = pstmt.executeUpdate() == 1;
+
+            if (success) {
+                this._curValue = currentID;
+                this._tempMaxValue = newID;
+                this._updateYear = newYear;
+            }
+        } catch (Exception sqle) {
+            sqle.printStackTrace();
+        } finally {
+            try {
+                pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        if (!success) {
+            System.err.println("WARNING: failed to obtain next ID block due to " +
+                    "thread contention...");
+            try {
+                Thread.currentThread().sleep(75);
+            } catch (InterruptedException ie) {
+                ie.printStackTrace();
+            }
+            initSeqIDWhenNewYear(count - 1, newYear);
+        }
     }
 
     /**
      * Performs a lookup to get the next availabe ID block. The algorithm is as
      * follows:<ol>
-     *  <li> Select currentID from appropriate db row.
-     *  <li> Increment id returned from db.
-     *  <li> Update db row with new id where id=old_id.
-     *  <li> If update fails another process checked out the block first; go
-     *          back to step 1. Otherwise, done.
+     * <li> Select currentID from appropriate db row.
+     * <li> Increment id returned from db.
+     * <li> Update db row with new id where id=old_id.
+     * <li> If update fails another process checked out the block first; go
+     * back to step 1. Otherwise, done.
      * </ol>
      */
     private void getNextBlock(int count) {
@@ -96,17 +172,18 @@ public class Sequence {
             pstmt.setString(1, _seqName);
             ResultSet rs = pstmt.executeQuery();
             if (!rs.next()) {
-                throw new SQLException("Loading the current ID failed. The " +
-                    "jiveID table may not be correctly populated.");
+                throw new SQLException("未找到序列定义记录，seqname=" + _seqName);
             }
-            
-            //当前值
+
+            //当前值(是指数据库中当前待用的下一个值)
             long currentID = rs.getLong("curValue");
-            
+
             pstmt.close();
+
             // Increment the id to define our block.
             //新的开始值，不能确定上次的具体值，所以按最大化处理
             long newID = currentID + _cache;
+
             // The WHERE clause includes the last value of the id. This ensures
             // that an update will occur only if nobody else has performed an
             // update first.
@@ -121,73 +198,88 @@ public class Sequence {
             if (success) {
                 this._curValue = currentID;
                 this._tempMaxValue = newID;
-                
+
                 //根据是否循环进行调整
-                if (_tempMaxValue>_maxValue && _cycle.equals("1")) {
+                if (_tempMaxValue > _maxValue && _cycle.equals("1")) {
                     this._curValue = _minValue;
-                    this._tempMaxValue = _minValue;                
+                    this._tempMaxValue = _minValue;
                 }
-                
+
             }
-        }
-        catch( Exception sqle ) {
-            sqle.printStackTrace();
-        }
-        finally {
-            try {  pstmt.close();   }
-            catch (Exception e) { e.printStackTrace(); }
-            try {  con.close();   }
-            catch (Exception e) { e.printStackTrace(); }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("数据库处理错误." + e.getMessage(), e);
+        } finally {
+            try {
+                pstmt.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         if (!success) {
             System.err.println("WARNING: failed to obtain next ID block due to " +
-                "thread contention. Trying again...");
+                    "thread contention. Trying again...");
             // Call this method again, but sleep briefly to try to avoid thread
             // contention.
             try {
-                Thread.currentThread().sleep(75);
-            } catch (InterruptedException ie) { }
-            getNextBlock(count-1);
+                //Thread.currentThread();
+                Thread.sleep(75);
+            } catch (InterruptedException ie) {
+            }
+            getNextBlock(count - 1);
         }
     }
 
-	public String get_cycle() {
-		return _cycle;
-	}
+    public String get_cycle() {
+        return _cycle;
+    }
 
-	public void set_cycle(String _cycle) {
-		this._cycle = _cycle;
-	}
+    public void set_cycle(String _cycle) {
+        this._cycle = _cycle;
+    }
 
-	public int get_stepValue() {
-		return _stepValue;
-	}
+    public int get_stepValue() {
+        return _stepValue;
+    }
 
-	public void set_stepValue(int _increment) {
-		this._stepValue = _increment;
-	}
+    public void set_stepValue(int _increment) {
+        this._stepValue = _increment;
+    }
 
-	public long get_minValue() {
-		return _minValue;
-	}
+    public long get_minValue() {
+        return _minValue;
+    }
 
-	public void set_minValue(long value) {
-		_minValue = value;
-	}
+    public void set_minValue(long value) {
+        _minValue = value;
+    }
 
-	public int get_cache() {
-		return _cache;
-	}
+    public int get_cache() {
+        return _cache;
+    }
 
-	public void set_cache(int _cache) {
-		this._cache = _cache;
-	}
+    public void set_cache(int _cache) {
+        this._cache = _cache;
+    }
 
-	public long get_maxValue() {
-		return _maxValue;
-	}
+    public long get_maxValue() {
+        return _maxValue;
+    }
 
-	public void set_maxValue(long value) {
-		_maxValue = value;
-	}
+    public void set_maxValue(long value) {
+        _maxValue = value;
+    }
+
+    public String get_updateYear() {
+        return _updateYear;
+    }
+
+    public void set_updateYear(String _updateYear) {
+        this._updateYear = _updateYear;
+    }
 }
