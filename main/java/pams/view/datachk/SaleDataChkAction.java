@@ -1,4 +1,4 @@
-package pams.view.saledata;
+package pams.view.datachk;
 
 import org.joda.time.DateTime;
 import org.primefaces.model.LazyDataModel;
@@ -8,9 +8,9 @@ import pams.common.SystemService;
 import pams.common.utils.MessageUtil;
 import pams.repository.model.Ptenudetail;
 import pams.repository.model.Ptoplog;
+import pams.repository.model.saledata.SaleDataChkVO;
 import pams.repository.model.saledata.SaleDataQryParamBean;
-import pams.repository.model.saledata.SaleDataVO;
-import pams.service.saledata.SaleDataService;
+import pams.service.datachk.SaleDataChkService;
 import pub.platform.security.OperatorManager;
 import skyline.service.PlatformService;
 import skyline.service.ToolsService;
@@ -33,13 +33,13 @@ import java.util.List;
 
 @ManagedBean
 @ViewScoped
-public class SaleDataAction implements Serializable {
+public class SaleDataChkAction implements Serializable {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private SaleDataQryParamBean paramBean;
 
-    private SaleDataVO selectedRecord;
-    private LazyDataModel<SaleDataVO> lazyDataModel;
+    private SaleDataChkVO selectedRecord;
+    private LazyDataModel<SaleDataChkVO> lazyDataModel;
 
     private List<SelectItem> branchList;
     private List<SelectItem> prdTypeList;
@@ -53,10 +53,10 @@ public class SaleDataAction implements Serializable {
     @ManagedProperty(value = "#{platformService}")
     private PlatformService platformService;
 
-    @ManagedProperty(value = "#{saleDataService}")
-    private SaleDataService saleDataService;
+    @ManagedProperty(value = "#{saleDataChkService}")
+    private SaleDataChkService saleDataChkService;
 
-    public SaleDataAction() {
+    public SaleDataChkAction() {
     }
 
     @PostConstruct
@@ -77,10 +77,10 @@ public class SaleDataAction implements Serializable {
 
     public String onQuerySaleDeptData() {
         try {
-            this.lazyDataModel = new SaleDataQryModel(saleDataService.getSaleDataMapper(), this.paramBean);
+            this.lazyDataModel = new DataChkQryModel(saleDataChkService.getSaleDataChkMapper(), this.paramBean);
 
             Ptoplog oplog = new Ptoplog();
-            oplog.setActionId("SaleDataAction_onQuerySaleDeptDatay");
+            oplog.setActionId("SaleDataChkAction_onQuerySaleDeptDatay");
             oplog.setActionName("营销历史管理:机构信息查询");
             oplog.setOpDataBranchid(this.paramBean.getBranchId());
             platformService.insertNewOperationLog(oplog);
@@ -94,11 +94,11 @@ public class SaleDataAction implements Serializable {
         try {
             this.paramBean.setBranchId(branchId);
             this.paramBean.setTellerId(operId);
-            this.lazyDataModel = new SaleDataQryModel(saleDataService.getSaleDataMapper(), this.paramBean);
+            this.lazyDataModel = new DataChkQryModel(saleDataChkService.getSaleDataChkMapper(), this.paramBean);
             //this.paramBean.setTellerId(null);
 
             Ptoplog oplog = new Ptoplog();
-            oplog.setActionId("SaleDataAction_onQuerySaleTellerData");
+            oplog.setActionId("SaleDataChkAction_onQuerySaleTellerData");
             oplog.setActionName("营销历史管理:柜员信息查询");
             oplog.setOpDataBranchid(this.paramBean.getBranchId());
             platformService.insertNewOperationLog(oplog);
@@ -124,8 +124,12 @@ public class SaleDataAction implements Serializable {
     //数据检核
     public String onCheckAll() {
         try {
-            //custMngService.deleteSaleDetailInfo(this.selectedSale);
-            //salesVOList = custMngService.selectsaleDetails(selectedCust.getGuid());
+
+            List<SaleDataChkVO> saleDataChkVOList = (List<SaleDataChkVO>)this.lazyDataModel.getWrappedData();
+            for (SaleDataChkVO saleDataChkVO : saleDataChkVOList) {
+                logger.info("aaa" + saleDataChkVO.getGuid());
+                saleDataChkService.checkSaleData();
+            }
 
 
             Ptoplog oplog = new Ptoplog();
@@ -165,19 +169,11 @@ public class SaleDataAction implements Serializable {
         this.paramBean = paramBean;
     }
 
-    public SaleDataVO getSelectedRecord() {
-        return selectedRecord;
-    }
-
-    public void setSelectedRecord(SaleDataVO selectedRecord) {
-        this.selectedRecord = selectedRecord;
-    }
-
-    public LazyDataModel<SaleDataVO> getLazyDataModel() {
+    public LazyDataModel<SaleDataChkVO> getLazyDataModel() {
         return lazyDataModel;
     }
 
-    public void setLazyDataModel(LazyDataModel<SaleDataVO> lazyDataModel) {
+    public void setLazyDataModel(LazyDataModel<SaleDataChkVO> lazyDataModel) {
         this.lazyDataModel = lazyDataModel;
     }
 
@@ -221,13 +217,6 @@ public class SaleDataAction implements Serializable {
         this.platformService = platformService;
     }
 
-    public SaleDataService getSaleDataService() {
-        return saleDataService;
-    }
-
-    public void setSaleDataService(SaleDataService saleDataService) {
-        this.saleDataService = saleDataService;
-    }
 
     public List<SelectItem> getPrdTypeList() {
         return prdTypeList;
@@ -235,6 +224,22 @@ public class SaleDataAction implements Serializable {
 
     public void setPrdTypeList(List<SelectItem> prdTypeList) {
         this.prdTypeList = prdTypeList;
+    }
+
+    public SaleDataChkService getSaleDataChkService() {
+        return saleDataChkService;
+    }
+
+    public void setSaleDataChkService(SaleDataChkService saleDataChkService) {
+        this.saleDataChkService = saleDataChkService;
+    }
+
+    public SaleDataChkVO getSelectedRecord() {
+        return selectedRecord;
+    }
+
+    public void setSelectedRecord(SaleDataChkVO selectedRecord) {
+        this.selectedRecord = selectedRecord;
     }
 }
 

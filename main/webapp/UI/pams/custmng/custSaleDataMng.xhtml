@@ -657,8 +657,16 @@
                 <f:facet name="header">
                     产品
                 </f:facet>
+                <h:outputText value="#{sales.prdid}"/>
+            </p:column>
+<!--
+            <p:column style="text-align:center" sortBy="#{sales.prdid}">
+                <f:facet name="header">
+                    产品
+                </f:facet>
                 <h:outputText value="#{custSaleDataInputAction.prdid}"/>
             </p:column>
+-->
             <p:column style="text-align:center" sortBy="#{sales.subprdid}">
                 <f:facet name="header">
                     产品子类

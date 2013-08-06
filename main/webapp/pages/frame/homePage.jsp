@@ -1,3 +1,5 @@
+<%@ page import="org.apache.commons.lang.StringUtils" %>
+<%@ page import="pub.platform.advance.utils.PropertyManager" %>
 <%@ page import="pub.platform.db.ConnectionManager" %>
 <%@ page import="pub.platform.db.DatabaseConnection" %>
 <%@ page import="pub.platform.db.RecordSet" %>
@@ -45,6 +47,14 @@
             }
         }
     }
+
+    String development = PropertyManager.getProperty("development");
+    boolean isDevelopMode = false;
+    if (StringUtils.isNotEmpty(development) && "1".equals(development)) {
+        isDevelopMode = true;
+        System.out.println("已进入开发模式...");
+    }
+
 %>
 <script type="text/javascript">
     var g_jsContextPath = "<%=contextPath%>";
@@ -310,6 +320,9 @@
                 <img src="../../images/pamstitle1.jpg" height="28px">
             </td>
             <td style="height:25px;text-align:right" class="headfont">
+                <%if (isDevelopMode) {%>
+                <b style="color: orangered; font-size: 20px">测试模式！</b>
+                <%}%>
                 <span>您好,<%=username%>! </span>
                 <span><%= " | <" + rolesall + "> |" %></span>
             <span onclick="changepwd()"

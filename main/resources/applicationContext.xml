@@ -91,7 +91,7 @@
         <property name="cronExpression" value="0 10 23 * * ?"/>
     </bean>
 
-    <!-- 检核 cronTrigger -->
+    <!-- 产品套餐检核 cronTrigger -->
     <bean id="prdsetCheck" class="pams.batch.productsetcheck.CronMainHandler"/>
     <bean id="prdsetCheckJobDetailBean"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -100,6 +100,19 @@
     </bean>
     <bean id="prdsetCheckCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="prdsetCheckJobDetailBean"/>
+        <!--<property name="cronExpression" value="0/20 * * * * ?"/>-->
+        <property name="cronExpression" value="0 15 06,22 * * ?"/>
+    </bean>
+
+    <!-- 对私产品营销活动数据检核 cronTrigger -->
+    <bean id="saleeventCheck" class="pams.batch.saleeventcheck.client.CronMainHandler"/>
+    <bean id="saleeventCheckJobDetailBean"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="prdsetCheck"/>
+        <property name="targetMethod" value="run"/>
+    </bean>
+    <bean id="saleeventCheckCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="saleeventCheckJobDetailBean"/>
         <!--<property name="cronExpression" value="0/20 * * * * ?"/>-->
         <property name="cronExpression" value="0 15 06,22 * * ?"/>
     </bean>

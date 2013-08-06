@@ -1,0 +1,170 @@
+<!-- 营销数据检核 -->
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+        <style type="text/css">
+            .input-col-m {
+                width: 60px;
+            }
+
+            .input-col-l {
+                width: 80px;
+            }
+
+            .input-col-xxl {
+                width: 1%;
+                text-align: right;
+            }
+
+            .col-80 {
+            }
+
+            .col-20 {
+                width: 5%;
+            }
+        </style>
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div style="margin:5px;">
+            <h:form id="form">
+                <p:messages id="msgs" showDetail="false"/>
+                <div id="header">
+                    <p:panel header="机构营销数据 ">
+                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-80,col-20">
+                            <h:panelGrid columns="4" cellspacing="5"
+                                         columnClasses="input-col-m,input-col-l,input-col-m,input-col-l">
+                                <h:outputLabel value="机构名称:"/>
+                                <h:selectOneMenu  id="branchid" style="width:152px;" value="#{saleDataChkAction.paramBean.branchId}" >
+                                    <f:selectItems value="#{saleDataChkAction.branchList}"/>
+                                </h:selectOneMenu>
+
+                                <h:outputLabel value="产品种类:"/>
+                                <h:selectOneMenu  id="prdid" style="width:152px;" value="#{saleDataChkAction.paramBean.prdId}" >
+                                    <f:selectItems value="#{saleDataChkAction.prdTypeList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="起始日期:"/>
+                                <p:inputText id="startDate" value="#{saleDataChkAction.paramBean.startDate}" title="起始日期"
+                                             required="true" requiredMessage="请输入起始日期"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                                <h:outputLabel value="截止日期:"/>
+                                <p:inputText id="endDate" value="#{saleDataChkAction.paramBean.endDate}" title="截止日期"
+                                             required="true" requiredMessage="请输入截止日期"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+
+                            </h:panelGrid>
+                            <h:panelGrid>
+                                <p:commandButton id="chkbtn" style="width:90px;" value="查询"
+                                                 action="#{saleDataChkAction.onQuerySaleDeptData()}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton id="qrybtn" style="width:90px;" value="数据检核"
+                                                 action="#{saleDataChkAction.onCheckAll()}"
+                                                 update="pdt,msgs">
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="csv" target="pdt"
+                                                    fileName="rpt#{saleDataChkAction.paramBean.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
+                    </p:panel>
+                </div>
+
+                <p:ajaxStatus style="height:20px;text-align:center">
+                    <f:facet name="start">
+                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                    </f:facet>
+                    <f:facet name="complete">
+                        <h:outputText value=""/>
+                    </f:facet>
+                </p:ajaxStatus>
+
+                <p:dataTable id="pdt" style="width:100%;"
+                             lazy="true"
+                             selectionMode="single"
+                             value="#{saleDataChkAction.lazyDataModel}" var="record"
+                             rowKey="#{record.guid}"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                             paginator="true" rows="15" paginatorPosition="bottom"
+                             rowsPerPageTemplate="100,50,30,15,5"
+                             emptyMessage="数据记录为空...">
+
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            机构
+                        </f:facet>
+                        <h:outputText value="#{record.deptname}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            柜员
+                        </f:facet>
+                        <h:outputText value="#{record.tellername}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            客户
+                        </f:facet>
+                        <h:outputText value="#{record.custname}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            产品
+                        </f:facet>
+                        <h:outputText value="#{record.prdname}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            产品子类
+                        </f:facet>
+                        <h:outputText value="#{record.subprdname}"/>
+                    </p:column>
+
+                    <p:column >
+                        <f:facet name="header">
+                            <h:outputText value="金额"/>
+                        </f:facet>
+                        <h:outputText value="#{record.salesamt1}" style="float: right">
+                            <f:convertNumber pattern="##,###,##0.00"/>
+                        </h:outputText>
+                    </p:column>
+
+                    <p:column >
+                        <f:facet name="header">
+                            <h:outputText value="数量"/>
+                        </f:facet>
+                        <h:outputText value="#{record.salesnum1}" style="float: right"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            <h:outputText value="交易日期"/>
+                        </f:facet>
+                        <h:outputText value="#{record.txndate}"/>
+                    </p:column>
+
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            检核结果
+                        </f:facet>
+                        <h:outputText value="#{record.checkflag}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

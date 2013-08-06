@@ -1,5 +1,6 @@
 package pub.platform.security;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pub.auth.MD5Helper;
@@ -144,10 +145,16 @@ public class OperatorManager implements Serializable {
         DatabaseConnection dc = cm.get();
         //SqlSession session = IbatisFactory.ORACLE.getInstance().openSession();
         try {
-//			String loginWhere = "where operid='" + operid
-//					+ "' and operpasswd ='" + password + "'and operenabled='1'";
-            String loginWhere = "where operid='" + operid
-                    + "' and operpasswd ='" + MD5Helper.getMD5String(password) + "'and operenabled='1'";
+            String loginWhere;
+            String development = PropertyManager.getProperty("development");
+            if (StringUtils.isNotEmpty(development) && "1".equals(development)) {
+                loginWhere = "where operid='" + operid + "' and operenabled='1'";
+                System.out.println("已进入开发模式...");
+            }else{
+                loginWhere = "where operid='" + operid
+                        + "' and operpasswd ='" + MD5Helper.getMD5String(password) + "'and operenabled='1'";
+            }
+
             this.operatorid = operid;
             operator = new PtOperBean();
             operator = (PtOperBean) operator.findFirstByWhere(loginWhere);

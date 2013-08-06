@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="pams.repository.dao.saledata.SaleDataMapper">
+<mapper namespace="pams.repository.dao.saledata.SaleDataChkMapper">
 
     <!--计算符合查询条件的记录数  -->
     <select id="countSaleDataRecords" parameterType="pams.repository.model.saledata.SaleDataQryParamBean" resultType="java.lang.Integer">
@@ -17,7 +17,7 @@
             </if>
     </select>
 
-    <select id="selectSaleDataRecords"  parameterType="pams.repository.model.saledata.SaleDataQryParamBean" resultType="pams.repository.model.saledata.SaleDataVO">
+    <select id="selectSaleDataRecords"  parameterType="pams.repository.model.saledata.SaleDataQryParamBean" resultType="pams.repository.model.saledata.SaleDataChkVO">
         select *
           from (select t1.*, rownum rnum
                 from (
@@ -40,8 +40,9 @@
                                 when '09' then
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTGOLDTYPE' and enuitemvalue = a.subprdid)
                                 end) as subprdname,
-                            a.*,c.cust_name as custname
-                      from sv_sale_detail a, ptoper b, sv_cms_custbase c
+                            a.*,c.cust_name as custname,
+                            decode(d.checkflag,'1','未通过','2','通过','未检核') as checkflag
+                      from sv_sale_detail a, ptoper b, sv_cms_custbase c, sv_sale_detail_chk d
                       where a.tellerid = b.operid
                             and b.deptid in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
                             and a.txndate between #{startDate} and #{endDate}
@@ -52,6 +53,7 @@
                             <if test = " tellerId != null and tellerId != '' ">
                                 and a.tellerid = #{tellerId}
                             </if>
+                            and a.guid = d.guid(+)
                       order by b.deptid, a.tellerid, a.prdid, a.subprdid, a.txndate
         ) t1
         <![CDATA[
