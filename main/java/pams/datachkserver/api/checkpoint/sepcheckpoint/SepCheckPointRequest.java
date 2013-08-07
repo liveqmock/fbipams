@@ -1,6 +1,6 @@
-package pams.batch.saleeventcheck.server.checkpoint;
+package pams.datachkserver.api.checkpoint.sepcheckpoint;
 
-import pams.checkpoint.CheckPointRequest;
+import pams.datachkserver.api.checkpoint.CheckPointRequest;
 
 import javax.servlet.ServletContext;
 import java.math.BigDecimal;
@@ -22,7 +22,7 @@ public class SepCheckPointRequest implements CheckPointRequest {
     private String ckptParam;
 
     private String custNo;
-    private String certId;
+    private String certType;
     private String certNo;
 
     private String txnDate;
@@ -87,12 +87,12 @@ public class SepCheckPointRequest implements CheckPointRequest {
         this.custNo = custNo;
     }
 
-    public String getCertId() {
-        return certId;
+    public String getCertType() {
+        return certType;
     }
 
-    public void setCertId(String certId) {
-        this.certId = certId;
+    public void setCertType(String certType) {
+        this.certType = certType;
     }
 
     public String getCertNo() {

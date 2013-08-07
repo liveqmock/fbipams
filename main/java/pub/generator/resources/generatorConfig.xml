@@ -113,7 +113,6 @@
             <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
         </table>
         <table tableName="sv_sale_detail_chk" >
-            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
         </table>
         <table tableName="sv_sale_detail_his" >
             <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>

@@ -3,7 +3,7 @@ package pams.batch.saleeventcheck.client;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pams.batch.saleeventcheck.server.SepServer;
+import pams.datachkserver.chkserver.container.core.SepCheckEngine;
 
 import javax.annotation.Resource;
 
@@ -16,7 +16,7 @@ public class CronMainHandler {
     private static final Logger logger = LoggerFactory.getLogger(CronMainHandler.class);
 
     @Resource
-    private SepServer batchHandler;
+    private SepCheckEngine batchHandler;
 
     private String prdid;
     private boolean forceCheck;
@@ -46,9 +46,9 @@ public class CronMainHandler {
         try {
             startTime = System.currentTimeMillis();
             if (StringUtils.isEmpty(this.prdid)) {
-                batchHandler.startBatchCheck(this.forceCheck);
+                //batchHandler.startBatchCheck(this.forceCheck);
             } else {
-                batchHandler.startBatchCheck(this.prdid, this.forceCheck);
+                //batchHandler.startBatchCheck(this.prdid, this.forceCheck);
             }
             endTime = System.currentTimeMillis();
         } catch (Exception e) {

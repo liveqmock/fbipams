@@ -1,4 +1,4 @@
-package pams.batch.saleeventcheck.server;
+package pams.datachkserver.chkserver.container.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,17 +16,17 @@ import java.util.List;
  * Time: ÏÂÎç10:54
  */
 @Service
-public class CheckRulesService {
+public class CheckRule {
     @Autowired
     private CheckpointMapper checkpointMapper;
     @Autowired
     private SvSaleCkptPrgMapper svSaleCkptPrgMapper;
 
-    List<String> selectAllNeedCheckPrdid() {
+    public List<String> selectAllNeedCheckPrdid() {
         return checkpointMapper.selectAllNeedCheckPrdid();
     }
 
-    List<SvSaleCkptPrg> selectCheckpointHandler(String prdid) {
+    public List<SvSaleCkptPrg> selectCheckpointHandler(String prdid) {
         if (prdid == null) {
             throw new IllegalArgumentException("Prdid cannot be null!");
         }
@@ -37,7 +37,7 @@ public class CheckRulesService {
         return svSaleCkptPrgMapper.selectByExample(example);
     }
 
-    List<SvSaleCkptPrg> selectCheckpointHandler(String prdid, String subprdid) {
+    public List<SvSaleCkptPrg> selectCheckpointHandler(String prdid, String subprdid) {
         if (prdid == null || subprdid == null) {
             throw new IllegalArgumentException("Prdid and subprdid cannot be null!");
         }

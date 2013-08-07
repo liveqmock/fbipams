@@ -1,4 +1,4 @@
-package pams.batch.saleeventcheck.server;
+package pams.datachkserver.chkserver.container.core;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -9,10 +9,11 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.stereotype.Service;
-import pams.batch.saleeventcheck.server.checkpoint.SepCheckPointRequest;
-import pams.batch.saleeventcheck.server.checkpoint.SepCheckPointResponse;
-import pams.checkpoint.CheckPoint;
-import pams.checkpoint.CheckPointException;
+import pams.datachkserver.api.checkpoint.CheckPoint;
+import pams.datachkserver.api.checkpoint.CheckPointException;
+import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointRequest;
+import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointResponse;
+import pams.datachkserver.chkserver.container.util.CheckRule;
 import pams.repository.model.SvSaleCkptPrg;
 import skyline.service.PlatformService;
 
@@ -29,8 +30,8 @@ import java.util.Map;
  */
 
 @Service
-public class SepServer  implements ApplicationContextAware {
-    private static final Logger logger = LoggerFactory.getLogger(SepServer.class);
+public class SepCheckEngine implements ApplicationContextAware {
+    private static final Logger logger = LoggerFactory.getLogger(SepCheckEngine.class);
     ApplicationContext applicationContext;
 
     @Resource
@@ -38,12 +39,10 @@ public class SepServer  implements ApplicationContextAware {
     @Resource
     protected PlatformService platformService;
     @Resource
-    protected CheckRulesService checkRulesService;
+    protected CheckRule checkRulesService;
 
     private static String RTN_CODE_OK = "0000";
 
-    //检核程序未定义
-    private static String RTN_CODE_CHECK_PROG_NOT_DEFINE = "1000";
     //ODSB连接不上
     private static String RTN_CODE_ODSB_CONNECT_ERR = "1001";
     //ODSB不可用
@@ -53,11 +52,15 @@ public class SepServer  implements ApplicationContextAware {
     //检核时出现系统IO错误
     private static String RTN_CODE_CHECK_IO_ERR = "1004";
 
+    //检核程序未定义
+    private static String RTN_CODE_CHECK_PROG_NOT_DEFINE = "2000";
+
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
     public void process(SepCheckPointRequest request, SepCheckPointResponse response) {
+/*
         String odsbstatus = null;
         try {
             odsbstatus = getOdsbSysStatus();
@@ -77,6 +80,7 @@ public class SepServer  implements ApplicationContextAware {
             return;
         }
 
+*/
 
         String prdid = request.getPrdid();
         if (prdid == null) {
@@ -124,7 +128,7 @@ public class SepServer  implements ApplicationContextAware {
 
         //返回值处理
         if (isPass) {
-            response.setRtnCode("0000");
+            response.setRtnCode(RTN_CODE_OK);
             response.setRtnMsg("检核通过");
         }else {
             if (respTmp.getRtnCode() == null) {

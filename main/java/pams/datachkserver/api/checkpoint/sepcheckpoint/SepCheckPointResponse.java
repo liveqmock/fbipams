@@ -1,6 +1,6 @@
-package pams.batch.saleeventcheck.server.checkpoint;
+package pams.datachkserver.api.checkpoint.sepcheckpoint;
 
-import pams.checkpoint.CheckPointResponse;
+import pams.datachkserver.api.checkpoint.CheckPointResponse;
 
 /**
  * Created with IntelliJ IDEA.

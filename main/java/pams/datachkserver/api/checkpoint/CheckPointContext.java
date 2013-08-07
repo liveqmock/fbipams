@@ -1,4 +1,4 @@
-package pams.checkpoint;
+package pams.datachkserver.api.checkpoint;
 
 import java.util.Enumeration;
 

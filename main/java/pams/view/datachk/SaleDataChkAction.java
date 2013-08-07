@@ -128,7 +128,7 @@ public class SaleDataChkAction implements Serializable {
             List<SaleDataChkVO> saleDataChkVOList = (List<SaleDataChkVO>)this.lazyDataModel.getWrappedData();
             for (SaleDataChkVO saleDataChkVO : saleDataChkVOList) {
                 logger.info("aaa" + saleDataChkVO.getGuid());
-                saleDataChkService.checkSaleData();
+                saleDataChkService.processSaleDataCheck(saleDataChkVO);
             }
 
 
@@ -141,7 +141,7 @@ public class SaleDataChkAction implements Serializable {
             MessageUtil.addError("数据检核完成...");
         } catch (Exception e) {
             logger.error("数据检核错误！", e);
-            MessageUtil.addError("数据检核错误！");
+            MessageUtil.addError("数据检核错误！" + e.getMessage());
         }
         return null;
     }

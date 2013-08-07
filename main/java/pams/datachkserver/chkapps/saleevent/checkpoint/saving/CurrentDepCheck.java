@@ -1,14 +1,14 @@
-package pams.batch.saleeventcheck.server.checkpoint.saving;
+package pams.datachkserver.chkapps.saleevent.checkpoint.saving;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import pams.batch.saleeventcheck.server.checkpoint.SepCheckPoint;
-import pams.batch.saleeventcheck.server.checkpoint.SepCheckPointRequest;
-import pams.batch.saleeventcheck.server.checkpoint.SepCheckPointResponse;
-import pams.checkpoint.CheckPointException;
-import pams.checkpoint.CheckPointRequest;
-import pams.checkpoint.CheckPointResponse;
+import pams.datachkserver.api.checkpoint.CheckPointException;
+import pams.datachkserver.api.checkpoint.CheckPointRequest;
+import pams.datachkserver.api.checkpoint.CheckPointResponse;
+import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPoint;
+import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointRequest;
+import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointResponse;
 
 import java.io.IOException;
 

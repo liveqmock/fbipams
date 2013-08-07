@@ -1,7 +1,7 @@
-package pams.batch.saleeventcheck.server.checkpoint;
+package pams.datachkserver.api.checkpoint.sepcheckpoint;
 
-import pams.checkpoint.CheckPointException;
-import pams.checkpoint.GenericCheckPoint;
+import pams.datachkserver.api.checkpoint.CheckPointException;
+import pams.datachkserver.api.checkpoint.GenericCheckPoint;
 
 import java.io.IOException;
 
