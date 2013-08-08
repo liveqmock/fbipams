@@ -105,6 +105,7 @@
     </bean>
 
     <!-- 对私产品营销活动数据检核 cronTrigger -->
+<!--
     <bean id="saleeventCheck" class="pams.batch.saleeventcheck.client.CronMainHandler"/>
     <bean id="saleeventCheckJobDetailBean"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
@@ -113,9 +114,9 @@
     </bean>
     <bean id="saleeventCheckCronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
         <property name="jobDetail" ref="saleeventCheckJobDetailBean"/>
-        <!--<property name="cronExpression" value="0/20 * * * * ?"/>-->
         <property name="cronExpression" value="0 15 06,22 * * ?"/>
     </bean>
+-->
 
     <!-- 设置调度 -->
     <bean id="myScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
