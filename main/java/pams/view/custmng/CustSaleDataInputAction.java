@@ -72,6 +72,7 @@ public class CustSaleDataInputAction implements Serializable {
     private List<Ptenudetail> insureTypeList;
     private List<Ptenudetail> fpTypeList;
     private List<Ptenudetail> foundTypeList;
+    private List<Ptenudetail> depositTypeList;
     private List<Ptenudetail> creditcardTypeList;
     private List<Ptenudetail> ebankTypeList;
     private List<Ptenudetail> goldTypeList;
@@ -116,6 +117,7 @@ public class CustSaleDataInputAction implements Serializable {
         this.foundTypeList = platformService.selectEnuDetail("SVTFUNDTYPE");
         this.insureTypeList = platformService.selectEnuDetail("SVTINSURETYPE");
         this.fpTypeList = platformService.selectEnuDetail("SVTFPTYPE");
+        this.depositTypeList = platformService.selectEnuDetail("SVTDEPOSITTYPE");
         this.creditcardTypeList = platformService.selectEnuDetail("SVTCREDITCARDTYPE");
         this.ebankTypeList = platformService.selectEnuDetail("SVTEBANKTYPE");
         this.goldTypeList = platformService.selectEnuDetail("SVTGOLDTYPE");
@@ -141,7 +143,7 @@ public class CustSaleDataInputAction implements Serializable {
 
     public String onQuery() {
         try {
-            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId, paramBean.getCustName(),paramBean.getCertNo());
+            detlCustList = custMngService.selectCustBaseByCustMgr(branchId, operId, paramBean.getCustName(),paramBean.getCustNo());
 
             Ptoplog oplog = new Ptoplog();
             oplog.setActionId("CustSaleDataInput_onQuery");
@@ -215,6 +217,7 @@ public class CustSaleDataInputAction implements Serializable {
         if (prdid.equals("01")
                 || prdid.equals("02")
                 || prdid.equals("03")
+                || prdid.equals("04")
                 || prdid.equals("06")
                 || prdid.equals("08")
                 || prdid.equals("09")
@@ -364,6 +367,12 @@ public class CustSaleDataInputAction implements Serializable {
             }
         } else if (this.vo.getPrdid().equals("03")) {
             for (Ptenudetail ptenudetail : this.fpTypeList) {
+                if (this.vo.getSubprdid().equals(ptenudetail.getEnuitemvalue())) {
+                    return (ptenudetail.getEnuitemlabel());
+                }
+            }
+        } else if (this.vo.getPrdid().equals("04")) {
+            for (Ptenudetail ptenudetail : this.depositTypeList) {
                 if (this.vo.getSubprdid().equals(ptenudetail.getEnuitemvalue())) {
                     return (ptenudetail.getEnuitemlabel());
                 }
@@ -666,6 +675,14 @@ public class CustSaleDataInputAction implements Serializable {
 
     public void setPrdName(String prdName) {
         this.prdName = prdName;
+    }
+
+    public List<Ptenudetail> getDepositTypeList() {
+        return depositTypeList;
+    }
+
+    public void setDepositTypeList(List<Ptenudetail> depositTypeList) {
+        this.depositTypeList = depositTypeList;
     }
 }
 

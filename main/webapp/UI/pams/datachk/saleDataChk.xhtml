@@ -9,7 +9,7 @@
     <ui:define name="head">
         <style type="text/css">
             .input-col-m {
-                width: 60px;
+                width: 90px;
             }
 
             .input-col-l {
@@ -58,14 +58,25 @@
                                              required="true" requiredMessage="请输入截止日期"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
 
+                                <h:outputLabel value="检核状态:"/>
+                                <h:selectOneMenu  id="checkFlag" style="width:152px;" value="#{saleDataChkAction.paramBean.checkFlag}" >
+                                    <f:selectItems value="#{saleDataChkAction.checkFlagList}"/>
+                                </h:selectOneMenu>
+                                <h:outputLabel value="是否归档:"/>
+                                <h:selectOneMenu  id="archiveFlag" style="width:152px;" value="#{saleDataChkAction.paramBean.archiveFlag}" >
+                                    <f:selectItems value="#{saleDataChkAction.archiveFlagList}"/>
+                                </h:selectOneMenu>
+<!--
+                                <h:outputLabel value="是否已申请复议:"/>
+                                <h:selectOneMenu  id="reviewFlag" style="width:152px;" value="#{saleDataChkAction.paramBean.reviewFlag}" >
+                                    <f:selectItems value="#{saleDataChkAction.reviewFlagList}"/>
+                                </h:selectOneMenu>
+-->
+
                             </h:panelGrid>
                             <h:panelGrid>
                                 <p:commandButton id="chkbtn" style="width:90px;" value="查询"
-                                                 action="#{saleDataChkAction.onQuerySaleDeptData()}"
-                                                 update="pdt,msgs">
-                                </p:commandButton>
-                                <p:commandButton id="qrybtn" style="width:90px;" value="数据检核"
-                                                 action="#{saleDataChkAction.onCheckAll()}"
+                                                 action="#{saleDataChkAction.onQuerySaleDeptData}"
                                                  update="pdt,msgs">
                                 </p:commandButton>
                                 <p:commandButton ajax="false" id="btnExport" value="导出CSV"
@@ -89,16 +100,30 @@
                     </f:facet>
                 </p:ajaxStatus>
 
+                <p:menubar style="margin-top: 5px; margin-bottom: 10px">
+                    <p:menuitem type="push" value="检核列表中未检核过的记录" icon="ui-icon ui-icon-gear"
+                                action="#{saleDataChkAction.onCheckAll}" update="pdt,msgs"
+                                ajax="true"/>
+                    <p:menuitem type="push" value="检核列表中已检核但未通过的记录" icon="ui-icon ui-icon-gear"
+                                action="#{saleDataChkAction.onCheckUnpassed}" update="pdt,msgs"
+                                ajax="true"/>
+                    <p:menuitem type="push" value="强制检核已选择的记录" icon="ui-icon ui-icon-gear"
+                                action="#{saleDataChkAction.onCheckSelected}" update="pdt,msgs"
+                                ajax="true"/>
+                </p:menubar>
+
                 <p:dataTable id="pdt" style="width:100%;"
                              lazy="true"
-                             selectionMode="single"
                              value="#{saleDataChkAction.lazyDataModel}" var="record"
                              rowKey="#{record.guid}"
+                             selection="#{saleDataChkAction.selectedRecords}"
+                             filteredValue="#{saleDataChkAction.filteredDetlList}"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
                              currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
                              paginator="true" rows="15" paginatorPosition="bottom"
                              rowsPerPageTemplate="100,50,30,15,5"
                              emptyMessage="数据记录为空...">
+                    <p:column selectionMode="multiple" style="width:18px"/>
 
                     <p:column style="text-align:center">
                         <f:facet name="header">
@@ -116,7 +141,7 @@
 
                     <p:column style="text-align:center" >
                         <f:facet name="header">
-                            客户
+                            客户名称
                         </f:facet>
                         <h:outputText value="#{record.custname}"/>
                     </p:column>
@@ -159,8 +184,47 @@
                         <f:facet name="header">
                             检核结果
                         </f:facet>
-                        <h:outputText value="#{record.checkflag}"/>
+                        <h:outputText value="#{record.checkflagDesc}"/>
                     </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            检核日志
+                        </f:facet>
+                        <h:outputText value="#{record.checklog}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            检核处理时间
+                        </f:facet>
+                        <h:outputText value="#{record.checkdate} #{record.checktime}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            检核人
+                        </f:facet>
+                        <h:outputText value="#{record.checkopername}"/>
+                    </p:column>
+                    <p:column style="text-align:center" >
+                        <f:facet name="header">
+                            归档标志
+                        </f:facet>
+                        <h:outputText value="#{record.archiveflagDesc}"/>
+                    </p:column>
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
+                            <h:outputText value="归档日期"/>
+                        </f:facet>
+                        <h:outputText value="#{record.archivedate}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column style="text-align:center" >
+                                            <f:facet name="header">
+                                                是否复议
+                                            </f:facet>
+                                            <h:outputText value="#{record.reviewflag}"/>
+                                        </p:column>
+                    -->
 
                 </p:dataTable>
             </h:form>

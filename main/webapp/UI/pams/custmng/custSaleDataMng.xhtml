@@ -82,7 +82,11 @@
 </style>
 <script language="JavaScript" type="text/JavaScript">
     //<![CDATA[
-        function KeyDown() {
+    function resetFocus() {
+        document.forms['inputform']['inputform:prdId'].focus();
+    }
+
+    function KeyDown() {
         if (event.keyCode == 13) {
             if (event.srcElement.id == 'inputform:txnDate') {
                 event.keyCode = 9;
@@ -110,7 +114,7 @@
                 if (id == 'prdId') {
                     onPrdidChange();
                     var prdid = document.forms['inputform']['inputform:prdId'].value;
-                    if (prdid == "01" || prdid == "02" || prdid == "03"
+                    if (prdid == "01" || prdid == "02" || prdid == "03"|| prdid == "04"
                             || prdid == "06" || prdid == "08" || prdid == "09") {
                         document.forms['inputform']['inputform:subprdId'].focus();
                     } else {
@@ -157,73 +161,41 @@
         document.forms['inputform']['inputform:num1'].disabled = true;
 
         if (prdid == "01") {
-            // 子类、客户姓名、金额 可输
             document.forms['inputform']['inputform:subprdId'].disabled = false;
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            //document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         } else if (prdid == "02") {
             // 子类、客户姓名、金额 可输
             document.forms['inputform']['inputform:subprdId'].disabled = false;
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         } else if (prdid == "03") {
             // 子类、客户姓名、金额 可输
             document.forms['inputform']['inputform:subprdId'].disabled = false;
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         } else if (prdid == "04") {
-            //客户姓名、成交金额 可输
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
+            document.forms['inputform']['inputform:subprdId'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         } else if (prdid == "05") {
             document.getElementById('inputform:num1Label').innerText = "营销张数:";
-            //显示成交数量
             document.forms['inputform']['inputform:num1'].disabled = false;
         } else if (prdid == "06") {
             document.forms['inputform']['inputform:subprdId'].disabled = false;
             document.getElementById('inputform:num1Label').innerText = "营销张数:";
-            //显示成交数量
             document.forms['inputform']['inputform:num1'].disabled = false;
         } else if (prdid == "07") {
-            //客户姓名、成交金额 可输
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         } else if (prdid == "08") {
             document.forms['inputform']['inputform:subprdId'].disabled = false;
             document.getElementById('inputform:num1Label').innerText = "营销件数:";
-            //显示成交数量
             document.forms['inputform']['inputform:num1'].disabled = false;
         } else if (prdid == "09") {
             document.forms['inputform']['inputform:subprdId'].disabled = false;
             document.getElementById('inputform:num1Label').innerText = "成交克数:";
-            //显示客户姓名
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
-            //显示成交数量
             document.forms['inputform']['inputform:num1'].disabled = false;
         } else if (prdid == "10") {
             document.getElementById('inputform:num1Label').innerText = "签约笔数:";
-            //客户姓名、成交数量 可输
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:num1'].disabled = false;
         } else if (prdid == "11") {
-            //客户姓名、成交金额 可输
-//            document.forms['inputform']['inputform:certtype'].disabled = false;
-//            document.forms['inputform']['inputform:certno'].disabled = false;
-//            document.forms['inputform']['inputform:customerName'].disabled = false;
             document.forms['inputform']['inputform:amt1'].disabled = false;
         }
     }
@@ -240,6 +212,8 @@
                 document.getElementById('insuretypeHelp').style.display = "inline";
             } else if (prdid == "03") {
                 document.getElementById('fptypeHelp').style.display = "inline";
+            } else if (prdid == "04") {
+                document.getElementById('deposittypeHelp').style.display = "inline";
             } else if (prdid == "06") {
                 document.getElementById('creditcardtypeHelp').style.display = "inline";
             } else if (prdid == "08") {
@@ -269,8 +243,8 @@
                             <h:panelGrid columns="2" cellspacing="5">
                                 <h:outputLabel value="客户姓名:"/>
                                 <p:inputText value="#{custSaleDataInputAction.paramBean.custName}"/>
-                                <h:outputLabel value="证件号:"/>
-                                <p:inputText value="#{custSaleDataInputAction.paramBean.certNo}"/>
+                                <h:outputLabel value="客户编号:"/>
+                                <p:inputText value="#{custSaleDataInputAction.paramBean.custNo}"/>
                             </h:panelGrid>
                             <h:panelGrid>
                                 <p:commandButton id="qrybtn" style="width:90px;" value="查询"
@@ -332,6 +306,13 @@
                     </p:column>
                     <p:column style="text-align:center">
                         <f:facet name="header">
+                            客户号
+                        </f:facet>
+                        <h:outputText value="#{record.custNo}"/>
+                    </p:column>
+<!--
+                    <p:column style="text-align:center">
+                        <f:facet name="header">
                             证件类型
                         </f:facet>
                         <h:outputText value="#{record.certType}"/>
@@ -342,6 +323,7 @@
                         </f:facet>
                         <h:outputText value="#{record.certNo}"/>
                     </p:column>
+-->
                     <p:column style="text-align:center">
                         <f:facet name="header">
                             联系方式1
@@ -381,7 +363,7 @@
 </div>
 
 <div>
-<p:fieldset legend="营销反馈" style="margin-top:10px;" toggleable="true" toggleSpeed="500">
+<p:fieldset legend="营销反馈" style="margin-top:20px;" toggleable="true" toggleSpeed="500">
 
 <h:form id="inputform">
 
@@ -423,14 +405,6 @@
                     </p:inputText>
                     <h:outputText id="subprdName" value="#{custSaleDataInputAction.subPrdName}"
                                   style="color:#999999;"/>
-                </h:panelGrid>
-                <h:panelGrid>
-                    <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
-                        <p:commandButton id="saveButton" value="保  存" style="width:90px;"
-                                         action="#{custSaleDataInputAction.onSaveBtnClick}"
-                                         update="growls,inputform,:saleform:salepdt " ajax="true">
-                        </p:commandButton>
-                    </h:panelGrid>
                 </h:panelGrid>
             </h:panelGrid>
             <p:separator/>
@@ -484,6 +458,16 @@
                              onfocus="this.select()">
                     <f:validateLongRange for="num1" minimum="0"/>
                 </p:inputText>
+            </h:panelGrid>
+            <p:separator/>
+
+            <h:panelGrid>
+                <h:panelGrid columns="1" cellspacing="5" columnClasses="input-col-xxl">
+                    <p:commandButton id="saveButton" value="保  存" style="width:90px;"
+                                     action="#{custSaleDataInputAction.onSaveBtnClick}" oncomplete="resetFocus()"
+                                     update="growls,inputform,:saleform:salepdt " ajax="true">
+                    </p:commandButton>
+                </h:panelGrid>
             </h:panelGrid>
 
         </p:panel>
@@ -596,6 +580,27 @@
         </h:panelGrid>
     </p:panel>
 </div>
+<div id="deposittypeHelp" style="margin-left:15px;display:none">
+    <p:panel style="margin-top:0px;border:0">
+        <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
+            <div class="datalist-noborder" style="margin-top:2px;margin-left:10px;">
+                存款:
+            </div>
+            <h:panelGroup>
+                <div class="datalist-noborder" style="margin-left:10px">
+                    <h:form>
+                        <p:dataGrid var="txnType" value="#{custSaleDataInputAction.depositTypeList}"
+                                    columns="5" styleClass="datagrid-help">
+                            <p:column>
+                                #{txnType.enuitemvalue}-#{txnType.enuitemlabel}
+                            </p:column>
+                        </p:dataGrid>
+                    </h:form>
+                </div>
+            </h:panelGroup>
+        </h:panelGrid>
+    </p:panel>
+</div>
 <div id="ebanktypeHelp" style="margin-left:15px;display:none">
     <p:panel style="margin-top:0px;border:0">
         <h:panelGrid columns="2" style="color:#999999" rowClasses="help-row" border="0">
@@ -639,7 +644,7 @@
     </p:panel>
 </div>
 </p:fieldset>
-<p:fieldset legend="营销历史" style="margin-top:10px;" toggleable="true" toggleSpeed="500">
+<p:fieldset legend="营销历史" style="margin-top:20px;" toggleable="true" toggleSpeed="500">
     <h:form id="saleform">
         <p:dataTable id="salepdt" style="width:100%; margin-top: 20px"
                      dynamic="true" selectionMode="single"

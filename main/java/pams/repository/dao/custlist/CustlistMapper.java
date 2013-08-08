@@ -5,9 +5,9 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 import pams.repository.model.Ptoper;
 import pams.repository.model.SvClsCustinfo;
+import pams.repository.model.custlist.CustListParam;
 import pams.repository.model.custlist.CustMngParam;
 import pams.repository.model.custlist.CustMngVO;
-import pams.repository.model.custlist.CustinfoVO;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public interface CustlistMapper {
     int deleteRecords(@Param("rptdate") String rptdate, @Param("rpttype") String rpttype);
 
     List<SvClsCustinfo> selectCustlistRecordsByCertInfo(@Param("certType") String certType, @Param("certNo") String certNo);
-    List<SvClsCustinfo> selectCustlistRecordsByPageSize(CustinfoVO bean);
+    List<SvClsCustinfo> selectCustlistRecordsByPageSize(CustListParam bean);
     int countCustlistRecords(SvClsCustinfo bean);
 
     //客户基本信息维护

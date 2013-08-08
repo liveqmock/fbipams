@@ -4,11 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import pams.datachkserver.api.checkpoint.CheckPointException;
-import pams.datachkserver.api.checkpoint.CheckPointRequest;
-import pams.datachkserver.api.checkpoint.CheckPointResponse;
-import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPoint;
-import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointRequest;
-import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointResponse;
+import pams.datachkserver.api.checkpoint.sep.SepCheckPoint;
+import pams.datachkserver.api.checkpoint.sep.SepCheckPointRequest;
+import pams.datachkserver.api.checkpoint.sep.SepCheckPointResponse;
 
 import java.io.IOException;
 
@@ -24,14 +22,9 @@ public class CurrentDepCheck extends SepCheckPoint {
     private static final String PROGNAME = "saving.CurrentDepCheck";
 
     @Override
-    protected void service(SepCheckPointRequest req, SepCheckPointResponse resp) throws CheckPointException, IOException {
+    public void doCheck(SepCheckPointRequest req, SepCheckPointResponse resp) throws CheckPointException, IOException {
         //
         resp.setRtnCode("0000");
         System.out.println("CurrentDepCheck");
-    }
-
-    @Override
-    public void service(CheckPointRequest req, CheckPointResponse resp) throws CheckPointException, IOException {
-        service((SepCheckPointRequest)req, (SepCheckPointResponse)resp);
     }
 }

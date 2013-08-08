@@ -2,8 +2,8 @@ package pams.datachkserver.chkserver.connector;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointRequest;
-import pams.datachkserver.api.checkpoint.sepcheckpoint.SepCheckPointResponse;
+import pams.datachkserver.api.checkpoint.sep.SepCheckPointRequest;
+import pams.datachkserver.api.checkpoint.sep.SepCheckPointResponse;
 import pams.datachkserver.chkserver.container.core.SepCheckEngine;
 
 import java.math.BigDecimal;

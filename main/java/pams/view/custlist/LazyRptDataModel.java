@@ -1,13 +1,12 @@
 package pams.view.custlist;
 
-import org.apache.commons.beanutils.PropertyUtils;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.repository.dao.custlist.CustlistMapper;
 import pams.repository.model.SvClsCustinfo;
-import pams.repository.model.custlist.CustinfoVO;
+import pams.repository.model.custlist.CustListParam;
 
 import java.util.List;
 import java.util.Map;
@@ -21,10 +20,10 @@ import java.util.Map;
 public class LazyRptDataModel extends LazyDataModel<SvClsCustinfo> {
     private static final Logger logger = LoggerFactory.getLogger(LazyRptDataModel.class);
 
-    private SvClsCustinfo paramBean;
+    private CustListParam paramBean;
     private CustlistMapper custlistMapper;
 
-    public LazyRptDataModel(CustlistMapper custlistMapper, SvClsCustinfo paramBean) {
+    public LazyRptDataModel(CustlistMapper custlistMapper, CustListParam paramBean) {
         this.custlistMapper = custlistMapper;
         this.paramBean = paramBean;
     }
@@ -33,21 +32,20 @@ public class LazyRptDataModel extends LazyDataModel<SvClsCustinfo> {
     public List<SvClsCustinfo> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
         List<SvClsCustinfo> dataList;
         try {
-            CustinfoVO vo = new CustinfoVO();
-            PropertyUtils.copyProperties(vo, paramBean);
-            vo.setOffset(first);
-            vo.setPagesize(first + pageSize);
+            paramBean.setOffset(first);
+            paramBean.setPagesize(first + pageSize);
+
             if (sortField != null) {
-                vo.setSortField(changeBeanPropertyName2DBTableFieldName(sortField));
+                paramBean.setSortField(changeBeanPropertyName2DBTableFieldName(sortField));
                 if (sortOrder != null) {
                     if (sortOrder.compareTo(SortOrder.DESCENDING) == 0) {
-                           vo.setSortOrder(" DESC ");
+                        paramBean.setSortOrder(" DESC ");
                     }
                 }
             }else{ //默认排序字段
-                vo.setSortField("branch_id");
+                paramBean.setSortField("branch_id");
             }
-            dataList = this.custlistMapper.selectCustlistRecordsByPageSize(vo);
+            dataList = this.custlistMapper.selectCustlistRecordsByPageSize(paramBean);
         } catch (Exception e) {
             logger.error("查询数据出现错误.", e);
             throw new RuntimeException(e);

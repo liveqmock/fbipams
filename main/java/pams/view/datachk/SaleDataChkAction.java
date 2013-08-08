@@ -40,9 +40,14 @@ public class SaleDataChkAction implements Serializable {
 
     private SaleDataChkVO selectedRecord;
     private LazyDataModel<SaleDataChkVO> lazyDataModel;
+    private List<SaleDataChkVO> selectedRecords;
+    private List<SaleDataChkVO> filteredDetlList;
 
     private List<SelectItem> branchList;
     private List<SelectItem> prdTypeList;
+    private List<SelectItem> checkFlagList;
+    private List<SelectItem> reviewFlagList;
+    private List<SelectItem> archiveFlagList;
 
     private String branchId;
     private String operId;
@@ -73,6 +78,33 @@ public class SaleDataChkAction implements Serializable {
 
         initPrdTypeList();
 
+        SelectItem item = new SelectItem("", "");
+
+        this.checkFlagList = new ArrayList<SelectItem>();
+        this.checkFlagList.add(item);
+        item = new SelectItem("0", "未检核");
+        this.checkFlagList.add(item);
+        item = new SelectItem("1", "未通过");
+        this.checkFlagList.add(item);
+        item = new SelectItem("2", "通过");
+        this.checkFlagList.add(item);
+
+        this.reviewFlagList = new ArrayList<SelectItem>();
+        item = new SelectItem("", "");
+        this.reviewFlagList.add(item);
+        item = new SelectItem("0", "未申请复议");
+        this.reviewFlagList.add(item);
+        item = new SelectItem("1", "已申请复议");
+        this.reviewFlagList.add(item);
+
+        this.archiveFlagList = new ArrayList<SelectItem>();
+        item = new SelectItem("", "");
+        this.archiveFlagList.add(item);
+        item = new SelectItem("0", "未归档");
+        this.archiveFlagList.add(item);
+        item = new SelectItem("1", "已归档");
+        this.archiveFlagList.add(item);
+
     }
 
     public String onQuerySaleDeptData() {
@@ -90,6 +122,7 @@ public class SaleDataChkAction implements Serializable {
         }
         return null;
     }
+
     public String onQuerySaleTellerData() {
         try {
             this.paramBean.setBranchId(branchId);
@@ -124,21 +157,72 @@ public class SaleDataChkAction implements Serializable {
     //数据检核
     public String onCheckAll() {
         try {
-
-            List<SaleDataChkVO> saleDataChkVOList = (List<SaleDataChkVO>)this.lazyDataModel.getWrappedData();
+            List<SaleDataChkVO> saleDataChkVOList = (List<SaleDataChkVO>) this.lazyDataModel.getWrappedData();
+            int checked = 0;
             for (SaleDataChkVO saleDataChkVO : saleDataChkVOList) {
-                logger.info("aaa" + saleDataChkVO.getGuid());
-                saleDataChkService.processSaleDataCheck(saleDataChkVO);
+                String checkflag = saleDataChkVO.getCheckflag();
+                if (checkflag == null || "0".equals(checkflag)) {
+                    saleDataChkService.processSaleDataCheck(saleDataChkVO);
+                    checked++;
+                }
             }
 
-
             Ptoplog oplog = new Ptoplog();
-            oplog.setActionId("SaleDataAction_onCheckAll");
+            oplog.setActionId("SaleDataAction_onCheckAllUnChecked");
             oplog.setActionName("营销历史管理:数据检核");
             oplog.setOpDataBranchid(this.paramBean.getBranchId());
             platformService.insertNewOperationLog(oplog);
 
-            MessageUtil.addError("数据检核完成...");
+            MessageUtil.addError("数据检核完成, 检核处理记录条数: " + checked);
+        } catch (Exception e) {
+            logger.error("数据检核错误！", e);
+            MessageUtil.addError("数据检核错误！" + e.getMessage());
+        }
+        return null;
+    }
+
+    public String onCheckUnpassed() {
+        try {
+            List<SaleDataChkVO> saleDataChkVOList = (List<SaleDataChkVO>) this.lazyDataModel.getWrappedData();
+            int checked = 0;
+            for (SaleDataChkVO saleDataChkVO : saleDataChkVOList) {
+                String checkflag = saleDataChkVO.getCheckflag();
+                if (checkflag != null && "1".equals(checkflag)) {
+                    saleDataChkService.processSaleDataCheck(saleDataChkVO);
+                    checked++;
+                }
+            }
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("SaleDataAction_onCheckUnpassed");
+            oplog.setActionName("营销历史管理:数据检核");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+
+            MessageUtil.addError("数据检核完成, 检核处理记录条数: " + checked);
+        } catch (Exception e) {
+            logger.error("数据检核错误！", e);
+            MessageUtil.addError("数据检核错误！" + e.getMessage());
+        }
+        return null;
+    }
+
+    //数据检核
+    public String onCheckSelected() {
+        try {
+            int checked = 0;
+            for (SaleDataChkVO saleDataChkVO : this.selectedRecords) {
+                saleDataChkService.processSaleDataCheck(saleDataChkVO);
+                checked++;
+            }
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("SaleDataAction_onCheckSelected");
+            oplog.setActionName("营销历史管理:数据检核-强制检核所选记录");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+
+            MessageUtil.addError("数据检核完成, 检核处理记录条数: " + checked);
         } catch (Exception e) {
             logger.error("数据检核错误！", e);
             MessageUtil.addError("数据检核错误！" + e.getMessage());
@@ -240,6 +324,46 @@ public class SaleDataChkAction implements Serializable {
 
     public void setSelectedRecord(SaleDataChkVO selectedRecord) {
         this.selectedRecord = selectedRecord;
+    }
+
+    public List<SelectItem> getCheckFlagList() {
+        return checkFlagList;
+    }
+
+    public void setCheckFlagList(List<SelectItem> checkFlagList) {
+        this.checkFlagList = checkFlagList;
+    }
+
+    public List<SelectItem> getReviewFlagList() {
+        return reviewFlagList;
+    }
+
+    public void setReviewFlagList(List<SelectItem> reviewFlagList) {
+        this.reviewFlagList = reviewFlagList;
+    }
+
+    public List<SelectItem> getArchiveFlagList() {
+        return archiveFlagList;
+    }
+
+    public void setArchiveFlagList(List<SelectItem> archiveFlagList) {
+        this.archiveFlagList = archiveFlagList;
+    }
+
+    public List<SaleDataChkVO> getFilteredDetlList() {
+        return filteredDetlList;
+    }
+
+    public void setFilteredDetlList(List<SaleDataChkVO> filteredDetlList) {
+        this.filteredDetlList = filteredDetlList;
+    }
+
+    public List<SaleDataChkVO> getSelectedRecords() {
+        return selectedRecords;
+    }
+
+    public void setSelectedRecords(List<SaleDataChkVO> selectedRecords) {
+        this.selectedRecords = selectedRecords;
     }
 }
 

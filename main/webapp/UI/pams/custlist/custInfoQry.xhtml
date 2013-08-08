@@ -39,6 +39,7 @@
                                              value="#{custinfoLazyAction.paramBean.rptDate}"
                                              onclick="WdatePicker({dateFmt:'yyyyMMdd'})"/>
 
+<!--
                                 <h:outputLabel value="证件类型:"/>
                                 <h:selectOneMenu id="certtype" style="width:153px;"
                                                  value="#{custinfoLazyAction.paramBean.certType}">
@@ -46,6 +47,13 @@
                                 </h:selectOneMenu>
                                 <h:outputLabel value="证件号码:"/>
                                 <p:inputText id="certno" value="#{custinfoLazyAction.paramBean.certNo}"/>
+-->
+                                <h:outputLabel value="AUM值(起):"/>
+                                <p:inputText  value="#{custinfoLazyAction.paramBean.startAum}"/>
+                                <h:outputLabel value="AUM值(止):"/>
+                                <p:inputText  value="#{custinfoLazyAction.paramBean.endAum}"/>
+                                <h:outputLabel value="客户编号:"/>
+                                <p:inputText id="custno" value="#{custinfoLazyAction.paramBean.custNo}"/>
 
                             </h:panelGrid>
                             <h:panelGrid>
@@ -116,6 +124,7 @@
                         </f:facet>
                         <h:outputText value="#{record.custGender}"/>
                     </p:column>
+<!--
                     <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
                         <f:facet name="header">
                             证件类型
@@ -127,6 +136,13 @@
                             证件号
                         </f:facet>
                         <h:outputText value="#{record.certNo}"/>
+                    </p:column>
+-->
+                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                        <f:facet name="header">
+                            客户编号
+                        </f:facet>
+                        <h:outputText value="#{record.custNo}"/>
                     </p:column>
                     <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
                         <f:facet name="header">

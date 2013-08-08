@@ -1,4 +1,4 @@
-package pams.datachkserver.api.checkpoint.sepcheckpoint;
+package pams.datachkserver.api.checkpoint.sep;
 
 import pams.datachkserver.api.checkpoint.CheckPointRequest;
 

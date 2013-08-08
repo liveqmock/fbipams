@@ -18,6 +18,18 @@ public class SaleDataQryParamBean {
     private String prdId;
     private String tellerId;
 
+    private String checkFlag;
+    private String archiveFlag;
+    private String reviewFlag;
+    private String archiveStartDate;
+    private String archiveEndDate;
+    private String checkStartDate;
+    private String checkEndDate;
+    private String reviewStartDate;
+    private String reviewEndDate;
+    private String reviewReplyStartDate;
+    private String reviewReplyEndDate;
+
     private int offset;
     private int pagesize;
     private String  sortField;
@@ -125,5 +137,93 @@ public class SaleDataQryParamBean {
 
     public void setTellerId(String tellerId) {
         this.tellerId = tellerId;
+    }
+
+    public String getCheckFlag() {
+        return checkFlag;
+    }
+
+    public void setCheckFlag(String checkFlag) {
+        this.checkFlag = checkFlag;
+    }
+
+    public String getArchiveFlag() {
+        return archiveFlag;
+    }
+
+    public void setArchiveFlag(String archiveFlag) {
+        this.archiveFlag = archiveFlag;
+    }
+
+    public String getReviewFlag() {
+        return reviewFlag;
+    }
+
+    public void setReviewFlag(String reviewFlag) {
+        this.reviewFlag = reviewFlag;
+    }
+
+    public String getArchiveStartDate() {
+        return archiveStartDate;
+    }
+
+    public void setArchiveStartDate(String archiveStartDate) {
+        this.archiveStartDate = archiveStartDate;
+    }
+
+    public String getArchiveEndDate() {
+        return archiveEndDate;
+    }
+
+    public void setArchiveEndDate(String archiveEndDate) {
+        this.archiveEndDate = archiveEndDate;
+    }
+
+    public String getCheckStartDate() {
+        return checkStartDate;
+    }
+
+    public void setCheckStartDate(String checkStartDate) {
+        this.checkStartDate = checkStartDate;
+    }
+
+    public String getCheckEndDate() {
+        return checkEndDate;
+    }
+
+    public void setCheckEndDate(String checkEndDate) {
+        this.checkEndDate = checkEndDate;
+    }
+
+    public String getReviewStartDate() {
+        return reviewStartDate;
+    }
+
+    public void setReviewStartDate(String reviewStartDate) {
+        this.reviewStartDate = reviewStartDate;
+    }
+
+    public String getReviewEndDate() {
+        return reviewEndDate;
+    }
+
+    public void setReviewEndDate(String reviewEndDate) {
+        this.reviewEndDate = reviewEndDate;
+    }
+
+    public String getReviewReplyStartDate() {
+        return reviewReplyStartDate;
+    }
+
+    public void setReviewReplyStartDate(String reviewReplyStartDate) {
+        this.reviewReplyStartDate = reviewReplyStartDate;
+    }
+
+    public String getReviewReplyEndDate() {
+        return reviewReplyEndDate;
+    }
+
+    public void setReviewReplyEndDate(String reviewReplyEndDate) {
+        this.reviewReplyEndDate = reviewReplyEndDate;
     }
 }

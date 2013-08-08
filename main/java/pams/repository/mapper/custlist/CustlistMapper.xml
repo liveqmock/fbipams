@@ -19,6 +19,19 @@
           <if test = " certNo != null and certNo != '' ">
               and a.cert_no like '%${certNo}%'
           </if>
+          <if test = " custNo != null and custNo != '' ">
+              and a.cust_no like '%${custNo}%'
+          </if>
+          <if test = " startAum != null and startAum != '' ">
+              <![CDATA[
+              and a.aum_timepoint_dep >= #{startAum}
+              ]]>
+          </if>
+          <if test = " endAum != null and endAum != '' ">
+              <![CDATA[
+              and a.aum_timepoint_dep <= #{endAum}
+              ]]>
+          </if>
       </where>
     </sql>
 
@@ -89,7 +102,7 @@
         order by a.rpt_date desc, a.rpt_type
     </select>
 
-    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustinfoVO" resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustListParam" resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
         select *
           from (select t1.*, rownum rnum
                 from (

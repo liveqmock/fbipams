@@ -9,10 +9,11 @@ import pams.common.SystemService;
 import pams.common.utils.MessageUtil;
 import pams.repository.model.Ptoplog;
 import pams.repository.model.SvClsCustinfo;
-import skyline.service.PlatformService;
-import skyline.service.ToolsService;
+import pams.repository.model.custlist.CustListParam;
 import pams.service.custlist.importdata.CustlistService;
 import pub.platform.security.OperatorManager;
+import skyline.service.PlatformService;
+import skyline.service.ToolsService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -40,7 +41,8 @@ public class CustinfoLazyAction implements Serializable {
     private String operid;
     private String branchid;
 
-    private SvClsCustinfo paramBean;
+    //private SvClsCustinfo paramBean;
+    private CustListParam paramBean;
     private SvClsCustinfo selectedRecord;
     private int totalcount = 0;
     private BigDecimal totalamt = new BigDecimal("0.00");
@@ -88,7 +90,7 @@ public class CustinfoLazyAction implements Serializable {
         if (branchList.size() == 1) {
             isBizBranch = true;
         }
-        this.paramBean = new SvClsCustinfo();
+        this.paramBean = new CustListParam();
         this.paramBean.setRptType(this.rptType);
 
         DateTime lastmonth = new DateTime().minusMonths(1).dayOfMonth().withMaximumValue();
@@ -135,11 +137,11 @@ public class CustinfoLazyAction implements Serializable {
         this.branchid = branchid;
     }
 
-    public SvClsCustinfo getParamBean() {
+    public CustListParam getParamBean() {
         return paramBean;
     }
 
-    public void setParamBean(SvClsCustinfo paramBean) {
+    public void setParamBean(CustListParam paramBean) {
         this.paramBean = paramBean;
     }
 
