@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pams.batch.saleeventcheck.client.CronMainHandler;
 import pams.datachkserver.chkserver.connector.SepConnector;
 import pams.repository.dao.SvCmsCustbaseMapper;
 import pams.repository.dao.SvSaleDetailChkMapper;
@@ -22,7 +21,6 @@ import pub.platform.security.OperatorManager;
 import skyline.service.PlatformService;
 import skyline.service.ToolsService;
 
-import javax.annotation.Resource;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -41,8 +39,6 @@ import java.util.Map;
 public class SaleDataChkService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Resource(name = "saleeventCheck")
-    private CronMainHandler cronMainHandler;
     @Autowired
     private SaleDataChkMapper saleDataChkMapper;
     @Autowired
@@ -68,11 +64,9 @@ public class SaleDataChkService {
     }
 
     public void processSaleDataCheck(SaleDataChkVO vo) {
-        //cronMainHandler.run();
-
         SvCmsCustbase cust = svCmsCustbaseMapper.selectByPrimaryKey(vo.getCustguid());
         if (cust == null) {
-            handleOneRecordCheckResult(vo.getGuid(), "1000", "无客户信息，未检核.");
+            handleOneRecordCheckResult(vo.getGuid(), "1111", "系统中无此客户信息，未检核.");
             insertCheckHistory(vo.getGuid(), "DataCheck", "营销活动数据检核");
             return;
         }
@@ -119,14 +113,15 @@ public class SaleDataChkService {
     private void handleOneRecordCheckResult(String key, String rtnCode, String rtnMsg) {
         SvSaleDetail svSaleDetail = svSaleDetailMapper.selectByPrimaryKey(key);
         SvSaleDetailChk svSaleDetailChk = svSaleDetailChkMapper.selectByPrimaryKey(key);
-        if (svSaleDetailChk == null) {
+        if (svSaleDetailChk == null) {//检核记录表中不存在记录时，新增一条记录
             svSaleDetailChk = new SvSaleDetailChk();
             svSaleDetailChk.setGuid(key);
-            if ("0000".equals(rtnCode)) {
-                svSaleDetailChk.setCheckflag("2");
-            } else {
-                svSaleDetailChk.setCheckflag("1");
-            }
+
+            //! 检核状态处理
+            String checkFlag = "0";
+            checkFlag = processRtnCode(rtnCode);
+            svSaleDetailChk.setCheckflag(checkFlag);
+
             int len = rtnMsg.getBytes().length;
             if (len >= 200) {
                 rtnMsg = rtnMsg.substring(1, 100);
@@ -145,12 +140,12 @@ public class SaleDataChkService {
             svSaleDetailChk.setRecversion(1L);
 
             svSaleDetailChkMapper.insert(svSaleDetailChk);
-        } else {
-            if ("0000".equals(rtnCode)) {
-                svSaleDetailChk.setCheckflag("2");
-            } else {
-                svSaleDetailChk.setCheckflag("1");
-            }
+        } else { //已存在记录时，更新记录
+            //! 检核状态处理
+            String checkFlag = "0";
+            checkFlag = processRtnCode(rtnCode);
+            svSaleDetailChk.setCheckflag(checkFlag);
+
             int len = rtnMsg.getBytes().length;
             if (len >= 200) {
                 rtnMsg = rtnMsg.substring(1, 100);
@@ -172,9 +167,21 @@ public class SaleDataChkService {
         }
     }
 
+    //！！检核状态处理
+    private String processRtnCode(String rtnCode) {
+        String checkFlag;
+        if ("0000".equals(rtnCode)) { //检核通过
+            checkFlag = "2";
+        } else if (rtnCode.startsWith("1")) { // 错误码 以“1”开头的，系统层面错误，未进行检核
+            checkFlag = "0";
+        }else{ //已进行检核，未通过
+            checkFlag = "1";
+        }
+        return checkFlag;
+    }
+
     private void insertCheckHistory(String key, String operCode, String operDesc){
         SvSaleDetailHis svSaleDetailHis = new SvSaleDetailHis();
-        //svSaleDetailHis.setGuid(UUID.randomUUID().toString());
         svSaleDetailHis.setSaledataguid(key);
         svSaleDetailHis.setOpercode(operCode);
         svSaleDetailHis.setOperdesc(operDesc);
@@ -205,11 +212,4 @@ public class SaleDataChkService {
         this.saleDataChkMapper = saleDataChkMapper;
     }
 
-    public CronMainHandler getCronMainHandler() {
-        return cronMainHandler;
-    }
-
-    public void setCronMainHandler(CronMainHandler cronMainHandler) {
-        this.cronMainHandler = cronMainHandler;
-    }
 }

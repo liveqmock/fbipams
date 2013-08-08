@@ -51,16 +51,17 @@ public class SepCheckEngine implements ApplicationContextAware {
     private static String RTN_CODE_CHECK_PROC_ERR = "1003";
     //检核时出现系统IO错误
     private static String RTN_CODE_CHECK_IO_ERR = "1004";
+    //客户信息不存在
+    private static String RTN_CODE_CUSTINFO_NOTEXIST = "1111";
 
     //检核程序未定义
-    private static String RTN_CODE_CHECK_PROG_NOT_DEFINE = "2000";
+    private static String RTN_CODE_CHECK_PROG_NOT_DEFINE = "1000";
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
     public void process(SepCheckPointRequest request, SepCheckPointResponse response) {
-/*
         String odsbstatus = null;
         try {
             odsbstatus = getOdsbSysStatus();
@@ -80,8 +81,7 @@ public class SepCheckEngine implements ApplicationContextAware {
             return;
         }
 
-*/
-
+        //============
         String prdid = request.getPrdid();
         if (prdid == null) {
             throw new IllegalArgumentException("Prdid cannot be null");
@@ -133,7 +133,7 @@ public class SepCheckEngine implements ApplicationContextAware {
         }else {
             if (respTmp.getRtnCode() == null) {
                 response.setRtnCode(RTN_CODE_CHECK_PROG_NOT_DEFINE);
-                response.setRtnMsg("检核未通过，此产品暂不支持检核处理。");
+                response.setRtnMsg("未进行检核，此产品暂不支持检核处理。");
             }else{
                 response.setRtnCode(respTmp.getRtnCode());
                 response.setRtnMsg(respTmp.getRtnMsg());
@@ -151,7 +151,7 @@ public class SepCheckEngine implements ApplicationContextAware {
      *
      */
     private String getOdsbSysStatus() {
-        String SQL_CHECK_ODSBSTATUS = "select TO_CHAR(biz_date, 'yyyymmdd') as biz_date,jobflow_status from odssys.f_jci_jobflowinstance where job_flow_id ='990063719900001'";
+        String SQL_CHECK_ODSBSTATUS = "select TO_CHAR(biz_date, 'yyyymmdd') as biz_date,jobflow_status from odssys.f_jci_jobflowinstance@odsbptdb where job_flow_id ='990063719900001'";
         try {
             Map map = simpleJdbcTemplate.queryForMap(SQL_CHECK_ODSBSTATUS);
             return (String) map.get("jobflow_status");
