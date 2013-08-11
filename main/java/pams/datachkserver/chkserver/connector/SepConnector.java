@@ -46,6 +46,8 @@ public class SepConnector {
 
         sepRequest.setPrdid((String) request.get("prdid"));
         sepRequest.setSubPrdid((String) request.get("subprdid"));
+        sepRequest.setTellerid((String) request.get("tellerid"));
+        sepRequest.setBankid((String) request.get("bankid"));
 
         sepRequest.setTxnDate((String) request.get("txndate"));
         sepRequest.setTxnTime((String) request.get("txntime"));

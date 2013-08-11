@@ -37,6 +37,7 @@ public class CheckRule {
         return svSaleCkptPrgMapper.selectByExample(example);
     }
 
+    //查找检核程序定义
     public List<SvSaleCkptPrg> selectCheckpointHandler(String prdid, String subprdid) {
         if (prdid == null || subprdid == null) {
             throw new IllegalArgumentException("Prdid and subprdid cannot be null!");
@@ -45,6 +46,13 @@ public class CheckRule {
         example.createCriteria().andPrdidEqualTo(prdid).andSubprdidEqualTo(subprdid)
                 .andValidflagEqualTo("1");
         example.setOrderByClause(" seqno ");
-        return svSaleCkptPrgMapper.selectByExample(example);
+        List<SvSaleCkptPrg> prgs =  svSaleCkptPrgMapper.selectByExample(example);
+        if (prgs.isEmpty()) {
+            example.clear();
+            example.createCriteria().andPrdidEqualTo(prdid).andValidflagEqualTo("1");
+            example.setOrderByClause(" seqno ");
+            prgs =  svSaleCkptPrgMapper.selectByExample(example);
+        }
+        return prgs;
     }
 }

@@ -33,6 +33,8 @@
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
                                 when '03' then
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                                when '04' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTDEPOSITTYPE' and enuitemvalue = a.subprdid)
                                 when '06' then
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
                                 when '08' then

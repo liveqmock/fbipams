@@ -1,4 +1,4 @@
-package pams.datachkserver.chkapps.saleevent.checkpoint.saving;
+package pams.datachkserver.chkapps.saleevent.checkpoint.finplan;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,16 +9,18 @@ import pams.datachkserver.api.checkpoint.sep.SepCheckPointRequest;
 import pams.datachkserver.api.checkpoint.sep.SepCheckPointResponse;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
- * 定期存款发生额等检核
+ * 理财产品检核
  * User: zhanrui
  * Date: 13-8-3
  * Time: 上午7:47
  */
-@Component("saving.CurrentDepCheck")
-public class CurrentDepCheck extends SepCheckPoint {
-    private static final Logger logger = LoggerFactory.getLogger(CurrentDepCheck.class);
+@Component("finplan.FinPlanCheck")
+public class FinPlanCheck extends SepCheckPoint {
+    private static final Logger logger = LoggerFactory.getLogger(FinPlanCheck.class);
 
     @Override
     public void doCheck(SepCheckPointRequest req, SepCheckPointResponse resp) throws CheckPointException, IOException {
@@ -29,8 +31,16 @@ public class CurrentDepCheck extends SepCheckPoint {
             return;
         }
 
-        String sql = "select count(*) from bf_evt_dep_sap where cust_no=? and sa_tx_dt=? and camount=?";
-        int count = jdbcTemplate.queryForInt(sql, dcc_custno, req.getTxnDate(), req.getSalesAmt1());
+        String sql = "select cust_ta_id from bf_agt_nin_fs_ta_account where cert_type=? and cert_no=?";
+        List<Map<String,Object>> cust_ta_id_list = jdbcTemplate.queryForList(sql, req.getCertType(), req.getCertNo());
+
+        int count = 0;
+        for (Map<String, Object> record : cust_ta_id_list) {
+            String  cust_ta_id = (String)record.get("cust_ta_id");
+            sql = "select count(*) from bf_agt_nin_fs_cust_prod_list where cust_ta_id=? and effective_date=? and start_amt=?";
+            count += jdbcTemplate.queryForInt(sql, cust_ta_id, req.getTxnDate(), req.getSalesAmt1());
+        }
+
         if (count == 0) {
             resp.setRtnCode("2001");
             resp.setRtnMsg("未找到对应的存款记录.");

@@ -81,6 +81,8 @@ public class SaleDataChkService {
 
         req.put("prdid", vo.getPrdid());
         req.put("subprdid", vo.getSubprdid());
+        req.put("tellerid", vo.getTellerid());
+        req.put("bankid", vo.getDeptid());
         req.put("txndate", vo.getTxndate());
         req.put("txntime", vo.getTxntime());
         req.put("salesnum1", vo.getSalesnum1());

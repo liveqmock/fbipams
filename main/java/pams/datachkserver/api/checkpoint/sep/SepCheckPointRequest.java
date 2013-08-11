@@ -17,7 +17,8 @@ import java.util.Map;
 public class SepCheckPointRequest implements CheckPointRequest {
     private String prdid;
     private String subPrdid;
-    private String operid;
+    private String tellerid;
+    private String bankid;
     private String chkPeriod;
     private String ckptParam;
 
@@ -55,12 +56,13 @@ public class SepCheckPointRequest implements CheckPointRequest {
         this.subPrdid = subPrdid;
     }
 
-    public String getOperid() {
-        return operid;
+
+    public String getTellerid() {
+        return tellerid;
     }
 
-    public void setOperid(String operid) {
-        this.operid = operid;
+    public void setTellerid(String tellerid) {
+        this.tellerid = tellerid;
     }
 
     public String getChkPeriod() {
@@ -219,5 +221,13 @@ public class SepCheckPointRequest implements CheckPointRequest {
     @Override
     public Map<String, String[]> getParameterMap() {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
+    }
+
+    public String getBankid() {
+        return bankid;
+    }
+
+    public void setBankid(String bankid) {
+        this.bankid = bankid;
     }
 }

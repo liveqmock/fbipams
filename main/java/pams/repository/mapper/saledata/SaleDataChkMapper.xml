@@ -44,6 +44,8 @@
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTINSURETYPE' and enuitemvalue = a.subprdid)
                                 when '03' then
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTFPTYPE' and enuitemvalue = a.subprdid)
+                                when '04' then
+                                (select enuitemlabel  from ptenudetail where enutype = 'SVTDEPOSITTYPE' and enuitemvalue = a.subprdid)
                                 when '06' then
                                 (select enuitemlabel  from ptenudetail where enutype = 'SVTCREDITCARDTYPE' and enuitemvalue = a.subprdid)
                                 when '08' then
@@ -63,7 +65,7 @@
                             decode(d.reviewresult,'0','通过','1','驳回','') as reviewresult,
                             d.reviewreplydesc,
                             d.archiveflag,
-                            decode(d.archiveflag,'0','未通过','1','已归档','') as archiveflagDesc,
+                            decode(d.archiveflag,'0','','1','已归档','') as archiveflagDesc,
                             d.archivedate,d.archiveoperid,d.archiveoperdate
                       from sv_sale_detail a, ptoper b, sv_cms_custbase c, sv_sale_detail_chk d
                       where a.tellerid = b.operid

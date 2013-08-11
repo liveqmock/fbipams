@@ -376,6 +376,7 @@
                              columnClasses="input-col-m,input-col-xl">
                     <h:outputLabel value="业务日期:" for="txnDate"/>
                     <p:inputText id="txnDate" value="#{custSaleDataInputAction.txnDate}"
+                                 onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
                                  required="true" onkeydown="KeyDown()" onfocus="this.select()">
                     </p:inputText>
                     <h:outputLabel/>
@@ -665,11 +666,11 @@
                 <h:outputText value="#{sales.prdid}"/>
             </p:column>
 <!--
-            <p:column style="text-align:center" sortBy="#{sales.prdid}">
+            <p:column style="text-align:center">
                 <f:facet name="header">
                     产品
                 </f:facet>
-                <h:outputText value="#{custSaleDataInputAction.prdid}"/>
+                <h:outputText value="#{sales.prdiddesc}"/>
             </p:column>
 -->
             <p:column style="text-align:center" sortBy="#{sales.subprdid}">

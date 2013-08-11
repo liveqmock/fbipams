@@ -7,7 +7,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import pams.datachkserver.api.checkpoint.CheckPoint;
 import pams.datachkserver.api.checkpoint.CheckPointException;
@@ -35,7 +35,7 @@ public class SepCheckEngine implements ApplicationContextAware {
     ApplicationContext applicationContext;
 
     @Resource
-    protected SimpleJdbcTemplate simpleJdbcTemplate;
+    protected JdbcTemplate jdbcTemplate;
     @Resource
     protected PlatformService platformService;
     @Resource
@@ -153,7 +153,7 @@ public class SepCheckEngine implements ApplicationContextAware {
     private String getOdsbSysStatus() {
         String SQL_CHECK_ODSBSTATUS = "select TO_CHAR(biz_date, 'yyyymmdd') as biz_date,jobflow_status from odssys.f_jci_jobflowinstance@odsbptdb where job_flow_id ='990063719900001'";
         try {
-            Map map = simpleJdbcTemplate.queryForMap(SQL_CHECK_ODSBSTATUS);
+            Map map = jdbcTemplate.queryForMap(SQL_CHECK_ODSBSTATUS);
             return (String) map.get("jobflow_status");
         } catch (DataAccessException e) {
             //TODO :在数据库中记录检核状态   （以及最后一次检核的业务系统日期）
