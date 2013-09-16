@@ -102,6 +102,16 @@
         order by a.rpt_date desc, a.rpt_type
     </select>
 
+    <select id="selectCustlistRecordsByCustno" parameterType="java.lang.String"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+        select  *
+            from sv_cls_custinfo a
+          where 1=1
+            <if test = " custNo != null and custNo != '' ">
+                and a.cust_no = #{custNo}
+            </if>
+        order by a.rpt_date desc, a.rpt_type
+    </select>
+
     <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustListParam" resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
         select *
           from (select t1.*, rownum rnum
@@ -165,8 +175,7 @@
                 (select opername from ptoper where operid=a.custmgr_id) as custmgr_name
             from SV_CMS_CUSTBASE a,
                 (select t.branch_id,
-                    t.cert_type,
-                    t.cert_no,
+                    t.cust_no,
                     max(t.aum_month_curr) as aum_month_curr,
                     max(t.aum_month_last) as aum_month_last,
                     max(t.aum_timepoint_dep) as aum_timepoint_dep,
@@ -175,16 +184,18 @@
                 from sv_cls_custinfo t
                 where t.rpt_type = #{rptType}
                     and t.rpt_date = #{rptDate}
-                group by t.branch_id, t.cert_type, t.cert_no) b
+                group by t.branch_id, t.cust_no) b
             where a.branch_id = b.branch_id
-                and a.cert_type = b.cert_type
-                and a.cert_no = b.cert_no
+                and a.cust_no = b.cust_no
                 and a.branch_id = #{branchId}
                 <if test = " hideDispatchedFlag == true">
                     and a.custmgr_id is null
                 </if>
                 <if test = " custmgrId != null and custmgrId != '' ">
                     and a.custmgr_id = #{custmgrId}
+                </if>
+                <if test = " custNo != null and custNo != '' ">
+                    and a.cust_no like  '%${custNo}%'
                 </if>
                 <if test = " custName != null and custName != '' ">
                     and cust_name in
@@ -251,6 +262,9 @@
                 </if>
                 <if test = " custmgrId != null and custmgrId != '' ">
                     and a.custmgr_id = #{custmgrId}
+                </if>
+                <if test = " custNo != null and custNo != '' ">
+                    and a.cust_no like '%${custNo}%'
                 </if>
                 <if test = " custName != null and custName != '' ">
                     and cust_name in

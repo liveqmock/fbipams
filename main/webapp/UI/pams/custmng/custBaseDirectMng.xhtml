@@ -37,6 +37,9 @@
                                 <h:outputLabel value="客户姓名:" />
                                 <p:inputText value="#{custMngAction.paramBean.custName}"
                                              title="提示：多个客户姓名可使用“|”分割，如：张三|李四"/>
+                                <h:outputLabel value="客户编号:" />
+                                <p:inputText value="#{custMngAction.paramBean.custNo}"
+                                             title="提示：支持模糊查询，可输入部分号段。"/>
                                 <h:outputLabel value="客户经理:" />
                                 <p:selectOneMenu value="#{custMngAction.paramBean.custmgrId}">
                                     <f:selectItems value="#{custMngAction.custmgrList}"/>

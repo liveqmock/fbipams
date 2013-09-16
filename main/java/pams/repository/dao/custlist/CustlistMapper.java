@@ -21,6 +21,7 @@ public interface CustlistMapper {
     int insertBatch(List<SvClsCustinfo> beans);
     int deleteRecords(@Param("rptdate") String rptdate, @Param("rpttype") String rpttype);
 
+    List<SvClsCustinfo> selectCustlistRecordsByCustno(@Param("custNo") String custNo);
     List<SvClsCustinfo> selectCustlistRecordsByCertInfo(@Param("certType") String certType, @Param("certNo") String certNo);
     List<SvClsCustinfo> selectCustlistRecordsByPageSize(CustListParam bean);
     int countCustlistRecords(SvClsCustinfo bean);

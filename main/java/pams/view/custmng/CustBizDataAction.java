@@ -106,9 +106,11 @@ public class CustBizDataAction implements Serializable {
         }
         return null;
     }
+
     public void onCustRowSelect(SelectEvent event) {
         try {
-            this.detlBizList = custlistService.selectCustlistRecordsByCertInfo(selectedCust.getCertType(), selectedCust.getCertNo());
+            //this.detlBizList = custlistService.selectCustlistRecordsByCertInfo(selectedCust.getCertType(), selectedCust.getCertNo());
+            this.detlBizList = custlistService.selectCustlistRecordsByCustno(selectedCust.getCustNo());
         } catch (Exception e) {
             logger.error("查询数据时出现错误。", e);
             MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());

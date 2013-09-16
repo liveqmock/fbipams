@@ -67,6 +67,9 @@ public class CustlistService<T> {
     public List<SvClsCustinfo> selectCustlistRecordsByCertInfo(String certType, String certNo)  {
         return custlistMapper.selectCustlistRecordsByCertInfo(certType, certNo);
     }
+    public List<SvClsCustinfo> selectCustlistRecordsByCustno(String custNo)  {
+        return custlistMapper.selectCustlistRecordsByCustno(custNo);
+    }
     //=============
 
     public CustlistMapper getCustlistMapper() {
