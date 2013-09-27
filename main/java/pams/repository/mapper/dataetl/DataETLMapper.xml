@@ -6,7 +6,8 @@
     <update id="mergeCustBaseRecords"  parameterType="java.lang.String">
           merge into sv_cms_custbase a
             using (select t.branch_id,
-                          max(t.cust_name)||'('||max(t.cust_gender)||')' as cust_name,
+                          (select /*+parallel(t1,5)*/t1.name from BF_PR_IND_PARTY_NAME t1 where t1.p_cust_no  = t.cust_no and t1.PARTY_NAME_TYPE = '12') as cust_name,
+                          --max(t.cust_name)||'('||max(t.cust_gender)||')' as cust_name,
                           --t.cert_type,
                           t.cust_no,
                           max(contact_info1) as contact_info1,
