@@ -375,11 +375,12 @@
                 <h:panelGrid columns="3" cellspacing="5"
                              columnClasses="input-col-m,input-col-xl">
                     <h:outputLabel value="业务日期:" for="txnDate"/>
-                    <p:inputText id="txnDate" value="#{custSaleDataInputAction.txnDate}"
+                    <p:inputText id="txnDate"
+                                 value="#{custSaleDataInputAction.vo.txndate}"
                                  onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"
                                  required="true" onkeydown="KeyDown()" onfocus="this.select()">
                     </p:inputText>
-                    <h:outputLabel/>
+                    <h:outputLabel value="[基金与理财产品请输入实际成交日期]"  style="color:#999999" />
 
                     <h:outputLabel value="产品种类:"/>
                     <p:inputText id="prdId" value="#{custSaleDataInputAction.vo.prdid}"
