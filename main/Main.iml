@@ -13,9 +13,6 @@
           <root url="file://$MODULE_DIR$/java" />
         </sourceRoots>
       </configuration>
-      <facet type="jsf" name="JSF">
-        <configuration />
-      </facet>
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>

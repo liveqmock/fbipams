@@ -103,6 +103,7 @@
         <table tableName="odsb_housingfund_txn" >
             <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
         </table>
+        <table tableName="odsb_payagent_txn"  />
        -->
         <!--对私客户信息 -->
         <!--
@@ -149,6 +150,8 @@
         </table>
         -->
 
+        <!--新客户名单制报表数据 201310 -->
+        <!--<table tableName="cls_rptdata" />-->
 
 
     </context>

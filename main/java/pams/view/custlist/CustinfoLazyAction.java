@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import pams.common.SystemService;
 import pams.common.utils.MessageUtil;
 import pams.repository.model.Ptoplog;
-import pams.repository.model.SvClsCustinfo;
+import pams.repository.model.ClsRptdata;
 import pams.repository.model.custlist.CustListParam;
 import pams.service.custlist.importdata.CustlistService;
 import pub.platform.security.OperatorManager;
@@ -41,9 +41,9 @@ public class CustinfoLazyAction implements Serializable {
     private String operid;
     private String branchid;
 
-    //private SvClsCustinfo paramBean;
+    //private ClsRptdata paramBean;
     private CustListParam paramBean;
-    private SvClsCustinfo selectedRecord;
+    private ClsRptdata selectedRecord;
     private int totalcount = 0;
     private BigDecimal totalamt = new BigDecimal("0.00");
 
@@ -51,7 +51,7 @@ public class CustinfoLazyAction implements Serializable {
     private String rptType;
     private boolean isBizBranch; //是否业务网点
 
-    private LazyDataModel<SvClsCustinfo> lazyDataModel;
+    private LazyDataModel<ClsRptdata> lazyDataModel;
 
     private List<SelectItem> branchList;
     private List<SelectItem> prdsetList;
@@ -145,11 +145,11 @@ public class CustinfoLazyAction implements Serializable {
         this.paramBean = paramBean;
     }
 
-    public SvClsCustinfo getSelectedRecord() {
+    public ClsRptdata getSelectedRecord() {
         return selectedRecord;
     }
 
-    public void setSelectedRecord(SvClsCustinfo selectedRecord) {
+    public void setSelectedRecord(ClsRptdata selectedRecord) {
         this.selectedRecord = selectedRecord;
     }
 
@@ -235,11 +235,11 @@ public class CustinfoLazyAction implements Serializable {
         this.rptType = rptType;
     }
 
-    public LazyDataModel<SvClsCustinfo> getLazyDataModel() {
+    public LazyDataModel<ClsRptdata> getLazyDataModel() {
         return lazyDataModel;
     }
 
-    public void setLazyDataModel(LazyDataModel<SvClsCustinfo> detlList) {
+    public void setLazyDataModel(LazyDataModel<ClsRptdata> detlList) {
         this.lazyDataModel = detlList;
     }
 

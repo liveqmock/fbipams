@@ -4,9 +4,9 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.common.utils.MessageUtil;
+import pams.service.custlist.importdata.ClsDataImportService;
 import skyline.service.PlatformService;
 import skyline.service.ToolsService;
-import pams.service.custlist.importdata.ImportService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -39,8 +39,8 @@ public class ImportAction implements Serializable {
     private ToolsService toolsService;
     @ManagedProperty(value = "#{platformService}")
     private PlatformService platformService;
-    @ManagedProperty(value = "#{importService}")
-    private ImportService importService;
+    @ManagedProperty(value = "#{clsDataImportService}")
+    private ClsDataImportService importService;
 
     public  ImportAction(){
         options = new LinkedHashMap<String, String>();
@@ -74,6 +74,37 @@ public class ImportAction implements Serializable {
             for (String option : selectedOptions) {
                 switch (Integer.parseInt(option)) {
                     case 1:
+                        String rptType = "AUM1_4_5";
+                        String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM1_15_20";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM1_40_50";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+
+                        rptType = "AUM2_4_5";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM2_15_20";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM2_40_50";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+
+                        rptType = "AUM5_4_5";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM5_15_20";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+                        rptType = "AUM5_40_50";
+                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
+
+/*
                         String filename = "CUST_INFO_AUM1_4_5_371_" + startdate + ".dat";
                         String rptType = "0101";
                         importService.importDataFromTxt(startdate, filename, rptType, msgList);
@@ -94,6 +125,7 @@ public class ImportAction implements Serializable {
                         rptType = "0106";
                         importService.importDataFromTxt(startdate, filename, rptType, msgList);
 
+*/
                         break;
                     case 2:
                         filename = "CUST_INFO_AUM3_371_" + startdate + ".dat";
@@ -193,11 +225,11 @@ public class ImportAction implements Serializable {
         this.platformService = platformService;
     }
 
-    public ImportService getImportService() {
+    public ClsDataImportService getImportService() {
         return importService;
     }
 
-    public void setImportService(ImportService importService) {
+    public void setImportService(ClsDataImportService importService) {
         this.importService = importService;
     }
 }

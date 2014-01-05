@@ -13,85 +13,113 @@
           <if test = " rptDate != null and rptDate != '' ">
               and a.rpt_date = #{rptDate}
           </if>
-          <if test = " certType != null and certType != '' ">
-              and a.cert_type = #{certType}
-          </if>
-          <if test = " certNo != null and certNo != '' ">
-              and a.cert_no like '%${certNo}%'
-          </if>
           <if test = " custNo != null and custNo != '' ">
-              and a.cust_no like '%${custNo}%'
+              and a.base_custno_ecif like '%${custNo}%'
           </if>
           <if test = " startAum != null and startAum != '' ">
               <![CDATA[
-              and a.aum_timepoint_dep >= #{startAum}
+              and a.asset_aum_tp >= #{startAum}
               ]]>
           </if>
           <if test = " endAum != null and endAum != '' ">
               <![CDATA[
-              and a.aum_timepoint_dep <= #{endAum}
+              and a.asset_aum_tp <= #{endAum}
               ]]>
           </if>
       </where>
     </sql>
 
+    <!--批量插入 注意 foreach 中字段的顺序要与  Base_Column_List 中一致 -->
     <insert id="insertBatch" parameterType="java.util.List">
-        insert into sv_cls_custinfo ( <include refid="pams.repository.dao.SvClsCustinfoMapper.Base_Column_List" /> )
+        insert into cls_rptdata ( <include refid="pams.repository.dao.ClsRptdataMapper.Base_Column_List" /> )
           <foreach collection="list" item="item" index="index" separator= "union all ">
             select
-            #{item.guid, jdbcType=VARCHAR},
-            #{item.branchName, jdbcType=VARCHAR},
-            #{item.branchId, jdbcType=VARCHAR},
-            #{item.custName, jdbcType=VARCHAR},
-            #{item.certType, jdbcType=VARCHAR},
-            #{item.certNo, jdbcType=VARCHAR},
-            #{item.contactInfo1, jdbcType=VARCHAR},
-            #{item.contactInfo2, jdbcType=VARCHAR},
-            #{item.aumMonthCurr, jdbcType=DECIMAL},
-            #{item.aumMonthLast, jdbcType=DECIMAL},
-            #{item.aumTimepointDep, jdbcType=DECIMAL},
-            #{item.loanBal, jdbcType=DECIMAL},
-            #{item.openactBranchId, jdbcType=VARCHAR},
-            #{item.openactBranchName, jdbcType=VARCHAR},
-            #{item.ctsMarginBal, jdbcType=DECIMAL},
-            #{item.rptDate, jdbcType=VARCHAR},
-            #{item.rptType, jdbcType=VARCHAR},
-            #{item.operId, jdbcType=VARCHAR},
-            #{item.operDate, jdbcType=TIMESTAMP},
-            #{item.impDate, jdbcType=TIMESTAMP},
-            #{item.deleteFlag, jdbcType=VARCHAR},
-            #{item.bankName, jdbcType=VARCHAR},
-            #{item.bankId, jdbcType=VARCHAR},
-            #{item.custNoType, jdbcType=VARCHAR},
-            #{item.custNo, jdbcType=VARCHAR},
-            #{item.custGender, jdbcType=VARCHAR}
+              #{item.baseCustnoEcif, jdbcType=VARCHAR},
+              #{item.rptDate, jdbcType=VARCHAR},
+              #{item.rptType, jdbcType=VARCHAR},
+              #{item.baseBranchName, jdbcType=VARCHAR},
+              #{item.baseBranchId, jdbcType=VARCHAR},
+              #{item.baseLevelSys, jdbcType=VARCHAR},
+              #{item.baseLevelManual, jdbcType=VARCHAR},
+              #{item.baseCustname, jdbcType=VARCHAR},
+              #{item.basePhone1, jdbcType=VARCHAR},
+              #{item.basePhone2, jdbcType=VARCHAR},
+              #{item.assetAumMad, jdbcType=DECIMAL},
+              #{item.assetAumTp, jdbcType=DECIMAL},
+              #{item.assetBalDepSa, jdbcType=DECIMAL},
+              #{item.assetBalDepTd, jdbcType=DECIMAL},
+              #{item.assetBalFund, jdbcType=DECIMAL},
+              #{item.assetBalActMetal, jdbcType=DECIMAL},
+              #{item.assetBalRealMetal, jdbcType=DECIMAL},
+              #{item.assetBalBnd, jdbcType=DECIMAL},
+              #{item.assetBalFin, jdbcType=DECIMAL},
+              #{item.assetBalCts, jdbcType=DECIMAL},
+              #{item.assetBalInsure, jdbcType=DECIMAL},
+              #{item.assetBalInsureBuy, jdbcType=DECIMAL},
+              #{item.assetBalFinOth, jdbcType=DECIMAL},
+              #{item.loanBalTp, jdbcType=DECIMAL},
+              #{item.txnSaveAmt, jdbcType=DECIMAL},
+              #{item.txnSaveTimes, jdbcType=INTEGER},
+              #{item.txnDrawAmt, jdbcType=DECIMAL},
+              #{item.txnDrawTimes, jdbcType=INTEGER},
+              #{item.txnBankcardTimes, jdbcType=INTEGER},
+              #{item.txnBankcardAmt, jdbcType=DECIMAL},
+              #{item.txnCrcardTimes, jdbcType=INTEGER},
+              #{item.txnCrcardAmt, jdbcType=DECIMAL},
+              #{item.signNetBank, jdbcType=VARCHAR},
+              #{item.signMobiBank, jdbcType=VARCHAR},
+              #{item.signTelBank, jdbcType=VARCHAR},
+              #{item.baseOrigBranchName, jdbcType=VARCHAR},
+              #{item.baseOrigBranchId, jdbcType=VARCHAR},
+              #{item.assetAumLyMad, jdbcType=DECIMAL},
+              #{item.fincrdCardno, jdbcType=VARCHAR},
+              #{item.fincrdBalMad, jdbcType=DECIMAL},
+              #{item.fincrdBalTp, jdbcType=DECIMAL},
+              #{item.fincrdTxnCntM6, jdbcType=INTEGER},
+              #{item.fincrdTxnAmtM6, jdbcType=DECIMAL},
+              #{item.loanBal, jdbcType=DECIMAL},
+              #{item.othCrcardLimit, jdbcType=DECIMAL},
+              #{item.ctsSignBranchId, jdbcType=VARCHAR},
+              #{item.ctsSignActno, jdbcType=VARCHAR},
+              #{item.ctsAmtB2sCm, jdbcType=DECIMAL},
+              #{item.ctsAmtS2bCm, jdbcType=DECIMAL},
+              #{item.ctsBalMargin, jdbcType=DECIMAL},
+              #{item.ctsAmtBuyCm, jdbcType=DECIMAL},
+              #{item.ctsAmtSellCm, jdbcType=DECIMAL},
+              #{item.baseBranchIdL2, jdbcType=VARCHAR},
+              #{item.assetAumLmMad, jdbcType=DECIMAL},
+              #{item.largeIntbOutTimes, jdbcType=INTEGER},
+              #{item.largeIntbOutAmt, jdbcType=DECIMAL},
+              #{item.largeIntbIntImes, jdbcType=INTEGER},
+              #{item.gjjAmtAddCm, jdbcType=DECIMAL},
+              #{item.assetChgGe30, jdbcType=INTEGER}
               from  dual
         </foreach>
     </insert>
 
     <delete id="deleteRecords" parameterType="java.lang.String" >
-        delete from  sv_cls_custinfo where rpt_date = #{rptdate} and rpt_type = #{rpttype}
+        delete from  cls_rptdata where rpt_date = #{rptdate} and rpt_type = #{rpttype}
     </delete>
 
 
     <!--计算符合查询条件的记录数  -->
-    <select id="countCustlistRecords" parameterType="pams.repository.model.SvClsCustinfo" resultType="java.lang.Integer">
+    <select id="countCustlistRecords" parameterType="pams.repository.model.ClsRptdata" resultType="java.lang.Integer">
           select count(*)
-            from sv_cls_custinfo a
+            from cls_rptdata a
              <include refid="QueryCustinfo_Where_Clause" />
     </select>
 
 
-    <select id="selectCustlistRecords" parameterType="pams.repository.model.SvClsCustinfo"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+    <select id="selectCustlistRecords" parameterType="pams.repository.model.ClsRptdata"  resultMap="pams.repository.dao.ClsRptdataMapper.BaseResultMap">
         select  *
-            from sv_cls_custinfo a
+            from cls_rptdata a
              <include refid="QueryCustinfo_Where_Clause" />
         order by a.branch_id
     </select>
 
-    <select id="selectCustlistRecordsByCertInfo" parameterType="java.lang.String"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+    <select id="selectCustlistRecordsByCertInfo" parameterType="java.lang.String"  resultMap="pams.repository.dao.ClsRptdataMapper.BaseResultMap">
         select  *
-            from sv_cls_custinfo a
+            from cls_rptdata a
           where 1=1
             <if test = " certType != null and certType != '' ">
                 and a.cert_type = #{certType}
@@ -102,22 +130,22 @@
         order by a.rpt_date desc, a.rpt_type
     </select>
 
-    <select id="selectCustlistRecordsByCustno" parameterType="java.lang.String"  resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+    <select id="selectCustlistRecordsByCustno" parameterType="java.lang.String"  resultMap="pams.repository.dao.ClsRptdataMapper.BaseResultMap">
         select  *
-            from sv_cls_custinfo a
+            from cls_rptdata a
           where 1=1
             <if test = " custNo != null and custNo != '' ">
-                and a.cust_no = #{custNo}
+                and a.base_custno_ecif = #{custNo}
             </if>
         order by a.rpt_date desc, a.rpt_type
     </select>
 
-    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustListParam" resultMap="pams.repository.dao.SvClsCustinfoMapper.BaseResultMap">
+    <select id="selectCustlistRecordsByPageSize"  parameterType="pams.repository.model.custlist.CustListParam" resultMap="pams.repository.dao.ClsRptdataMapper.BaseResultMap">
         select *
           from (select t1.*, rownum rnum
                 from (
                     select  *
-                        from sv_cls_custinfo a
+                        from cls_rptdata a
                       <include refid="QueryCustinfo_Where_Clause" />
                     order by
                        <if test = " sortField != null and sortField != '' ">

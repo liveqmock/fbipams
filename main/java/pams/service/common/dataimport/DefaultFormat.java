@@ -19,7 +19,7 @@ public abstract class DefaultFormat implements Format {
         for (int i = 0; i < fieldNames.length; i++) {
             String methodName = "set" + fieldNames[i];
             Method method = null;
-            String field = fields[i];
+            String field = fields[i].trim();
             switch (fieldTypes[i]) {
                 case "None":
                     continue; //此字段不处理

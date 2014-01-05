@@ -5,7 +5,7 @@ import org.primefaces.model.SortOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.repository.dao.custlist.CustlistMapper;
-import pams.repository.model.SvClsCustinfo;
+import pams.repository.model.ClsRptdata;
 import pams.repository.model.custlist.CustListParam;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.Map;
  * Date: 12-12-24
  * Time: ÉÏÎç7:46
  */
-public class LazyRptDataModel extends LazyDataModel<SvClsCustinfo> {
+public class LazyRptDataModel extends LazyDataModel<ClsRptdata> {
     private static final Logger logger = LoggerFactory.getLogger(LazyRptDataModel.class);
 
     private CustListParam paramBean;
@@ -29,8 +29,8 @@ public class LazyRptDataModel extends LazyDataModel<SvClsCustinfo> {
     }
 
     @Override
-    public List<SvClsCustinfo> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
-        List<SvClsCustinfo> dataList;
+    public List<ClsRptdata> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, String> filters) {
+        List<ClsRptdata> dataList;
         try {
             paramBean.setOffset(first);
             paramBean.setPagesize(first + pageSize);

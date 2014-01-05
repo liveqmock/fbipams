@@ -4,13 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pams.repository.dao.ClsRptdataMapper;
 import pams.repository.dao.PtenudetailMapper;
-import pams.repository.dao.SvClsCustinfoMapper;
 import pams.repository.dao.custlist.CustlistMapper;
+import pams.repository.model.ClsRptdata;
 import pams.repository.model.Ptenudetail;
 import pams.repository.model.PtenudetailExample;
-import pams.repository.model.SvClsCustinfo;
-import pams.repository.model.SvClsCustinfoExample;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +26,7 @@ public class CustlistService<T> {
     private static final Logger logger = LoggerFactory.getLogger(CustlistService.class);
 
     @Autowired
-    private SvClsCustinfoMapper custinfoMapper;
+    private ClsRptdataMapper custinfoMapper;
     @Autowired
     private CustlistMapper custlistMapper;
     @Autowired
@@ -58,16 +57,18 @@ public class CustlistService<T> {
         return enuMaps;
     }
 
-    public List<SvClsCustinfo> selectCustinfoRecords(String certType, String certNo, String startDate, String endDate){
-        SvClsCustinfoExample example = new SvClsCustinfoExample();
+/*
+    public List<ClsRptdata> selectCustinfoRecords(String certType, String certNo, String startDate, String endDate){
+        ClsRptdataExample example = new ClsRptdataExample();
         example.createCriteria().andRptDateBetween(startDate,endDate).andCertTypeEqualTo(certType).andCertNoEqualTo(certNo);
         return   custinfoMapper.selectByExample(example);
     }
+*/
 
-    public List<SvClsCustinfo> selectCustlistRecordsByCertInfo(String certType, String certNo)  {
+    public List<ClsRptdata> selectCustlistRecordsByCertInfo(String certType, String certNo)  {
         return custlistMapper.selectCustlistRecordsByCertInfo(certType, certNo);
     }
-    public List<SvClsCustinfo> selectCustlistRecordsByCustno(String custNo)  {
+    public List<ClsRptdata> selectCustlistRecordsByCustno(String custNo)  {
         return custlistMapper.selectCustlistRecordsByCustno(custNo);
     }
     //=============
