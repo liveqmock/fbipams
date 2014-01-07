@@ -7,371 +7,597 @@
                 xmlns:fn="http://java.sun.com/jsp/jstl/functions"
                 template="/templates/ui.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .col-95 {
-                width: 95%;
-            }
+<ui:define name="head">
+    <style type="text/css">
+        .col-95 {
+            width: 95%;
+        }
 
-            .col-5 {
-                width: 5%;
-            }
-        </style>
+        .col-5 {
+            width: 5%;
+        }
+    </style>
 
-    </ui:define>
+</ui:define>
 
-    <ui:define name="content">
-        <div style="margin:5px;">
-            <h:form id="form">
-                <p:growl id="msgs" showDetail="false" life="1500"/>
+<ui:define name="content">
+<div style="margin:5px;">
+<h:form id="form">
+<p:growl id="msgs" showDetail="false" life="1500"/>
 
-                <div id="header">
-                    <p:panel header="#{custinfoLazyAction.panelTitle}">
-                        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
-                            <h:panelGrid columns="4" cellspacing="5">
-                                <h:outputLabel value="分支机构:"/>
-                                <h:selectOneMenu id="branchname" style="width:153px;"
-                                                 value="#{custinfoLazyAction.paramBean.branchId}">
-                                    <f:selectItems value="#{custinfoLazyAction.branchList}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="报表日期:" for="txnDate"/>
-                                <p:inputText id="txnDate" required="true" requiredMessage="日期不能为空。"
-                                             value="#{custinfoLazyAction.paramBean.rptDate}"
-                                             onclick="WdatePicker({dateFmt:'yyyyMMdd'})"/>
+<div id="header">
+    <p:panel header="#{custinfoLazyAction.panelTitle}">
+        <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
+            <h:panelGrid columns="4" cellspacing="5">
+                <h:outputLabel value="分支机构:"/>
+                <h:selectOneMenu id="branchname" style="width:153px;"
+                                 value="#{custinfoLazyAction.paramBean.branchId}">
+                    <f:selectItems value="#{custinfoLazyAction.branchList}"/>
+                </h:selectOneMenu>
+                <h:outputLabel value="报表日期:" for="txnDate"/>
+                <p:inputText id="txnDate" required="true" requiredMessage="日期不能为空。"
+                             value="#{custinfoLazyAction.paramBean.rptDate}"
+                             onclick="WdatePicker({dateFmt:'yyyyMMdd'})"/>
 
-<!--
-                                <h:outputLabel value="证件类型:"/>
-                                <h:selectOneMenu id="certtype" style="width:153px;"
-                                                 value="#{custinfoLazyAction.paramBean.certType}">
-                                    <f:selectItems value="#{custinfoLazyAction.certTypeList}"/>
-                                </h:selectOneMenu>
-                                <h:outputLabel value="证件号码:"/>
-                                <p:inputText id="certno" value="#{custinfoLazyAction.paramBean.certNo}"/>
--->
-                                <h:outputLabel value="AUM值(起):"/>
-                                <p:inputText  value="#{custinfoLazyAction.paramBean.startAum}"/>
-                                <h:outputLabel value="AUM值(止):"/>
-                                <p:inputText  value="#{custinfoLazyAction.paramBean.endAum}"/>
-                                <h:outputLabel value="客户编号:"/>
-                                <p:inputText id="custno" value="#{custinfoLazyAction.paramBean.custNo}"/>
+                <!--
+                                                <h:outputLabel value="证件类型:"/>
+                                                <h:selectOneMenu id="certtype" style="width:153px;"
+                                                                 value="#{custinfoLazyAction.paramBean.certType}">
+                                                    <f:selectItems value="#{custinfoLazyAction.certTypeList}"/>
+                                                </h:selectOneMenu>
+                                                <h:outputLabel value="证件号码:"/>
+                                                <p:inputText id="certno" value="#{custinfoLazyAction.paramBean.certNo}"/>
+                -->
+                <h:outputLabel value="AUM值(起):"/>
+                <p:inputText value="#{custinfoLazyAction.paramBean.startAum}"/>
+                <h:outputLabel value="AUM值(止):"/>
+                <p:inputText value="#{custinfoLazyAction.paramBean.endAum}"/>
+                <h:outputLabel value="客户编号:"/>
+                <p:inputText id="custno" value="#{custinfoLazyAction.paramBean.custNo}"/>
 
-                            </h:panelGrid>
-                            <h:panelGrid>
-                                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
-                                                 action="#{custinfoLazyAction.onQuery}"
-                                                 update="pdt,msgs">
-                                </p:commandButton>
+            </h:panelGrid>
+            <h:panelGrid>
+                <p:commandButton id="qrybtn" style="width:90px;" value="查询"
+                                 action="#{custinfoLazyAction.onQuery}"
+                                 update="pdt,msgs">
+                </p:commandButton>
 
-                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
-                                                 style="width:90px;">
-                                    <p:dataExporter type="csv" target="pdt" fileName="rpt#{custinfoLazyAction.rptType}_#{custinfoLazyAction.paramBean.rptDate}_#{custinfoLazyAction.paramBean.branchId}" encoding="GBK"
-                                                    pageOnly="false"/>
-                                </p:commandButton>
-                            </h:panelGrid>
-                        </h:panelGrid>
-                    </p:panel>
-                </div>
+                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                 style="width:90px;">
+                    <p:dataExporter type="csv" target="pdt"
+                                    fileName="rpt#{custinfoLazyAction.rptType}_#{custinfoLazyAction.paramBean.rptDate}_#{custinfoLazyAction.paramBean.branchId}"
+                                    encoding="GBK"
+                                    pageOnly="false"/>
+                </p:commandButton>
+            </h:panelGrid>
+        </h:panelGrid>
+    </p:panel>
+</div>
 
-                <p:ajaxStatus style="height:20px;text-align:center">
-                    <f:facet name="start">
-                        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
-                    </f:facet>
-                    <f:facet name="complete">
-                        <h:outputText value=""/>
-                    </f:facet>
-                </p:ajaxStatus>
+<p:ajaxStatus style="height:20px;text-align:center">
+    <f:facet name="start">
+        <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+    </f:facet>
+    <f:facet name="complete">
+        <h:outputText value=""/>
+    </f:facet>
+</p:ajaxStatus>
 
-                <p:dataTable id="pdt" style="width:100%;"
-                             lazy="true" selectionMode="single"
-                             value="#{custinfoLazyAction.lazyDataModel}" var="record"
-                             rowKey="#{record.rptDate}#{record.rptType}#{record.baseCustnoEcif}"
-                             selection="#{custinfoLazyAction.selectedRecord}"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
-                             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
-                             paginator="true" rows="15"
-                             paginatorPosition="bottom"
-                             rowsPerPageTemplate="100,50,30,15,5"
-                             emptyMessage="数据记录为空...">
+<p:dataTable id="pdt" style="width:100%;"
+             lazy="true" selectionMode="single"
+             value="#{custinfoLazyAction.lazyDataModel}" var="record"
+             rowKey="#{record.rptDate}#{record.rptType}#{record.baseCustnoEcif}"
+             selection="#{custinfoLazyAction.selectedRecord}"
+             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+             currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+             paginator="true" rows="15"
+             paginatorPosition="bottom"
+             rowsPerPageTemplate="100,50,30,15,5"
+             emptyMessage="数据记录为空...">
 
-                    <p:column style="text-align:center"  sortBy="#{record.baseBranchId}">
-                        <f:facet name="header">
-                            客户归属机构号
-                        </f:facet>
-                        <h:outputText value="#{record.baseBranchId}"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{!custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            客户归属机构名称
-                        </f:facet>
-                        <h:outputText value="#{record.baseBranchName}"/>
-                    </p:column>
+            <p:column style="text-align:center" sortBy="#{record.baseBranchId}">
+                <f:facet name="header">
+                    客户归属机构号
+                </f:facet>
+                <h:outputText value="#{record.baseBranchId}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{!custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    客户归属机构名称
+                </f:facet>
+                <h:outputText value="#{record.baseBranchName}"/>
+            </p:column>
 
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            系统认定客户等级
-                        </f:facet>
-                        <h:outputText value="#{record.baseLevelSys}"/>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            手工认定客户等级
-                        </f:facet>
-                        <h:outputText value="#{record.baseLevelManual}"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            客户编号
-                        </f:facet>
-                        <h:outputText value="#{record.baseCustnoEcif}"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{!custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            客户姓名
-                        </f:facet>
-                        <h:outputText value="#{fn:substring(record.baseCustname,0,1)}某"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            客户名称
-                        </f:facet>
-                        <h:outputText value="#{record.baseCustname}"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            移动电话
-                        </f:facet>
-                        <h:outputText value="#{record.basePhone1}"/>
-                    </p:column>
-                    <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
-                        <f:facet name="header">
-                            联系电话
-                        </f:facet>
-                        <h:outputText value="#{record.basePhone2}"/>
-                    </p:column>
-
-
-                    <p:column style="text-align:center"  sortBy="#{record.assetAumMad}">
-                        <f:facet name="header">
-                            月日均AUM
-                        </f:facet>
-                        <h:outputText value="#{record.assetAumMad}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.assetAumTp}">
-                        <f:facet name="header">
-                            存款时点AUM
-                        </f:facet>
-                        <h:outputText value="#{record.assetAumTp}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            活存时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalDepSa}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            定存时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalDepTd}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            基金时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalFund}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            账户贵金属时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalActMetal}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            实物贵金属时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalRealMetal}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月国债时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalBnd}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            理财产品时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalFin}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            CTS产品时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalCts}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            保险产品时点余额
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalInsure}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月保险购买
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalInsureBuy}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月其它理财时点
-                        </f:facet>
-                        <h:outputText value="#{record.assetBalFinOth}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            贷款余额
-                        </f:facet>
-                        <h:outputText value="#{record.loanBalTp}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月存入金额
-                        </f:facet>
-                        <h:outputText value="#{record.txnSaveAmt}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月存入次数
-                        </f:facet>
-                        <h:outputText value="#{record.txnSaveTimes}" style="float: right">
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月支取金额
-                        </f:facet>
-                        <h:outputText value="#{record.txnSaveAmt}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            当月支取次数
-                        </f:facet>
-                        <h:outputText value="#{record.txnSaveTimes}" style="float: right">
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            银行卡月消费次数
-                        </f:facet>
-                        <h:outputText value="#{record.txnBankcardTimes}" style="float: right">
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            银行卡月消费金额
-                        </f:facet>
-                        <h:outputText value="#{record.txnBankcardAmt}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            信用卡月消费次数
-                        </f:facet>
-                        <h:outputText value="#{record.txnCrcardTimes}" style="float: right">
-                        </h:outputText>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            信用卡月消费金额
-                        </f:facet>
-                        <h:outputText value="#{record.txnCrcardAmt}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
-
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            网银签约标志
-                        </f:facet>
-                        <h:outputText value="#{record.signNetBank}"/>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            手机银行签约标志
-                        </f:facet>
-                        <h:outputText value="#{record.signMobiBank}"/>
-                    </p:column>
-                    <p:column style="text-align:center">
-                        <f:facet name="header">
-                            电话银行签约标志
-                        </f:facet>
-                        <h:outputText value="#{record.signTelBank}"/>
-                    </p:column>
-
-<!--
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    系统认定客户等级
+                </f:facet>
+                <h:outputText value="#{record.baseLevelSys}"/>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    手工认定客户等级
+                </f:facet>
+                <h:outputText value="#{record.baseLevelManual}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    客户编号
+                </f:facet>
+                <h:outputText value="#{record.baseCustnoEcif}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{!custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    客户姓名
+                </f:facet>
+                <h:outputText value="#{fn:substring(record.baseCustname,0,1)}某"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    客户名称
+                </f:facet>
+                <h:outputText value="#{record.baseCustname}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    移动电话
+                </f:facet>
+                <h:outputText value="#{record.basePhone1}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.bizBranch}">
+                <f:facet name="header">
+                    联系电话
+                </f:facet>
+                <h:outputText value="#{record.basePhone2}"/>
+            </p:column>
 
 
+            <p:column style="text-align:center" sortBy="#{record.assetAumMad}">
+                <f:facet name="header">
+                    月日均AUM
+                </f:facet>
+                <h:outputText value="#{record.assetAumMad}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" sortBy="#{record.assetAumTp}">
+                <f:facet name="header">
+                    存款时点AUM
+                </f:facet>
+                <h:outputText value="#{record.assetAumTp}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    活存时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalDepSa}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    定存时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalDepTd}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    基金时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalFund}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    账户贵金属时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalActMetal}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    实物贵金属时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalRealMetal}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月国债时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalBnd}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    理财产品时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalFin}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    CTS产品时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalCts}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    保险产品时点余额
+                </f:facet>
+                <h:outputText value="#{record.assetBalInsure}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月保险购买
+                </f:facet>
+                <h:outputText value="#{record.assetBalInsureBuy}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月其它理财时点
+                </f:facet>
+                <h:outputText value="#{record.assetBalFinOth}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    贷款余额
+                </f:facet>
+                <h:outputText value="#{record.loanBalTp}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月存入金额
+                </f:facet>
+                <h:outputText value="#{record.txnSaveAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月存入次数
+                </f:facet>
+                <h:outputText value="#{record.txnSaveTimes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月支取金额
+                </f:facet>
+                <h:outputText value="#{record.txnSaveAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    当月支取次数
+                </f:facet>
+                <h:outputText value="#{record.txnSaveTimes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    银行卡月消费次数
+                </f:facet>
+                <h:outputText value="#{record.txnBankcardTimes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    银行卡月消费金额
+                </f:facet>
+                <h:outputText value="#{record.txnBankcardAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    信用卡月消费次数
+                </f:facet>
+                <h:outputText value="#{record.txnCrcardTimes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    信用卡月消费金额
+                </f:facet>
+                <h:outputText value="#{record.txnCrcardAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    网银签约标志
+                </f:facet>
+                <h:outputText value="#{record.signNetBank}"/>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    手机银行签约标志
+                </f:facet>
+                <h:outputText value="#{record.signMobiBank}"/>
+            </p:column>
+            <p:column style="text-align:center">
+                <f:facet name="header">
+                    电话银行签约标志
+                </f:facet>
+                <h:outputText value="#{record.signTelBank}"/>
+            </p:column>
 
 
-                    <p:column style="text-align:center"  sortBy="#{record.openactBranchId}" rendered="#{custinfoLazyAction.rptType == '0501'}">
-                        <f:facet name="header">
-                            签约账户开户网点号
-                        </f:facet>
-                        <h:outputText value="#{record.openactBranchId}"/>
-                    </p:column>
-                    <p:column style="text-align:center"  rendered="#{custinfoLazyAction.rptType == '0501'}">
-                        <f:facet name="header">
-                            签约账户开户网点名称
-                        </f:facet>
-                        <h:outputText value="#{record.openactBranchName}"/>
-                    </p:column>
-                    <p:column style="text-align:center"  sortBy="#{record.ctsMarginBal}" rendered="#{custinfoLazyAction.rptType == '0501'}">
-                        <f:facet name="header">
-                            CTS保证金余额
-                        </f:facet>
-                        <h:outputText value="#{record.ctsMarginBal}" style="float: right">
-                            <f:convertNumber pattern="##,###,##0.00"/>
-                        </h:outputText>
-                    </p:column>
--->
-                </p:dataTable>
-            </h:form>
-        </div>
-    </ui:define>
+            <p:column style="text-align:center"
+                      rendered="#{custinfoLazyAction.rptType == 'AUM4'
+                      || custinfoLazyAction.rptType == 'AUM6'
+                      || custinfoLazyAction.rptType == 'AUM7'
+                      || custinfoLazyAction.rptType == 'AUM2_4_5'
+                      || custinfoLazyAction.rptType == 'AUM2_15_20'
+                      || custinfoLazyAction.rptType == 'AUM2_40_50'
+                      || custinfoLazyAction.rptType == 'AUM5_4_5'
+                      || custinfoLazyAction.rptType == 'AUM5_15_20'
+                      || custinfoLazyAction.rptType == 'AUM5_40_50'
+                      ||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    原归属机构
+                </f:facet>
+                <h:outputText value="#{record.baseOrigBranchName}"/>
+            </p:column>
+            <p:column style="text-align:center"
+                      rendered="#{custinfoLazyAction.rptType == 'AUM4'
+                      || custinfoLazyAction.rptType == 'AUM6'
+                      || custinfoLazyAction.rptType == 'AUM7'
+                      || custinfoLazyAction.rptType == 'AUM2_4_5'
+                      || custinfoLazyAction.rptType == 'AUM2_15_20'
+                      || custinfoLazyAction.rptType == 'AUM2_40_50'
+                      || custinfoLazyAction.rptType == 'AUM5_4_5'
+                      || custinfoLazyAction.rptType == 'AUM5_15_20'
+                      || custinfoLazyAction.rptType == 'AUM5_40_50'
+                      ||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    原归属机构号
+                </f:facet>
+                <h:outputText value="#{record.baseOrigBranchId}"/>
+            </p:column>
+
+            <p:column style="text-align:center"
+                      rendered="#{custinfoLazyAction.rptType == 'AUM4'
+                      || custinfoLazyAction.rptType == 'AUM6'
+                      || custinfoLazyAction.rptType == 'AUM7'
+                      || custinfoLazyAction.rptType == 'AUM2_4_5'
+                      || custinfoLazyAction.rptType == 'AUM2_15_20'
+                      || custinfoLazyAction.rptType == 'AUM2_40_50'
+                      || custinfoLazyAction.rptType == 'AUM5_4_5'
+                      || custinfoLazyAction.rptType == 'AUM5_15_20'
+                      || custinfoLazyAction.rptType == 'AUM5_40_50' }">
+                <f:facet name="header">
+                    上年末月日均AUM
+                </f:facet>
+                <h:outputText value="#{record.assetAumLyMad}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CARD'||custinfoLazyAction.rptType == 'CARD2'||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    理财卡号
+                </f:facet>
+                <h:outputText value="#{record.fincrdCardno}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CARD'||custinfoLazyAction.rptType == 'CARD2'||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    理财卡月日均余额
+                </f:facet>
+                <h:outputText value="#{record.fincrdBalMad}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CARD'||custinfoLazyAction.rptType == 'CARD2'||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    理财卡时点余额
+                </f:facet>
+                <h:outputText value="#{record.fincrdBalTp}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CARD'||custinfoLazyAction.rptType == 'CARD2'||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    理财卡近6个月交易笔数
+                </f:facet>
+                <h:outputText value="#{record.fincrdTxnCntM6}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CARD'||custinfoLazyAction.rptType == 'CARD2'||custinfoLazyAction.rptType == 'CARD3'}">
+                <f:facet name="header">
+                    理财卡近6个月交易金额
+                </f:facet>
+                <h:outputText value="#{record.fincrdTxnAmtM6}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center"  rendered="#{custinfoLazyAction.rptType == 'CREDIT_CARD'}">
+                <f:facet name="header">
+                    贷款余额
+                </f:facet>
+                <h:outputText value="#{record.loanBal}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CREDIT_CARD'}">
+                <f:facet name="header">
+                    信用卡额度
+                </f:facet>
+                <h:outputText value="#{record.othCrcardLimit}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS签约开户网点号
+                </f:facet>
+                <h:outputText value="#{record.ctsSignBranchId}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS签约银行账号
+                </f:facet>
+                <h:outputText value="#{record.ctsSignActno}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS当月银行转证券金额
+                </f:facet>
+                <h:outputText value="#{record.ctsAmtB2sCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS当月证券转银行金额
+                </f:facet>
+                <h:outputText value="#{record.ctsAmtS2bCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS保证金余额
+                </f:facet>
+                <h:outputText value="#{record.ctsBalMargin}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS当月证券净买入金额
+                </f:facet>
+                <h:outputText value="#{record.ctsAmtBuyCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'CTS_FOCUS'}">
+                <f:facet name="header">
+                    CTS当月证券净卖出金额
+                </f:facet>
+                <h:outputText value="#{record.ctsAmtSellCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'VIP'}">
+                <f:facet name="header">
+                    二级机构编码
+                </f:facet>
+                <h:outputText value="#{record.baseBranchIdL2}"/>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'VIP'}">
+                <f:facet name="header">
+                    上月月日均AUM
+                </f:facet>
+                <h:outputText value="#{record.assetAumLmMad}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DEKHZZ'}">
+                <f:facet name="header">
+                    大额:跨行资金转出交易次数
+                </f:facet>
+                <h:outputText value="#{record.largeIntbOutTimes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DEKHZZ'}">
+                <f:facet name="header">
+                    大额:跨行资金转出交易金额
+                </f:facet>
+                <h:outputText value="#{record.largeIntbOutAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DEKHZZ'}">
+                <f:facet name="header">
+                    大额:跨行资金转入交易次数
+                </f:facet>
+                <h:outputText value="#{record.largeIntbIntImes}" style="float: right">
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DEKHZZ'}">
+                <f:facet name="header">
+                    大额:跨行资金转入交易金额
+                </f:facet>
+                <h:outputText value="#{record.largeIntbIntAmt}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DGKH'}">
+                <f:facet name="header">
+                    代工客户:当月累计存入金额
+                </f:facet>
+                <h:outputText value="#{record.dgkhSaveAmtCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'DGKH'}">
+                <f:facet name="header">
+                    代工客户:当月累计支取金额
+                </f:facet>
+                <h:outputText value="#{record.dgkhDrawAmtCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'GJJ'}">
+                <f:facet name="header">
+                    公积金:当月客户月日均AUM
+                </f:facet>
+                <h:outputText value="#{record.gjjAumMad}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'GJJ'}">
+                <f:facet name="header">
+                    公积金:当月客户时点AUM
+                </f:facet>
+                <h:outputText value="#{record.gjjAumTp}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'GJJ'}">
+                <f:facet name="header">
+                    公积金:公积金当月新增金额
+                </f:facet>
+                <h:outputText value="#{record.gjjAmtAddCm}" style="float: right">
+                    <f:convertNumber pattern="##,###,##0.00"/>
+                </h:outputText>
+            </p:column>
+            <p:column style="text-align:center" rendered="#{custinfoLazyAction.rptType == 'VIP2' || custinfoLazyAction.rptType == 'VIP3'}">
+                <f:facet name="header">
+                    资产波幅超过30%的次数
+                </f:facet>
+                <h:outputText value="#{record.assetChgGe30}" style="float: right">
+                </h:outputText>
+            </p:column>
+</p:dataTable>
+</h:form>
+</div>
+</ui:define>
 </ui:composition>
