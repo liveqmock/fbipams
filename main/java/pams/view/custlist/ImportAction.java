@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.common.utils.MessageUtil;
+import pams.repository.model.Ptenudetail;
 import pams.service.custlist.importdata.ClsDataImportService;
 import skyline.service.PlatformService;
 import skyline.service.ToolsService;
@@ -44,6 +45,7 @@ public class ImportAction implements Serializable {
 
     public  ImportAction(){
         options = new LinkedHashMap<String, String>();
+/*
         options.put("1、临界值客户数据表(三个月度表+三个季度表)", "1");
         options.put("2、流失降级客户数据表", "2");
         options.put("3、持有理财卡但AUM不达标客户数据表", "3");
@@ -56,110 +58,41 @@ public class ImportAction implements Serializable {
         selectedOptions.add("4");
         selectedOptions.add("5");
         selectedOptions.add("6");
+*/
+
+
     }
     @PostConstruct
     public void postConstruct() {
         DateTime dt = new DateTime();
         this.startdate = dt.minusMonths(1).dayOfMonth().withMaximumValue().toString("yyyyMMdd");
 
+        List<Ptenudetail> ptenudetails =  platformService.selectEnuDetail("CUST_LIST_RPT_TYPE");
+        int count = 0;
+        for (Ptenudetail ptenudetail : ptenudetails) {
+            count++;
+            options.put("" + count + ptenudetail.getEnuitemlabel(), ptenudetail.getEnuitemvalue());
+            selectedOptions.add(ptenudetail.getEnuitemvalue());
+        }
+
     }
     public String onETLRptData() {
+        if (selectedOptions.isEmpty()) {
+            MessageUtil.addInfo("请选择导入的报表...");
+            return null;
+        }
         List<String> msgList = new ArrayList<>();
+
         try {
-            if (selectedOptions.isEmpty()) {
-                MessageUtil.addInfo("请选择导入的报表...");
-                return null;
-            }
-
-            for (String option : selectedOptions) {
-                switch (Integer.parseInt(option)) {
-                    case 1:
-                        String rptType = "AUM1_4_5";
-                        String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM1_15_20";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM1_40_50";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-                        rptType = "AUM2_4_5";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM2_15_20";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM2_40_50";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-                        rptType = "AUM5_4_5";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM5_15_20";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        rptType = "AUM5_40_50";
-                        filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-/*
-                        String filename = "CUST_INFO_AUM1_4_5_371_" + startdate + ".dat";
-                        String rptType = "0101";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM1_15_20_371_" + startdate + ".dat";
-                        rptType = "0102";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM1_40_50_371_" + startdate + ".dat";
-                        rptType = "0103";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-                        filename = "CUST_INFO_AUM2_4_5_371_" + startdate + ".dat";
-                        rptType = "0104";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM2_15_20_371_" + startdate + ".dat";
-                        rptType = "0105";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM2_40_50_371_" + startdate + ".dat";
-                        rptType = "0106";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-
-*/
-                        break;
-                    case 2:
-                        filename = "CUST_INFO_AUM3_371_" + startdate + ".dat";
-                        rptType = "0201";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_AUM4_371_" + startdate + ".dat";
-                        rptType = "0202";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        break;
-                    case 3:
-                        filename = "CUST_INFO_CARD_371_" + startdate + ".dat";
-                        rptType = "0301";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        break;
-                    case 4:
-                        filename = "CUST_INFO_LOAN_371_" + startdate + ".dat";
-                        rptType = "0401";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        filename = "CUST_INFO_CREDIT_CARD_371_" + startdate + ".dat";
-                        rptType = "0402";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        break;
-                    case 5:
-                        filename = "CUST_INFO_CTS_371_" + startdate + ".dat";
-                        rptType = "0501";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        break;
-                    case 6:
-                        filename = "CUST_INFO_VIP_371_" + startdate + ".dat";
-                        rptType = "0601";
-                        importService.importDataFromTxt(startdate, filename, rptType, msgList);
-                        break;
-                    default:
-                }
+/*            List<Ptenudetail> ptenudetails =  platformService.selectEnuDetail("CUST_LIST_RPT_TYPE");
+            for (Ptenudetail ptenudetail : ptenudetails) {
+                String  rptType = ptenudetail.getEnuitemvalue();
+                String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                importService.importDataFromTxt(startdate, filename, rptType, msgList);
+            }*/
+            for (String rptType : selectedOptions) {
+                String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
+                importService.importDataFromTxt(startdate, filename, rptType, msgList);
             }
             MessageUtil.addInfo("数据处理结果如下：");
             for (String s : msgList) {

@@ -4,8 +4,7 @@
 
     <sql id="QueryCustinfo_Where_Clause">
       <where>
-          a.delete_flag = '0'
-          and a.branch_id in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+          a.base_branch_id in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
 
           <if test = " rptType != null and rptType != '' ">
               and a.rpt_type = #{rptType}
@@ -90,7 +89,12 @@
               #{item.assetAumLmMad, jdbcType=DECIMAL},
               #{item.largeIntbOutTimes, jdbcType=INTEGER},
               #{item.largeIntbOutAmt, jdbcType=DECIMAL},
-              #{item.largeIntbIntImes, jdbcType=INTEGER},
+              #{item.largeIntbInTimes, jdbcType=INTEGER},
+              #{item.largeIntbInAmt, jdbcType=DECIMAL},
+              #{item.dgkhSaveAmtCm, jdbcType=DECIMAL},
+              #{item.dgkhDrawAmtCm, jdbcType=DECIMAL},
+              #{item.gjjAumMad, jdbcType=DECIMAL},
+              #{item.gjjAumTp, jdbcType=DECIMAL},
               #{item.gjjAmtAddCm, jdbcType=DECIMAL},
               #{item.assetChgGe30, jdbcType=INTEGER}
               from  dual
@@ -114,7 +118,7 @@
         select  *
             from cls_rptdata a
              <include refid="QueryCustinfo_Where_Clause" />
-        order by a.branch_id
+        order by a.base_branch_id
     </select>
 
     <select id="selectCustlistRecordsByCertInfo" parameterType="java.lang.String"  resultMap="pams.repository.dao.ClsRptdataMapper.BaseResultMap">

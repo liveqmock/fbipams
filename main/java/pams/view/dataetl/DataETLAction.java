@@ -29,6 +29,7 @@ public class DataETLAction implements Serializable {
     private static final long serialVersionUID = 1366227629931959859L;
 
     private String startdate;
+    private String enddate;
     private String largeStartdate;
     private String currYearStartdate;
 
@@ -46,6 +47,7 @@ public class DataETLAction implements Serializable {
     public void postConstruct() {
         DateTime dt = new DateTime();
         this.startdate = dt.minusMonths(1).dayOfMonth().withMaximumValue().toString("yyyyMMdd");
+        this.enddate = dt.minusDays(1).toString("yyyyMMdd");
         this.largeStartdate = dt.minusDays(7).toString("yyyy-MM-dd");
         this.currYearStartdate = dt.monthOfYear().withMinimumValue().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd");
     }
@@ -85,6 +87,16 @@ public class DataETLAction implements Serializable {
     public String onProcessRptA08V1Data() {
         try {
             dataETLService.importData_RptA08V1(currYearStartdate);
+            MessageUtil.addInfo("数据处理完成...");
+        } catch (Exception ex) {
+            logger.error("数据处理错误。", ex);
+            MessageUtil.addError("数据处理错误。" + ex.getMessage());
+        }
+        return null;
+    }
+    public String onProcessRptA11V1Data() {
+        try {
+            dataETLService.importData_RptA11V1(startdate,enddate);
             MessageUtil.addInfo("数据处理完成...");
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
@@ -166,5 +178,13 @@ public class DataETLAction implements Serializable {
 
     public void setCurrYearStartdate(String currYearStartdate) {
         this.currYearStartdate = currYearStartdate;
+    }
+
+    public String getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(String enddate) {
+        this.enddate = enddate;
     }
 }

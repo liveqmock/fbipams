@@ -28,4 +28,8 @@ public interface DataETLMapper {
     //渠道交易明细
     int deleteData_RptA08V1(String startDate);
     int importRecords_RptA08V1(String startDate);
+
+    //代发交易明细
+    int deleteData_RptA11V1(@Param("startDate")String startDate, @Param("endDate")String endDate);
+    int importRecords_RptA11V1(@Param("startDate")String startDate, @Param("endDate")String endDate);
 }

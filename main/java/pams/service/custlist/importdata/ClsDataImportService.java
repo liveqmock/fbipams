@@ -48,13 +48,14 @@ public class ClsDataImportService {
 
         Format format = (Format)applicationContext.getBean("rpt"+rptType+"Format");
         BufferedReader br = null;
+        ClsRptdata bean = new ClsRptdata();
         try {
             br = new BufferedReader(new FileReader(filename));
             String line;
             List<ClsRptdata> beans = new ArrayList<>();
             int count = 0;
             while ((line = br.readLine()) != null) {
-                ClsRptdata bean = (ClsRptdata) format.parse(line);
+                bean = (ClsRptdata) format.parse(line);
                 fillBeanBaseInfo(bean, rptDate, rptType);
                 beans.add(bean);
                 count++;
@@ -65,13 +66,6 @@ public class ClsDataImportService {
                     beans = new ArrayList<>();
                     //count = 0;
                 }
-
-                //TODO
-                if (count > 10) {
-                    break;
-                }
-
-
             }
             if (!beans.isEmpty()) {
                 custlistMapper.insertBatch(beans);
@@ -82,7 +76,7 @@ public class ClsDataImportService {
             msgList.add("导入失败：报表数据文件：" + file + " 不存在。");
         } catch (Exception e) {
             logger.info("导入失败：报表数据文件：" + file + " 读取失败。", e);
-            msgList.add("导入失败：报表数据文件：" + file + " 读取失败。" + e.getMessage());
+            msgList.add("导入失败：报表数据文件：" + file + " 读取失败。" + "客户号[" + bean.getBaseCustnoEcif() + "]  " + e.getMessage());
             //throw new RuntimeException(e);
         } finally {
             if (br != null) {

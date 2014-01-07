@@ -43,7 +43,7 @@ public class LazyRptDataModel extends LazyDataModel<ClsRptdata> {
                     }
                 }
             }else{ //Ä¬ÈÏÅÅÐò×Ö¶Î
-                paramBean.setSortField("branch_id");
+                paramBean.setSortField("base_branch_id");
             }
             dataList = this.custlistMapper.selectCustlistRecordsByPageSize(paramBean);
         } catch (Exception e) {

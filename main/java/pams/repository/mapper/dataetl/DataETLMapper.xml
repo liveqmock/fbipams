@@ -271,4 +271,167 @@
         )
         ]]>
     </insert>
+
+
+    <!--代发交易明细  -->
+    <delete id="deleteData_RptA11V1" parameterType="java.lang.String">
+        <![CDATA[
+          delete from ODSB_PAYAGENT_TXN  where CR_TX_DT between #{startDate} and #{endDate}
+        ]]>
+    </delete>
+    <insert id="importRecords_RptA11V1" parameterType="java.lang.String">
+        <![CDATA[
+        insert into  ODSB_PAYAGENT_TXN t
+        SELECT ACCT_NAME,
+               ACCT_NO,
+               INST_NO,
+               ACCT_NAME1,
+               SIGN_INSTN,
+               CHN_NO,
+               ACCT_NO1,
+               CHN_CUST_NO,
+               AG_BSC_EXP,
+               CR_TX_DT,
+               '',
+               sys_guid()
+          FROM (SELECT /*+parallel(a2,5)(a3,5)*/
+                DISTINCT A2.ACCT_NAME,
+                         A2.ACCT_NO,
+                         A3.INST_NO,
+                         A1.ACCT_NAME AS ACCT_NAME1,
+                         A5.SIGN_INSTN,
+                         '一点式接入' AS CHN_NO,
+                         A1.ACCT_NO AS ACCT_NO1,
+                         A5.CHN_CUST_NO,
+                         A2.AG_BSC_EXP,
+                         A1.CR_TX_DT
+                  FROM BF_EVT_ECTIP_BATCH_PD_TASK     A1,
+                       BF_EVT_ECTIP_BATCH_PD_RESP_DTL A2,
+                       BF_AGT_DEP_ACCT_SAP            A3,
+                       BF_AGT_CHN_CHNP_ACCT           A4,
+                       BF_AGT_CHN_CHNP_CUST           A5
+                 WHERE A1.CHANL_FLOW_NO = A2.CHANL_FLOW_NO
+                   AND A2.ACCT_NO = A4.ACCT_NO
+                   AND SUBSTR(A2.ACCT_NO, 1, 3) <> '239'
+                   AND A2.ACCT_NO = A3.CRD_NO
+                   AND A4.ECTIP_CUST_NO = A5.ECTIP_CUST_NO
+                   AND A1.XT_BUSN_TYPE = '0'
+                   AND A1.CR_TX_DT >= #{startDate}
+                UNION
+                SELECT /*+parallel(a2,5)(a3,5)*/
+                DISTINCT A2.ACCT_NAME,
+                         A2.ACCT_NO,
+                         A3.INST_NO,
+                         A1.ACCT_NAME AS ACCT_NAME1,
+                         A5.SIGN_INSTN,
+                         '一点式接入' AS CHN_NO,
+                         A1.ACCT_NO AS ACCT_NO1,
+                         A5.CHN_CUST_NO,
+                         A2.AG_BSC_EXP,
+                         A1.CR_TX_DT
+                  FROM BF_EVT_ECTIP_BATCH_PD_TASK     A1,
+                       BF_EVT_ECTIP_BATCH_PD_RESP_DTL A2,
+                       BF_AGT_DEP_ACCT_SAP            A3,
+                       BF_AGT_CHN_CHNP_ACCT           A4,
+                       BF_AGT_CHN_CHNP_CUST           A5
+                 WHERE A1.CHANL_FLOW_NO = A2.CHANL_FLOW_NO
+                   AND A2.ACCT_NO = A4.ACCT_NO
+                   AND SUBSTR(A2.ACCT_NO, 1, 3) = '239'
+                   AND A2.ACCT_NO = A3.CUST_ACCT_NO
+                   AND A4.ECTIP_CUST_NO = A5.ECTIP_CUST_NO
+                   AND A1.XT_BUSN_TYPE = '0'
+                   AND A1.CR_TX_DT >= #{startDate}
+                UNION
+                SELECT /*+parallel(b2,5)(b3,5)*/
+                DISTINCT B3.CUST_NAME,
+                         B2.CONTRACT_FLAG_NO AS ACCT_NO,
+                         B3.INST_NO,
+                         B4.CORP_NAME AS ACCT_NAME1,
+                         B1.SIGN_ORG_CD AS SIGN_INSTN,
+                         '批量代收付' AS CHN_NO,
+                         B1.STLM_ACCT_NO AS ACCT_NO1,
+                         B1.ENTR_NO AS CHN_CUST_NO,
+                         B2.CR_AMT AS AG_BSC_EXP,
+                         B1.CR_TX_DT
+                  FROM BF_EVT_CBPS_DATA_BATCH_INFO B1,
+                       BF_EVT_CBPS_DATA_TRADE      B2,
+                       BF_AGT_DEP_ACCT_SAP         B3,
+                       BF_PR_CBPS_CORP_INFO        B4
+                 WHERE B1.CBPS_BAT_NO = B2.CBPS_BAT_NO
+                   AND SUBSTR(B2.CONTRACT_FLAG_NO, 1, 3) <> '239'
+                   AND B2.CONTRACT_FLAG_NO = B3.CRD_NO
+                   AND B1.ENTR_NO = B4.ENTR_NO
+                   AND B1.BUSITYPE = 'P'
+                   AND B1.ODS_SRC_SYS_NO = 'CBPS'
+                   AND B2.FAIL_CODE = 'I'
+                   AND B2.ODS_SRC_SYS_NO = 'CBPS'
+                   AND B1.CR_TX_DT >= #{startDate}
+                UNION
+                SELECT /*+parallel(b2,5)(b3,5)*/
+                DISTINCT B3.CUST_NAME,
+                         B2.CONTRACT_FLAG_NO AS ACCT_NO,
+                         B3.INST_NO,
+                         B4.CORP_NAME AS ACCT_NAME1,
+                         B1.SIGN_ORG_CD AS SIGN_INSTN,
+                         '批量代收付' AS CHN_NO,
+                         B1.STLM_ACCT_NO AS ACCT_NO1,
+                         B1.ENTR_NO AS CHN_CUST_NO,
+                         B2.CR_AMT AS AG_BSC_EXP,
+                         B1.CR_TX_DT
+                  FROM BF_EVT_CBPS_DATA_BATCH_INFO B1,
+                       BF_EVT_CBPS_DATA_TRADE      B2,
+                       BF_AGT_DEP_ACCT_SAP         B3,
+                       BF_PR_CBPS_CORP_INFO        B4
+                 WHERE B1.CBPS_BAT_NO = B2.CBPS_BAT_NO
+                   AND SUBSTR(B2.CONTRACT_FLAG_NO, 1, 3) = '239'
+                   AND B2.CONTRACT_FLAG_NO = B3.CUST_ACCT_NO
+                   AND B1.ENTR_NO = B4.ENTR_NO
+                   AND B1.BUSITYPE = 'P'
+                   AND B1.ODS_SRC_SYS_NO = 'CBPS'
+                   AND B2.FAIL_CODE = 'I'
+                   AND B2.ODS_SRC_SYS_NO = 'CBPS'
+                   AND B1.CR_TX_DT >= #{startDate}
+                UNION
+                SELECT /*+parallel(c1,5)(c2,5)*/
+                DISTINCT C2.CUST_NAME,
+                         C1.CONTRACT_NO AS ACCT_NO,
+                         C2.INST_NO,
+                         '' AS ACCT_NAME1,
+                         C4.SIGN_BRANCH AS SIGN_INSTN,
+                         '非一点式接入' AS CHN_NO,
+                         C1.CSGN_ACCT_NO AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
+                         C1.TRAN_AMT AS AG_BSC_EXP,
+                         TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') AS CR_TX_DT
+                  FROM B_F_NIN_AGT_BAT_TRAN C1,
+                       BF_AGT_DEP_ACCT_SAP  C2,
+                       B_F_AGT_BAT_CUSTINFO C4
+                 WHERE SUBSTR(C1.CONTRACT_NO, 1, 3) <> '239'
+                   AND C1.CONTRACT_NO = C2.CRD_NO
+                   AND C1.CONTRACT_NO = C4.SIGN_ACCT_NO
+                   AND C1.PAY_FLAG = '1'
+                   AND TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') >= #{startDate}
+                UNION
+                SELECT /*+parallel(c1,5)(c2,5)*/
+                DISTINCT C2.CUST_NAME,
+                         C1.CONTRACT_NO AS ACCT_NO,
+                         C2.INST_NO,
+                         '' AS ACCT_NAME1,
+                         C4.SIGN_BRANCH AS SIGN_INSTN,
+                         '非一点式接入' AS CHN_NO,
+                         C1.CSGN_ACCT_NO AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
+                         C1.TRAN_AMT AS AG_BSC_EXP,
+                         TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') AS CR_TX_DT
+                  FROM B_F_NIN_AGT_BAT_TRAN C1,
+                       BF_AGT_DEP_ACCT_SAP  C2,
+                       B_F_AGT_BAT_CUSTINFO C4
+                 WHERE SUBSTR(C1.CONTRACT_NO, 1, 3) = '239'
+                   AND C1.CONTRACT_NO = C2.CUST_ACCT_NO
+                   AND C1.CONTRACT_NO = C4.SIGN_ACCT_NO
+                   AND C1.PAY_FLAG = '1'
+                   AND TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') >= #{startDate})
+         ORDER BY ACCT_NO1
+        ]]>
+    </insert>
 </mapper>
