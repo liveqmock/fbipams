@@ -13,7 +13,6 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/bg.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/datepicker.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/img.gif" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
     </list>
     <list id="fc351307-c18c-4ee6-8fc3-13261485611a" name="New changelist" comment="" />
     <ignored path="ccbpams.iws" />
@@ -108,7 +107,7 @@
       <file leaf-file-name="ImportAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/ImportAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="39" selection-start="2692" selection-end="2692" vertical-scroll-proportion="0.0" vertical-offset="1611" max-vertical-offset="3058">
+            <state line="81" column="39" selection-start="2692" selection-end="2692" vertical-scroll-proportion="0.0" vertical-offset="1782" max-vertical-offset="3586">
               <folding />
             </state>
           </provider>
@@ -117,7 +116,7 @@
       <file leaf-file-name="RptA11V1DataLoad.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="98" selection-start="2545" selection-end="2545" vertical-scroll-proportion="-11.678572" vertical-offset="553" max-vertical-offset="1232">
+            <state line="40" column="98" selection-start="2545" selection-end="2545" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1232">
               <folding />
             </state>
           </provider>
@@ -126,7 +125,7 @@
       <file leaf-file-name="DataETLAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="98" column="41" selection-start="3279" selection-end="3279" vertical-scroll-proportion="0.0" vertical-offset="2043" max-vertical-offset="3740">
+            <state line="98" column="41" selection-start="3279" selection-end="3279" vertical-scroll-proportion="0.0" vertical-offset="2156" max-vertical-offset="4532">
               <folding />
             </state>
           </provider>
@@ -135,7 +134,7 @@
       <file leaf-file-name="DataETLService.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="94" column="8" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.840868" vertical-offset="1603" max-vertical-offset="2266">
+            <state line="83" column="97" selection-start="2764" selection-end="2764" vertical-scroll-proportion="0.403255" vertical-offset="1603" max-vertical-offset="2266">
               <folding />
             </state>
           </provider>
@@ -144,7 +143,7 @@
       <file leaf-file-name="RptA11V1DataDelete.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="93" selection-start="2539" selection-end="2539" vertical-scroll-proportion="-6.178571" vertical-offset="707" max-vertical-offset="1232">
+            <state line="40" column="93" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.0" vertical-offset="707" max-vertical-offset="1232">
               <folding />
             </state>
           </provider>
@@ -162,10 +161,8 @@
       <file leaf-file-name="custInfoQry.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="84" selection-start="616" selection-end="616" vertical-scroll-proportion="-14.142858" vertical-offset="0" max-vertical-offset="13222">
-              <folding>
-                <element signature="tag#p:ajaxStatus#0;tag#h:form#0;tag#div#0;tag#ui:define#1;tag#ui:composition#0" expanded="false" />
-              </folding>
+            <state line="18" column="84" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="13376">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +170,7 @@
       <file leaf-file-name="importData.xhtml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/importData.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="-7.928571" vertical-offset="812" max-vertical-offset="1430">
+            <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1430">
               <folding />
             </state>
           </provider>
@@ -246,8 +243,8 @@
         <option value="$PROJECT_DIR$/main/java/pams/view/custlist/ImportAction.java" />
         <option value="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml" />
         <option value="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java" />
         <option value="$PROJECT_DIR$/main/webapp/pages/frame/trackMisc.xhtml" />
+        <option value="$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java" />
       </list>
     </option>
   </component>
@@ -319,6 +316,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -689,16 +696,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="pams" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ccbpams" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -1280,6 +1277,7 @@
       <workItem from="1389057835848" duration="4906000" />
       <workItem from="1389064773508" duration="411000" />
       <workItem from="1389079268813" duration="14092000" />
+      <workItem from="1389153712776" duration="26000" />
     </task>
     <task id="LOCAL-00001" summary="primefaces 3.4.2">
       <created>1355722218109</created>
@@ -1485,7 +1483,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63434000" />
+    <option name="totallyTimeSpent" value="63460000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1508,14 +1506,13 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27279636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.49012157" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33881578" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.297561" sideWeight="0.44200626" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39969605" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3223684" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25454545" sideWeight="0.51155114" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25454545" sideWeight="0.51155114" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6118644" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1526,6 +1523,7 @@
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33881578" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.297561" sideWeight="0.4357367" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48902822" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1580,6 +1578,13 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/importData.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1430">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptNEW2Format.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
@@ -1637,16 +1642,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/CpSequenceMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="2" selection-start="237" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="1606">
-          <folding />
-        </state>
+        <state line="9" column="2" selection-start="237" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="1606" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/ClsRptdataMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2310">
-          <folding />
-        </state>
+        <state line="11" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="2310" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM2_4_5Format.java">
@@ -1711,9 +1712,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultClsRptDataFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="770">
-          <folding />
-        </state>
+        <state line="20" column="0" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="770" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/skyline/service/PlatformService.java">
@@ -1723,9 +1722,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704">
-          <folding />
-        </state>
+        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704" />
       </provider>
     </entry>
     <entry file="jar://C:/java/jdk1.7.0_17_i586/src.zip!/java/io/FileReader.java">
@@ -1740,16 +1737,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/OdsbPayrollTxnMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="245" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1584">
-          <folding />
-        </state>
+        <state line="9" column="3" selection-start="245" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1584" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/OdsbPayagentTxnMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.6111111" vertical-offset="44" max-vertical-offset="2288">
-          <folding />
-        </state>
+        <state line="10" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.6111111" vertical-offset="44" max-vertical-offset="2288" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java">
@@ -1773,111 +1766,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="17" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0" vertical-offset="498" max-vertical-offset="1078">
-          <folding />
-        </state>
+        <state line="19" column="17" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0" vertical-offset="498" max-vertical-offset="1078" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="43" selection-start="422" selection-end="422" vertical-scroll-proportion="-0.159132" vertical-offset="264" max-vertical-offset="2178">
-          <folding />
-        </state>
+        <state line="8" column="43" selection-start="422" selection-end="422" vertical-scroll-proportion="-0.159132" vertical-offset="264" max-vertical-offset="2178" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1364">
-          <folding />
-        </state>
+        <state line="14" column="22" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1364" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptBMNKHFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="44" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
-          <folding />
-        </state>
+        <state line="20" column="44" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="105" column="6" selection-start="5163" selection-end="5163" vertical-scroll-proportion="0.0" vertical-offset="2113" max-vertical-offset="7480">
-          <folding>
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select #{ite..dual..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select #{ite..dual..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select count..cls_rptdata..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..cls_rptdata..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..cls_rptdata..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..cls_rptdata..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select t1.*,..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..cls_rptdata..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select a.*, ..SV_CMS_CUSTBASE..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select opern..ptoper..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select t.bra..sv_cls_custinfo..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select count..a..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select t1.*,..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select a.ope..ptoper..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select b.ope..ptoperrole..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select c.ope..ptoper..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select a.*, ..SV_CMS_CUSTBASE..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select opern..ptoper..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select count..a..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select t1.*,..*..." />
-            <marker date="1389017445216" expanded="true" signature="-1:-1" placeholder="select * fro..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="285" column="0" selection-start="11583" selection-end="11583" vertical-scroll-proportion="0.0" vertical-offset="6182" max-vertical-offset="9900">
-          <folding>
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="--max(t.cust..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="--b.cert_typ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="update set a..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="update sv_cm..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="update sv_cl..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT A1.TX..SA_TX_DT..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select SOURC..BF_CM_STD_CODE..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT A.SA_..BF_EVT_DEP_SAP..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT G.SOU..BF_CM_STD_CODE..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT C.CR_..BF_EVT_DEP_TDP..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select PQNR ..BF_CM_SUMMARY..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT F.SOU..BF_CM_STD_CODE..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT t3.CU..BF_EVT_NIN_ST_TCONFIRM_TRAD@odsbptdb..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select sys_g..SIGN_INSTN..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select t2.SI..BF_PR_IND_INFO_ECTIP..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select ECTIP..BF_EVT_CHN_CHN_TRAD..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="select ECTIP..BF_AGT_CHN_CHNP_CUST..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="delete from ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="insert into ..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT ACCT_..ACCT_NAME..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-            <marker date="1389089451168" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1890,16 +1807,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="84" selection-start="616" selection-end="616" vertical-scroll-proportion="-14.142858" vertical-offset="0" max-vertical-offset="13222">
-          <folding>
-            <element signature="tag#p:ajaxStatus#0;tag#h:form#0;tag#div#0;tag#ui:define#1;tag#ui:composition#0" expanded="false" />
-          </folding>
+        <state line="18" column="84" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="13376">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/importData.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="-7.928571" vertical-offset="812" max-vertical-offset="1430">
+        <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0" vertical-offset="812" max-vertical-offset="1430">
           <folding />
         </state>
       </provider>
@@ -1913,14 +1828,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="93" selection-start="2539" selection-end="2539" vertical-scroll-proportion="-6.178571" vertical-offset="707" max-vertical-offset="1232">
+        <state line="40" column="93" selection-start="2539" selection-end="2539" vertical-scroll-proportion="0.0" vertical-offset="707" max-vertical-offset="1232">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="98" selection-start="2545" selection-end="2545" vertical-scroll-proportion="-11.678572" vertical-offset="553" max-vertical-offset="1232">
+        <state line="40" column="98" selection-start="2545" selection-end="2545" vertical-scroll-proportion="0.0" vertical-offset="880" max-vertical-offset="1232">
           <folding />
         </state>
       </provider>
@@ -1941,7 +1856,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="94" column="8" selection-start="3219" selection-end="3219" vertical-scroll-proportion="0.840868" vertical-offset="1603" max-vertical-offset="2266">
+        <state line="83" column="97" selection-start="2764" selection-end="2764" vertical-scroll-proportion="0.403255" vertical-offset="1603" max-vertical-offset="2266">
           <folding />
         </state>
       </provider>
