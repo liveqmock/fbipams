@@ -84,5 +84,14 @@ public class DataETLService {
         dataETLMapper.deleteData_RptA11V1(startDate, endDate);
         dataETLMapper.importRecords_RptA11V1(startDate, endDate);
     }
+    public void deleteData_RptA11V1(String startDate, String endDate){
+        try {
+            new SimpleDateFormat("yyyy-MM-dd").parse(startDate);
+            new SimpleDateFormat("yyyy-MM-dd").parse(endDate);
+        } catch (ParseException e) {
+            throw new RuntimeException("日期格式错误!", e);
+        }
+        dataETLMapper.deleteData_RptA11V1(startDate, endDate);
+    }
     //=====================================================================
 }

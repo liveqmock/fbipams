@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="entry" id="top">
+            <h:form id="form">
+                <div style="margin-top: 20px;">
+                    <p:tabView dynamic="true" cache="false" style="font-weight:normal;font-style:normal">
+                        <p:tab title="代发业务交易明细数清理">
+                            <p:messages id="msgs" showDetail="true"/>
+                            <h:panelGrid columns="2" cellspacing="10">
+                                <h:outputLabel value="起始数据日期:" style="font-weight: bold;" for="startdate"/>
+                                <p:inputText id="startdate" required="true" requiredMessage="日期不能为空."
+                                             value="#{dataETLAction.startdate}"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                                <h:outputLabel value="结束数据日期:" style="font-weight: bold;" for="enddate"/>
+                                <p:inputText id="enddate" required="true" requiredMessage="日期不能为空."
+                                             value="#{dataETLAction.enddate}"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                            </h:panelGrid>
+                            <p:ajaxStatus style="height:20px;text-align:center">
+                                <f:facet name="start">
+                                    <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                                </f:facet>
+                                <f:facet name="complete">
+                                    <h:outputText value=""/>
+                                </f:facet>
+                            </p:ajaxStatus>
+                            <p:separator/>
+                            <h:panelGrid columns="1" columnClasses="exportbutton">
+                                <h:panelGroup>
+                                    <p:commandButton value="数据导入处理" image="ui-icon-disk" ajax="true" update="msgs"
+                                                     actionListener="#{dataETLAction.onDeleteRptA11V1Data()}"/>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

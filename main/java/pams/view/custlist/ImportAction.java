@@ -45,22 +45,6 @@ public class ImportAction implements Serializable {
 
     public  ImportAction(){
         options = new LinkedHashMap<String, String>();
-/*
-        options.put("1、临界值客户数据表(三个月度表+三个季度表)", "1");
-        options.put("2、流失降级客户数据表", "2");
-        options.put("3、持有理财卡但AUM不达标客户数据表", "3");
-        options.put("4、优质重点产品客户数据表", "4");
-        options.put("5、CTS客户数据表", "5");
-        options.put("6、资产流失最大VIP客户数据表", "6");
-        selectedOptions.add("1");
-        selectedOptions.add("2");
-        selectedOptions.add("3");
-        selectedOptions.add("4");
-        selectedOptions.add("5");
-        selectedOptions.add("6");
-*/
-
-
     }
     @PostConstruct
     public void postConstruct() {
@@ -74,7 +58,18 @@ public class ImportAction implements Serializable {
             options.put("" + count + ptenudetail.getEnuitemlabel(), ptenudetail.getEnuitemvalue());
             selectedOptions.add(ptenudetail.getEnuitemvalue());
         }
+    }
 
+    public String disSelectAllOption(){
+        selectedOptions = new ArrayList<>();
+        return null;
+    }
+    public String selectAllOption(){
+        for (Map.Entry<String, String> entry : options.entrySet()) {
+               String option = (String)entry.getValue();
+            selectedOptions.add(option);
+        }
+        return null;
     }
     public String onETLRptData() {
         if (selectedOptions.isEmpty()) {
@@ -84,12 +79,6 @@ public class ImportAction implements Serializable {
         List<String> msgList = new ArrayList<>();
 
         try {
-/*            List<Ptenudetail> ptenudetails =  platformService.selectEnuDetail("CUST_LIST_RPT_TYPE");
-            for (Ptenudetail ptenudetail : ptenudetails) {
-                String  rptType = ptenudetail.getEnuitemvalue();
-                String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
-                importService.importDataFromTxt(startdate, filename, rptType, msgList);
-            }*/
             for (String rptType : selectedOptions) {
                 String filename = "CUST_INFO_" + rptType + "_371_" + startdate + ".dat";
                 importService.importDataFromTxt(startdate, filename, rptType, msgList);

@@ -104,6 +104,16 @@ public class DataETLAction implements Serializable {
         }
         return null;
     }
+    public String onDeleteRptA11V1Data() {
+        try {
+            dataETLService.deleteData_RptA11V1(startdate,enddate);
+            MessageUtil.addInfo("数据处理完成...");
+        } catch (Exception ex) {
+            logger.error("数据处理错误。", ex);
+            MessageUtil.addError("数据处理错误。" + ex.getMessage());
+        }
+        return null;
+    }
 
     private String checkAndTransInputDate() {
         Date date = null;

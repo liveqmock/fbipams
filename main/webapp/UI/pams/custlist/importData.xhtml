@@ -31,7 +31,7 @@
                                 </f:facet>
                             </p:ajaxStatus>
                             <p:separator/>
-                            <h:panelGrid columns="2" style="margin-bottom:5px" cellpadding="10">
+                            <h:panelGrid id="options" columns="2" style="margin-bottom:5px" cellpadding="10">
                                 <h:outputText style="font-weight: bold;" value="处理选项: "/>
                                 <p:selectManyCheckbox value="#{importAction.selectedOptions}"
                                                       layout="pageDirection">
@@ -42,6 +42,10 @@
                             <p:separator/>
                             <h:panelGrid columns="1" columnClasses="exportbutton">
                                 <h:panelGroup>
+                                    <p:commandButton value="全选" image="ui-icon-disk" ajax="true" update="msgs, options"
+                                                     actionListener="#{importAction.selectAllOption}"/>
+                                    <p:commandButton value="全不选" image="ui-icon-disk" ajax="true" update="msgs, options"
+                                                     actionListener="#{importAction.disSelectAllOption}"/>
                                     <p:commandButton value="报表数据导入" image="ui-icon-disk" ajax="true" update="msgs"
                                                      actionListener="#{importAction.onETLRptData}"/>
                                 </h:panelGroup>

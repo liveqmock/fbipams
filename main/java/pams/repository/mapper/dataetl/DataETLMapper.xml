@@ -301,22 +301,26 @@
                          A1.ACCT_NAME AS ACCT_NAME1,
                          A5.SIGN_INSTN,
                          '一点式接入' AS CHN_NO,
-                         A1.ACCT_NO AS ACCT_NO1,
-                         A5.CHN_CUST_NO,
+                         '' AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
                          A2.AG_BSC_EXP,
                          A1.CR_TX_DT
-                  FROM BF_EVT_ECTIP_BATCH_PD_TASK     A1,
+                  FROM BF_EVT_ECTIP_BATCH_PD_TASK A1,
                        BF_EVT_ECTIP_BATCH_PD_RESP_DTL A2,
-                       BF_AGT_DEP_ACCT_SAP            A3,
-                       BF_AGT_CHN_CHNP_ACCT           A4,
-                       BF_AGT_CHN_CHNP_CUST           A5
+                       BF_AGT_DEP_ACCT_SAP A3,
+                       BF_AGT_CHN_CHNP_ACCT A4,
+                       BF_AGT_CHN_CHNP_CUST A5
                  WHERE A1.CHANL_FLOW_NO = A2.CHANL_FLOW_NO
-                   AND A2.ACCT_NO = A4.ACCT_NO
+                   AND A2.ACCT_NO = A4.ACCT_NO(+)
                    AND SUBSTR(A2.ACCT_NO, 1, 3) <> '239'
-                   AND A2.ACCT_NO = A3.CRD_NO
+                   AND A2.ACCT_NO = A3.CRD_NO(+)
                    AND A4.ECTIP_CUST_NO = A5.ECTIP_CUST_NO
                    AND A1.XT_BUSN_TYPE = '0'
                    AND A1.CR_TX_DT >= #{startDate}
+                   AND A4.CHN_NO = '01'
+                   AND A5.CHN_NO = '01'
+                   AND A1.ACCT_NO NOT IN
+                       ('37101002710050033780', '37101002710050032264')
                 UNION
                 SELECT /*+parallel(a2,5)(a3,5)*/
                 DISTINCT A2.ACCT_NAME,
@@ -325,22 +329,26 @@
                          A1.ACCT_NAME AS ACCT_NAME1,
                          A5.SIGN_INSTN,
                          '一点式接入' AS CHN_NO,
-                         A1.ACCT_NO AS ACCT_NO1,
-                         A5.CHN_CUST_NO,
+                         '' AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
                          A2.AG_BSC_EXP,
                          A1.CR_TX_DT
-                  FROM BF_EVT_ECTIP_BATCH_PD_TASK     A1,
+                  FROM BF_EVT_ECTIP_BATCH_PD_TASK A1,
                        BF_EVT_ECTIP_BATCH_PD_RESP_DTL A2,
-                       BF_AGT_DEP_ACCT_SAP            A3,
-                       BF_AGT_CHN_CHNP_ACCT           A4,
-                       BF_AGT_CHN_CHNP_CUST           A5
+                       BF_AGT_DEP_ACCT_SAP A3,
+                       BF_AGT_CHN_CHNP_ACCT A4,
+                       BF_AGT_CHN_CHNP_CUST A5
                  WHERE A1.CHANL_FLOW_NO = A2.CHANL_FLOW_NO
-                   AND A2.ACCT_NO = A4.ACCT_NO
+                   AND A2.ACCT_NO = A4.ACCT_NO(+)
                    AND SUBSTR(A2.ACCT_NO, 1, 3) = '239'
-                   AND A2.ACCT_NO = A3.CUST_ACCT_NO
+                   AND A2.ACCT_NO = A3.CUST_ACCT_NO(+)
                    AND A4.ECTIP_CUST_NO = A5.ECTIP_CUST_NO
                    AND A1.XT_BUSN_TYPE = '0'
                    AND A1.CR_TX_DT >= #{startDate}
+                   AND A4.CHN_NO = '01'
+                   AND A5.CHN_NO = '01'
+                   AND A1.ACCT_NO NOT IN
+                       ('37101002710050033780', '37101002710050032264')
                 UNION
                 SELECT /*+parallel(b2,5)(b3,5)*/
                 DISTINCT B3.CUST_NAME,
@@ -349,8 +357,8 @@
                          B4.CORP_NAME AS ACCT_NAME1,
                          B1.SIGN_ORG_CD AS SIGN_INSTN,
                          '批量代收付' AS CHN_NO,
-                         B1.STLM_ACCT_NO AS ACCT_NO1,
-                         B1.ENTR_NO AS CHN_CUST_NO,
+                         B1.ENTR_NO AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
                          B2.CR_AMT AS AG_BSC_EXP,
                          B1.CR_TX_DT
                   FROM BF_EVT_CBPS_DATA_BATCH_INFO B1,
@@ -374,8 +382,8 @@
                          B4.CORP_NAME AS ACCT_NAME1,
                          B1.SIGN_ORG_CD AS SIGN_INSTN,
                          '批量代收付' AS CHN_NO,
-                         B1.STLM_ACCT_NO AS ACCT_NO1,
-                         B1.ENTR_NO AS CHN_CUST_NO,
+                         B1.ENTR_NO AS ACCT_NO1,
+                         '' AS CHN_CUST_NO,
                          B2.CR_AMT AS AG_BSC_EXP,
                          B1.CR_TX_DT
                   FROM BF_EVT_CBPS_DATA_BATCH_INFO B1,
@@ -399,7 +407,7 @@
                          '' AS ACCT_NAME1,
                          C4.SIGN_BRANCH AS SIGN_INSTN,
                          '非一点式接入' AS CHN_NO,
-                         C1.CSGN_ACCT_NO AS ACCT_NO1,
+                         '' AS ACCT_NO1,
                          '' AS CHN_CUST_NO,
                          C1.TRAN_AMT AS AG_BSC_EXP,
                          TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') AS CR_TX_DT
@@ -419,7 +427,7 @@
                          '' AS ACCT_NAME1,
                          C4.SIGN_BRANCH AS SIGN_INSTN,
                          '非一点式接入' AS CHN_NO,
-                         C1.CSGN_ACCT_NO AS ACCT_NO1,
+                         '' AS ACCT_NO1,
                          '' AS CHN_CUST_NO,
                          C1.TRAN_AMT AS AG_BSC_EXP,
                          TO_CHAR(C1.TX_DT, 'YYYY-mm-dd') AS CR_TX_DT
