@@ -29,7 +29,9 @@ public class DataETLAction implements Serializable {
     private static final long serialVersionUID = 1366227629931959859L;
 
     private String startdate;
+    private String startdateRpt11;
     private String enddate;
+    private String enddateRpt11;
     private String largeStartdate;
     private String currYearStartdate;
 
@@ -47,7 +49,9 @@ public class DataETLAction implements Serializable {
     public void postConstruct() {
         DateTime dt = new DateTime();
         this.startdate = dt.minusMonths(1).dayOfMonth().withMaximumValue().toString("yyyyMMdd");
+        this.startdateRpt11 = dt.minusMonths(1).dayOfMonth().withMaximumValue().toString("yyyy-MM-dd");
         this.enddate = dt.minusDays(1).toString("yyyyMMdd");
+        this.enddateRpt11 = dt.minusDays(1).toString("yyyy-MM-dd");
         this.largeStartdate = dt.minusDays(7).toString("yyyy-MM-dd");
         this.currYearStartdate = dt.monthOfYear().withMinimumValue().dayOfMonth().withMinimumValue().toString("yyyy-MM-dd");
     }
@@ -96,7 +100,7 @@ public class DataETLAction implements Serializable {
     }
     public String onProcessRptA11V1Data() {
         try {
-            dataETLService.importData_RptA11V1(startdate,enddate);
+            dataETLService.importData_RptA11V1(startdateRpt11, enddateRpt11);
             MessageUtil.addInfo("数据处理完成...");
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
@@ -106,7 +110,7 @@ public class DataETLAction implements Serializable {
     }
     public String onDeleteRptA11V1Data() {
         try {
-            dataETLService.deleteData_RptA11V1(startdate,enddate);
+            dataETLService.deleteData_RptA11V1(startdateRpt11, enddateRpt11);
             MessageUtil.addInfo("数据处理完成...");
         } catch (Exception ex) {
             logger.error("数据处理错误。", ex);
@@ -196,5 +200,21 @@ public class DataETLAction implements Serializable {
 
     public void setEnddate(String enddate) {
         this.enddate = enddate;
+    }
+
+    public String getStartdateRpt11() {
+        return startdateRpt11;
+    }
+
+    public void setStartdateRpt11(String startdateRpt11) {
+        this.startdateRpt11 = startdateRpt11;
+    }
+
+    public String getEnddateRpt11() {
+        return enddateRpt11;
+    }
+
+    public void setEnddateRpt11(String enddateRpt11) {
+        this.enddateRpt11 = enddateRpt11;
     }
 }

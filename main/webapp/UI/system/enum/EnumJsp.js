@@ -29,7 +29,7 @@ function body_load() {
 function EnumTable_TRDbclick(el) {
 
     ///获取主健信息
-    var whArr = EnumTable.rows[EnumTable.activeIndex].whStr.split("&");
+    var whArr = EnumTable.rows[EnumTable.activeIndex].getAttribute("whStr").split("&");
     ///分解主健信息构造查询条件
 
     var whereStr = "and(EnuType = '" + whArr[2] + "') order by 1";

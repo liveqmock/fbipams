@@ -53,9 +53,14 @@
 				var fieldNode = createFieldNode(xmlDoc,"newpwd","text",document.all.newpwd.value);
                     RecorderNode.appendChild(fieldNode);
 
+				
+
                  var retStr = ExecServerPrgm(g_jsContextPath+"/BI/util/SqlSelectJsp.jsp","POST","sys_request_xml="+xmlDoc.xml);
 				 if (analyzeReturnXML(retStr)=="true")
                    	   window.close();
+
+
+
 
 			}else{
 				alert("新密码与确认密码不相等！");

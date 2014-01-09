@@ -5,13 +5,15 @@
   <head>
     <title></title>
     <LINK href="<%=contextPath%>/css/ccb.css" type="text/css" rel="stylesheet">
-    <script language="javascript" src="<%=contextPath%>/js/basic.js"></script>
-    <script language="javascript" src="<%=contextPath%>/js/xmlHttp.js"></script>
-    <script language="javascript" src="<%=contextPath%>/js/dbgrid.js"></script>
-    <script language="javascript" src="<%=contextPath%>/js/dropdownData.js"></script>
-    <script language="javascript" src="<%=contextPath%>/js/dbutil.js"></script>
-    <script language="javascript" src="ActionJsp.js"></script>
-    <script language="javascript" src="<%=contextPath%>/js/menu.js"></script>
+      <%--
+          <script language="javascript" src="<%=contextPath%>/js/basic.js"></script>
+          <script language="javascript" src="<%=contextPath%>/js/xmlHttp.js"></script>
+          <script language="javascript" src="<%=contextPath%>/js/dbgrid.js"></script>
+          <script language="javascript" src="<%=contextPath%>/js/dropdownData.js"></script>
+          <script language="javascript" src="<%=contextPath%>/js/dbutil.js"></script>
+            <script language="javascript" src="<%=contextPath%>/js/menu.js"></script>
+      --%>
+      <script language="javascript" src="ActionJsp.js"></script>
   </head>
   <%
         DBGrid dbGrid = new DBGrid();

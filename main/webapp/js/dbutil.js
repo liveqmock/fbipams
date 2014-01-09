@@ -638,7 +638,6 @@ function analyzeReturnXML(XMLStr) {
   } else if (rootNode.getAttribute("type") == "0") {
     // 弹出操作员超时页面
     if (rootNode.getAttribute("result") == "true") {
-      alert(decode(rootNode.text));
 
       xmlDoc.free;
       return "true";

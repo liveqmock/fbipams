@@ -1,5 +1,5 @@
 /** 整体的基本元素，主要是：字体大小颜色，背景颜色等。 */
-/*body {
+body {
 	font-size: 12px;
 	font-family: SimSun;
 	color: black;
@@ -9,7 +9,7 @@
 	margin-left: 0px;
 	margin-right: 0px;
 	padding: 0px;
-}*/
+}
 
 .bodyBorder {
 	margin-top: 10px;
@@ -32,17 +32,14 @@ table {
 
 /*表示专用，行长度专用*/
 .lblWidth {
-    width:10%;
+    width:20%;
     text-align: right;
 }
 .data_input_width {
-    width:20%;
-}
-.data_input_width1 {
-    width:40%;
+    width:80%;
 }
 .btnWidth {
-    width:20%;
+    width:60%;
     text-align:right;
 }
 .leftCellBorder {

@@ -19,11 +19,11 @@
                             <h:panelGrid columns="2" cellspacing="10">
                                 <h:outputLabel value="起始数据日期:" style="font-weight: bold;" for="startdate"/>
                                 <p:inputText id="startdate" required="true" requiredMessage="日期不能为空."
-                                             value="#{dataETLAction.startdate}"
+                                             value="#{dataETLAction.startdateRpt11}"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
                                 <h:outputLabel value="结束数据日期:" style="font-weight: bold;" for="enddate"/>
                                 <p:inputText id="enddate" required="true" requiredMessage="日期不能为空."
-                                             value="#{dataETLAction.enddate}"
+                                             value="#{dataETLAction.enddateRpt11}"
                                              onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
                             </h:panelGrid>
                             <p:ajaxStatus style="height:20px;text-align:center">

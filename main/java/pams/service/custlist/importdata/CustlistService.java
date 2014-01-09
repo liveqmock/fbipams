@@ -32,6 +32,10 @@ public class CustlistService<T> {
     @Autowired
     private PtenudetailMapper ptenudetailMapper;
 
+    public String selectMaxCurrMaxRptdate() {
+        return custlistMapper.selectCustListMaxRptDate();
+    }
+
     //枚举map ：枚举值->枚举label
     public Map<String,String> selectPtEnuDeatilItemsLabelMap(String enuType){
         PtenudetailExample example = new PtenudetailExample();

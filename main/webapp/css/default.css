@@ -71,7 +71,7 @@ img.right {
 #page {
 	/*width: 960px;*/
 	margin: 0 auto;
-	padding: 5px 5px 0px 5px;
+	padding: 0px 5px;
 	background: #FFFFFF;
     /*font-size:11px*/
 }
@@ -88,7 +88,7 @@ img.right {
 }
 
 .post {
-	padding-bottom: 2px;
+	padding-bottom: 5px;
 }
 
 .post h1 {

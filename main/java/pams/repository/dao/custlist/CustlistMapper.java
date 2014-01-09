@@ -38,6 +38,6 @@ public interface CustlistMapper {
     //获取某网点个人客户经理岗位人员清单
     List<Ptoper> selectPtopersForRole_CustMgr(String branchId);
 
-    @Select("select max(rpt_date) from sv_cls_custinfo")
+    @Select("select max(rpt_date) from cls_rptdata")
     String selectCustListMaxRptDate();
 }

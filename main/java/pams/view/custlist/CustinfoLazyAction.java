@@ -1,14 +1,13 @@
 package pams.view.custlist;
 
 import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateTime;
 import org.primefaces.model.LazyDataModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.common.SystemService;
 import pams.common.utils.MessageUtil;
-import pams.repository.model.Ptoplog;
 import pams.repository.model.ClsRptdata;
+import pams.repository.model.Ptoplog;
 import pams.repository.model.custlist.CustListParam;
 import pams.service.custlist.importdata.CustlistService;
 import pub.platform.security.OperatorManager;
@@ -93,8 +92,9 @@ public class CustinfoLazyAction implements Serializable {
         this.paramBean = new CustListParam();
         this.paramBean.setRptType(this.rptType);
 
-        DateTime lastmonth = new DateTime().minusMonths(1).dayOfMonth().withMaximumValue();
-        this.paramBean.setRptDate(lastmonth.toString("yyyyMMdd"));
+        //DateTime lastmonth = new DateTime().minusMonths(1).dayOfMonth().withMaximumValue();
+        //this.paramBean.setRptDate(lastmonth.toString("yyyyMMdd"));
+        this.paramBean.setRptDate(custlistService.selectMaxCurrMaxRptdate());
 
     }
 

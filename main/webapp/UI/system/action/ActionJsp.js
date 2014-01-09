@@ -11,9 +11,8 @@ function body_load()
      ActionTable.addmethodname  ="addenum";
      ActionTable.editmethodname ="editenum";
      ActionTable.delmethodname  ="delenum";
-     
-     initDBGrid("ActionTable");
 
+    initDBGrid("ActionTable");
 }
 
 
@@ -60,12 +59,16 @@ function queryClick(){
 	
 
 	if (whereStr !=document.all["ActionTable"].whereStr){
-		document.all["ActionTable"].whereStr=whereStr +" order by 1 ";
-		document.all["ActionTable"].RecordCount="0";
-		document.all["ActionTable"].AbsolutePage="1";
+		document.all["ActionTable"].setAttribute("whereStr", whereStr +" order by 1 ");
+//		document.all["ActionTable"].whereStr=whereStr +" order by 1 ";
+		document.all["ActionTable"].setAttribute("RecordCount","0");
+		document.all["ActionTable"].setAttribute("AbsolutePage","1");
 
 
+//        var tab = document.all["ActionTable"];
+//        alert(tab.getAttribute("whereStr"));
 		Table_Refresh("ActionTable");
+//		Table_Refresh_asy("ActionTable");
     }
 
 }

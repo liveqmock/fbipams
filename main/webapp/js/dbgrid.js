@@ -28,14 +28,14 @@ function CreateText(el) {
             parentHTML += " maxLength=" + el.textLength;
         }
         parentHTML += "  style=\"position: absolute; left:"
-                + (pos[0] - 1)
-                + ";top:"
-                + (pos[1])
-                + "; height:"
-                + (el.offsetHeight - 4)
-                + ";width:"
-                + (el.offsetWidth - 1)
-                + ";FONT-SIZE:12;BORDER-RIGHT: medium none; BORDER-TOP: medium none;BORDER-LEFT: medium none;BORDER-BOTTOM: medium none\" onKeyPress=\"onKeyPressInput(this)\"  onblur=\"TextInit()\">";
+            + (pos[0] - 1)
+            + ";top:"
+            + (pos[1])
+            + "; height:"
+            + (el.offsetHeight - 4)
+            + ";width:"
+            + (el.offsetWidth - 1)
+            + ";FONT-SIZE:12;BORDER-RIGHT: medium none; BORDER-TOP: medium none;BORDER-LEFT: medium none;BORDER-BOTTOM: medium none\" onKeyPress=\"onKeyPressInput(this)\"  onblur=\"TextInit()\">";
 
         obj = document.createElement(parentHTML);
 
@@ -99,7 +99,7 @@ function enterMove(tdElement) {
 
         }
 
-        for ( var i = tdElement.cellIndex + 1; i < trElement.cells.length; i++) {
+        for (var i = tdElement.cellIndex + 1; i < trElement.cells.length; i++) {
             if (trElement.cells[i].fieldtype == "text" || trElement.cells[i].fieldtype == "number") {
                 trElement.cells[i].click();
                 break;
@@ -112,7 +112,7 @@ function enterMove(tdElement) {
 
                 if (trElement.rowIndex * 22 > 250) {
                     // alert(trElement.rowIndex * 22);
-                    document.all("divfd_" + tabElement.id).scrollTop = trElement.rowIndex * 22;
+                    document.all["divfd_" + tabElement.id].scrollTop = trElement.rowIndex * 22;
                 }
 
                 trElement = tabElement.rows[trElement.rowIndex + 1];
@@ -136,7 +136,7 @@ function movenexttr() {
         beginIndex = tabElement.minIndex;
     }
 
-    for ( var i = beginIndex; i < trElement.cells.length; i++) {
+    for (var i = beginIndex; i < trElement.cells.length; i++) {
         if (trElement.cells[i].fieldtype == "text" || trElement.cells[i].fieldtype == "number") {
 
             trElement.cells[i].click()
@@ -188,14 +188,14 @@ function CreateNumberText(el) {
                 parentHTML += " maxLength=" + inputLength;
 
             parentHTML += "  style=\"position: absolute; left:"
-                    + pos[0]
-                    + ";top:"
-                    + pos[1]
-                    + "; height:"
-                    + (el.offsetHeight - 2)
-                    + ";width:"
-                    + (el.offsetWidth - 2)
-                    + ";FONT-SIZE:12 BORDER-RIGHT: medium none; BORDER-TOP: medium none;BORDER-LEFT: medium none;BORDER-BOTTOM: medium none\" onKeyPress=\"onKeyPressTDFloat(this)\" onblur=\"NumberTextInit()\">";
+                + pos[0]
+                + ";top:"
+                + pos[1]
+                + "; height:"
+                + (el.offsetHeight - 2)
+                + ";width:"
+                + (el.offsetWidth - 2)
+                + ";FONT-SIZE:12 BORDER-RIGHT: medium none; BORDER-TOP: medium none;BORDER-LEFT: medium none;BORDER-BOTTOM: medium none\" onKeyPress=\"onKeyPressTDFloat(this)\" onblur=\"NumberTextInit()\">";
 
             obj = document.createElement(parentHTML);
 
@@ -538,11 +538,11 @@ function tableBubbleSort(tab, nSortColIdx, nFromRow, functionSort) {
 
     var end = tab.rows.length - 1;
 
-    for ( var aa = 0; aa < end && isAutoBuildRow(tab.rows.item(aa)); aa++)
-        for ( var bb = aa + 1; bb <= end && isAutoBuildRow(tab.rows.item(bb)); bb++) {
+    for (var aa = 0; aa < end && isAutoBuildRow(tab.rows.item(aa)); aa++)
+        for (var bb = aa + 1; bb <= end && isAutoBuildRow(tab.rows.item(bb)); bb++) {
 
             if (functionSort(getSortText(tab.rows.item(aa).cells.item(nSortColIdx)),
-                    getSortText(tab.rows.item(bb).cells.item(nSortColIdx)))) {
+                getSortText(tab.rows.item(bb).cells.item(nSortColIdx)))) {
 
                 tab.moveRow(bb, aa);
             }
@@ -585,7 +585,7 @@ function changeGridRowOddEvenColor(oTable) {
 
         // oTable.rows[0].className = "gridHead";
 
-        for ( var i = 0; i < oTable.rows.length; i++) {
+        for (var i = 0; i < oTable.rows.length; i++) {
             var oRow = oTable.rows[i];
 
             if (oRow.oldclass == undefined) {
@@ -623,7 +623,7 @@ function TRMove(el) {
     var oTable = getOwnerTable(el);
 
     if (oTable.gridType.toLowerCase() == "color") {
-        for ( var i = 0; i < oTable.rows.length; i++) {
+        for (var i = 0; i < oTable.rows.length; i++) {
 
             oTable.rows[i].className = "";
             oTable.rows[i].bgColor = oTable.rows[i].oldclass;
@@ -681,57 +681,57 @@ function Table_Refresh(id, ishint, bodyReload, empty_title, login) {
 
     var xmlDoc = createDomDocument("<root/>");
 
-    var tab = document.all(id);
+    var tab = document.all[id];
 
-    document.ACTION_NAME = tab.actionname;
-    document.ADDMETHOD_NAME = tab.addmethodname;
-    document.EDITMETHOD_NAME = tab.editmethodname;
-    document.DELMETHOD_NAME = tab.delmethodname;
-    document.POSEDELETE = tab.posedelete;
+    document.ACTION_NAME = tab.getAttribute("actionname");
+    document.ADDMETHOD_NAME = tab.getAttribute("addmethodname");
+    document.EDITMETHOD_NAME = tab.getAttribute("editmethodname");
+    document.DELMETHOD_NAME = tab.getAttribute("delmethodname");
+    document.POSEDELETE = tab.getAttribute("posedelete");
 
-    document.dbformname = tab.dbformname;
+    document.dbformname = tab.getAttribute("dbformname");
 
     var rootNode = xmlDoc.documentElement;
 
     var childNode = appendNode(xmlDoc, xmlDoc.documentElement, "field");
 
     appendAttri(xmlDoc, childNode, "id", id);
-    appendAttri(xmlDoc, childNode, "gridType", tab.gridType);
-    appendAttri(xmlDoc, childNode, "SQLStr", tab.SQLStr);
-    appendAttri(xmlDoc, childNode, "fieldtype", tab.fieldtype);
+    appendAttri(xmlDoc, childNode, "gridType", tab.getAttribute("gridType"));
+    appendAttri(xmlDoc, childNode, "SQLStr", tab.getAttribute("SQLStr"));
+    appendAttri(xmlDoc, childNode, "fieldtype", tab.getAttribute("fieldtype"));
 
-    appendAttri(xmlDoc, childNode, "fieldCN", tab.fieldCN);
-    appendAttri(xmlDoc, childNode, "enumType", tab.enumType);
-    appendAttri(xmlDoc, childNode, "visible", tab.visible);
-    appendAttri(xmlDoc, childNode, "fieldname", tab.fieldname);
+    appendAttri(xmlDoc, childNode, "fieldCN", tab.getAttribute("fieldCN"));
+    appendAttri(xmlDoc, childNode, "enumType", tab.getAttribute("enumType"));
+    appendAttri(xmlDoc, childNode, "visible", tab.getAttribute("visible"));
+    appendAttri(xmlDoc, childNode, "fieldname", tab.getAttribute("fieldname"));
 
-    appendAttri(xmlDoc, childNode, "pageSize", tab.pageSize);
-    appendAttri(xmlDoc, childNode, "AbsolutePage", tab.AbsolutePage);
-    appendAttri(xmlDoc, childNode, "countSQL", tab.countSQL);
+    appendAttri(xmlDoc, childNode, "pageSize", tab.getAttribute("pageSize"));
+    appendAttri(xmlDoc, childNode, "AbsolutePage", tab.getAttribute("AbsolutePage"));
+    appendAttri(xmlDoc, childNode, "countSQL", tab.getAttribute("countSQL"));
 
-    appendAttri(xmlDoc, childNode, "RecordCount", tab.RecordCount);
-    appendAttri(xmlDoc, childNode, "tralign", tab.tralign);
+    appendAttri(xmlDoc, childNode, "RecordCount", tab.getAttribute("RecordCount"));
+    appendAttri(xmlDoc, childNode, "tralign", tab.getAttribute("tralign"));
 
-    appendAttri(xmlDoc, childNode, "checkbl", tab.checkbl);
+    appendAttri(xmlDoc, childNode, "checkbl", tab.getAttribute("checkbl"));
 
-    appendAttri(xmlDoc, childNode, "whereStr", encode(decode(tab.whereStr)));
-    appendAttri(xmlDoc, childNode, "fieldwidth", tab.fieldwidth);
-    appendAttri(xmlDoc, childNode, "fieldCheck", tab.fieldCheck);
-    appendAttri(xmlDoc, childNode, "bottomVisible", tab.bottomVisible);
-    appendAttri(xmlDoc, childNode, "isTotal", tab.isTotal);
+    appendAttri(xmlDoc, childNode, "whereStr", encode(decode(tab.getAttribute("whereStr"))));
+    appendAttri(xmlDoc, childNode, "fieldwidth", tab.getAttribute("fieldwidth"));
+    appendAttri(xmlDoc, childNode, "fieldCheck", tab.getAttribute("fieldCheck"));
+    appendAttri(xmlDoc, childNode, "bottomVisible", tab.getAttribute("bottomVisible"));
+    appendAttri(xmlDoc, childNode, "isTotal", tab.getAttribute("isTotal"));
 
     // zr
-    appendAttri(xmlDoc, childNode, "sumfield", tab.sumfield);
+    appendAttri(xmlDoc, childNode, "sumfield", tab.getAttribute("sumfield"));
 
     rootNode.appendChild(childNode);
 
     show_status_label(window, "正在查询数据...", true);
 
-    // alert(xmlDoc.xml);
+    //alert(xmlDoc.xml);
     // return;
 
-    var tmpHTML = ExecServerPrgm_synsh(g_jsContextPath+"/BI/util/DataTableJsp.jsp", "POST", "tabStr=" + encode(xmlDoc.xml), "", "", id,
-            Table_Refresh_Date);
+    var tmpHTML = ExecServerPrgm_synsh(g_jsContextPath + "/BI/util/DataTableJsp.jsp", "POST", "tabStr=" + encode(xmlDoc.xml), "", "", id,
+        Table_Refresh_Date);
 
     xmlDoc.free;
 
@@ -746,75 +746,75 @@ function Table_Refresh_asy(id) {
 
     var xmlDoc = createDomDocument("<root/>");
 
-    var tab = document.all(id);
+    var tab = document.all[id];
 
-    var div_table = document.all("div_" + id);
-    var divfd_table = document.all("divfd_" + id);
+    var div_table = document.all["div_" + id];
+    var divfd_table = document.all["divfd_" + id];
 
-    document.ACTION_NAME = tab.actionname;
-    document.ADDMETHOD_NAME = tab.addmethodname;
-    document.EDITMETHOD_NAME = tab.editmethodname;
-    document.DELMETHOD_NAME = tab.delmethodname;
-    document.POSEDELETE = tab.posedelete;
+    document.ACTION_NAME = tab.getAttribute("actionname");
+    document.ADDMETHOD_NAME = tab.getAttribute("addmethodname");
+    document.EDITMETHOD_NAME = tab.getAttribute("editmethodname");
+    document.DELMETHOD_NAME = tab.getAttribute("delmethodname");
+    document.POSEDELETE = tab.getAttribute("posedelete");
 
-    document.dbformname = tab.dbformname;
+    document.dbformname = tab.getAttribute("dbformname");
 
     var rootNode = xmlDoc.documentElement;
 
     var childNode = appendNode(xmlDoc, xmlDoc.documentElement, "field");
 
     appendAttri(xmlDoc, childNode, "id", id);
-    appendAttri(xmlDoc, childNode, "gridType", tab.gridType);
-    appendAttri(xmlDoc, childNode, "SQLStr", tab.SQLStr);
-    appendAttri(xmlDoc, childNode, "fieldtype", tab.fieldtype);
+    appendAttri(xmlDoc, childNode, "gridType", tab.getAttribute("gridType"));
+    appendAttri(xmlDoc, childNode, "SQLStr", tab.getAttribute("SQLStr"));
+    appendAttri(xmlDoc, childNode, "fieldtype", tab.getAttribute("fieldtype"));
 
-    appendAttri(xmlDoc, childNode, "fieldCN", tab.fieldCN);
-    appendAttri(xmlDoc, childNode, "enumType", tab.enumType);
-    appendAttri(xmlDoc, childNode, "visible", tab.visible);
-    appendAttri(xmlDoc, childNode, "fieldname", tab.fieldname);
+    appendAttri(xmlDoc, childNode, "fieldCN", tab.getAttribute("fieldCN"));
+    appendAttri(xmlDoc, childNode, "enumType", tab.getAttribute("enumType"));
+    appendAttri(xmlDoc, childNode, "visible", tab.getAttribute("visible"));
+    appendAttri(xmlDoc, childNode, "fieldname", tab.getAttribute("fieldname"));
 
-    appendAttri(xmlDoc, childNode, "pageSize", tab.pageSize);
-    appendAttri(xmlDoc, childNode, "AbsolutePage", tab.AbsolutePage);
-    appendAttri(xmlDoc, childNode, "countSQL", tab.countSQL);
+    appendAttri(xmlDoc, childNode, "pageSize", tab.getAttribute("pageSize"));
+    appendAttri(xmlDoc, childNode, "AbsolutePage", tab.getAttribute("AbsolutePage"));
+    appendAttri(xmlDoc, childNode, "countSQL", tab.getAttribute("countSQL"));
 
-    appendAttri(xmlDoc, childNode, "RecordCount", tab.RecordCount);
-    appendAttri(xmlDoc, childNode, "tralign", tab.tralign);
+    appendAttri(xmlDoc, childNode, "RecordCount", tab.getAttribute("RecordCount"));
+    appendAttri(xmlDoc, childNode, "tralign", tab.getAttribute("tralign"));
 
-    appendAttri(xmlDoc, childNode, "checkbl", tab.checkbl);
+    appendAttri(xmlDoc, childNode, "checkbl", tab.getAttribute("checkbl"));
 
-    appendAttri(xmlDoc, childNode, "whereStr", encode(decode(tab.whereStr)));
-    appendAttri(xmlDoc, childNode, "fieldwidth", tab.fieldwidth);
-    appendAttri(xmlDoc, childNode, "fieldCheck", tab.fieldCheck);
-    appendAttri(xmlDoc, childNode, "bottomVisible", tab.bottomVisible);
-    appendAttri(xmlDoc, childNode, "isTotal", tab.isTotal);
+    appendAttri(xmlDoc, childNode, "whereStr", encode(decode(tab.getAttribute("whereStr"))));
+    appendAttri(xmlDoc, childNode, "fieldwidth", tab.getAttribute("fieldwidth"));
+    appendAttri(xmlDoc, childNode, "fieldCheck", tab.getAttribute("fieldCheck"));
+    appendAttri(xmlDoc, childNode, "bottomVisible", tab.getAttribute("bottomVisible"));
+    appendAttri(xmlDoc, childNode, "isTotal", tab.getAttribute("isTotal"));
 
     rootNode.appendChild(childNode);
 
-    var tmpHTML = ExecServerPrgm(g_jsContextPath+"/BI/util/DataTableJsp.jsp", "POST", "tabStr=" + encode(xmlDoc.xml));
+    var tmpHTML = ExecServerPrgm(g_jsContextPath + "/BI/util/DataTableJsp.jsp", "POST", "tabStr=" + encode(xmlDoc.xml));
 
     if (document.all["div_" + id]) {
         document.all["div_" + id].innerHTML = tmpHTML;
 
-        document.all(id).whereStr = tab.whereStr;
+        document.all[id].whereStr = tab.getAttribute("whereStr");
     }
 
-    document.all("div_" + id).style.width = div_table.style.width;
-    document.all("div_" + id).style.height = div_table.style.height;
+    document.all["div_" + id].style.width = div_table.style.width;
+    document.all["div_" + id].style.height = div_table.style.height;
 
-    document.all("divfd_" + id).style.width = divfd_table.style.width;
-    document.all("divfd_" + id).style.height = divfd_table.style.height;
+    document.all["divfd_" + id].style.width = divfd_table.style.width;
+    document.all["divfd_" + id].style.height = divfd_table.style.height;
 
-    document.all(id).fdwidth = tab.fdwidth;
+    document.all[id].fdwidth = tab.fdwidth;
 
-    compentHidden(document.all(id));
+    compentHidden(document.all[id]);
 
-    document.all(id).actionname = document.ACTION_NAME;
-    document.all(id).addmethodname = document.ADDMETHOD_NAME;
-    document.all(id).editmethodname = document.EDITMETHOD_NAME;
-    document.all(id).delmethodname = document.DELMETHOD_NAME;
-    document.all(id).posedelete = document.POSEDELETE;
+    document.all[id].actionname = document.ACTION_NAME;
+    document.all[id].addmethodname = document.ADDMETHOD_NAME;
+    document.all[id].editmethodname = document.EDITMETHOD_NAME;
+    document.all[id].delmethodname = document.DELMETHOD_NAME;
+    document.all[id].posedelete = document.POSEDELETE;
 
-    document.all(id).dbformname = document.dbformname;
+    document.all[id].dbformname = document.dbformname;
 
     reLoadCount = 0;
 
@@ -827,45 +827,45 @@ function Table_Refresh_asy(id) {
 // /////刷新数据
 function Table_Refresh_Date(id, tmpHTML) {
     try {
-        var tab = document.all(id);
+        var tab = document.all[id];
 
-        var div_table = document.all("div_" + id);
-        var divfd_table = document.all("divfd_" + id);
+        var div_table = document.all["div_" + id];
+        var divfd_table = document.all["divfd_" + id];
 
         hide_status_label(window);
 
         if (document.all["div_" + id]) {
             document.all["div_" + id].innerHTML = tmpHTML;
 
-            document.all(id).whereStr = tab.whereStr;
+            document.all[id].whereStr = tab.whereStr;
         }
 
-        compentHidden(document.all(id));
+        compentHidden(document.all[id]);
 
         if (isfireuserEvent(id + "_afterRefresh"))
-            fireUserEvent(id + "_afterRefresh", [ document.all(id) ]);
+            fireUserEvent(id + "_afterRefresh", [ document.all[id] ]);
 
-        document.all("div_" + id).style.width = div_table.style.width;
-        document.all("div_" + id).style.height = div_table.style.height;
+        document.all["div_" + id].style.width = div_table.style.width;
+        document.all["div_" + id].style.height = div_table.style.height;
 
-        document.all("divfd_" + id).style.width = divfd_table.style.width;
-        document.all("divfd_" + id).style.height = divfd_table.style.height;
-        document.all(id).fdwidth = tab.fdwidth;
+        document.all["divfd_" + id].style.width = divfd_table.style.width;
+        document.all["divfd_" + id].style.height = divfd_table.style.height;
+        document.all[id].fdwidth = tab.fdwidth;
 
         if (retbodyReload != undefined) {
             retbodyReload();
         }
 
-        if (empty_ishint && document.all(id).rows.length == 0)
+        if (empty_ishint && document.all[id].rows.length == 0)
             alert(query_empty_title);
 
-        document.all(id).actionname = document.ACTION_NAME;
-        document.all(id).addmethodname = document.ADDMETHOD_NAME;
-        document.all(id).editmethodname = document.EDITMETHOD_NAME;
-        document.all(id).delmethodname = document.DELMETHOD_NAME;
-        document.all(id).posedelete = document.POSEDELETE;
+        document.all[id].actionname = document.ACTION_NAME;
+        document.all[id].addmethodname = document.ADDMETHOD_NAME;
+        document.all[id].editmethodname = document.EDITMETHOD_NAME;
+        document.all[id].delmethodname = document.DELMETHOD_NAME;
+        document.all[id].posedelete = document.POSEDELETE;
 
-        document.all(id).dbformname = document.dbformname;
+        document.all[id].dbformname = document.dbformname;
 
         reLoadCount = 0;
 
@@ -906,12 +906,12 @@ function WidthEquals(headTable, bodyTable) {
     if (tableName.length == 1)
         return;
 
-    if (document.all(tableName[1]).rows.length > 0) {
+    if (document.all[tableName[1]].rows.length > 0) {
 
-        for ( var j = 0; j < document.all(tableName[1]).rows[0].cells.length; j++) {
-            document.all("Title_" + tableName[1]).rows[0].cells[j].width = document.all(tableName[1]).rows[0].cells[j].offsetWidth;
+        for (var j = 0; j < document.all[tableName[1]].rows[0].cells.length; j++) {
+            document.all["Title_" + tableName[1]].rows[0].cells[j].width = document.all[tableName[1]].rows[0].cells[j].offsetWidth;
             if (document.all[tableName[1]].isTotal == "true")
-                document.all("tableTotal_" + tableName[1]).rows[0].cells[j].width = document.all(tableName[1]).rows[0].cells[j].offsetWidth;
+                document.all["tableTotal_" + tableName[1]].rows[0].cells[j].width = document.all[tableName[1]].rows[0].cells[j].offsetWidth;
 
         }
 
@@ -937,7 +937,7 @@ function Covert_Click(TableID, buttonID, textID) {
             tab.AbsolutePage = document.all[textID].value;
             Table_Refresh_asy(tab.id);
         }
-        for ( var i = 0; i < tab.rows.length - 1; i++) {
+        for (var i = 0; i < tab.rows.length - 1; i++) {
 
             tab.rows[i].onclick = TRClick_GetDate;
         }
@@ -986,8 +986,8 @@ function TR_click() {
 
     // compentHidden(oTable);
 
-    if (oTable.gridType.toLowerCase() == "color") {
-        for ( var i = 0; i < oTable.rows.length; i++) {
+    if (oTable.getAttribute("gridType").toLowerCase() == "color") {
+        for (var i = 0; i < oTable.rows.length; i++) {
 
             oTable.rows[i].className = "";
             oTable.rows[i].bgColor = oTable.rows[i].oldclass;
@@ -1005,7 +1005,7 @@ function TR_click() {
 
     }
     if (oTable.dbformname != undefined)
-        gridfillform(oTable, document.all(oTable.dbformname));
+        gridfillform(oTable, document.all[oTable.dbformname]);
 
     if (isfireuserEvent(oTable.id + "_afteroperate_click"))
         fireUserEvent(oTable.id + "_afteroperate_click", [ oTable ]);
@@ -1043,12 +1043,12 @@ function checkClick(fromName) {
     var nameArr = fromName.split("_");
     if (nameArr[0] != "child") {
 
-        var chkparobj = document.all("chkpar_" + nameArr[1]);
+        var chkparobj = document.all["chkpar_" + nameArr[1]];
         var isChecked = chkparobj.checked;
         var form_dbgride = document.all[fromName];
         // alert(form_dbgride.length);
         var length = form_dbgride.length;
-        for ( var i = 0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             var obj = form_dbgride.item(i);
             if (obj.type == "checkbox") {
                 obj.checked = isChecked;
@@ -1070,12 +1070,12 @@ function dbgrid_afterChecked(fromName) {
 
     if (nameArr[0] != "child") {
 
-        var chkparobj = document.all("chkpar_" + nameArr[1]);
+        var chkparobj = document.all["chkpar_" + nameArr[1]];
         var isChecked = chkparobj.checked;
         var form_dbgride = document.all[fromName];
         // alert(form_dbgride.length);
         var length = form_dbgride.length;
-        for ( var i = 0; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             var obj = form_dbgride.item(i);
             if (obj.type == "checkbox") {
                 obj.checked = isChecked;
@@ -1161,9 +1161,7 @@ function moveLast(tab) {
 function appendRecord(tab) {
     if (tab.rows.length == 0)
         tab.activeIndex = -1;
-
     var row = tab.insertRow(tab.activeIndex / 1 + 1);
-
     row.style.height = 25;
     // row.ondblclick=TRDbclick;
     row.onclick = TR_click;
@@ -1188,7 +1186,7 @@ function appendRecord(tab) {
         var cell = row.insertCell();
         cell.align = "center";
 
-        cell.width = document.all("Title_" + tab.id).rows[0].cells[cell.cellIndex].offsetWidth;
+        cell.width = document.all["Title_" + tab.id].rows[0].cells[cell.cellIndex].offsetWidth;
         cell.appendChild(checkbox);
 
     }
@@ -1198,7 +1196,7 @@ function appendRecord(tab) {
         if (visible[i] == "true") {
             var cell = row.insertCell();
 
-            cell.width = document.all("Title_" + tab.id).rows[0].cells[cell.cellIndex].offsetWidth;
+            cell.width = document.all["Title_" + tab.id].rows[0].cells[cell.cellIndex].offsetWidth;
 
             if (align[i] != undefined && align[i] != "undefined") {
                 cell.align = align[i];
@@ -1208,7 +1206,7 @@ function appendRecord(tab) {
 
                 var fieldOneCheckArr = fieldCheckArr[i].split(",");
 
-                for ( var j = 0; j < fieldOneCheckArr.length; j++) {
+                for (var j = 0; j < fieldOneCheckArr.length; j++) {
                     if (fieldOneCheckArr[j].length > 0) {
                         var fieldValueCheckArr = fieldOneCheckArr[j].split("=");
 
@@ -1276,7 +1274,7 @@ function deleteRecord(tab, datapiolt, m_objParam, delTitle) {
 
     }
     if (tab.checkbl.toLowerCase() == "true") {
-        for ( var i = tab.rows.length - 1; i > -1; i--) {
+        for (var i = tab.rows.length - 1; i > -1; i--) {
             if (tab.rows[i].operate != "insert") {
                 if (tab.rows[i].cells[0].children[0] != undefined && tab.rows[i].cells[0].children[0].checked) {
                     tab.rows[i].style.textDecorationLineThrough = true;
@@ -1351,7 +1349,7 @@ function gridPoseDelete(tab, datapiolt, m_objParam, delTitle) {
             if (tab.delmethodname != undefined && tab.delmethodname != "")
                 appendAttri(xmlDoc, actionNode, "methodname", tab.delmethodname);
 
-            for ( var i = 0; i < tab.rows.length; i++) {
+            for (var i = 0; i < tab.rows.length; i++) {
                 if (tab.rows[i].operate != "insert") {
 
                     if (tab.rows[i].cells[0].children[0] != undefined && tab.rows[i].cells[0].children[0].checked) {
@@ -1383,7 +1381,7 @@ function gridPoseDelete(tab, datapiolt, m_objParam, delTitle) {
 
             if (confirm(deltitle)) {
 
-                var retStr = ExecServerPrgm(g_jsContextPath+"/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
+                var retStr = ExecServerPrgm(g_jsContextPath + "/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
 
                 if (analyzeReturnXML(retStr) == "true") {
                     tab.AbsolutePage = "1";
@@ -1425,7 +1423,7 @@ function gridPoseDelete(tab, datapiolt, m_objParam, delTitle) {
                     deltitle = delTitle;
 
                 if (confirm(deltitle)) {
-                    var retStr = ExecServerPrgm(g_jsContextPath+"/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
+                    var retStr = ExecServerPrgm(g_jsContextPath + "/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
 
                     if (analyzeReturnXML(retStr) == "true") {
                         // tab.AbsolutePage= "1";
@@ -1507,7 +1505,7 @@ function updateRecord(tab, m_objParam) {
     var insertNode = null;
     var deleteNode = null;
 
-    for ( var i = 0; i < tab.rows.length; i++) {
+    for (var i = 0; i < tab.rows.length; i++) {
 
         // //////// 删除记录信息
         if (tab.rows[i].operate == "delete") {
@@ -1526,12 +1524,12 @@ function updateRecord(tab, m_objParam) {
 
             var reorderNode = createDeleteRecord(wherrstr, xmlDoc);
 
-            for ( var j = 0; j < tab.rows[i].cells.length; j++) {
+            for (var j = 0; j < tab.rows[i].cells.length; j++) {
                 if ((tab.rows[i].cells[j].fieldname != undefined) && (tab.rows[i].cells[j].fieldtype != undefined)) {
 
                     var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                            tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].oldvalue,
-                            tab.rows[i].cells[j].oldvalue);
+                        tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].oldvalue,
+                        tab.rows[i].cells[j].oldvalue);
                     reorderNode.appendChild(fieldNode);
 
                 }
@@ -1553,7 +1551,7 @@ function updateRecord(tab, m_objParam) {
 
             var RecorderNode = createRecorderNode(xmlDoc, "update");
 
-            for ( var j = 0; j < tab.rows[i].cells.length; j++) {
+            for (var j = 0; j < tab.rows[i].cells.length; j++) {
                 if ((tab.rows[i].cells[j].fieldname != undefined) && (tab.rows[i].cells[j].fieldtype != undefined)) {
                     // /检查输入项
                     if (checkTDValue(tab.rows[i].cells[j]) == "false")
@@ -1564,23 +1562,23 @@ function updateRecord(tab, m_objParam) {
                     if (tab.rows[i].cells[j].fieldtype.toLowerCase() == "dropdown") {
                         if (tab.rows[i].cells[j].attr != undefined) {
                             var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                    tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
-                                    tab.rows[i].cells[j].oldvalue);
+                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
+                                tab.rows[i].cells[j].oldvalue);
                             RecorderNode.appendChild(fieldNode);
 
                         }
                     } else if (tab.rows[i].cells[j].fieldtype.toLowerCase() == "other") {
                         if (tab.rows[i].cells[j].attr != undefined) {
                             var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                    tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
-                                    tab.rows[i].cells[j].oldvalue);
+                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
+                                tab.rows[i].cells[j].oldvalue);
                             RecorderNode.appendChild(fieldNode);
 
                         }
                     } else {
                         var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].innerText,
-                                tab.rows[i].cells[j].oldvalue);
+                            tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].innerText,
+                            tab.rows[i].cells[j].oldvalue);
                         RecorderNode.appendChild(fieldNode);
 
                     }
@@ -1592,7 +1590,7 @@ function updateRecord(tab, m_objParam) {
             if ((tab.rows[i].whStr != undefined) && (tab.rows[i].whStr != "")) {
                 var whereSArr = tab.rows[i].whStr.split("*");
 
-                for ( var j = 0; j < whereSArr.length; j++) {
+                for (var j = 0; j < whereSArr.length; j++) {
                     if (whereSArr[j] != undefined) {
                         var whArr = whereSArr[j].split("&");
 
@@ -1608,7 +1606,7 @@ function updateRecord(tab, m_objParam) {
 
                 var paramSArr = m_objParam.split("*");
 
-                for ( var j = 0; j < paramSArr.length; j++) {
+                for (var j = 0; j < paramSArr.length; j++) {
                     if ((paramSArr[j] != undefined) && (paramSArr[j] != "")) {
                         var fieldNode = createFieldStrNode(xmlDoc, paramSArr[j]);
                         RecorderNode.appendChild(fieldNode);
@@ -1633,7 +1631,7 @@ function updateRecord(tab, m_objParam) {
 
             var RecorderNode = createRecorderNode(xmlDoc, "insert");
 
-            for ( var j = 0; j < tab.rows[i].cells.length; j++) {
+            for (var j = 0; j < tab.rows[i].cells.length; j++) {
 
                 if ((tab.rows[i].cells[j].fieldname != undefined) && (tab.rows[i].cells[j].fieldtype != undefined)) {
                     // /检查输入项
@@ -1645,22 +1643,22 @@ function updateRecord(tab, m_objParam) {
                     if (tab.rows[i].cells[j].fieldtype.toLowerCase() == "dropdown") {
                         if (tab.rows[i].cells[j].attr != undefined) {
                             var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                    tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
-                                    tab.rows[i].cells[j].oldvalue);
+                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
+                                tab.rows[i].cells[j].oldvalue);
                             RecorderNode.appendChild(fieldNode);
                         }
                     } else if (tab.rows[i].cells[j].fieldtype.toLowerCase() == "other") {
                         if (tab.rows[i].cells[j].attr != undefined) {
                             var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                    tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
-                                    tab.rows[i].cells[j].oldvalue);
+                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].attr,
+                                tab.rows[i].cells[j].oldvalue);
                             RecorderNode.appendChild(fieldNode);
 
                         }
                     } else {
                         var fieldNode = createFieldNode(xmlDoc, tab.rows[i].cells[j].fieldname,
-                                tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].innerText,
-                                tab.rows[i].cells[j].oldvalue);
+                            tab.rows[i].cells[j].fieldtype, tab.rows[i].cells[j].innerText,
+                            tab.rows[i].cells[j].oldvalue);
                         RecorderNode.appendChild(fieldNode);
                     }
                 }
@@ -1672,7 +1670,7 @@ function updateRecord(tab, m_objParam) {
 
                 var paramSArr = m_objParam.split("*");
 
-                for ( var j = 0; j < paramSArr.length; j++) {
+                for (var j = 0; j < paramSArr.length; j++) {
                     if ((paramSArr[j] != undefined) && (paramSArr[j] != "")) {
                         var fieldNode = createFieldStrNode(xmlDoc, paramSArr[j]);
                         RecorderNode.appendChild(fieldNode);
@@ -1702,7 +1700,7 @@ function updateRecord(tab, m_objParam) {
 
         // alert(xmlDoc.xml);
 
-        retStr = ExecServerPrgm(g_jsContextPath+"/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
+        retStr = ExecServerPrgm(g_jsContextPath + "/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
 
         // //返回信息检查
 
@@ -1727,9 +1725,9 @@ function compentHidden(tab) {
     if (typeof (_TableNumber_Text) != "undefined")
         document.all["_TableNumber_Text"].getAttribute("_TD").innerText = document.all["_TableNumber_Text"].value;
 
-    var fieldtype = tab.fieldtype.split(",");
+    var fieldtype = tab.getAttribute("fieldtype").split(",");
 
-    for ( var i = 0; i < fieldtype.length; i++) {
+    for (var i = 0; i < fieldtype.length; i++) {
 
         if (fieldtype[i] == "dropdown") {
             dropInit();
@@ -1791,7 +1789,7 @@ function checkTDValue(element) {
 
 function editTable(tab) {
 
-    for ( var i = 0; i < tab.rows.length; i++) {
+    for (var i = 0; i < tab.rows.length; i++) {
 
         tab.rows[i].edit = "true";
 
@@ -1804,184 +1802,203 @@ function dataPilotButton_onclick() {
 
     var datapiolt = getOwnerTable(event.srcElement);
 
-    var tab = document.all[datapiolt.tableName];
+    var tab = document.all[datapiolt.getAttribute("tableName")];
 
     var tablename = tab.id;
 
     switch (event.srcElement.buttontype) {
-    case "moveFirst": {
+        case "moveFirst":
+        {
 
-        moveFirst(tab);
+            moveFirst(tab);
 
-        break;
-    }
-    case "prevPage": {
-        prevPage(tab);
-        break;
-    }
-    case "movePrev": {
-        movePrev(tab);
-        break;
-    }
-    case "moveNext": {
-        moveNext(tab);
-        break;
-    }
-    case "nextPage": {
-        nextPage(tab);
-        break;
-    }
-    case "moveLast": {
-        moveLast(tab);
-        break;
-    }
-
-    case "appendRecord": {
-        // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
-        if (isfireuserEvent(tablename + "_appendRecord_click"))
-            fireUserEvent(tablename + "_appendRecord_click", [ tab ]);
-        else {
-            // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
-            if (isfireuserEvent(tablename + "_beforeAppendRecord"))
-                if (!fireUserEvent(tablename + "_beforeAppendRecord", [ tab ]))
-                    break;
-            appendRecord(tab);
+            break;
+        }
+        case "prevPage":
+        {
+            prevPage(tab);
+            break;
+        }
+        case "movePrev":
+        {
+            movePrev(tab);
+            break;
+        }
+        case "moveNext":
+        {
+            moveNext(tab);
+            break;
+        }
+        case "nextPage":
+        {
+            nextPage(tab);
+            break;
+        }
+        case "moveLast":
+        {
+            moveLast(tab);
+            break;
         }
 
-        if (isfireuserEvent(tablename + "_afterAppend"))
-            fireUserEvent(tablename + "_afterAppend", [ tab ]);
+        case "appendRecord":
+        {
+            // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
+            if (isfireuserEvent(tablename + "_appendRecord_click"))
+                fireUserEvent(tablename + "_appendRecord_click", [ tab ]);
+            else {
+                // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
+                if (isfireuserEvent(tablename + "_beforeAppendRecord"))
+                    if (!fireUserEvent(tablename + "_beforeAppendRecord", [ tab ]))
+                        break;
+                appendRecord(tab);
+            }
 
-        break;
-    }
-    case "editRecord": {
-        if (isfireuserEvent(tablename + "_editRecord_click"))
-            fireUserEvent(tablename + "_editRecord_click", [ tab ]);
-        else {
-            // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
-            if (isfireuserEvent(tablename + "_beforeEditRecord"))
-                if (!fireUserEvent(tablename + "_beforeEditRecord", [ tab ]))
-                    break;
-            editRecord(tab);
+            if (isfireuserEvent(tablename + "_afterAppend"))
+                fireUserEvent(tablename + "_afterAppend", [ tab ]);
+
+            break;
+        }
+        case "editRecord":
+        {
+            if (isfireuserEvent(tablename + "_editRecord_click"))
+                fireUserEvent(tablename + "_editRecord_click", [ tab ]);
+            else {
+                // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
+                if (isfireuserEvent(tablename + "_beforeEditRecord"))
+                    if (!fireUserEvent(tablename + "_beforeEditRecord", [ tab ]))
+                        break;
+                editRecord(tab);
+            }
+
+            if (isfireuserEvent(tablename + "_afterEdit"))
+                fireUserEvent(tablename + "_afterEdit", [ tab ]);
+
+            break;
+        }
+        case "deleteRecord":
+        {
+            // //第三个参数表示外部添加条件信息 格式 name1&type1&value1*name2&type2&value2
+            // //第四个参数表示删除actionname 表示
+            if (isfireuserEvent(tablename + "_deleteRecord_click"))
+                fireUserEvent(tablename + "_deleteRecord_click", [ tab, datapiolt ]);
+            else {
+                // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
+                if (isfireuserEvent(tablename + "_beforeDeleteRecord"))
+                    if (!fireUserEvent(tablename + "_beforeDeleteRecord", [ tab, datapiolt ]))
+                        break;
+                deleteRecord(tab, null, "");
+            }
+
+            if (isfireuserEvent(tablename + "_afterDelete"))
+                fireUserEvent(tablename + "_afterDelete", [ tab ]);
+            break;
+        }
+        case "cancelRecord":
+        {
+            if (isfireuserEvent(tablename + "_cancelRecord_click"))
+                fireUserEvent(tablename + "_cancelRecord_click", [ tab, datapiolt ]);
+            else {
+                // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
+                if (isfireuserEvent(tablename + "_beforeCancelRecord"))
+                    if (!fireUserEvent(tablename + "_beforeCancelRecord", [ tab, datapiolt ]))
+                        break;
+                cancelRecord(tab, datapiolt);
+            }
+
+            if (isfireuserEvent(tablename + "_afterCancel"))
+                fireUserEvent(tablename + "_afterCancel", [ tab ]);
+            break;
+        }
+        case "updateRecord":
+        {
+            // //第二个参数表示外部添加条件信息 传入的是主数据集的主健信息
+            // //第三个参数表示更新actionname 表示
+            // //第四个参数表示添加actionname 表示
+            if (isfireuserEvent(tablename + "_updateRecord_click"))
+                fireUserEvent(tablename + "_updateRecord_click", [ tab ]);
+            else {
+                // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
+                if (isfireuserEvent(tablename + "_beforeUpdateRecord"))
+                    if (!fireUserEvent(tablename + "_beforeUpdateRecord", [ tab ]))
+                        break;
+                postGridRecord(tab, "");
+            }
+            if (isfireuserEvent(tablename + "_afterUpdate"))
+                fireUserEvent(tablename + "_afterUpdate", [ tab ]);
+
+            break;
         }
 
-        if (isfireuserEvent(tablename + "_afterEdit"))
-            fireUserEvent(tablename + "_afterEdit", [ tab ]);
+        case "print":
+        {
+            // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
+            if (isfireuserEvent(tablename + "_print_click"))
+                fireUserEvent(tablename + "_print_click", [ tab ]);
+            else
+                print_DBGrid(tablename);
 
-        break;
-    }
-    case "deleteRecord": {
-        // //第三个参数表示外部添加条件信息 格式 name1&type1&value1*name2&type2&value2
-        // //第四个参数表示删除actionname 表示
-        if (isfireuserEvent(tablename + "_deleteRecord_click"))
-            fireUserEvent(tablename + "_deleteRecord_click", [ tab, datapiolt ]);
-        else {
-            // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
-            if (isfireuserEvent(tablename + "_beforeDeleteRecord"))
-                if (!fireUserEvent(tablename + "_beforeDeleteRecord", [ tab, datapiolt ]))
-                    break;
-            deleteRecord(tab, null, "");
+            break;
+        }
+        case "excel":
+        {
+            // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
+            if (isfireuserEvent(tablename + "_excel_click"))
+                fireUserEvent(tablename + "_excel_click", [ tab ]);
+            else
+                printLExcel("0", tab);
+
+            break;
         }
 
-        if (isfireuserEvent(tablename + "_afterDelete"))
-            fireUserEvent(tablename + "_afterDelete", [ tab ]);
-        break;
-    }
-    case "cancelRecord": {
-        if (isfireuserEvent(tablename + "_cancelRecord_click"))
-            fireUserEvent(tablename + "_cancelRecord_click", [ tab, datapiolt ]);
-        else {
-            // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
-            if (isfireuserEvent(tablename + "_beforeCancelRecord"))
-                if (!fireUserEvent(tablename + "_beforeCancelRecord", [ tab, datapiolt ]))
-                    break;
-            cancelRecord(tab, datapiolt);
+        default:
+        {
+            if (isfireuserEvent(tablename + "_" + event.srcElement.buttontype + "_click"))
+                fireUserEvent(tablename + "_" + event.srcElement.buttontype + "_click", [ tab ]);
+
         }
-
-        if (isfireuserEvent(tablename + "_afterCancel"))
-            fireUserEvent(tablename + "_afterCancel", [ tab ]);
-        break;
-    }
-    case "updateRecord": {
-        // //第二个参数表示外部添加条件信息 传入的是主数据集的主健信息
-        // //第三个参数表示更新actionname 表示
-        // //第四个参数表示添加actionname 表示
-        if (isfireuserEvent(tablename + "_updateRecord_click"))
-            fireUserEvent(tablename + "_updateRecord_click", [ tab ]);
-        else {
-            // 2005-03-09 Orchid 新增回调函数判断是否可以继续操作
-            if (isfireuserEvent(tablename + "_beforeUpdateRecord"))
-                if (!fireUserEvent(tablename + "_beforeUpdateRecord", [ tab ]))
-                    break;
-            postGridRecord(tab, "");
-        }
-        if (isfireuserEvent(tablename + "_afterUpdate"))
-            fireUserEvent(tablename + "_afterUpdate", [ tab ]);
-
-        break;
-    }
-
-    case "print": {
-        // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
-        if (isfireuserEvent(tablename + "_print_click"))
-            fireUserEvent(tablename + "_print_click", [ tab ]);
-        else
-            print_DBGrid(tablename);
-
-        break;
-    }
-    case "excel": {
-        // //detailTable_TRDbclick 数据表格TR双击事件；detailTable_TDclick 数据表格TD单击事件
-        if (isfireuserEvent(tablename + "_excel_click"))
-            fireUserEvent(tablename + "_excel_click", [ tab ]);
-        else
-            printLExcel("0", tab);
-
-        break;
-    }
-
-    default: {
-        if (isfireuserEvent(tablename + "_" + event.srcElement.buttontype + "_click"))
-            fireUserEvent(tablename + "_" + event.srcElement.buttontype + "_click", [ tab ]);
-
-    }
 
     }
     // ////////
     initDBGrid(tablename);
 
     if (tab.dbformname != undefined)
-        gridfillform(tab, document.all(tab.dbformname));
+        gridfillform(tab, document.all[tab.dbformname]);
 
     if (isfireuserEvent(tablename + "_afteroperate_click"))
         fireUserEvent(tablename + "_afteroperate_click", [ tab ]);
 
     // 2005-03-09 Orchid 新增。解决添加后的处理问题
     switch (event.srcElement.buttontype) {
-    case "appendRecord": {
-        if (isfireuserEvent(tablename + "_afterAppendRecord"))
-            fireUserEvent(tablename + "_afterAppendRecord", [ tab ]);
-        break;
-    }
-    case "editRecord": {
-        if (isfireuserEvent(tablename + "_afterEditRecord"))
-            fireUserEvent(tablename + "_afterEditRecord", [ tab ]);
-        break;
-    }
-    case "cancelRecord": {
-        if (isfireuserEvent(tablename + "_afterCancelRecord"))
-            fireUserEvent(tablename + "_afterCancelRecord", [ tab ]);
-        break;
-    }
-    case "deleteRecord": {
-        if (isfireuserEvent(tablename + "_afterDeleteRecord"))
-            fireUserEvent(tablename + "_afterDeleteRecord", [ tab ]);
-        break;
-    }
-    case "updateRecord": {
-        if (isfireuserEvent(tablename + "_afterUpdateRecord"))
-            fireUserEvent(tablename + "_afterUpdateRecord", [ tab ]);
-        break;
-    }
+        case "appendRecord":
+        {
+            if (isfireuserEvent(tablename + "_afterAppendRecord"))
+                fireUserEvent(tablename + "_afterAppendRecord", [ tab ]);
+            break;
+        }
+        case "editRecord":
+        {
+            if (isfireuserEvent(tablename + "_afterEditRecord"))
+                fireUserEvent(tablename + "_afterEditRecord", [ tab ]);
+            break;
+        }
+        case "cancelRecord":
+        {
+            if (isfireuserEvent(tablename + "_afterCancelRecord"))
+                fireUserEvent(tablename + "_afterCancelRecord", [ tab ]);
+            break;
+        }
+        case "deleteRecord":
+        {
+            if (isfireuserEvent(tablename + "_afterDeleteRecord"))
+                fireUserEvent(tablename + "_afterDeleteRecord", [ tab ]);
+            break;
+        }
+        case "updateRecord":
+        {
+            if (isfireuserEvent(tablename + "_afterUpdateRecord"))
+                fireUserEvent(tablename + "_afterUpdateRecord", [ tab ]);
+            break;
+        }
     }
     // 2005-03-09 Orchid 新增。解决添加后的处理问题
 }
@@ -2052,12 +2069,12 @@ function gridfillform(gridobj, fromobj) {
         var filedvaluearr = gridobj.rows[gridobj.activeIndex].ValueStr.split(";");
     else {
         var filedvaluearr = new Array(filednamearr.length);
-        for ( var j = 0; j < filednamearr.length; j++)
+        for (var j = 0; j < filednamearr.length; j++)
             filedvaluearr[j] = "";
 
     }
 
-    for ( var i = 0; i < fromobj.length; i++) {
+    for (var i = 0; i < fromobj.length; i++) {
         var obj = fromobj.item(i);
 
         if (obj.disabled2 != undefined && obj.disabled2 == "true")
@@ -2076,7 +2093,7 @@ function gridfillform(gridobj, fromobj) {
 
         }
 
-        for ( var j = 0; j < filednamearr.length; j++) {
+        for (var j = 0; j < filednamearr.length; j++) {
             if (filednamearr[j].toUpperCase() == obj.id.toUpperCase()) {
 
                 if (obj.tagName.toUpperCase() == "INPUT") {
@@ -2130,16 +2147,16 @@ function gridfillform(gridobj, fromobj) {
                     obj.selectedIndex - 1;
 
                     if (obj.options.length > 0) {
-                        for ( var k = 0; k < obj.options.length; k++) {
+                        for (var k = 0; k < obj.options.length; k++) {
                             if (trimStr(obj.item(k).value) == trimStr(filedvaluearr[j])) {
                                 obj.selectedIndex = k;
                             }
 
                         }
                     } else {
-                        for ( var k = 0; k < gridobj.rows[gridobj.activeIndex].cells.length; k++) {
+                        for (var k = 0; k < gridobj.rows[gridobj.activeIndex].cells.length; k++) {
                             if (gridobj.rows[gridobj.activeIndex].cells[k].fieldname.toUpperCase() == filednamearr[j]
-                                    .toUpperCase()) {
+                                .toUpperCase()) {
 
                                 obj.text = gridobj.rows[gridobj.activeIndex].cells[k].innerText;
 
@@ -2176,21 +2193,21 @@ function ElementFillGrid(element) {
     if (gridobj == undefined)
         return;
 
-    var fromobj = document.all(gridobj.dbformname);
+    var fromobj = document.all[gridobj.dbformname];
     var filednamearr = gridobj.fieldname.split(",");
 
     if (gridobj.rows[gridobj.activeIndex].ValueStr != undefined)
         var filedvaluearr = gridobj.rows[gridobj.activeIndex].ValueStr.split(";");
     else {
         var filedvaluearr = new Array(filednamearr.length);
-        for ( var j = 0; j < filednamearr.length; j++)
+        for (var j = 0; j < filednamearr.length; j++)
             filedvaluearr[j] = "";
 
     }
-    for ( var i = 0; i < fromobj.length; i++) {
+    for (var i = 0; i < fromobj.length; i++) {
         var obj = fromobj.item(i);
 
-        for ( var j = 0; j < filednamearr.length; j++) {
+        for (var j = 0; j < filednamearr.length; j++) {
             if (filednamearr[j].toUpperCase() == obj.id.toUpperCase()) {
                 if (obj.type == "checkbox" || obj.type == "radio") {
                     if (obj.checked)
@@ -2221,7 +2238,7 @@ function ElementFillGrid(element) {
             }
         }
 
-        for ( var j = 0; j < gridobj.rows[gridobj.activeIndex].cells.length; j++) {
+        for (var j = 0; j < gridobj.rows[gridobj.activeIndex].cells.length; j++) {
 
             if (gridobj.rows[gridobj.activeIndex].cells[j].fieldname != undefined)
                 if (gridobj.rows[gridobj.activeIndex].cells[j].fieldname.toUpperCase() == obj.id.toUpperCase()) {
@@ -2246,7 +2263,7 @@ function ElementFillGrid(element) {
 
     }
     var valuStr = "undefined";
-    for ( var j = 0; j < filednamearr.length; j++) {
+    for (var j = 0; j < filednamearr.length; j++) {
 
         if (valuStr == "undefined") {
             if (filedvaluearr[j] == "")
@@ -2290,7 +2307,7 @@ function postGridForm(gridobj, m_objParam) {
     var fieldCheckArr = gridobj.fieldCheck.split(";");
     var filedcn = gridobj.fieldCN.split(",");
 
-    for ( var i = 0; i < gridobj.rows.length; i++) {
+    for (var i = 0; i < gridobj.rows.length; i++) {
 
         // //////// 删除记录信息
         if (gridobj.rows[i].operate == "delete") {
@@ -2309,13 +2326,13 @@ function postGridForm(gridobj, m_objParam) {
 
             var reorderNode = createDeleteRecord(wherrstr, xmlDoc);
 
-            for ( var j = 0; j < gridobj.rows[i].cells.length; j++) {
+            for (var j = 0; j < gridobj.rows[i].cells.length; j++) {
                 if ((gridobj.rows[i].cells[j].fieldname != undefined)
-                        && (gridobj.rows[i].cells[j].fieldtype != undefined)) {
+                    && (gridobj.rows[i].cells[j].fieldtype != undefined)) {
 
                     var fieldNode = createFieldNode(xmlDoc, gridobj.rows[i].cells[j].fieldname,
-                            gridobj.rows[i].cells[j].fieldtype, gridobj.rows[i].cells[j].oldvalue,
-                            gridobj.rows[i].cells[j].oldvalue);
+                        gridobj.rows[i].cells[j].fieldtype, gridobj.rows[i].cells[j].oldvalue,
+                        gridobj.rows[i].cells[j].oldvalue);
                     reorderNode.appendChild(fieldNode);
 
                 }
@@ -2332,7 +2349,7 @@ function postGridForm(gridobj, m_objParam) {
             var filedvaluearr = gridobj.rows[i].ValueStr.split(";");
 
             gridobj.activeIndex = i;
-            gridfillform(gridobj, document.all(gridobj.dbformname));
+            gridfillform(gridobj, document.all[gridobj.dbformname]);
 
             if (insertNode == null)
                 insertNode = createActionNode(xmlDoc, gridobj.actionname);
@@ -2342,13 +2359,13 @@ function postGridForm(gridobj, m_objParam) {
 
             var RecorderNode = createRecorderNode(xmlDoc, "insert");
 
-            for ( var j = 0; j < filednamearr.length; j++) {
+            for (var j = 0; j < filednamearr.length; j++) {
 
                 elementobj = undefined;
 
-                for ( var k = 0; k < document.all(gridobj.dbformname).length; k++) {
-                    if (filednamearr[j].toUpperCase() == document.all(gridobj.dbformname).item(k).id.toUpperCase()) {
-                        var elementobj = document.all(gridobj.dbformname).item(k);
+                for (var k = 0; k < document.all[gridobj.dbformname].length; k++) {
+                    if (filednamearr[j].toUpperCase() == document.all[gridobj.dbformname].item(k).id.toUpperCase()) {
+                        var elementobj = document.all[gridobj.dbformname].item(k);
                         break;
                     }
                 }
@@ -2357,7 +2374,7 @@ function postGridForm(gridobj, m_objParam) {
 
                     var fieldOneCheckArr = fieldCheckArr[j].split(",");
 
-                    for ( var k = 0; k < fieldOneCheckArr.length; k++) {
+                    for (var k = 0; k < fieldOneCheckArr.length; k++) {
                         if (fieldOneCheckArr[k].length > 0) {
                             var fieldValueCheckArr = fieldOneCheckArr[k].split("=");
 
@@ -2389,7 +2406,7 @@ function postGridForm(gridobj, m_objParam) {
 
                 var paramSArr = m_objParam.split("*");
 
-                for ( var j = 0; j < paramSArr.length; j++) {
+                for (var j = 0; j < paramSArr.length; j++) {
                     if ((paramSArr[j] != undefined) && (paramSArr[j] != "")) {
                         var fieldNode = createFieldStrNode(xmlDoc, paramSArr[j]);
                         RecorderNode.appendChild(fieldNode);
@@ -2408,7 +2425,7 @@ function postGridForm(gridobj, m_objParam) {
 
             gridobj.activeIndex = i;
 
-            gridfillform(gridobj, document.all(gridobj.dbformname));
+            gridfillform(gridobj, document.all[gridobj.dbformname]);
 
             if (updateNode == null)
                 updateNode = createActionNode(xmlDoc, gridobj.actionname);
@@ -2418,13 +2435,13 @@ function postGridForm(gridobj, m_objParam) {
 
             var RecorderNode = createRecorderNode(xmlDoc, "update");
 
-            for ( var j = 0; j < filednamearr.length; j++) {
+            for (var j = 0; j < filednamearr.length; j++) {
 
                 elementobj = undefined;
 
-                for ( var k = 0; k < document.all(gridobj.dbformname).length; k++) {
-                    if (filednamearr[j].toUpperCase() == document.all(gridobj.dbformname).item(k).id.toUpperCase()) {
-                        var elementobj = document.all(gridobj.dbformname).item(k);
+                for (var k = 0; k < document.all[gridobj.dbformname].length; k++) {
+                    if (filednamearr[j].toUpperCase() == document.all[gridobj.dbformname].item(k).id.toUpperCase()) {
+                        var elementobj = document.all[gridobj.dbformname].item(k);
                         break;
                     }
                 }
@@ -2433,7 +2450,7 @@ function postGridForm(gridobj, m_objParam) {
 
                     var fieldOneCheckArr = fieldCheckArr[j].split(",");
 
-                    for ( var k = 0; k < fieldOneCheckArr.length; k++) {
+                    for (var k = 0; k < fieldOneCheckArr.length; k++) {
                         if (fieldOneCheckArr[k].length > 0) {
                             var fieldValueCheckArr = fieldOneCheckArr[k].split("=");
 
@@ -2464,7 +2481,7 @@ function postGridForm(gridobj, m_objParam) {
 
                 var paramSArr = m_objParam.split("*");
 
-                for ( var j = 0; j < paramSArr.length; j++) {
+                for (var j = 0; j < paramSArr.length; j++) {
                     if ((paramSArr[j] != undefined) && (paramSArr[j] != "")) {
                         var fieldNode = createFieldStrNode(xmlDoc, paramSArr[j]);
                         RecorderNode.appendChild(fieldNode);
@@ -2498,7 +2515,7 @@ function postGridForm(gridobj, m_objParam) {
     // ///向上传送信息
     if (rootNode.childNodes.length > 0) {
         // alert(xmlDoc.xml);
-        retStr = ExecServerPrgm(g_jsContextPath+"/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
+        retStr = ExecServerPrgm(g_jsContextPath + "/BI/util/SqlExcuteJsp.jsp", "POST", "sys_request_xml=" + xmlDoc.xml);
 
         checkedRetStr = analyzeReturnXML(retStr);
         // //返回信息检查
@@ -2561,13 +2578,13 @@ function domousedown() {
         ;
 
         if (window.event.x + document.body.scrollLeft + divTi.scrollLeft > absLeft + obj.offsetLeft + obj.offsetWidth
-                - 13) {
+            - 13) {
 
             curTd = obj;
             isMouDown = true;
             OldPlace = window.event.x + window.document.body.scrollLeft + divTi.scrollLeft;
         } else if (window.event.x + document.body.scrollLeft + divTi.scrollLeft > absLeft + obj.offsetLeft
-                && window.event.x + document.body.scrollLeft + divTi.scrollLeft < absLeft + obj.offsetLeft + 13) {
+            && window.event.x + document.body.scrollLeft + divTi.scrollLeft < absLeft + obj.offsetLeft + 13) {
             if (nextTd.cellIndex == 0)
                 return;
 
@@ -2613,10 +2630,10 @@ function domousemove() {
         // alert("111");
 
         if (window.event.x + document.body.scrollLeft + divTi.scrollLeft > absLeft + obj.offsetLeft + obj.offsetWidth
-                - 13
-                || (window.event.x + document.body.scrollLeft + divTi.scrollLeft > absLeft + obj.offsetLeft
-                        && window.event.x + document.body.scrollLeft + divTi.scrollLeft < absLeft + obj.offsetLeft + 13 && obj.cellIndex != 1)
-                || isMouDown) {
+            - 13
+            || (window.event.x + document.body.scrollLeft + divTi.scrollLeft > absLeft + obj.offsetLeft
+            && window.event.x + document.body.scrollLeft + divTi.scrollLeft < absLeft + obj.offsetLeft + 13 && obj.cellIndex != 1)
+            || isMouDown) {
             try {
                 divTou.style.cursor = "col-resize";
             } catch (ex) {
@@ -2661,7 +2678,7 @@ function domouseup() {
 
             var tdIndex = countOT(curTd);
 
-            for ( var i = 0; i < document.all[objTableName].rows.length; i++) {
+            for (var i = 0; i < document.all[objTableName].rows.length; i++) {
                 var otd = document.all[objTableName].rows[i].cells[tdIndex];
                 if (otd != null) {
                     otd.width = otd.width - (OldPlace - nowPlace);
@@ -2670,7 +2687,7 @@ function domouseup() {
             }
             ;
 
-            for ( var i = 0; i < document.all[objTableName].rows[0].cells.length; i++) {
+            for (var i = 0; i < document.all[objTableName].rows[0].cells.length; i++) {
 
                 document.all["Title_" + objTableName].rows[0].cells[i].width = document.all[objTableName].rows[0].cells[i].offsetWidth;
 
@@ -2683,7 +2700,7 @@ function domouseup() {
             isMouDown = false;
 
             if (document.all[objTableName].rows.length > 0)
-                for ( var i = 0; i < document.all[objTableName].rows[0].cells.length; i++) {
+                for (var i = 0; i < document.all[objTableName].rows[0].cells.length; i++) {
 
                     document.all["Title_" + objTableName].rows[0].cells[i].width = document.all[objTableName].rows[0].cells[i].offsetWidth;
 
@@ -2699,13 +2716,13 @@ function domouseup() {
 
 function cellPerentTowidth(tableName) {
 
-    for ( var i = 0; i < document.all[tableName].rows.length; i++) {
-        for ( var j = 0; j < document.all[tableName].rows[i].cells.length; j++)
+    for (var i = 0; i < document.all[tableName].rows.length; i++) {
+        for (var j = 0; j < document.all[tableName].rows[i].cells.length; j++)
             document.all[tableName].rows[i].cells[j].width = document.all[tableName].rows[i].cells[j].offsetWidth;
 
     }
 
-    for ( var i = 0; i < document.all["Title_" + tableName].rows[0].cells.length; i++) {
+    for (var i = 0; i < document.all["Title_" + tableName].rows[0].cells.length; i++) {
 
         var otd = document.all["Title_" + tableName].rows[0].cells[i];
 
@@ -2723,7 +2740,7 @@ function countOT(otd) {
 
     if (otd == null || otd.tagName.toUpperCase() != "TD")
         return;
-    for ( var i = 0; i < otd.parentElement.cells.length; i++) {
+    for (var i = 0; i < otd.parentElement.cells.length; i++) {
         var td = otd.parentElement.cells[i];
         if (td == otd)
             return i;
@@ -2749,7 +2766,7 @@ function doscroll() {
     if (document.all[tableName].isTotal == "true")
         document.all["divTotal_" + tableName].scrollLeft = disWid;
 
-};
+}
 var reLoadCount = 0;
 
 function body_afterResize(el) {
@@ -2789,7 +2806,7 @@ function initDBGrid(tableName) {
 
     _DbGridObject = document.all[tableName];
 
-    for ( var i = 0; i < _DbGridObject.rows.length; i++) {
+    for (var i = 0; i < _DbGridObject.rows.length; i++) {
 
         if (isfireuserEvent(tableName + "_TRDbclick"))
             _DbGridObject.rows[i].ondblclick = window[tableName + "_TRDbclick"];
@@ -2798,15 +2815,15 @@ function initDBGrid(tableName) {
             _DbGridObject.rows[i].ondblclick = window[tableName + "_TRclick"];
 
         if (isfireuserEvent(tableName + "_TDclick"))
-            for ( var j = 0; j < _DbGridObject.rows[i].cells.length; j++) {
+            for (var j = 0; j < _DbGridObject.rows[i].cells.length; j++) {
                 _DbGridObject.rows[i].cells[j].onclick = window[tableName + "_TDclick"];
 
             }
     }
 
     if (_DbGridObject.dbformname != undefined) {
-        var fromobj = document.all(_DbGridObject.dbformname);
-        for ( var i = 0; i < fromobj.length; i++) {
+        var fromobj = document.all[_DbGridObject.dbformname];
+        for (var i = 0; i < fromobj.length; i++) {
             var obj = fromobj.item(i);
             if (obj.tagName.toUpperCase() == "INPUT") {
                 obj.disabled = true;
@@ -2830,7 +2847,7 @@ function initDBGrid(tableName) {
         _DbGridObject.rows[_DbGridObject.activeIndex].className = "gridSelectedHighlight";
 
     if (_DbGridObject.dbformname != undefined)
-        gridfillform(_DbGridObject, document.all(_DbGridObject.dbformname));
+        gridfillform(_DbGridObject, document.all[_DbGridObject.dbformname]);
 
     // 数据集求和
     tableTotal(_DbGridObject);
@@ -2865,11 +2882,11 @@ function initDBGrid(tableName) {
 function tableTotal(tab) {
     if (tab.isTotal == "true") {
         var toatalCount = 0;
-        for ( var i = 0; i < document.all["Title_" + tab.id].rows[0].cells.length; i++) {
+        for (var i = 0; i < document.all["Title_" + tab.id].rows[0].cells.length; i++) {
 
             if (tab.rows.length > 0 && trimStr(tab.rows[0].cells[i].fieldtype.toLowerCase()) == "number") {
                 toatalCount = 0;
-                for ( var j = 0; j < tab.rows.length; j++) {
+                for (var j = 0; j < tab.rows.length; j++) {
                     if (!isNaN(parseFloat(trimStr(tab.rows[j].cells[i].innerText))))
                         toatalCount = toatalCount + parseFloat(trimStr(tab.rows[j].cells[i].innerText));
 
@@ -2884,26 +2901,22 @@ function tableTotal(tab) {
 function init_printConent(tableName) {
     var tableObject = document.all[tableName];
 
-    var sqlStr = tableObject.SQLStr;
+    var sqlStr = tableObject.getAttribute("SQLStr");
 
     var edindex = sqlStr.indexOf("from");
     fieldStr = sqlStr.substring(6, edindex);
 
     var fieldArr = fieldStr.split(",");
-    var enumType = tableObject.enumType.split(",");
-    var fieldtype = tableObject.fieldtype.split(",");
+    var enumType = tableObject.getAttribute("enumType").split(",");
+    var fieldtype = tableObject.getAttribute("fieldtype").split(",");
 
-    for ( var i = 0; i < fieldtype.length; i++) {
+    for (var i = 0; i < fieldtype.length; i++) {
         if (fieldtype[i] == "dropdown") {
             fieldArr[i] = " (select ENUITEMLABEL from ptEnuDetail where EnuItemValue=" + fieldArr[i] + " and EnuType='"
-                    + enumType[i] + "') ";
-
+                + enumType[i] + "') ";
         }
-
     }
-
     document.all[tableName].printSQL = "SELECT " + fieldArr.join(",") + " FROM " + sqlStr.substring(edindex + 4);
-
 }
 
 // ////////////////////////////////////////////打印excel///////////////////////////////////////////////////////
@@ -2914,12 +2927,12 @@ var visibleArr;
 // 打印列表页
 function printLExcel(printtype, tab) {
 
-    var titleTab = document.all("Title_" + tab.id)
+    var titleTab = document.all["Title_" + tab.id]
     titleArr = new Array();
     var TmptitleArr = tab.fieldCN.split(",");
     visibleArr = tab.visible.split(",");
     var index = 0;
-    for ( var i = 0; i < TmptitleArr.length; i++) {
+    for (var i = 0; i < TmptitleArr.length; i++) {
         if (visibleArr[i] != "false") {
             titleArr[index] = TmptitleArr[i];
             index = index + 1;
@@ -2959,17 +2972,17 @@ function printLExcel(printtype, tab) {
 
         // ExecServerPrgm_synsh(g_jsContextPath+"/BI/util/expExcelJsp.jsp","POST","xx="+encode(xmlDoc.xml),"","",tab.id,open_Excel);
 
-        openWindowWithPost(g_jsContextPath+"/BI/util/expExcelJsp.jsp", "Excel", encode(xmlDoc.xml));
+        openWindowWithPost(g_jsContextPath + "/BI/util/expExcelJsp.jsp", "Excel", encode(xmlDoc.xml));
         return;
     }
 
     // //////////打印当前页记录
     if (printtype != "0") {
-        for ( var i = 0; i < tab.rows.length; i++) {
+        for (var i = 0; i < tab.rows.length; i++) {
             dataArr[i] = new Array();
             index = 0;
             TmptitleArr = tab.rows[i].ValueStr.split(";");
-            for ( var j = 0; j < visibleArr.length; j++) {
+            for (var j = 0; j < visibleArr.length; j++) {
 
                 if (visibleArr[j] != "false") {
                     dataArr[i][index] = TmptitleArr[j];
@@ -3006,11 +3019,11 @@ function openWindowWithPost(url, name, value) {
 function Refresh_Excel(id, retStr) {
     if (retStr != "") {
         retArr = retStr.split("&&");
-        for ( var i = 0; i < retArr.length; i++) {
+        for (var i = 0; i < retArr.length; i++) {
             dataArr[i] = new Array();
             TmptitleArr = retArr[i].split("^^");
             index = 0;
-            for ( var j = 0; j < visibleArr.length; j++) {
+            for (var j = 0; j < visibleArr.length; j++) {
 
                 if (visibleArr[j] != "false") {
                     dataArr[i][index] = TmptitleArr[j];
@@ -3031,15 +3044,15 @@ function writeDataExcel() {
     xlsheet.PageSetup.Orientation = 2; // 横向
 
     var pStr = new Array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-            "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL",
-            "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV");
+        "T", "U", "V", "W", "X", "Y", "Z", "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL",
+        "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AV");
     var pPos = "";
     with (xlsheet) {
         // 表格
         pPos = pStr[0] + (1) + ":" + pStr[titleArr.length > 0 ? titleArr.length - 1 : titleArr.length]
-                + (dataArr.length + 1);
+            + (dataArr.length + 1);
 
-        for ( var i = 0; i < titleArr.length; i++) {
+        for (var i = 0; i < titleArr.length; i++) {
             pPos = pStr[i] + (1);
             pPos += ":" + pPos;
             range(pPos).Font.Bold = true;
@@ -3048,8 +3061,8 @@ function writeDataExcel() {
 
         }
         // 内容
-        for ( var i = 0; i < dataArr.length; i++) {
-            for ( var j = 0; j < dataArr[0].length; j++) {
+        for (var i = 0; i < dataArr.length; i++) {
+            for (var j = 0; j < dataArr[0].length; j++) {
                 pPos = pStr[j] + (i + 2);
                 pPos += ":" + pPos;
 
@@ -3058,7 +3071,7 @@ function writeDataExcel() {
             }
         }
         // 宽度自适应
-        for ( var j = 0; j < titleArr.length; j++) {
+        for (var j = 0; j < titleArr.length; j++) {
             pPos = pStr[j];
             pPos += ":" + pPos;
             Columns(pPos).EntireColumn.AutoFit;

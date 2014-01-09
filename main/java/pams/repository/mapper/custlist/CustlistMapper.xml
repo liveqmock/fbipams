@@ -206,17 +206,17 @@
                 b.cts_margin_bal,
                 (select opername from ptoper where operid=a.custmgr_id) as custmgr_name
             from SV_CMS_CUSTBASE a,
-                (select t.branch_id,
-                    t.cust_no,
-                    max(t.aum_month_curr) as aum_month_curr,
-                    max(t.aum_month_last) as aum_month_last,
-                    max(t.aum_timepoint_dep) as aum_timepoint_dep,
+                (select t.base_branch_id as branch_id,
+                    t.base_custno_ecif as cust_no,
+                    max(t.asset_aum_mad) as aum_month_curr,
+                    max(t.asset_aum_lm_mad) as aum_month_last,
+                    max(t.asset_aum_tp) as aum_timepoint_dep,
                     max(t.loan_bal) as loan_bal,
-                    max(t.cts_margin_bal) as cts_margin_bal
-                from sv_cls_custinfo t
+                    max(t.cts_bal_margin) as cts_margin_bal
+                from cls_rptdata t
                 where t.rpt_type = #{rptType}
                     and t.rpt_date = #{rptDate}
-                group by t.branch_id, t.cust_no) b
+                group by t.base_branch_id, t.base_custno_ecif) b
             where a.branch_id = b.branch_id
                 and a.cust_no = b.cust_no
                 and a.branch_id = #{branchId}

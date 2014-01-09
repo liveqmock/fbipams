@@ -15,11 +15,11 @@
 
     <script language="javascript" src="operaJsp.js"></script>
 
-    <LINK href="<%=contextPath%>/dhtmlx/codebase/dhtmlxlayout.css" type="text/css" rel="stylesheet">
-    <LINK href="<%=contextPath%>/dhtmlx/codebase/skins/dhtmlxlayout_dhx_skyblue.css" type="text/css" rel="stylesheet">
-    <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxcommon.js"></script>
-    <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxlayout.js"></script>
-    <script language="javascript" src="<%=contextPath%>/dhtmlx/codebase/dhtmlxcontainer.js"></script>
+    <LINK href="<%=contextPath%>/dhtmlx/dhtmlxLayout/codebase/dhtmlxlayout.css" type="text/css" rel="stylesheet">
+    <LINK href="<%=contextPath%>/dhtmlx/dhtmlxLayout/codebase/skins/dhtmlxlayout_dhx_skyblue.css" type="text/css" rel="stylesheet">
+    <script language="javascript" src="<%=contextPath%>/dhtmlx/dhtmlxLayout/codebase/dhtmlxcommon.js"></script>
+    <script language="javascript" src="<%=contextPath%>/dhtmlx/dhtmlxLayout/codebase/dhtmlxlayout.js"></script>
+    <script language="javascript" src="<%=contextPath%>/dhtmlx/dhtmlxLayout/codebase/dhtmlxcontainer.js"></script>
 
 </head>
 
