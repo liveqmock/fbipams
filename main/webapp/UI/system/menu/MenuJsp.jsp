@@ -25,7 +25,7 @@
             .setfieldName("keycode,MenuLabel,MenuAction,levelindex,MenuDesc,targetmachine");
         dbGrid.setfieldWidth("5,0,12,35,7,14,10");
         dbGrid.setfieldType("text,text,text,text,text,text");
-        dbGrid.setfieldCheck(";textLength=40; textLength=400;isNull=false,intLength=3;textLength=50;textLength=30");
+        dbGrid.setfieldCheck(";textLength=100; textLength=400;isNull=false,intLength=3;textLength=50;textLength=30");
         dbGrid.setpagesize(30);
         dbGrid.setCheck(true);
         dbGrid.setWhereStr(" and (1>1) order by Levelidx");

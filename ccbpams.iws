@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pub/tools/PlatformHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxcommon.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxcontainer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage_layout.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage_tab.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/js/jquery-1.3.2.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/js/jquery.jmpopups-0.5.1.js" />
+    <list default="true" readonly="true" id="965295ec-3614-4bd2-8cba-55fe1abe5cce" name="Default" comment="BUG修改：营销反馈时的日期问题&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUMX1Format.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry_sd.xhtml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/lang/en.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/lang/zh-cn.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/lang/zh-tw.js" afterPath="" />
@@ -20,498 +15,8 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/bg.jpg" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/datepicker.css" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/main/webapp/My97DatePicker/开发包/skin/whyGreen/img.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxaccordion.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxcommon.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxcontainer.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxlayout.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxlayout.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxtree.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\dhtmlxtree.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\ext\dhtmlxtree_dragin.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\ext\dhtmlxtree_ed.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\ext\dhtmlxtree_er.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\ext\dhtmlxtree_json.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\ext\dhtmlxtree_start.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\icons\accord_biz.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\icons\accord_manage.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\icons\accord_support.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\icons\editor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\icons\graph-sm.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\but_cut.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\book.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\book_titel.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\but_cut.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\close2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconSafe.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line1_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\line4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\minus5_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\plus5_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluebooks\tombs.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconCheckAll_2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconFlag.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconGraph.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconSound.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconTexts.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconWrite1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\iconWrite2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_bluefolders\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\tombs.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_books\tombs_open.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconFlag.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconGraph.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconSound.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconTexts.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconWrite1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\iconWrite2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_dhx_skyblue\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconFlag.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconGraph.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconSound.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconTexts.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconWrite1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\iconWrite2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\safe_close.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_scbrblue\safe_open.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconFlag.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconGraph.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconSound.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconTexts.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconWrite1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\iconWrite2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_vista\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconChecked.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconFlag.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconGraph.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconSound.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconTexts.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconWrite1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\iconWrite2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\leaves.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_winstyle\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\blank.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\books_close.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\books_open.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconText.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\leaf2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\leaf3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\leaf_2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\tombs.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\csh_yellowbooks\tombs_open.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_black\dhxacc_bg_hover.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_black\dhxacc_bg_normal.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_blue\dhxacc_bg_hover.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_blue\dhxacc_bg_normal.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_skyblue\dhxacc_bg_hover.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_skyblue\dhxacc_bg_normal.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_skyblue\dhxacc_bg_sb.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_skyblue\dhxacc_btns.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_web\dhxacc_bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxaccord_dhx_web\dhxacc_btns.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_collapsedhor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_collapsedver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_cpanel_btn_dock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_cpanel_btn_undock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_drag_hor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_drag_ver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_hor1l.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_hor1r.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_hor2l.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_hor2r.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_progress.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_progress_global.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_ver1b.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_ver1t.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_ver2b.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_black\dhxlayout_ver2t.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_collapsedhor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_collapsedver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_cpanel_btn_dock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_cpanel_btn_undock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_drag_hor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_drag_ver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_hor1l.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_hor1r.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_hor2l.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_hor2r.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_progress.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_progress_global.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_ver1b.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_ver1t.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_ver2b.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_blue\dhxlayout_ver2t.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_bg.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_bg_sb.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_btns.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_collapsedhor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_collapsedver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_cpanel_btn_dock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_cpanel_btn_undock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_drag_hor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_drag_ver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_progress.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_skyblue\dhxlayout_progress_global.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_bg_sb.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_btns.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_drag_hor.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_drag_ver.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_progress.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\dhxlayout_dhx_web\dhxlayout_progress_global.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\folderClosed.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\folderOpen.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\iconCheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\iconCheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\iconCheckGray.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\iconUncheckAll.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\iconUncheckDis.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\leaf.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line1_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\line4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\lock.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus5_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\minus_ar.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus1.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus2.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus2_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus3.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus3_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus4.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus4_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus5.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus5_rtl.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\plus_ar.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\radio_off.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\radio_on.gif" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\imgs\sky_blue_sel_tree.png" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4a.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4c.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4e.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4f.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4j.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4l.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern4w.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern5e.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern5u.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern5w.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\patterns\dhtmlxlayout_pattern6c.js" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxaccordion_dhx_black.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxaccordion_dhx_blue.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxaccordion_dhx_skyblue.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxaccordion_dhx_web.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxlayout_dhx_black.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxlayout_dhx_blue.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxlayout_dhx_skyblue.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\skins\dhtmlxlayout_dhx_web.css" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\dhtmlx\codebase\tree3.xml" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\dockPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\homePage_old.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\leaderPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\menuPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\menuPage_old.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\roofPage.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\roofPage_old.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame\sys.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\security\loginPage_old.jsp" afterPath="" />
-      <change type="DELETED" beforePath="E:\WorkSpace\git-fbipams\src\fbipams\projectFilesBackup\main\Main.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/action/ActionJsp.js" afterPath="$PROJECT_DIR$/main/webapp/UI/system/action/ActionJsp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/action/ActionJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/action/ActionJsp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java" afterPath="$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java" afterPath="$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/CustlistService.java" afterPath="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/CustlistService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" afterPath="$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" afterPath="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/deptUser/DeptJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/deptUser/DeptJsp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/enum/EnumJsp.js" afterPath="$PROJECT_DIR$/main/webapp/UI/system/enum/EnumJsp.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/enum/EnumJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/enum/EnumJsp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/deptUser/Passwordedit.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/deptUser/Passwordedit.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml" afterPath="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/menu/MenuJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/menu/MenuJsp.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ccbpams.iws" afterPath="$PROJECT_DIR$/ccbpams.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/js/dbgrid.js" afterPath="$PROJECT_DIR$/main/webapp/js/dbgrid.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/js/dbutil.js" afterPath="$PROJECT_DIR$/main/webapp/js/dbutil.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/css/default.css" afterPath="$PROJECT_DIR$/main/webapp/css/default.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar.css" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar.js" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/ext/dhtmlxtabbar_deprecated.js" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/ext/dhtmlxtabbar_deprecated.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar_start.js" afterPath="$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxtabbar_start.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/css/diytabbar.css" afterPath="$PROJECT_DIR$/main/webapp/css/diytabbar.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/css/fbicbs.css" afterPath="$PROJECT_DIR$/main/webapp/css/fbicbs.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/css/form.css" afterPath="$PROJECT_DIR$/main/webapp/css/form.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" afterPath="$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/pages/security/loginassistor.jsp" afterPath="$PROJECT_DIR$/main/webapp/pages/security/loginassistor.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/menu/mainmenu.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/menu/mainmenu.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/operaRole/operaJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/operaRole/operaJsp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/platform/ptoplogQry.xhtml" afterPath="$PROJECT_DIR$/main/webapp/UI/platform/ptoplogQry.xhtml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/support/pub.js" afterPath="$PROJECT_DIR$/main/webapp/UI/support/pub.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/UI/system/resRole/roleJsp.jsp" afterPath="$PROJECT_DIR$/main/webapp/UI/system/resRole/roleJsp.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main/webapp/js/xmlHttp.js" afterPath="$PROJECT_DIR$/main/webapp/js/xmlHttp.js" />
     </list>
     <list id="fc351307-c18c-4ee6-8fc3-13261485611a" name="New changelist" comment="" />
     <ignored path="ccbpams.iws" />
@@ -603,55 +108,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="custBaseMng.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custmng/custBaseMng.xhtml">
+      <file leaf-file-name="DBGrid.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pub/platform/db/DBGrid.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="76" selection-start="2969" selection-end="2969" vertical-scroll-proportion="-5.5" vertical-offset="1056" max-vertical-offset="4730">
+            <state line="1229" column="212" selection-start="46390" selection-end="46413" vertical-scroll-proportion="-3.5384614" vertical-offset="26616" max-vertical-offset="28446">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RptA11V1DataLoad.xhtml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml">
+      <file leaf-file-name="dbgrid.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/webapp/js/dbgrid.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="80" selection-start="1556" selection-end="1556" vertical-scroll-proportion="-9.321428" vertical-offset="289" max-vertical-offset="1232">
+            <state line="1800" column="9" selection-start="52671" selection-end="52671" vertical-scroll-proportion="0.0" vertical-offset="40657" max-vertical-offset="67892">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataETLAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java">
+      <file leaf-file-name="custInfoQry_sd.xhtml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry_sd.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="18" selection-start="3794" selection-end="3794" vertical-scroll-proportion="0.0" vertical-offset="2038" max-vertical-offset="4004">
+            <state line="93" column="47" selection-start="4094" selection-end="4094" vertical-scroll-proportion="-3.357143" vertical-offset="1952" max-vertical-offset="3454">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustMngService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/service/custmng/CustMngService.java">
+      <file leaf-file-name="RptAUMX1Format.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUMX1Format.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="891" selection-end="1001" vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="2332">
+            <state line="16" column="102" selection-start="522" selection-end="522" vertical-scroll-proportion="-0.14074074" vertical-offset="428" max-vertical-offset="968">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RptA11V1DataDelete.xhtml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml">
+      <file leaf-file-name="ImportAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/ImportAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="88" selection-start="2820" selection-end="2820" vertical-scroll-proportion="0.9161905" vertical-offset="619" max-vertical-offset="1232">
+            <state line="74" column="0" selection-start="2464" selection-end="2464" vertical-scroll-proportion="0.0" vertical-offset="1444" max-vertical-offset="3058">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustlistService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/CustlistService.java">
+      <file leaf-file-name="ClsDataImportService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/ClsDataImportService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="41" selection-start="961" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="608" max-vertical-offset="1980">
+            <state line="44" column="0" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="2816">
               <folding />
             </state>
           </provider>
@@ -660,65 +165,26 @@
       <file leaf-file-name="CustinfoLazyAction.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="10" selection-start="3180" selection-end="3180" vertical-scroll-proportion="0.0" vertical-offset="1642" max-vertical-offset="4290">
+            <state line="109" column="48" selection-start="3773" selection-end="3773" vertical-scroll-proportion="0.0" vertical-offset="2016" max-vertical-offset="4290">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="credit.properties" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
+      <file leaf-file-name="LazyRptDataModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/LazyRptDataModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="50" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2178">
+            <state line="47" column="52" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="1782">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataETLMapper.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
+      <file leaf-file-name="CustlistMapper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="63" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="1518" max-vertical-offset="9922">
-              <folding>
-                <marker date="1389182352345" expanded="true" signature="430:702" placeholder="--(select /*..." />
-                <marker date="1389182352345" expanded="true" signature="1658:1672" placeholder="--b.cert_typ..." />
-                <marker date="1389182352345" expanded="true" signature="1927:2389" placeholder="update set a..." />
-                <marker date="1389182352345" expanded="true" signature="2490:2724" placeholder="update sv_cm..." />
-                <marker date="1389182352345" expanded="true" signature="2825:2926" placeholder="update sv_cl..." />
-                <marker date="1389182352345" expanded="true" signature="3061:3119" placeholder="delete from ..." />
-                <marker date="1389182352345" expanded="true" signature="3246:6895" placeholder="insert into ..." />
-                <marker date="1389182352345" expanded="true" signature="3290:6894" placeholder="SELECT A1.TX..SA_TX_DT..." />
-                <marker date="1389182352345" expanded="true" signature="3933:4066" placeholder="select SOURC..BF_CM_STD_CODE..." />
-                <marker date="1389182352345" expanded="true" signature="4101:5336" placeholder="SELECT A.SA_..BF_EVT_DEP_SAP..." />
-                <marker date="1389182352345" expanded="true" signature="4775:4885" placeholder="SELECT G.SOU..BF_CM_STD_CODE..." />
-                <marker date="1389182352345" expanded="true" signature="5387:6685" placeholder="SELECT C.CR_..BF_EVT_DEP_TDP..." />
-                <marker date="1389182352345" expanded="true" signature="5974:6034" placeholder="select PQNR ..BF_CM_SUMMARY..." />
-                <marker date="1389182352345" expanded="true" signature="6125:6235" placeholder="SELECT F.SOU..BF_CM_STD_CODE..." />
-                <marker date="1389182352345" expanded="true" signature="7044:7107" placeholder="delete from ..." />
-                <marker date="1389182352345" expanded="true" signature="7234:8165" placeholder="insert into ..." />
-                <marker date="1389182352345" expanded="true" signature="7294:8151" placeholder="SELECT t3.CU..BF_EVT_NIN_ST_TCONFIRM_TRAD@odsbptdb..." />
-                <marker date="1389182352345" expanded="true" signature="8312:8337" placeholder="delete from ..." />
-                <marker date="1389182352345" expanded="true" signature="8464:11275" placeholder="insert into ..." />
-                <marker date="1389182352345" expanded="true" signature="8512:11265" placeholder="select sys_g..SIGN_INSTN..." />
-                <marker date="1389182352345" expanded="true" signature="8559:11251" placeholder="select t2.SI..BF_PR_IND_INFO_ECTIP..." />
-                <marker date="1389182352345" expanded="true" signature="10165:10663" placeholder="select ECTIP..BF_EVT_CHN_CHN_TRAD..." />
-                <marker date="1389182352345" expanded="true" signature="10475:10610" placeholder="select ECTIP..BF_AGT_CHN_CHNP_CUST..." />
-                <marker date="1389182352345" expanded="true" signature="11423:11504" placeholder="delete from ..." />
-                <marker date="1389182352345" expanded="true" signature="11631:11663" placeholder="insert into ..." />
-                <marker date="1389182352345" expanded="true" signature="11672:18949" placeholder="SELECT ACCT_..ACCT_NAME..." />
-                <marker date="1389182352345" expanded="true" signature="11981:13242" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-                <marker date="1389182352345" expanded="true" signature="11988:12013" placeholder="/*+parallel(..." />
-                <marker date="1389182352345" expanded="true" signature="13281:14547" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-                <marker date="1389182352345" expanded="true" signature="13288:13313" placeholder="/*+parallel(..." />
-                <marker date="1389182352345" expanded="true" signature="14586:15759" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-                <marker date="1389182352345" expanded="true" signature="14593:14618" placeholder="/*+parallel(..." />
-                <marker date="1389182352345" expanded="true" signature="15798:16976" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-                <marker date="1389182352345" expanded="true" signature="15805:15830" placeholder="/*+parallel(..." />
-                <marker date="1389182352345" expanded="true" signature="17015:17946" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-                <marker date="1389182352345" expanded="true" signature="17022:17047" placeholder="/*+parallel(..." />
-                <marker date="1389182352345" expanded="true" signature="17985:18921" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-                <marker date="1389182352345" expanded="true" signature="17992:18017" placeholder="/*+parallel(..." />
-              </folding>
+            <state line="25" column="21" selection-start="902" selection-end="902" vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="1078">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -726,7 +192,7 @@
       <file leaf-file-name="CustlistMapper.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="218" column="41" selection-start="10477" selection-end="10477" vertical-scroll-proportion="0.0" vertical-offset="4401" max-vertical-offset="7480">
+            <state line="218" column="41" selection-start="10477" selection-end="10477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7480">
               <folding>
                 <marker date="1389180790626" expanded="true" signature="1253:4969" placeholder="insert into ..." />
                 <marker date="1389180790626" expanded="true" signature="1455:4969" placeholder="select #{ite..dual..." />
@@ -777,10 +243,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultClsRptDataFormat.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM2_4_5Format.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM2_15_20Format.java" />
-        <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM2_40_50Format.java" />
         <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM5_4_5Format.java" />
         <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM5_15_20Format.java" />
         <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM5_40_50Format.java" />
@@ -828,6 +290,10 @@
         <option value="$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml" />
         <option value="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml" />
         <option value="$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry_AUMX1.xhtml" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/system/menu/MenuJsp.jsp" />
+        <option value="$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUMX1Format.java" />
+        <option value="$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry_sd.xhtml" />
       </list>
     </option>
   </component>
@@ -899,6 +365,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -909,7 +376,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -956,7 +422,99 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="action" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -992,7 +550,55 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1007,6 +613,46 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skyline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skyline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1046,7 +692,331 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tools" />
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pub" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="db" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="importdata" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="format" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dataimport" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ccbpams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pams" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custlist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1101,18 +1071,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="pub.tools" />
       <recent name="pams.service.custlist.importdata.format" />
+      <recent name="pub.tools" />
       <recent name="pams.service.custlist.importdata" />
       <recent name="pams.service.common.dataimport" />
       <recent name="pams.view.report" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\custlist" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\frame" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\js" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\pages\security" />
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\dataetl" />
-      <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\custlist" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\WorkSpace\git-fbipams\src\fbipams\main\webapp\UI\pams\datachk" />
@@ -1647,6 +1617,16 @@
       <workItem from="1389064773508" duration="411000" />
       <workItem from="1389079268813" duration="14092000" />
       <workItem from="1389157357194" duration="11527000" />
+      <workItem from="1389230296038" duration="42000" />
+      <workItem from="1389237472591" duration="4039000" />
+      <workItem from="1389245364373" duration="22000" />
+      <workItem from="1389245415694" duration="6000" />
+      <workItem from="1389247879744" duration="583000" />
+      <workItem from="1389250902434" duration="669000" />
+      <workItem from="1389665606406" duration="1462000" />
+      <workItem from="1390652866568" duration="597000" />
+      <workItem from="1390699960403" duration="40000" />
+      <workItem from="1390703071390" duration="10294000" />
     </task>
     <task id="LOCAL-00001" summary="primefaces 3.4.2">
       <created>1355722218109</created>
@@ -1852,7 +1832,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74961000" />
+    <option name="totallyTimeSpent" value="92715000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1871,12 +1851,12 @@
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27279636" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3223684" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25454545" sideWeight="0.51155114" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25454545" sideWeight="0.51155114" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6118644" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38980263" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1899,7 +1879,7 @@
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USERS">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
       <collection />
     </option>
   </component>
@@ -1947,241 +1927,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptDGKHFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="41" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptGJJFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="48" selection-start="470" selection-end="470" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptVIPFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="501" selection-end="501" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptLOANFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="35" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptVIP2Format.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="43" selection-start="418" selection-end="418" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptVIP3Format.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultClsRptDataFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="770" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/skyline/service/PlatformService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="44" selection-start="2143" selection-end="2177" vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="4070" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="21" selection-start="21" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/java/jdk1.7.0_17_i586/src.zip!/java/io/FileReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="0" selection-start="1321" selection-end="1321" vertical-scroll-proportion="0.0" vertical-offset="1158" max-vertical-offset="2002" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pub/generator/resources/generatorConfig.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="18" selection-start="6339" selection-end="6339" vertical-scroll-proportion="0.54079694" vertical-offset="3103" max-vertical-offset="3630" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/OdsbPayrollTxnMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="3" selection-start="245" selection-end="256" vertical-scroll-proportion="0.0" vertical-offset="36" max-vertical-offset="1584" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/OdsbPayagentTxnMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="258" selection-end="258" vertical-scroll-proportion="0.6111111" vertical-offset="44" max-vertical-offset="2288" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/model/custlist/CustListParam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="207" selection-end="207" vertical-scroll-proportion="0.33273056" vertical-offset="80" max-vertical-offset="1144" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/LazyRptDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="15" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="1782">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="22" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1364" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptBMNKHFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="44" selection-start="531" selection-end="531" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/ClsDataImportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="19" selection-start="4197" selection-end="4197" vertical-scroll-proportion="0.0" vertical-offset="1286" max-vertical-offset="2816">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/importData.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="95" selection-start="2982" selection-end="2982" vertical-scroll-proportion="0.0" vertical-offset="1034" max-vertical-offset="1430">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/ImportAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="39" selection-start="2692" selection-end="2692" vertical-scroll-proportion="0.0" vertical-offset="1611" max-vertical-offset="3058">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="84" selection-start="616" selection-end="616" vertical-scroll-proportion="238.07143" vertical-offset="7062" max-vertical-offset="13376">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pub/tools/PlatformHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="29" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0" vertical-offset="344" max-vertical-offset="1716">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/js/basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="41932">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/js/dbgrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="67892">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/dhtmlx/dhtmlxTabbar/codebase/dhtmlxcommon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/frame/homePage_tab.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="704">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/images/background-gradient.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/images/ajaxloadingbar.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/images/ccb.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/system/menu/mainmenu.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="23.571428" vertical-offset="660" max-vertical-offset="1298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/security/logout.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="77" selection-start="1153" selection-end="1153" vertical-scroll-proportion="-17.964285" vertical-offset="69" max-vertical-offset="1122">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/security/loginPage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="16.5" vertical-offset="462" max-vertical-offset="2728">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/security/loginassistor.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="13" selection-start="2285" selection-end="2285" vertical-scroll-proportion="-41.857143" vertical-offset="104" max-vertical-offset="1738">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/frame/homePage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="45" selection-start="4936" selection-end="4936" vertical-scroll-proportion="-99.78571" vertical-offset="0" max-vertical-offset="4356">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/pages/frame/trackMisc.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="44" selection-start="933" selection-end="933" vertical-scroll-proportion="-2.357143" vertical-offset="462" max-vertical-offset="1100">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/custBaseDataLoad.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="94" selection-start="2154" selection-end="2154" vertical-scroll-proportion="-9.428572" vertical-offset="528" max-vertical-offset="1144">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/dataetl/DataETLMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="19" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="902">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="59" selection-start="1167" selection-end="1167" vertical-scroll-proportion="0.0" vertical-offset="542" max-vertical-offset="2266">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custmng/CustMngDataModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="62" selection-start="1605" selection-end="1605" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="1716">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/view/custmng/CustMngAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="81" column="61" selection-start="2820" selection-end="2820" vertical-scroll-proportion="0.0" vertical-offset="1554" max-vertical-offset="6270">
@@ -2189,23 +1934,352 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java">
+    <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="70" selection-start="1428" selection-end="1428" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="1078">
+        <state line="8" column="50" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2178" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custmng/CustMngService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="0" selection-start="891" selection-end="1001" vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="2332" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/CustlistService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="41" selection-start="961" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="608" max-vertical-offset="1980" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custmng/custBaseMng.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="76" selection-start="2969" selection-end="2969" vertical-scroll-proportion="0.0" vertical-offset="1056" max-vertical-offset="4730" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="80" selection-start="1556" selection-end="1556" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="1232" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="88" selection-start="2820" selection-end="2820" vertical-scroll-proportion="0.0" vertical-offset="1100" max-vertical-offset="1232" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA11V1.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="135" column="68" selection-start="6692" selection-end="6692" vertical-scroll-proportion="0.0" vertical-offset="2656" max-vertical-offset="3168" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="156" column="0" selection-start="7781" selection-end="7960" vertical-scroll-proportion="0.0" vertical-offset="3102" max-vertical-offset="4092" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA06V1.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="81" selection-start="1829" selection-end="1829" vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="3454" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA06V1Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="47" selection-start="2014" selection-end="2014" vertical-scroll-proportion="0.0" vertical-offset="1140" max-vertical-offset="6380">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/resources/credit.properties">
+    <entry file="file://$PROJECT_DIR$/main/java/skyline/service/ToolsService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="50" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2178">
+        <state line="82" column="65" selection-start="2644" selection-end="2644" vertical-scroll-proportion="0.0" vertical-offset="1401" max-vertical-offset="2002">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/report/rptA08V1.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="75" selection-start="2777" selection-end="2777" vertical-scroll-proportion="0.0" vertical-offset="726" max-vertical-offset="3300">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1LazyDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="13" selection-start="472" selection-end="472" vertical-scroll-proportion="0.0" vertical-offset="582" max-vertical-offset="1782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="42" selection-start="3175" selection-end="3175" vertical-scroll-proportion="0.0" vertical-offset="1796" max-vertical-offset="4004">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/dataetl/DataETLService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="40" selection-start="2365" selection-end="2365" vertical-scroll-proportion="0.0" vertical-offset="1290" max-vertical-offset="2266">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA08V1DataLoad.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="99" selection-start="2175" selection-end="2175" vertical-scroll-proportion="0.0" vertical-offset="487" max-vertical-offset="1144">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/dataetl/DataETLMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="30" selection-start="756" selection-end="778" vertical-scroll-proportion="0.0" vertical-offset="349" max-vertical-offset="902">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/report/RptA08V1Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="103" column="50" selection-start="3547" selection-end="3547" vertical-scroll-proportion="0.0" vertical-offset="2130" max-vertical-offset="3762">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="200" column="43" selection-start="8588" selection-end="8588" vertical-scroll-proportion="0.0" vertical-offset="4234" max-vertical-offset="9922">
+          <folding>
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="--(select /*..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="--b.cert_typ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="update set a..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="update sv_cm..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="update sv_cl..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT A1.TX..SA_TX_DT..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select SOURC..BF_CM_STD_CODE..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT A.SA_..BF_EVT_DEP_SAP..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT G.SOU..BF_CM_STD_CODE..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT C.CR_..BF_EVT_DEP_TDP..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select PQNR ..BF_CM_SUMMARY..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT F.SOU..BF_CM_STD_CODE..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT t3.CU..BF_EVT_NIN_ST_TCONFIRM_TRAD@odsbptdb..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select sys_g..SIGN_INSTN..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select t2.SI..BF_PR_IND_INFO_ECTIP..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select ECTIP..BF_EVT_CHN_CHN_TRAD..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="select ECTIP..BF_AGT_CHN_CHNP_CUST..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="delete from ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="insert into ..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT ACCT_..ACCT_NAME..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
+            <marker date="1389182352345" expanded="true" signature="-1:-1" placeholder="/*+parallel(..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM2_40_50Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="51" selection-start="309" selection-end="309" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="22" selection-start="326" selection-end="326" vertical-scroll-proportion="0.0" vertical-offset="124" max-vertical-offset="1364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/common/dataimport/DefaultClsRptDataFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="52" selection-start="227" selection-end="248" vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="770">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM6Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptCARD2Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptCARD3Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptCARDFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptDEKHZZFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="58" max-vertical-offset="792">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptDGKHFormat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM3Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="319" selection-end="395" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUM7Format.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="36" selection-start="449" selection-end="481" vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="572">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="240.42857" vertical-offset="6732" max-vertical-offset="13376">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/system/menu/MenuJsp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1364">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/system/menu/mainmenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6446">
+          <folding>
+            <marker date="1295248235061" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/menuPage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4048">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12804">
+          <folding>
+            <marker date="1295248234409" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1295248234409" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1295248234409" expanded="false" signature="-1:-1" placeholder="..." />
+            <marker date="1295248234409" expanded="false" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/dbutil.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="178" column="27" selection-start="4945" selection-end="4946" vertical-scroll-proportion="-6.576923" vertical-offset="3745" max-vertical-offset="19536">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/basicForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="3" selection-start="2480" selection-end="2480" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="638">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="244" column="71" selection-start="4423" selection-end="4425" vertical-scroll-proportion="-6.576923" vertical-offset="5197" max-vertical-offset="41932">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/system/action/ActionJsp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="37" selection-start="1395" selection-end="1395" vertical-scroll-proportion="-4.035714" vertical-offset="569" max-vertical-offset="2552">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/system/menu/MenuJsp.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="1714" selection-end="1714" vertical-scroll-proportion="-10.321428" vertical-offset="459" max-vertical-offset="1496">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pub/platform/db/DBGrid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1229" column="212" selection-start="46390" selection-end="46413" vertical-scroll-proportion="-3.5384614" vertical-offset="26616" max-vertical-offset="28446">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/webapp/js/dbgrid.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1800" column="9" selection-start="52671" selection-end="52671" vertical-scroll-proportion="0.0" vertical-offset="40657" max-vertical-offset="67892">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="48" selection-start="3773" selection-end="3773" vertical-scroll-proportion="0.0" vertical-offset="2016" max-vertical-offset="4290">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/LazyRptDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="52" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="701" max-vertical-offset="1782">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/dao/custlist/CustlistMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="21" selection-start="902" selection-end="902" vertical-scroll-proportion="0.0" vertical-offset="366" max-vertical-offset="1078">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/custlist/CustlistMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="218" column="41" selection-start="10477" selection-end="10477" vertical-scroll-proportion="0.0" vertical-offset="4401" max-vertical-offset="7480">
+        <state line="218" column="41" selection-start="10477" selection-end="10477" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7480">
           <folding>
             <marker date="1389180790626" expanded="true" signature="1253:4969" placeholder="insert into ..." />
             <marker date="1389180790626" expanded="true" signature="1455:4969" placeholder="select #{ite..dual..." />
@@ -2237,97 +2311,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custmng/CustMngService.java">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/ImportAction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="891" selection-end="1001" vertical-scroll-proportion="0.0" vertical-offset="621" max-vertical-offset="2332">
+        <state line="74" column="0" selection-start="2464" selection-end="2464" vertical-scroll-proportion="0.0" vertical-offset="1523" max-vertical-offset="3058">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/CustlistService.java">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/ClsDataImportService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="41" selection-start="961" selection-end="984" vertical-scroll-proportion="0.0" vertical-offset="608" max-vertical-offset="1980">
+        <state line="44" column="0" selection-start="1498" selection-end="1498" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="2816">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/custlist/CustinfoLazyAction.java">
+    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custlist/custInfoQry_sd.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="10" selection-start="3180" selection-end="3180" vertical-scroll-proportion="0.0" vertical-offset="1642" max-vertical-offset="4290">
+        <state line="93" column="47" selection-start="4094" selection-end="4094" vertical-scroll-proportion="-3.357143" vertical-offset="1952" max-vertical-offset="3454">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/repository/mapper/dataetl/DataETLMapper.xml">
+    <entry file="file://$PROJECT_DIR$/main/java/pams/service/custlist/importdata/format/RptAUMX1Format.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="63" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="1518" max-vertical-offset="9922">
-          <folding>
-            <marker date="1389182352345" expanded="true" signature="430:702" placeholder="--(select /*..." />
-            <marker date="1389182352345" expanded="true" signature="1658:1672" placeholder="--b.cert_typ..." />
-            <marker date="1389182352345" expanded="true" signature="1927:2389" placeholder="update set a..." />
-            <marker date="1389182352345" expanded="true" signature="2490:2724" placeholder="update sv_cm..." />
-            <marker date="1389182352345" expanded="true" signature="2825:2926" placeholder="update sv_cl..." />
-            <marker date="1389182352345" expanded="true" signature="3061:3119" placeholder="delete from ..." />
-            <marker date="1389182352345" expanded="true" signature="3246:6895" placeholder="insert into ..." />
-            <marker date="1389182352345" expanded="true" signature="3290:6894" placeholder="SELECT A1.TX..SA_TX_DT..." />
-            <marker date="1389182352345" expanded="true" signature="3933:4066" placeholder="select SOURC..BF_CM_STD_CODE..." />
-            <marker date="1389182352345" expanded="true" signature="4101:5336" placeholder="SELECT A.SA_..BF_EVT_DEP_SAP..." />
-            <marker date="1389182352345" expanded="true" signature="4775:4885" placeholder="SELECT G.SOU..BF_CM_STD_CODE..." />
-            <marker date="1389182352345" expanded="true" signature="5387:6685" placeholder="SELECT C.CR_..BF_EVT_DEP_TDP..." />
-            <marker date="1389182352345" expanded="true" signature="5974:6034" placeholder="select PQNR ..BF_CM_SUMMARY..." />
-            <marker date="1389182352345" expanded="true" signature="6125:6235" placeholder="SELECT F.SOU..BF_CM_STD_CODE..." />
-            <marker date="1389182352345" expanded="true" signature="7044:7107" placeholder="delete from ..." />
-            <marker date="1389182352345" expanded="true" signature="7234:8165" placeholder="insert into ..." />
-            <marker date="1389182352345" expanded="true" signature="7294:8151" placeholder="SELECT t3.CU..BF_EVT_NIN_ST_TCONFIRM_TRAD@odsbptdb..." />
-            <marker date="1389182352345" expanded="true" signature="8312:8337" placeholder="delete from ..." />
-            <marker date="1389182352345" expanded="true" signature="8464:11275" placeholder="insert into ..." />
-            <marker date="1389182352345" expanded="true" signature="8512:11265" placeholder="select sys_g..SIGN_INSTN..." />
-            <marker date="1389182352345" expanded="true" signature="8559:11251" placeholder="select t2.SI..BF_PR_IND_INFO_ECTIP..." />
-            <marker date="1389182352345" expanded="true" signature="10165:10663" placeholder="select ECTIP..BF_EVT_CHN_CHN_TRAD..." />
-            <marker date="1389182352345" expanded="true" signature="10475:10610" placeholder="select ECTIP..BF_AGT_CHN_CHNP_CUST..." />
-            <marker date="1389182352345" expanded="true" signature="11423:11504" placeholder="delete from ..." />
-            <marker date="1389182352345" expanded="true" signature="11631:11663" placeholder="insert into ..." />
-            <marker date="1389182352345" expanded="true" signature="11672:18949" placeholder="SELECT ACCT_..ACCT_NAME..." />
-            <marker date="1389182352345" expanded="true" signature="11981:13242" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-            <marker date="1389182352345" expanded="true" signature="11988:12013" placeholder="/*+parallel(..." />
-            <marker date="1389182352345" expanded="true" signature="13281:14547" placeholder="SELECT /*+pa..BF_EVT_ECTIP_BATCH_PD_TASK..." />
-            <marker date="1389182352345" expanded="true" signature="13288:13313" placeholder="/*+parallel(..." />
-            <marker date="1389182352345" expanded="true" signature="14586:15759" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-            <marker date="1389182352345" expanded="true" signature="14593:14618" placeholder="/*+parallel(..." />
-            <marker date="1389182352345" expanded="true" signature="15798:16976" placeholder="SELECT /*+pa..BF_EVT_CBPS_DATA_BATCH_INFO..." />
-            <marker date="1389182352345" expanded="true" signature="15805:15830" placeholder="/*+parallel(..." />
-            <marker date="1389182352345" expanded="true" signature="17015:17946" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-            <marker date="1389182352345" expanded="true" signature="17022:17047" placeholder="/*+parallel(..." />
-            <marker date="1389182352345" expanded="true" signature="17985:18921" placeholder="SELECT /*+pa..B_F_NIN_AGT_BAT_TRAN..." />
-            <marker date="1389182352345" expanded="true" signature="17992:18017" placeholder="/*+parallel(..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/custmng/custBaseMng.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="76" selection-start="2969" selection-end="2969" vertical-scroll-proportion="-5.5" vertical-offset="1056" max-vertical-offset="4730">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataLoad.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="80" selection-start="1556" selection-end="1556" vertical-scroll-proportion="-9.321428" vertical-offset="289" max-vertical-offset="1232">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/java/pams/view/dataetl/DataETLAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="18" selection-start="3794" selection-end="3794" vertical-scroll-proportion="0.0" vertical-offset="2038" max-vertical-offset="4004">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/webapp/UI/pams/dataetl/RptA11V1DataDelete.xhtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="88" selection-start="2820" selection-end="2820" vertical-scroll-proportion="0.9161905" vertical-offset="619" max-vertical-offset="1232">
+        <state line="16" column="102" selection-start="522" selection-end="522" vertical-scroll-proportion="-0.14074074" vertical-offset="428" max-vertical-offset="968">
           <folding />
         </state>
       </provider>
