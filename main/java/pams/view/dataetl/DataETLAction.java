@@ -118,6 +118,26 @@ public class DataETLAction implements Serializable {
         }
         return null;
     }
+    public String onProcessRptA12V1Data() {
+        try {
+            dataETLService.importData_RptA12V1();
+            MessageUtil.addInfo("数据处理完成...");
+        } catch (Exception ex) {
+            logger.error("数据处理错误。", ex);
+            MessageUtil.addError("数据处理错误。" + ex.getMessage());
+        }
+        return null;
+    }
+    public String onProcessRptA13V1Data() {
+        try {
+            dataETLService.importData_RptA13V1();
+            MessageUtil.addInfo("数据处理完成...");
+        } catch (Exception ex) {
+            logger.error("数据处理错误。", ex);
+            MessageUtil.addError("数据处理错误。" + ex.getMessage());
+        }
+        return null;
+    }
 
     private String checkAndTransInputDate() {
         Date date = null;

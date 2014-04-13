@@ -153,6 +153,19 @@
         <!--新客户名单制报表数据 201310 -->
         <!--<table tableName="cls_rptdata" />-->
 
+<!--
+        <table tableName="cls_ud_rptdata">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="cls_ud_tblinfo" />
+        <table tableName="cls_ud_fldinfo" />
+        <table tableName="odsb_stlcrd_bal">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+        <table tableName="odsb_cts_bal">
+            <generatedKey column="guid" sqlStatement="select sys_guid() from dual" identity="false"/>
+        </table>
+-->
 
     </context>
 

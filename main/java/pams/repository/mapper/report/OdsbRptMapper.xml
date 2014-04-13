@@ -226,5 +226,82 @@
     </select>
 
 
+    <!-- 综合报表：CTS保证金余额明细表 RPTA12V1 -->
+    <sql id="RptA12V1_Where_Clause">
+        <where>
+            a.inst_no in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+            <if test = " custName != null and custName != '' ">
+                and a.cust_name like '%${custName}%'
+            </if>
+        </where>
+    </sql>
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countRptA12V1Records" parameterType="pams.repository.model.report.BasePagedQryParamBean" resultType="java.lang.Integer">
+        select count(*)
+        from ODSB_CTS_BAL a
+        <include refid="RptA12V1_Where_Clause" />
+    </select>
+
+    <select id="selectRptA12V1Records"  parameterType="pams.repository.model.report.BasePagedQryParamBean" resultMap="pams.repository.dao.OdsbCtsBalMapper.BaseResultMap">
+        select *
+        from (select t1.*, rownum rnum
+        from (
+        select  *
+        from ODSB_CTS_BAL a
+        <include refid="RptA12V1_Where_Clause" />
+        order by
+        <if test = " sortField != null and sortField != '' ">
+            ${sortField}
+        </if>
+        <if test = " sortOrder != null and sortOrder != '' ">
+            ${sortOrder}
+        </if>
+        , rowid
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
+
+    <!-- 综合报表：结算通卡余额明细表 RPTA13V1 -->
+    <sql id="RptA13V1_Where_Clause">
+        <where>
+            a.inst_no in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+            <if test = " custName != null and custName != '' ">
+                and a.cust_name like '%${custName}%'
+            </if>
+        </where>
+    </sql>
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countRptA13V1Records" parameterType="pams.repository.model.report.BasePagedQryParamBean" resultType="java.lang.Integer">
+        select count(*)
+        from ODSB_STLCRD_BAL a
+        <include refid="RptA13V1_Where_Clause" />
+    </select>
+
+    <select id="selectRptA13V1Records"  parameterType="pams.repository.model.report.BasePagedQryParamBean" resultMap="pams.repository.dao.OdsbStlcrdBalMapper.BaseResultMap">
+        select *
+        from (select t1.*, rownum rnum
+        from (
+        select  *
+        from ODSB_STLCRD_BAL a
+        <include refid="RptA13V1_Where_Clause" />
+        order by
+        <if test = " sortField != null and sortField != '' ">
+            ${sortField}
+        </if>
+        <if test = " sortOrder != null and sortOrder != '' ">
+            ${sortOrder}
+        </if>
+        , rowid
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
 
 </mapper>

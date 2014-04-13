@@ -32,4 +32,12 @@ public interface DataETLMapper {
     //代发交易明细
     int deleteData_RptA11V1(@Param("startDate")String startDate, @Param("endDate")String endDate);
     int importRecords_RptA11V1(@Param("startDate")String startDate, @Param("endDate")String endDate);
+
+    //CTS保证金余额
+    int deleteData_RptA12V1();
+    int importRecords_RptA12V1();
+
+    //结算通卡余额明细表
+    int deleteData_RptA13V1();
+    int importRecords_RptA13V1();
 }

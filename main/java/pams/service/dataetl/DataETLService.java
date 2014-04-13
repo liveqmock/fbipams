@@ -93,5 +93,13 @@ public class DataETLService {
         }
         dataETLMapper.deleteData_RptA11V1(startDate, endDate);
     }
+    public void importData_RptA12V1(){
+        dataETLMapper.deleteData_RptA12V1();
+        dataETLMapper.importRecords_RptA12V1();
+    }
+    public void importData_RptA13V1(){
+        dataETLMapper.deleteData_RptA13V1();
+        dataETLMapper.importRecords_RptA13V1();
+    }
     //=====================================================================
 }

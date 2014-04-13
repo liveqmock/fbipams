@@ -30,4 +30,11 @@ public interface OdsbRptMapper {
     //综合报表：代发业务数据 RPTA11V1
     int countRptA11V1Records(BasePagedQryParamBean paramBean);
     List<OdsbPayagentTxn> selectRptA11V1Records(BasePagedQryParamBean paramBean);
+
+    //综合报表：CTS保证金余额明细表 RPTA12V1
+    int countRptA12V1Records(BasePagedQryParamBean paramBean);
+    List<OdsbCtsBal> selectRptA12V1Records(BasePagedQryParamBean paramBean);
+    //综合报表：结算通卡余额明细表 RPTA13V1
+    int countRptA13V1Records(BasePagedQryParamBean paramBean);
+    List<OdsbStlcrdBal> selectRptA13V1Records(BasePagedQryParamBean paramBean);
 }

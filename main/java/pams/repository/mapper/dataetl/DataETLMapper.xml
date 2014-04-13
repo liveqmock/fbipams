@@ -443,4 +443,116 @@
          ORDER BY ACCT_NO1
         ]]>
     </insert>
+
+
+    <!--CTS保证金余额明细表  -->
+    <delete id="deleteData_RptA12V1">
+        <![CDATA[
+          delete from ODSB_CTS_BAL
+        ]]>
+    </delete>
+    <insert id="importRecords_RptA12V1">
+        <![CDATA[
+        insert into  ODSB_CTS_BAL t
+        SELECT /*+parallel(t1,5)(t3,5)(t4,5)*/
+             sys_guid(),
+             T2.CM_OPUN_FLNM_CHN,
+             T2.OPR_UNIT_CD,
+             T1.CUST_NAME,
+             CASE
+               WHEN SUBSTR(T1.SAVACCTID, 1, 3) = '239' AND
+                    SUBSTR(T1.BANK_ACCT_INSTN_NUM, 1, 3) = '371' THEN
+                T3.CUST_NO
+               WHEN SUBSTR(T1.SAVACCTID, 1, 3) <> '239' AND
+                    SUBSTR(T1.BANK_ACCT_INSTN_NUM, 1, 3) = '371' THEN
+                T4.CUST_NO
+               ELSE
+                ''
+             END AS CUST_NO,
+             (SELECT CUST_MOBIL
+                FROM BF_AGT_NIN_CTS_CTSINVESTDATA
+               WHERE T1.SECACCT = SECACCT) AS CUST_MOBIL,
+             T1.CURRENT_BAL,
+             T1.SAVACCTID,
+             CASE
+               WHEN SUBSTR(T1.SAVACCTID, 1, 3) = '239' AND
+                    SUBSTR(T1.BANK_ACCT_INSTN_NUM, 1, 3) = '371' THEN
+                T3.ACCT_BAL
+               WHEN SUBSTR(T1.SAVACCTID, 1, 3) <> '239' AND
+                    SUBSTR(T1.BANK_ACCT_INSTN_NUM, 1, 3) = '371' THEN
+                T4.ACCT_BAL
+               ELSE
+                NULL
+             END AS ACCT_BAL
+              FROM (SELECT SECACCT,
+                           CUST_NAME,
+                           SAVACCTID,
+                           CURRENT_BAL,
+                           BANK_ACCT_INSTN_NUM
+                      FROM BF_AGT_NIN_CTS_CTSACCOUNTDATA
+                     WHERE LENGTH(SAVACCTID) <> 1
+                       AND ACCT_STS = '0'
+                       AND CUST_TYP = '1'
+                       and CURRENT_BAL >= 50000) T1
+              LEFT JOIN BF_PR_BR_INSTN T2 ON T1.BANK_ACCT_INSTN_NUM = T2.OPR_UNIT_CD
+              LEFT JOIN BF_AGT_DEP_ACCT_SAP T3 ON T1.SAVACCTID = T3.CUST_ACCT_NO
+              LEFT JOIN BF_AGT_DEP_ACCT_SAP T4 ON T1.SAVACCTID = T4.CRD_NO
+            UNION
+            SELECT
+                  sys_guid(),
+                   '' AS CM_OPUN_FLNM_CHN,
+                   '' AS OPR_UNIT_CD,
+                   T1.CUST_NAME,
+                   '' AS CUST_NO,
+                   T2.CUST_MOBIL,
+                   T1.CURRENT_BAL,
+                   '' AS SAVACCTID,
+                   NULL AS ACCT_BAL
+              FROM BF_AGT_NIN_CTS_CTSACCOUNTDATA T1, BF_AGT_NIN_CTS_CTSINVESTDATA T2
+             WHERE T1.SECACCT = T2.SECACCT
+               AND LENGTH(T1.SAVACCTID) = 1
+               AND T1.ACCT_STS = '0'
+               AND T1.CUST_TYP = '1'
+               and CURRENT_BAL >= 50000
+        ]]>
+    </insert>
+    <!--结算通卡余额明细表  -->
+    <delete id="deleteData_RptA13V1">
+        <![CDATA[
+          delete from ODSB_STLCRD_BAL
+        ]]>
+    </delete>
+    <insert id="importRecords_RptA13V1">
+        <![CDATA[
+        insert into  ODSB_STLCRD_BAL t
+        select /*+parallel(t1,5)(t3,5)*/
+                 sys_guid(),
+                 t1.inst_no as 所属网点,
+                 t1.inst_no as 所属网点编号,
+                 t1.cust_name as 客户姓名,
+                 t1.cust_no as 客户编号,
+                 t4.no_body as 客户联系电话,
+                 t1.crd_no as 结算通卡卡号,
+                 t1.acct_bal as 结算通卡余额,
+                 t1.cust_open_dt as 开卡时间,
+                 decode(t1.acct_sts,
+                        '101',
+                        '正常',
+                        '103',
+                        '冻结',
+                        '105',
+                        '单向冻结',
+                        '108',
+                        '结清') as 卡状态
+          from BF_AGT_DEP_ACCT_SAP         t1,
+               BF_PR_BR_INSTN              t2,
+               BF_PR_IND_PARTY_CROSS_INDEX t3,
+               BF_PR_IND_CONTACT_ADDR      t4
+         where t1.inst_no = t2.opr_unit_cd
+           and substr(t1.crd_no, 1, 6) = '622707'
+           and t1.cust_no = t3.ext_system_index
+           and t3.p_cust_no = t4.p_cust_no
+           order by t1.cust_no
+           ]]>
+    </insert>
 </mapper>
