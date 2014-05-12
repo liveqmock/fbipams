@@ -81,9 +81,14 @@ public class PlatformService {
             return enudetailMapper.selectByExample(example);
     }
 
-    //返回 机构号|机构名称
+    //返回 机构号|机构名称(前面加全角空格)
     public List<String> selectBranchLevelString(String branchid){
           return ptdeptMapper.selectBranchLevelString(branchid);
+    }
+
+    //返回 机构号|机构名称
+    public List<String> selectBranchIdAndName(String branchid){
+          return ptdeptMapper.selectBranchIdAndName(branchid);
     }
 
     //返回 机构号

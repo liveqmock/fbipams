@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pams.repository.dao.userdefrpt.UserDefRptMapper">
+
+    <sql id="QueryCustinfo_Where_Clause">
+      <where>
+          a.BRANCHID in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
+          <if test = " rptno != null and rptno != '' ">
+                <![CDATA[ and a.RPTNO >= #{rptno} ]]>
+          </if>
+      </where>
+    </sql>
+
+    <!--计算符合查询条件的记录数  -->
+    <select id="countRecords" parameterType="pams.repository.model.userdefrpt.UserDefRptVO" resultType="java.lang.Integer">
+          select count(*)
+            from CLS_UD_RPTDATA a
+             <include refid="QueryCustinfo_Where_Clause" />
+    </select>
+
+
+    <select id="selectRecords" parameterType="pams.repository.model.userdefrpt.UserDefRptVO"  resultMap="pams.repository.dao.ClsUdRptdataMapper.BaseResultMap">
+        select  *
+            from CLS_UD_RPTDATA a
+          <include refid="QueryCustinfo_Where_Clause" />
+        order by a.branchid
+    </select>
+
+    <select id="selectPagedRecords"  parameterType="pams.repository.model.userdefrpt.UserDefRptVO" resultMap="pams.repository.dao.ClsUdRptdataMapper.BaseResultMap">
+        select *
+          from (select t1.*, rownum rnum
+                from (
+                    select  *
+                        from CLS_UD_RPTDATA a
+                        <include refid="QueryCustinfo_Where_Clause" />
+                    order by
+                       <if test = " sortField != null and sortField != '' ">
+                            ${sortField}
+                       </if>
+                       <if test = " sortOrder != null and sortOrder != '' ">
+                            ${sortOrder}
+                       </if>
+                       , rowid
+        ) t1
+        <![CDATA[
+        where rownum <= #{pagesize}) t2
+       where t2.rnum > #{offset}
+       ]]>
+    </select>
+</mapper>

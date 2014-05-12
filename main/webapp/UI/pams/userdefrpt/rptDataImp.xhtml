@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/templates/ui.xhtml">
+
+    <ui:define name="head">
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="entry" id="top">
+            <div style="margin-top: 20px;">
+                <h:form id="form" style="margin-top: 20px">
+                    <p:fileUpload fileUploadListener="#{dataImportAction.onUpload}" mode="advanced"
+                                  dragDropSupport="false"
+                                  cancelLabel="取消上传" label="选择EXCEL文件" uploadLabel="开始上传"
+                                  update="msgs"
+                                  sizeLimit="3000000"
+                                  fileLimit="10" allowTypes="/(\.|\/)(xlsx)$/"/>
+
+                    <p:growl id="msgs" showDetail="true"/>
+                </h:form>
+                <p:panel style="margin-top:10px">
+                    <h:form id="form1">
+                        <h:panelGrid id="btn" columns="1" style="text-align:center;padding-top:5px;"
+                                     width="98%">
+                            <p:commandButton id="back" ajax="false" value="返回"
+                                             style="width: 120px;"
+                                             action="#{dataImportAction.onBack}">
+                                <f:param value="#{dataImportAction.rptno}" name="rptno"/>
+                            </p:commandButton>
+                        </h:panelGrid>
+                    </h:form>
+                </p:panel>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

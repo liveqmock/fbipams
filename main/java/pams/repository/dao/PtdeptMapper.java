@@ -113,6 +113,12 @@ public interface PtdeptMapper {
             "connect by prior deptid = parentdeptid")
     List<String> selectBranchLevelString(@Param("branchid") String branchid);
 
+    @Select("select deptid || '|' || deptname" +
+            "  from ptdept" +
+            " start with deptid = #{branchid}" +
+            "connect by prior deptid = parentdeptid")
+    List<String> selectBranchIdAndName(@Param("branchid") String branchid);
+
     @Select("select deptid " +
             "  from ptdept" +
             " start with deptid = #{branchid}" +
