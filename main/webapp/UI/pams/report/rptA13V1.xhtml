@@ -26,7 +26,7 @@
                 <div id="header">
                     <p:panel header="结算通卡余额明细查询">
                         <h:panelGrid columns="2" cellspacing="5" columnClasses="col-95,col-5">
-                            <h:panelGrid columns="4" cellspacing="5">
+                            <h:panelGrid columns="2" cellspacing="5">
                                 <h:outputLabel value="客户姓名:"/>
                                 <p:inputText value="#{rptA13V1Action.paramBean.custName}"/>
                             </h:panelGrid>
@@ -35,9 +35,9 @@
                                                  action="#{rptA13V1Action.onQuery}"
                                                  update="pdt,msgs">
                                 </p:commandButton>
-                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                <p:commandButton ajax="false" id="btnExport" value="导出EXCEL"
                                                  style="width:90px;">
-                                    <p:dataExporter type="csv" target="pdt"
+                                    <p:dataExporter type="xls" target="pdt"
                                                     fileName="rpt#{rptA13V1Action.paramBean.branchId}"
                                                     encoding="GBK"
                                                     pageOnly="false"/>

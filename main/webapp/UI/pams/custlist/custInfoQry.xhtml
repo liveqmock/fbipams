@@ -69,6 +69,13 @@
                                     encoding="GBK"
                                     pageOnly="false"/>
                 </p:commandButton>
+                <p:commandButton ajax="false" id="btnExportExcel" value="导出EXCEL"
+                                 style="width:90px;">
+                    <p:dataExporter type="xls" target="pdt"
+                                    fileName="rpt#{custinfoLazyAction.rptType}_#{custinfoLazyAction.paramBean.rptDate}_#{custinfoLazyAction.paramBean.branchId}"
+                                    encoding="GBK"
+                                    pageOnly="false"/>
+                </p:commandButton>
             </h:panelGrid>
         </h:panelGrid>
     </p:panel>

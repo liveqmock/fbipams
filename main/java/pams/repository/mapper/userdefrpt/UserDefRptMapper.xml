@@ -6,7 +6,7 @@
       <where>
           a.BRANCHID in (select deptid from ptdept start with deptid = #{branchId}  connect by prior deptid = parentdeptid)
           <if test = " rptno != null and rptno != '' ">
-                <![CDATA[ and a.RPTNO >= #{rptno} ]]>
+                <![CDATA[ and a.RPTNO = #{rptno} ]]>
           </if>
       </where>
     </sql>

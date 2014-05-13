@@ -87,8 +87,7 @@ public class UserDefRptShowAction implements Serializable {
         rptno = StringUtils.isEmpty(paramsMap.get("rptno")) ? "" : paramsMap.get("rptno");
 
         if (StringUtils.isEmpty(rptno)) {
-            MessageUtil.addError("请指定报表编号.");
-            return;
+            throw new RuntimeException("请指定报表编号.");
         }
 
         OperatorManager om = SystemService.getOperatorManager();

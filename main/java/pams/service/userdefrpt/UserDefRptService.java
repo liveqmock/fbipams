@@ -122,6 +122,13 @@ public class UserDefRptService {
         record.setRecver(1);
         tblinfoMapper.insert(record);
     }
+    //修改报表
+    public void modifyTblInfo(ClsUdTblinfo clsUdTblinfo){
+        ClsUdTblinfo record = tblinfoMapper.selectByPrimaryKey(clsUdTblinfo.getRptno());
+        clsUdTblinfo.setRecver(record.getRecver() + 1);
+        tblinfoMapper.updateByPrimaryKeySelective(clsUdTblinfo);
+    }
+
     //更新数据导入时间
     public void updateImportDataDate(String rptno) {
         ClsUdTblinfo record =  tblinfoMapper.selectByPrimaryKey(rptno);
@@ -131,9 +138,7 @@ public class UserDefRptService {
 
     //关闭报表  清空所有相关数据
     public void clearAllRptInfo(String rptno) {
-        ClsUdTblinfo record =  tblinfoMapper.selectByPrimaryKey(rptno);
         tblinfoMapper.deleteByPrimaryKey(rptno);
-
         clearRptData(rptno);
         clearColumnNames(rptno);
     }

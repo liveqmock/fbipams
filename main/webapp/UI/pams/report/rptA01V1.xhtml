@@ -49,6 +49,13 @@
                                                  action="#{rptA01V1.onQuery}"
                                                  update="pdt,msgs">
                                 </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExport" value="导出EXCEL"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="xls" target="pdt"
+                                                    fileName="rpt#{rptA01V1.branchId}"
+                                                    encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
                             </h:panelGrid>
                         </h:panelGrid>
                     </p:panel>

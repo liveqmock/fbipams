@@ -5,6 +5,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pams.common.utils.MessageUtil;
@@ -37,6 +38,8 @@ public class DataImportAction implements Serializable {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private String rptno;
+    private UploadedFile file;
+
 
     @ManagedProperty(value = "#{toolsService}")
     private ToolsService toolsService;
@@ -49,11 +52,17 @@ public class DataImportAction implements Serializable {
     public void init() {
         Map<String, String> paramsMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         rptno = StringUtils.isEmpty(paramsMap.get("rptno")) ? "" : paramsMap.get("rptno");
+
+        if (StringUtils.isEmpty(rptno)) {
+            throw new RuntimeException("请指定报表编号.");
+        }
     }
 
     public void onUpload(FileUploadEvent event) {
         try {
             InputStream is = event.getFile().getInputstream();
+//            InputStream is = file.getInputstream();
+
             XSSFWorkbook wb = new XSSFWorkbook(is);
             XSSFSheet sheet = wb.getSheetAt(0);
             int rowCnt = sheet.getLastRowNum();
@@ -97,7 +106,8 @@ public class DataImportAction implements Serializable {
             oplog.setActionName("阶段性攻坚报表:报表数据导入 " + rptno);
             platformService.insertNewOperationLog(oplog);
 
-            MessageUtil.addInfo(event.getFile().getFileName() + " 已成功导入。");
+            MessageUtil.addInfo(" 已成功导入。");
+//            MessageUtil.addInfo(event.getFile().getFileName() + " 已成功导入。");
         } catch (Exception ex) {
             logger.error(event.getFile().getFileName() + " 导入失败。", ex);
             MessageUtil.addError("导入失败." + ex.getMessage());
@@ -144,4 +154,11 @@ public class DataImportAction implements Serializable {
         this.rptno = rptno;
     }
 
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
 }

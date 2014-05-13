@@ -1,4 +1,4 @@
-package pams.service.common.dataimport
+package pams.service.common.dataimport;
 
 /**
  * Created with IntelliJ IDEA.

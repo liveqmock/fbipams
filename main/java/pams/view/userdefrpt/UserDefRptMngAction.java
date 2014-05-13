@@ -35,6 +35,7 @@ public class UserDefRptMngAction implements Serializable {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private UserDefRptVO paramBean;
+    private ClsUdTblinfo clsUdTblinfo = new ClsUdTblinfo();
     private List<ClsUdTblinfo> detlRecords;
     private ClsUdTblinfo selectedRecord;
 
@@ -61,35 +62,99 @@ public class UserDefRptMngAction implements Serializable {
 
         //HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         detlRecords = userDefRptService.selectTblInfos();
+
+        clsUdTblinfo.setRptno("11");
     }
 
-    public String onAddRpt() {
+    public void onAddRpt() {
         try {
+            //检查KEY重复
+            ClsUdTblinfo  tbl_db = userDefRptService.selectTblInfo(clsUdTblinfo.getRptno());
+            if (clsUdTblinfo.getRptno().equals(tbl_db.getRptno())) {
+                MessageUtil.addError("报表编号重复");
+                return;
+            }
+
+            userDefRptService.insertTblInfo(clsUdTblinfo);
+            detlRecords = userDefRptService.selectTblInfos();
+
+
             Ptoplog oplog = new Ptoplog();
             oplog.setActionId("UserDefRptMng_onAddRpt");
             oplog.setActionName("阶段性攻坚报表:新增报表");
             oplog.setOpDataBranchid(this.paramBean.getBranchId());
             platformService.insertNewOperationLog(oplog);
-
-
-            this.paramBean.setRptno("01");
-
         } catch (Exception e) {
             logger.error("查询数据时出现错误。", e);
             MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
         }
-        return null;
     }
 
-    public String onShowRpt(){
+    public void onModifyRpt() {
+        try {
+            ClsUdTblinfo  tbl_db = userDefRptService.selectTblInfo(clsUdTblinfo.getRptno());
+            if (tbl_db == null) {
+                MessageUtil.addError("报表不存在。");
+                return;
+            }
+
+            userDefRptService.modifyTblInfo(clsUdTblinfo);
+            detlRecords = userDefRptService.selectTblInfos();
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("UserDefRptMng_onModifyRpt");
+            oplog.setActionName("阶段性攻坚报表:报表修改");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+        } catch (Exception e) {
+            logger.error("查询数据时出现错误。", e);
+            MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
+        }
+    }
+    public void onDeleteRpt() {
+        try {
+            ClsUdTblinfo  tbl_db = userDefRptService.selectTblInfo(clsUdTblinfo.getRptno());
+            if (tbl_db == null) {
+                MessageUtil.addError("报表不存在。");
+                return;
+            }
+            userDefRptService.clearAllRptInfo(clsUdTblinfo.getRptno());
+            detlRecords = userDefRptService.selectTblInfos();
+
+            Ptoplog oplog = new Ptoplog();
+            oplog.setActionId("UserDefRptMng_onDeleteRpt");
+            oplog.setActionName("阶段性攻坚报表:报表清除");
+            oplog.setOpDataBranchid(this.paramBean.getBranchId());
+            platformService.insertNewOperationLog(oplog);
+
+            userDefRptService.insertTblInfo(clsUdTblinfo);
+        } catch (Exception e) {
+            logger.error("查询数据时出现错误。", e);
+            MessageUtil.addWarn("查询数据时出现错误。" + e.getMessage());
+        }
+    }
+
+    public String startShowRpt(){
         return "userDefRptShow";
     }
 
-    public String onImport() {
+    public String startImport() {
         return "rptDataImp";
     }
-    public void onCloseRpt() {
-        MessageUtil.addWarn("开发中");
+
+    public void startModiRpt(){
+//        Map<String, String> paramsMap = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+//        String  rptno = StringUtils.isEmpty(paramsMap.get("rptno")) ? "" : paramsMap.get("rptno");
+/*
+        this.clsUdTblinfo = userDefRptService.selectTblInfo(this.selectedRecord.getRptno());
+        if (clsUdTblinfo == null) {
+            MessageUtil.addError("报表不存在。");
+            return;
+        }
+*/
+        this.clsUdTblinfo = selectedRecord;
+        clsUdTblinfo.setRptno("22");
+
     }
 
     //===================================================================
@@ -171,5 +236,13 @@ public class UserDefRptMngAction implements Serializable {
 
     public void setUploadedFile(UploadedFile uploadedFile) {
         this.uploadedFile = uploadedFile;
+    }
+
+    public ClsUdTblinfo getClsUdTblinfo() {
+        return clsUdTblinfo;
+    }
+
+    public void setClsUdTblinfo(ClsUdTblinfo clsUdTblinfo) {
+        this.clsUdTblinfo = clsUdTblinfo;
     }
 }

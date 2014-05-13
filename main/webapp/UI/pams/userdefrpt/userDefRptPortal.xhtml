@@ -6,16 +6,21 @@
                 template="/templates/ui.xhtml">
 
     <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable-data tr{
+                height: 30px !important;
+            }
+        </style>
     </ui:define>
 
     <ui:define name="content">
         <div class="entry" id="top">
             <h:form id="form">
-                <div style="margin-top: 20px;">
+                <div style="margin-top: 0px;">
                     <p:tabView dynamic="true" cache="false" style="font-weight:normal;font-style:normal">
                         <p:tab title="阶段性攻坚活动报表">
                             <p:messages id="msgs" showDetail="true"/>
-                            <p:ajaxStatus style="height:20px;text-align:center">
+                            <p:ajaxStatus style="height:10px;text-align:center">
                                 <f:facet name="start">
                                     <h:graphicImage value="/images/ajaxloadingbar.gif"/>
                                 </f:facet>
@@ -24,7 +29,7 @@
                                 </f:facet>
                             </p:ajaxStatus>
 
-                            <p:dataTable id="pdt" style="width:100%;margin-top: 20px;"
+                            <p:dataTable id="pdt" style="width:100%;margin-top: 10px;margin-bottom: 10px"
                                          value="#{userDefRptMngAction.detlRecords}" var="record"
                                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
                                          currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
@@ -52,9 +57,9 @@
                                     <h:outputText value="#{record.rptdesc}"/>
                                 </p:column>
                                 <p:column headerText="操作" style="text-align:center">
-                                    <p:commandLink value="报表查询" immediate="true" ajax="false" action="#{userDefRptMngAction.onShowRpt}"
+                                    <p:commandLink value="数据展示" immediate="true" ajax="false" action="#{userDefRptMngAction.onShowRpt}"
                                                    style="color: blue">
-                                        <f:param value="#{record.rptno}" name="rptno"/>
+                                        <f:param name="rptno" value="#{record.rptno}"/>
                                     </p:commandLink>
                                 </p:column>
                             </p:dataTable>

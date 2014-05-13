@@ -9,6 +9,15 @@
         <session-timeout>360</session-timeout>
     </session-config>
 
+    <!--FileUpload-->
+    <filter>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
 
     <filter>
         <filter-name>LoginCheckFilter</filter-name>
@@ -67,11 +76,6 @@
         <param-value>/WEB-INF/faces-config.xml</param-value>
     </context-param>
 
-    <!--groovy 2-->
-    <context-param>
-        <param-name>com.sun.faces.enableGroovyScripting</param-name>
-        <param-value>true</param-value>
-    </context-param>
 
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
@@ -94,22 +98,6 @@
         </listener-class>
     </listener>
 -->
-
-    <!--groovy 1-->
-    <filter>
-        <filter-name>GroovyFilter</filter-name>
-        <filter-class>com.sun.faces.scripting.GroovySupportFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>GroovyFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
-
 
     <servlet>
         <servlet-name>SchedulerManager</servlet-name>

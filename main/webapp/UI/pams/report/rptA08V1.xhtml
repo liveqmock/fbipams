@@ -51,9 +51,9 @@
                                                  action="#{rptA08V1Action.onQuery}"
                                                  update="pdt,msgs">
                                 </p:commandButton>
-                                <p:commandButton ajax="false" id="btnExport" value="导出CSV"
+                                <p:commandButton ajax="false" id="btnExportXLS" value="导出EXCEL"
                                                  style="width:90px;">
-                                    <p:dataExporter type="csv" target="pdt"
+                                    <p:dataExporter type="xls" target="pdt"
                                                     fileName="rpt#{rptA08V1Action.paramBean.branchId}"
                                                     encoding="GBK"
                                                     pageOnly="false"/>

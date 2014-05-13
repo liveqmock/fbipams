@@ -35,7 +35,7 @@
                                     <f:selectItems value="#{largeDepFlowAction.branchList}"/>
                                 </h:selectOneMenu>
                                 <h:outputLabel value="客户姓名:"/>
-                                <p:inputText id="certno" value="#{largeDepFlowAction.paramBean.custName}"/>
+                                <p:inputText id="certno" value="#{largeDepFlowAction.paramBean.custName}" />
 
                                 <h:outputLabel value="起始日期:"/>
                                 <p:inputText id="startDate" value="#{largeDepFlowAction.paramBean.startDate}"
@@ -57,6 +57,11 @@
                                 <p:commandButton ajax="false" id="btnExport" value="导出CSV"
                                                  style="width:90px;">
                                     <p:dataExporter type="csv" target="pdt" fileName="rpt#{largeDepFlowAction.paramBean.branchId}" encoding="GBK"
+                                                    pageOnly="false"/>
+                                </p:commandButton>
+                                <p:commandButton ajax="false" id="btnExportXLs" value="导出EXCEL"
+                                                 style="width:90px;">
+                                    <p:dataExporter type="xls" target="pdt" fileName="rpt#{largeDepFlowAction.paramBean.branchId}" encoding="GBK"
                                                     pageOnly="false"/>
                                 </p:commandButton>
                             </h:panelGrid>

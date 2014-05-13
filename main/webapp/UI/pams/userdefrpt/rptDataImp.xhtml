@@ -6,20 +6,47 @@
                 template="/templates/ui.xhtml">
 
     <ui:define name="head">
+        <style type="text/css">
+            /*            .ui-fileupload .start {
+                            display: none;
+                        }
+
+                        .ui-fileupload .cancel {
+                            display: none;
+                        }
+
+                        .ui-fileupload .progress {
+                            display: none;
+                        }
+             .fileupload-content {
+                display: none;
+            }
+            .fileupload-buttonbar {
+                visibility: hidden;
+            }
+
+            .ui-corner-buttom {
+                display: none;
+            }
+
+            .fileinput-button {
+                visibility: visible;
+            }
+*/
+        </style>
     </ui:define>
 
     <ui:define name="content">
         <div class="entry" id="top">
             <div style="margin-top: 20px;">
                 <h:form id="form" style="margin-top: 20px">
+                    <p:messages id="msgs" showDetail="true"/>
                     <p:fileUpload fileUploadListener="#{dataImportAction.onUpload}" mode="advanced"
                                   dragDropSupport="false"
                                   cancelLabel="取消上传" label="选择EXCEL文件" uploadLabel="开始上传"
                                   update="msgs"
                                   sizeLimit="3000000"
                                   fileLimit="10" allowTypes="/(\.|\/)(xlsx)$/"/>
-
-                    <p:growl id="msgs" showDetail="true"/>
                 </h:form>
                 <p:panel style="margin-top:10px">
                     <h:form id="form1">
