@@ -40,15 +40,18 @@
         <div class="entry" id="top">
             <div style="margin-top: 20px;">
                 <h:form id="form" style="margin-top: 20px">
-                    <p:messages id="msgs" showDetail="true"/>
-                    <p:fileUpload fileUploadListener="#{dataImportAction.onUpload}" mode="advanced"
+                    <p:growl id="msgs" showDetail="true"/>
+                    <p:fileUpload fileUploadListener="#{dataImportAction.onUpload}"
+                                  mode="advanced"
+                                  process="@this"
                                   dragDropSupport="false"
                                   cancelLabel="取消上传" label="选择EXCEL文件" uploadLabel="开始上传"
                                   update="msgs"
                                   sizeLimit="3000000"
-                                  fileLimit="10" allowTypes="/(\.|\/)(xlsx)$/"/>
+                                  fileLimit="10"
+                                  allowTypes="/(\.|\/)(xlsx)$/"/>
                 </h:form>
-                <p:panel style="margin-top:10px">
+                <p:panel style="margin-top:15px">
                     <h:form id="form1">
                         <h:panelGrid id="btn" columns="1" style="text-align:center;padding-top:5px;"
                                      width="98%">

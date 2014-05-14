@@ -5,165 +5,199 @@
                 xmlns:p="http://primefaces.org/ui"
                 template="/templates/ui.xhtml">
 
-    <ui:define name="head">
-        <style type="text/css">
-            .ui-datatable-data tr {
-                height: 30px !important;
-            }
+<ui:define name="head">
+    <style type="text/css">
+        .ui-datatable-data tr {
+            height: 30px !important;
+        }
 
-            .odd-row {
-                text-align: center;
-                background: none repeat scroll 0 0 #FFFFFF;
-                border-top: 1px solid #BBBBBB;
-            }
+        .odd-row {
+            text-align: center;
+            background: none repeat scroll 0 0 #FFFFFF;
+            border-top: 1px solid #BBBBBB;
+        }
 
-            .even-row {
-                text-align: center;
-                background: none repeat scroll 0 0 #F9F9F9;
-                border-top: 1px solid #BBBBBB;
-            }
-        </style>
-    </ui:define>
+        .even-row {
+            text-align: center;
+            background: none repeat scroll 0 0 #F9F9F9;
+            border-top: 1px solid #BBBBBB;
+        }
+    </style>
+    <script language="JavaScript" type="text/JavaScript">
+        //<![CDATA[
+        function setFieldAttr() {
+            //不显示
+            document.forms['form']['form:tabview:rptnoInput'].disabled = true;
+        }
 
-    <ui:define name="content">
-        <div class="entry" id="top">
-            <h:form id="form">
-                <p:tabView id="tabview" dynamic="true" cache="false" style="font-weight:normal;font-style:normal">
-                    <p:tab id="tab1" title="阶段性攻坚活动报表管理">
-                        <p:messages id="msgs" showDetail="true"/>
-                        <p:ajaxStatus style="height:10px;text-align:center">
-                            <f:facet name="start">
-                                <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+        function KeyDown() {
+            if (event.keyCode == 13) {
+                    event.keyCode = 9;
+            }
+        }
+
+        //]]>
+    </script>
+
+</ui:define>
+
+<ui:define name="content">
+    <div class="entry" id="top">
+        <h:form id="form">
+            <p:tabView id="tabview" dynamic="true" cache="false" style="font-weight:normal;font-style:normal">
+                <p:tab id="tab1" title="阶段性攻坚活动报表管理">
+                    <p:messages id="msgs" showDetail="true"/>
+                    <p:ajaxStatus style="height:10px;text-align:center">
+                        <f:facet name="start">
+                            <h:graphicImage value="/images/ajaxloadingbar.gif"/>
+                        </f:facet>
+                        <f:facet name="complete">
+                            <h:outputText value=""/>
+                        </f:facet>
+                    </p:ajaxStatus>
+
+                    <p:dataTable id="pdt" style="width:100%;margin-top: 10px;margin-bottom: 10px"
+                                 value="#{userDefRptMngAction.detlRecords}" var="record"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
+                                 currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
+                                 paginator="true" rows="15"
+                                 paginatorPosition="bottom"
+                                 rowsPerPageTemplate="100,50,30,15,5"
+                                 emptyMessage="数据记录为空...">
+
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                报表编号
                             </f:facet>
-                            <f:facet name="complete">
-                                <h:outputText value=""/>
+                            <h:outputText value="#{record.rptno}"/>
+                        </p:column>
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                报表名称
                             </f:facet>
-                        </p:ajaxStatus>
-
-                        <p:dataTable id="pdt" style="width:100%;margin-top: 10px;margin-bottom: 10px"
-                                     value="#{userDefRptMngAction.detlRecords}" var="record"
-                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} "
-                                     currentPageReportTemplate="{startRecord}-{endRecord} 共{totalRecords}笔"
-                                     paginator="true" rows="15"
-                                     paginatorPosition="bottom"
-                                     rowsPerPageTemplate="100,50,30,15,5"
-                                     emptyMessage="数据记录为空...">
-
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    报表编号
-                                </f:facet>
-                                <h:outputText value="#{record.rptno}"/>
-                            </p:column>
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    报表名称
-                                </f:facet>
-                                <h:outputText value="#{record.rptname}"/>
-                            </p:column>
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    报表说明
-                                </f:facet>
-                                <h:outputText value="#{record.rptdesc}"/>
-                            </p:column>
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    启动日期
-                                </f:facet>
-                                <h:outputText value="#{record.startdate}"/>
-                            </p:column>
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    结束日期
-                                </f:facet>
-                                <h:outputText value="#{record.enddate}"/>
-                            </p:column>
-                            <p:column style="text-align:center">
-                                <f:facet name="header">
-                                    数据导入日期
-                                </f:facet>
-                                <h:outputText value="#{record.impdate}"/>
-                            </p:column>
-                            <p:column headerText="操作" style="text-align:center">
-                                <p:commandLink value="导入" immediate="true" ajax="false"
-                                               action="#{userDefRptMngAction.startImport}"
-                                               style="color: blue; margin-right:5px">
-                                    <f:param name="rptno" value="#{record.rptno}"/>
-                                    <f:setPropertyActionListener value="#{record}"
-                                                                 target="#{userDefRptMngAction.selectedRecord}"/>
-                                </p:commandLink>
-                                <p:commandLink value="展示" immediate="true" ajax="false"
-                                               action="#{userDefRptMngAction.startShowRpt}"
-                                               style="color: blue; margin-right:5px">
-                                    <f:param name="rptno" value="#{record.rptno}"/>
-                                </p:commandLink>
-                                <p:commandLink value="修改" process="@this"
-                                               update=":form:tabview:formpanel"
-                                               actionListener="#{userDefRptMngAction.startModiRpt}"
-                                               style="color: blue; margin-right:5px">
-                                    <f:param name="rptno" value="#{record.rptno}"/>
-                                    <f:setPropertyActionListener value="#{record}"
-                                                                 target="#{userDefRptMngAction.selectedRecord}"/>
-                                </p:commandLink>
-                                <p:commandLink value="修改2" process="@this"
-                                               update=":form"
-                                               action="#{userDefRptMngAction.startModiRpt}"
-                                               style="color: blue; margin-right:5px">
-                                    <f:param name="rptno" value="#{record.rptno}"/>
-                                    <f:setPropertyActionListener value="#{record}"
-                                                                 target="#{userDefRptMngAction.selectedRecord}"/>
-                                </p:commandLink>
-                                <p:commandLink value="清除" immediate="true" ajax="false"
-                                               action="#{userDefRptMngAction.startClearRpt}"
-                                               style="color: blue; margin-right:0px">
-                                    <f:param name="rptno" value="#{record.rptno}"/>
-                                </p:commandLink>
-                            </p:column>
-                        </p:dataTable>
+                            <h:outputText value="#{record.rptname}"/>
+                        </p:column>
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                报表说明
+                            </f:facet>
+                            <h:outputText value="#{record.rptdesc}"/>
+                        </p:column>
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                启动日期
+                            </f:facet>
+                            <h:outputText value="#{record.startdate}"/>
+                        </p:column>
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                结束日期
+                            </f:facet>
+                            <h:outputText value="#{record.enddate}"/>
+                        </p:column>
+                        <p:column style="text-align:center">
+                            <f:facet name="header">
+                                数据导入日期
+                            </f:facet>
+                            <h:outputText value="#{record.impdate}"/>
+                        </p:column>
+                        <p:column headerText="操作" style="text-align:center">
+                            <p:commandLink value="导入数据" immediate="true" ajax="false"
+                                           action="#{userDefRptMngAction.startImport}"
+                                           style="color: blue; margin-right:5px">
+                                <f:param name="rptno" value="#{record.rptno}"/>
+                                <f:setPropertyActionListener value="#{record}"
+                                                             target="#{userDefRptMngAction.selectedRecord}"/>
+                            </p:commandLink>
+                            <p:commandLink value="修改定义"
+                                           process="@this"
+                                           update=":form:tabview:formpanel"
+                                           action="#{userDefRptMngAction.startUpdateRpt}"
+                                           style="color: blue; margin-right:5px">
+                                <f:param name="rptno" value="#{record.rptno}"/>
+                                <f:setPropertyActionListener value="#{record}"
+                                                             target="#{userDefRptMngAction.selectedRecord}"/>
+                            </p:commandLink>
+                            <p:commandLink value="清除数据"
+                                           process="@this"
+                                           update=":form:tabview:formpanel"
+                                           action="#{userDefRptMngAction.startClearRpt}"
+                                           style="color: blue; margin-right:5px">
+                                <f:param name="rptno" value="#{record.rptno}"/>
+                                <f:setPropertyActionListener value="#{record}"
+                                                             target="#{userDefRptMngAction.selectedRecord}"/>
+                            </p:commandLink>
+                        </p:column>
+                        <p:column headerText="数据操作" style="text-align:center">
+                            <p:commandLink value="数据展示" immediate="true" ajax="false"
+                                           action="#{userDefRptMngAction.startShowRpt}"
+                                           style="color: blue; margin-right:5px">
+                                <f:param name="rptno" value="#{record.rptno}"/>
+                            </p:commandLink>
+                        </p:column>
+                    </p:dataTable>
 
 
-                        <p:panel id="formpanel" style="width: 600px; margin-top: 20px">
-                            <h:panelGrid columns="1" cellspacing="5">
-                                <h:panelGrid columns="2" cellspacing="5">
-                                    <h:outputLabel value="报表编号:"/>
-                                    <p:inputText value="#{userDefRptMngAction.clsUdTblinfo.rptno}" style="width: 50px;"
-                                                 required="true" requiredMessage="报表编号不能为空。"/>
-                                    <h:outputLabel value="报表名称:"/>
-                                    <p:inputText value="#{userDefRptMngAction.clsUdTblinfo.rptname}"
-                                                 style="width: 300px;" required="true" requiredMessage="报表名称不能为空。"/>
-                                    <h:outputLabel value="报表说明:"/>
-                                    <p:inputText value="#{userDefRptMngAction.clsUdTblinfo.rptdesc}"
-                                                 style="width: 400px;"/>
-                                    <h:outputLabel value="启动日期:"/>
-                                    <p:inputText id="startDate" value="#{userDefRptMngAction.clsUdTblinfo.startdate}"
-                                                 onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
-                                    <h:outputLabel value="结束日期:"/>
-                                    <p:inputText id="endDate" value="#{userDefRptMngAction.clsUdTblinfo.enddate}"
-                                                 onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
-                                </h:panelGrid>
-                                <h:panelGrid>
-                                    <p:commandButton id="addbtn" style="width:90px;" value="新增报表"
-                                                     action="#{userDefRptMngAction.onAddRpt}"
-                                                     update="pdt,msgs,formpanel">
-                                    </p:commandButton>
-                                    <p:commandButton id="modibtn" style="width:90px;" value="修改确认"
-                                                     action="#{userDefRptMngAction.onModifyRpt}"
-                                                     update="pdt,msgs,formpanel">
-                                    </p:commandButton>
-                                    <p:commandButton id="delbtn" style="width:90px;" value="删除确认"
-                                                     action="#{userDefRptMngAction.onDeleteRpt}"
-                                                     update="pdt,msgs,formpanel">
-                                    </p:commandButton>
-                                </h:panelGrid>
+                    <p:panel id="formpanel" style="width: 600px; margin-top: 20px">
+                        <h:panelGrid columns="1" cellspacing="5">
+                            <h:panelGrid columns="2" cellspacing="5">
+                                <h:outputLabel value="报表编号:"/>
+                                <p:inputText id="rptnoInput" value="#{userDefRptMngAction.clsUdTblinfo.rptno}"
+                                             style="width: 50px;"
+                                             onkeydown="KeyDown()"
+                                             required="true" requiredMessage="报表编号不能为空。"/>
+                                <h:outputLabel value="报表名称:"/>
+                                <p:inputText value="#{userDefRptMngAction.clsUdTblinfo.rptname}"
+                                             onkeydown="KeyDown()"
+                                             style="width: 200px;" required="true" requiredMessage="报表名称不能为空。"/>
+                                <h:outputLabel value="报表说明:"/>
+                                <p:inputText value="#{userDefRptMngAction.clsUdTblinfo.rptdesc}"
+                                             onkeydown="KeyDown()"
+                                             style="width: 400px;"/>
+                                <h:outputLabel value="启动日期:"/>
+                                <p:inputText id="startDate" style="width: 100px;"
+                                             onkeydown="KeyDown()"
+                                             value="#{userDefRptMngAction.clsUdTblinfo.startdate}"
+                                             onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
+                                <h:outputLabel value="结束日期:"/>
+                                <p:inputText id="endDate" style="width: 100px;"
+                                             onkeydown="KeyDown()"
+                                             onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"
+                                             value="#{userDefRptMngAction.clsUdTblinfo.enddate}"
+                                             onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"/>
                             </h:panelGrid>
+                            <h:panelGrid columns="3">
+                                <p:commandButton id="addbtn" style="width:150px;" value="新增报表定义确认"
+                                                 rendered="#{userDefRptMngAction.operation == 'create'}"
+                                                 action="#{userDefRptMngAction.onCreateRpt}"
+                                                 update="pdt,msgs,formpanel">
+                                </p:commandButton>
+                                <p:commandButton id="modibtn" style="width:150px;" value="报表定义修改确认"
+                                                 rendered="#{userDefRptMngAction.operation == 'update'}"
+                                                 action="#{userDefRptMngAction.onUpdateRpt}"
+                                                 update="pdt,msgs,formpanel">
+                                </p:commandButton>
+                                <p:commandButton id="delbtn" style="width:180px;" value="报表定义及数据清除确认"
+                                                 rendered="#{userDefRptMngAction.operation == 'clear'}"
+                                                 action="#{userDefRptMngAction.onClearRpt}"
+                                                 update="pdt,msgs,formpanel">
+                                </p:commandButton>
+                            </h:panelGrid>
+                        </h:panelGrid>
 
-                        </p:panel>
+                    </p:panel>
 
-                    </p:tab>
-                </p:tabView>
-            </h:form>
-        </div>
-    </ui:define>
+                </p:tab>
+            </p:tabView>
+
+            <p:dialog Id="myDialog" widgetVar="myDialog" modal="true">
+                <p:outputPanel Id="myDialogPanel">
+                    <p:inputText value="............"/>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </div>
+</ui:define>
 
 </ui:composition>

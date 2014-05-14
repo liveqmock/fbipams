@@ -119,7 +119,6 @@ public class UserDefRptService {
 
     //新增报表
     public void insertTblInfo(ClsUdTblinfo record){
-        record.setRecver(1);
         tblinfoMapper.insert(record);
     }
     //修改报表

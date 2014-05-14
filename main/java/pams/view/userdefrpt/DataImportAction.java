@@ -19,6 +19,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.text.NumberFormat;
@@ -59,8 +60,9 @@ public class DataImportAction implements Serializable {
     }
 
     public void onUpload(FileUploadEvent event) {
+        InputStream is = null;
         try {
-            InputStream is = event.getFile().getInputstream();
+             is = event.getFile().getInputstream();
 //            InputStream is = file.getInputstream();
 
             XSSFWorkbook wb = new XSSFWorkbook(is);
@@ -101,16 +103,23 @@ public class DataImportAction implements Serializable {
             //更新导入时间
             userDefRptService.updateImportDataDate(rptno);
 
+            MessageUtil.addInfo(" 已成功导入。");
+
             Ptoplog oplog = new Ptoplog();
             oplog.setActionId("UserDefRptImp_onUpload");
             oplog.setActionName("阶段性攻坚报表:报表数据导入 " + rptno);
             platformService.insertNewOperationLog(oplog);
-
-            MessageUtil.addInfo(" 已成功导入。");
-//            MessageUtil.addInfo(event.getFile().getFileName() + " 已成功导入。");
         } catch (Exception ex) {
             logger.error(event.getFile().getFileName() + " 导入失败。", ex);
             MessageUtil.addError("导入失败." + ex.getMessage());
+        }finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
