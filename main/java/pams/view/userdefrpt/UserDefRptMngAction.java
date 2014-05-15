@@ -170,6 +170,8 @@ public class UserDefRptMngAction implements Serializable {
 
     public String startImport() {
         return "rptDataImp";
+//        return "rptDataImp_2?rptno=" + selectedRecord.getRptno();
+//        return "rptDataImp?faces-redirect=true&rptno=" + clsUdTblinfo.getRptno();
     }
 
     public void startUpdateRpt() {

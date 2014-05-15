@@ -61,6 +61,21 @@ public class UserDefRptService {
         example.createCriteria().andRptnoEqualTo(rptno);
         rptdataMapper.deleteByExample(example);
     }
+    public void insertRptData(String rptno, String[] fields) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        ClsUdRptdata record = new ClsUdRptdata();
+        Class clazz = record.getClass();
+
+        record.setRptno(rptno);
+        record.setBranchid(fields[0]);
+
+        for (int i = 1; i< fields.length; i++){
+                String seq = StringUtils.leftPad("" + i, 2, "0");
+                Method m = clazz.getDeclaredMethod("setFld" + seq, String.class);
+                m.invoke(record, fields[i]);
+        }
+        rptdataMapper.insert(record);
+    }
+/*
     public void insertRptData(String rptno, List<String> fields) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ClsUdRptdata record = new ClsUdRptdata();
         Class clazz = record.getClass();
@@ -75,6 +90,7 @@ public class UserDefRptService {
         }
         rptdataMapper.insert(record);
     }
+*/
 
 
     //columns   info
@@ -91,6 +107,18 @@ public class UserDefRptService {
         fldinfoMapper.deleteByExample(example);
     }
 
+    public void insertColumnDefInfo(String rptno, String[] fields) {
+        for (int i = 1; i< fields.length; i++){
+            ClsUdFldinfo clsUdFldinfo = new ClsUdFldinfo();
+            clsUdFldinfo.setRptno(rptno);
+            clsUdFldinfo.setFldname(fields[i]);
+            clsUdFldinfo.setFldsn(StringUtils.leftPad("" + i, 2, "0"));
+            clsUdFldinfo.setFldtype("0"); //暂时统一为字符类型
+            clsUdFldinfo.setRecver(1);
+            fldinfoMapper.insert(clsUdFldinfo);
+        }
+    }
+/*
     public void insertColumnDefInfo(String rptno, List<String> fields) {
         for (int i = 1; i< fields.size(); i++){
             ClsUdFldinfo clsUdFldinfo = new ClsUdFldinfo();
@@ -102,6 +130,7 @@ public class UserDefRptService {
             fldinfoMapper.insert(clsUdFldinfo);
         }
     }
+*/
 
 
     //Table def info

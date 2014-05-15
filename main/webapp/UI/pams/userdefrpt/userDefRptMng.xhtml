@@ -106,6 +106,7 @@
                                            action="#{userDefRptMngAction.startImport}"
                                            style="color: blue; margin-right:5px">
                                 <f:param name="rptno" value="#{record.rptno}"/>
+                                <f:param name="rptname" value="#{record.rptname}"/>
                                 <f:setPropertyActionListener value="#{record}"
                                                              target="#{userDefRptMngAction.selectedRecord}"/>
                             </p:commandLink>

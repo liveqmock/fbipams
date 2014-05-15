@@ -39,31 +39,62 @@
     <ui:define name="content">
         <div class="entry" id="top">
             <div style="margin-top: 20px;">
-                <h:form id="form" style="margin-top: 20px">
-                    <p:growl id="msgs" showDetail="true"/>
-                    <p:fileUpload fileUploadListener="#{dataImportAction.onUpload}"
-                                  mode="advanced"
-                                  process="@this"
-                                  dragDropSupport="false"
-                                  cancelLabel="取消上传" label="选择EXCEL文件" uploadLabel="开始上传"
-                                  update="msgs"
-                                  sizeLimit="3000000"
-                                  fileLimit="10"
-                                  allowTypes="/(\.|\/)(xlsx)$/"/>
+                <h:form id="showform">
+                    <p:panel style="margin-bottom: 20px;">
+                        <h:panelGrid columns="2" cellspacing="8">
+                            <h:outputLabel value="报表编号:"/>
+                            <p:inputText id="rptnoInput" value="#{dataImportAction.rptno}"
+                                         readonly="true"
+                                         style="width: 40px;" />
+                            <h:outputLabel value="报表名称:"/>
+                            <p:inputText value="#{dataImportAction.rptname}"
+                                         readonly="true"
+                                         style="width: 300px;"/>
+                            <h:outputLabel value="数据文件行数:"/>
+                            <h:outputText  id="rowcount" value="#{dataImportAction.rowcount}" />
+                            <h:outputLabel value="数据文件列数:"/>
+                            <h:outputText  id="cellcount" value="#{dataImportAction.cellcount}"  />
+                            <h:outputLabel value="数据导入笔数:"/>
+                            <h:outputText  id="impcount" value="#{dataImportAction.impcount}" style="color: red" />
+                            <p:poll interval="3" update="rowcount,cellcount,impcount"/>
+                        </h:panelGrid>
+                    </p:panel>
                 </h:form>
-                <p:panel style="margin-top:15px">
-                    <h:form id="form1">
-                        <h:panelGrid id="btn" columns="1" style="text-align:center;padding-top:5px;"
-                                     width="98%">
-                            <p:commandButton id="back" ajax="false" value="返回"
+                <h:form id="form" enctype="multipart/form-data">
+                    <p:messages id="msgs" showDetail="true" showSummary="true"/>
+                    <p:panel>
+                        <h:panelGrid  cellpadding="0" cellspacing="5" columns="2">
+                            <p:fileUpload value="#{dataImportAction.file}" style="width: 600px; font-size: 14px"
+                                          mode="simple"
+                                          allowTypes="/(\.|\/)(xlsx)$/"/>
+                        </h:panelGrid>
+                        <h:panelGrid  cellpadding="0" cellspacing="5" columns="2">
+                            <p:commandButton value="数据导入" ajax="false"
+                                             style="width: 120px;"
+                                             action="#{dataImportAction.onUpload}"
+                                             update="msgs"/>
+                            <p:commandButton id="back" ajax="false" value="返  回"
                                              style="width: 120px;"
                                              action="#{dataImportAction.onBack}">
                                 <f:param value="#{dataImportAction.rptno}" name="rptno"/>
                             </p:commandButton>
                         </h:panelGrid>
-                    </h:form>
-                </p:panel>
+                    </p:panel>
+                    <br/>
+                </h:form>
             </div>
+            <p:panel id="news" >
+                <p>注意事项：</p>
+                <div style="line-height:30px;">
+                    <ul>
+                        <li>数据文件格式支持EXECL2007以上版本以上，文件后缀为XLSX</li>
+                        <li>数据须保存在电子表格中的第一个Sheet中</li>
+                        <li>第一行须固定为标题</li>
+                        <li>第一列须固定为机构编号</li>
+                        <li>目前最多支持31列</li>
+                    </ul>
+                </div>
+            </p:panel>
         </div>
     </ui:define>
 

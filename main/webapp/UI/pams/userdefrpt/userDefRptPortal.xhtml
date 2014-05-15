@@ -57,7 +57,7 @@
                                     <h:outputText value="#{record.rptdesc}"/>
                                 </p:column>
                                 <p:column headerText="操作" style="text-align:center">
-                                    <p:commandLink value="数据展示" immediate="true" ajax="false" action="#{userDefRptMngAction.onShowRpt}"
+                                    <p:commandLink value="数据展示" immediate="true" ajax="false" action="#{userDefRptMngAction.startShowRpt}"
                                                    style="color: blue">
                                         <f:param name="rptno" value="#{record.rptno}"/>
                                     </p:commandLink>
