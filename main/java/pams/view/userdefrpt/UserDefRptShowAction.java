@@ -130,6 +130,12 @@ public class UserDefRptShowAction implements Serializable {
         this.paramBean.setOffset(0);
         this.lazyDataModel = new pams.view.userdefrpt.UserDefRptLazyDataModel(userDefRptService.getUserDefRptMapper(), this.paramBean);
 
+
+        Ptoplog oplog = new Ptoplog();
+        oplog.setActionId("UserDefRptShow_onQuery");
+        oplog.setActionName("阶段性攻坚报表:查询 " + title);
+        oplog.setOpDataBranchid(this.paramBean.getBranchId());
+        platformService.insertNewOperationLog(oplog);
     }
 
     public String onQuery() {

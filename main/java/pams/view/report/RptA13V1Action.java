@@ -23,7 +23,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * 代发工资明细查询 .
+ * 结算通卡余额明细查询 .
  * User: zhanrui
  * Date: 13-3-28
  * Time: 上午10:29

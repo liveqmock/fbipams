@@ -525,34 +525,34 @@
     <insert id="importRecords_RptA13V1">
         <![CDATA[
         insert into  ODSB_STLCRD_BAL t
-        select /*+parallel(t1,5)(t3,5)*/
-                 sys_guid(),
-                 t1.inst_no as 所属网点,
-                 t1.inst_no as 所属网点编号,
-                 t1.cust_name as 客户姓名,
-                 t1.cust_no as 客户编号,
-                 t4.no_body as 客户联系电话,
-                 t1.crd_no as 结算通卡卡号,
-                 t1.acct_bal as 结算通卡余额,
-                 t1.cust_open_dt as 开卡时间,
-                 decode(t1.acct_sts,
-                        '101',
-                        '正常',
-                        '103',
-                        '冻结',
-                        '105',
-                        '单向冻结',
-                        '108',
-                        '结清') as 卡状态
-          from BF_AGT_DEP_ACCT_SAP         t1,
-               BF_PR_BR_INSTN              t2,
-               BF_PR_IND_PARTY_CROSS_INDEX t3,
-               BF_PR_IND_CONTACT_ADDR      t4
-         where t1.inst_no = t2.opr_unit_cd
-           and substr(t1.crd_no, 1, 6) = '622707'
-           and t1.cust_no = t3.ext_system_index
-           and t3.p_cust_no = t4.p_cust_no
-           order by t1.cust_no
-           ]]>
+            select /*+parallel(t1,5)(t3,5)*/
+            distinct sys_guid(),
+                     t2.cm_opun_flnm_chn as 所属网点,
+                     t1.inst_no as 所属网点编号,
+                     t1.cust_name as 客户姓名,
+                     t1.cust_no as 客户编号,
+                     t4.no_body as 客户联系电话,
+                     t1.crd_no as 结算通卡卡号,
+                     t1.acct_bal as 结算通卡余额,
+                     t1.cust_open_dt as 开卡时间,
+                     decode(t1.acct_sts,
+                            '101',
+                            '正常',
+                            '103',
+                            '冻结',
+                            '105',
+                            '单向冻结',
+                            '108',
+                            '结清') as 卡状态
+              from BF_AGT_DEP_ACCT_SAP         t1,
+                   BF_PR_BR_INSTN              t2,
+                   BF_PR_IND_PARTY_CROSS_INDEX t3,
+                   BF_PR_IND_CONTACT_ADDR      t4
+             where t1.inst_no = t2.opr_unit_cd
+               and substr(t1.crd_no, 1, 6) = '622707'
+               and t1.cust_no = t3.ext_system_index
+               and t3.p_cust_no = t4.p_cust_no
+               order by t1.cust_no
+              ]]>
     </insert>
 </mapper>
